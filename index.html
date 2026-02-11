@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbidden City - Official Ticket Booking | Beijing, China</title>
+    <!-- Tailwind CSS 用于快速样式开发 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 自定义样式配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000', // 故宫红
+                        secondary: '#D4AF37', // 故宫金
+                        dark: '#2D2D2D',
+                        light: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .bg-overlay {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 响应式图片 */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- 导航栏 -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-landmark-dome text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold">Forbidden City</h1>
+            </div>
+            <div class="hidden md:flex gap-6">
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#booking" class="hover:text-primary transition-colors">Booking</a>
+                <a href="#notices" class="hover:text-primary transition-colors">Notices</a>
+                <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
+            </div>
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-2 flex flex-col gap-3">
+                <a href="#about" class="py-2 hover:text-primary transition-colors">About</a>
+                <a href="#booking" class="py-2 hover:text-primary transition-colors">Booking</a>
+                <a href="#notices" class="py-2 hover:text-primary transition-colors">Notices</a>
+                <a href="#faq" class="py-2 hover:text-primary transition-colors">FAQ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 - 突出票务预定痛点 -->
+    <section class="relative h-screen flex items-center justify-center">
+        <!-- 背景图 -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1555632816-92fca13a315c?q=80&w=1974&auto=format&fit=crop" 
+                 alt="Forbidden City" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-overlay"></div>
+        </div>
+        
+        <!-- 英雄区内容 -->
+        <div class="container mx-auto px-4 z-10 text-center text-white">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold mb-4 text-shadow">
+                Book Your Forbidden City Tickets
+            </h1>
+            <p class="text-[clamp(1rem,3vw,1.5rem)] mb-8 max-w-3xl mx-auto text-shadow">
+                Skip the long queues and secure your entry in advance. 
+                Official, hassle-free booking for international visitors.
+            </p>
+            <a href="#booking" class="inline-block bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105">
+                Book Now <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        
+        <!-- 向下滚动指示 -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-2xl">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 故宫介绍 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center mb-12 text-primary">About The Forbidden City</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1598380918523-18ff24b75e9f?q=80&w=1974&auto=format&fit=crop" 
+                         alt="Forbidden City Courtyard" 
+                         class="rounded-lg shadow-xl">
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">The Palace Museum</h3>
+                    <p class="mb-4">
+                        The Forbidden City, also known as the Palace Museum, is a UNESCO World Heritage Site located at the center of Beijing, China. 
+                        It served as the imperial palace for 24 emperors during the Ming and Qing dynasties (1368–1912).
+                    </p>
+                    <p class="mb-4">
+                        Covering an area of 72 hectares with over 9,000 rooms, it is the largest and best-preserved ancient wooden structure complex in the world.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check-circle text-secondary mt-1"></i>
+                            <span>Built from 1406 to 1420 during the Ming Dynasty</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check-circle text-secondary mt-1"></i>
+                            <span>Open to the public since 1925 as a museum</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check-circle text-secondary mt-1"></i>
+                            <span>Houses over 1.86 million cultural relics</span>
+                        </li>
+                    </ul>
+                    <div class="flex items-center gap-4 text-sm text-gray-600">
+                        <div>
+                            <i class="fa-solid fa-clock mr-1"></i>
+                            <span>Opening Hours: 8:30 AM - 5:00 PM (Closed on Mondays)</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-location-dot mr-1"></i>
+                            <span>Location: No.4 Jingshan Front Street, Dongcheng District, Beijing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 票务预定区 -->
+    <section id="booking" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center mb-4 text-primary">Ticket Booking</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                Secure your entry to the Forbidden City with our official online booking system. 
+                Avoid disappointment - tickets are limited and often sell out quickly.
+            </p>
+            
+            <!-- 预定表单 -->
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <form id="bookingForm">
+                    <!-- 拆分后的姓名字段 - 适配国外OTA平台 -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   placeholder="Doe" required>
+                        </div>
+                        <div>
+                            <label for="middleName" class="block text-sm font-medium text-gray-700 mb-1">Middle Name (Optional)</label>
+                            <input type="text" id="middleName" name="middleName" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   placeholder="Michael">
+                        </div>
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text" id="firstName" name="firstName" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   placeholder="John" required>
+                        </div>
+                    </div>
+
+                    <!-- 新增：主预定人护照号字段 -->
+                    <div class="mb-6">
+                        <label for="passportNumber" class="block text-sm font-medium text-gray-700 mb-1">Passport Number</label>
+                        <input type="text" id="passportNumber" name="passportNumber" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                               placeholder="e.g. AB1234567" required>
+                    </div>
+                    
+                    <!-- 联系方式字段 -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   placeholder="john@example.com" required>
+                        </div>
+                        <div>
+                            <!-- 新增手机号字段 -->
+                            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   placeholder="+86 138 0000 0000" required>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="visitDate" class="block text-sm font-medium text-gray-700 mb-1">Visit Date</label>
+                            <input type="date" id="visitDate" name="visitDate" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                   min="" required>
+                        </div>
+                        <div>
+                            <label for="ticketQty" class="block text-sm font-medium text-gray-700 mb-1">Number of Tickets</label>
+                            <select id="ticketQty" name="ticketQty" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    onchange="generateAdditionalGuestsFields()">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="ticketType" class="block text-sm font-medium text-gray-700 mb-1">Ticket Type</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-center border border-gray-300 rounded-lg p-3 hover:border-primary transition-colors cursor-pointer">
+                                <input type="radio" id="standard" name="ticketType" value="standard" class="mr-3 accent-primary" checked>
+                                <div>
+                                    <label for="standard" class="font-medium cursor-pointer">Standard Entry</label>
+                                    <!-- 修改1: 添加预定服务费20元 -->
+                                    <p class="text-sm text-gray-600">¥60 (April-October) / ¥40 (November-March) + ¥20 booking service fee</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center border border-gray-300 rounded-lg p-3 hover:border-primary transition-colors cursor-pointer">
+                                <input type="radio" id="guided" name="ticketType" value="guided" class="mr-3 accent-primary">
+                                <div>
+                                    <label for="guided" class="font-medium cursor-pointer">Guided Tour</label>
+                                    <!-- 修改1: Guided Tour 改为不包含门票 -->
+                                    <p class="text-sm text-gray-600">¥150 per person (excludes entry ticket)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 动态生成的同行人信息区域 -->
+                    <div id="additionalGuestsContainer" class="mb-6 border-t border-gray-200 pt-6 hidden">
+                        <h4 class="text-lg font-medium mb-4 text-gray-800">Additional Guests Information</h4>
+                        <div id="additionalGuestsFields"></div>
+                    </div>
+                    
+                    <div class="flex items-start mb-6">
+                        <input type="checkbox" id="terms" name="terms" class="mt-1 mr-3 accent-primary">
+                        <label for="terms" class="text-sm text-gray-600">
+                            I have read and agree to the <a href="#notices" class="text-primary hover:underline">booking terms and conditions</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        Confirm Booking <i class="fa-solid fa-lock ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 预定注意事项 -->
+    <section id="notices" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center mb-12 text-primary">Booking Important Notices</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 注意事项卡片1 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-calendar-times"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Advance Booking Required</h3>
+                    <p class="text-gray-600">
+                        Tickets must be booked at least 1 day in advance. Same-day tickets are not available. 
+                        The Forbidden City has a daily visitor limit of 80,000 people.
+                    </p>
+                </div>
+                
+                <!-- 注意事项卡片2 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">ID Verification</h3>
+                    <p class="text-gray-600">
+                        All visitors must present a valid passport or ID document at the entrance for verification. 
+                        The name on the ticket must match the name on the ID document.
+                    </p>
+                </div>
+                
+                <!-- 注意事项卡片3 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Entry Time Window</h3>
+                    <p class="text-gray-600">
+                        Your ticket is valid for entry during the selected date only. 
+                        The south gate (Meridian Gate) is the only entrance. Last entry is at 4:00 PM.
+                    </p>
+                </div>
+                
+                <!-- 注意事项卡片4 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Refund Policy</h3>
+                    <p class="text-gray-600">
+                        Refunds are available up to 24 hours before the visit date with a 10% service fee. 
+                        No refunds will be given for no-shows or late cancellations.
+                    </p>
+                </div>
+                
+                <!-- 注意事项卡片5 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-wheelchair"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Accessibility</h3>
+                    <p class="text-gray-600">
+                        Wheelchair rental is available at the entrance (deposit required). 
+                        Most areas of the Forbidden City are accessible, but some historic buildings have stairs.
+                    </p>
+                </div>
+                
+                <!-- 注意事项卡片6 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Photography Rules</h3>
+                    <p class="text-gray-600">
+                        Non-commercial photography is allowed, but tripods and selfie sticks are prohibited inside buildings. 
+                        Flash photography is not permitted in exhibition halls.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 部分 -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-center mb-12 text-primary">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ 项1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faqBtn w-full flex justify-between items-center p-4 text-left font-medium">
+                        <span>Can I change my visit date after booking?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faqContent hidden px-4 pb-4 text-gray-600">
+                        <p>
+                            Date changes are not allowed directly. You must cancel your original booking (subject to the refund policy) 
+                            and make a new booking for the desired date. Please ensure you select the correct date before confirming.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 项2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faqBtn w-full flex justify-between items-center p-4 text-left font-medium">
+                        <span>Are there any discounts for students or seniors?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faqContent hidden px-4 pb-4 text-gray-600">
+                        <p>
+                            Yes, international students with valid student IDs and seniors (60 years and above) with valid ID can get half-price tickets. 
+                            Please select the appropriate ticket type during booking and present your ID at the entrance.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 项3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faqBtn w-full flex justify-between items-center p-4 text-left font-medium">
+                        <span>Is there a dress code for visiting the Forbidden City?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faqContent hidden px-4 pb-4 text-gray-600">
+                        <p>
+                            There is no strict dress code, but visitors are expected to dress modestly and respectfully. 
+                            Revealing clothing is not appropriate for this cultural site. Comfortable walking shoes are highly recommended.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 项4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faqBtn w-full flex justify-between items-center p-4 text-left font-medium">
+                        <span>Can I bring food and drinks into the Forbidden City?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faqContent hidden px-4 pb-4 text-gray-600">
+                        <p>
+                            You may bring bottled water and small snacks, but no large food items or alcoholic beverages. 
+                            There are designated rest areas where you can eat. Please dispose of trash properly to help preserve this historic site.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Forbidden City</h3>
+                    <p class="text-gray-400 mb-4">
+                        The Palace Museum, No.4 Jingshan Front Street, Dongcheng District, Beijing, 100009, China
+                    </p>
+                    <div class="flex gap-4 text-xl">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#booking" class="hover:text-white transition-colors">Booking</a></li>
+                        <li><a href="#notices" class="hover:text-white transition-colors">Notices</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-phone mt-1"></i>
+                            <span>+86 10 6513 2255</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-envelope mt-1"></i>
+                            <span>info@palacemuseum.org.cn</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-clock mt-1"></i>
+                            <span>Mon: Closed | Tue-Sun: 8:30 - 17:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p>© 2025 The Palace Museum. All rights reserved. Designed for international visitors.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 设置日期选择器的最小日期为明天
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            
+            // 设置日期最小值
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const minDate = tomorrow.toISOString().split('T')[0];
+            document.getElementById('visitDate').min = minDate;
+            document.getElementById('visitDate').value = minDate;
+            
+            // 初始化同行人字段生成函数
+            generateAdditionalGuestsFields();
+            
+            // FAQ 折叠功能
+            const faqBtns = document.querySelectorAll('.faqBtn');
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // 切换当前FAQ
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                    
+                    // 关闭其他FAQ
+                    faqBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.nextElementSibling.classList.add('hidden');
+                            otherBtn.querySelector('i').classList.remove('rotate-180');
+                        }
+                    });
+                });
+            });
+            
+            // 表单提交处理
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 简单的表单验证和提交反馈
+                const termsChecked = document.getElementById('terms').checked;
+                if (!termsChecked) {
+                    alert('Please agree to the booking terms and conditions');
+                    return;
+                }
+                
+                // 模拟提交成功
+                alert('Booking request submitted successfully! You will receive a confirmation email shortly.');
+                bookingForm.reset();
+                document.getElementById('visitDate').value = minDate;
+                // 重置同行人字段
+                generateAdditionalGuestsFields();
+            });
+            
+            // 滚动时导航栏样式变化
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('py-2');
+                    header.classList.remove('py-3');
+                } else {
+                    header.classList.add('py-3');
+                    header.classList.remove('py-2');
+                }
+            });
+        });
+        
+        // 修改3: 动态生成同行人信息字段
+        function generateAdditionalGuestsFields() {
+            const ticketQty = parseInt(document.getElementById('ticketQty').value);
+            const container = document.getElementById('additionalGuestsContainer');
+            const fieldsContainer = document.getElementById('additionalGuestsFields');
+            
+            // 清空现有字段
+            fieldsContainer.innerHTML = '';
+            
+            // 如果票数大于1，显示同行人信息区域
+            if (ticketQty > 1) {
+                container.classList.remove('hidden');
+                
+                // 为每个额外的游客生成字段 (总票数 - 1 个同行人)
+                for (let i = 1; i < ticketQty; i++) {
+                    const guestNumber = i + 1;
+                    const guestField = `
+                        <div class="guest-${i} mb-6 border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                            <h5 class="text-md font-medium mb-3 text-gray-700">Guest ${guestNumber}</h5>
+                            <div class="grid md:grid-cols-3 gap-6 mb-4">
+                                <div>
+                                    <label for="guest${i}LastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="guest${i}LastName" name="guest${i}LastName" 
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                           placeholder="Doe" required>
+                                </div>
+                                <div>
+                                    <label for="guest${i}MiddleName" class="block text-sm font-medium text-gray-700 mb-1">Middle Name (Optional)</label>
+                                    <input type="text" id="guest${i}MiddleName" name="guest${i}MiddleName" 
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                           placeholder="Michael">
+                                </div>
+                                <div>
+                                    <label for="guest${i}FirstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="guest${i}FirstName" name="guest${i}FirstName" 
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                           placeholder="John" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="guest${i}PassportNumber" class="block text-sm font-medium text-gray-700 mb-1">Passport Number</label>
+                                <input type="text" id="guest${i}PassportNumber" name="guest${i}PassportNumber" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                       placeholder="e.g. AB1234567" required>
+                            </div>
+                        </div>
+                    `;
+                    
+                    fieldsContainer.innerHTML += guestField;
+                }
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
