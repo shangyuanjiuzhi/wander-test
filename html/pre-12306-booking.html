@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12306 Train Ticket Booking Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Noto Sans SC', 'sans-serif'],
+          },
+          colors: {
+            'rose': {
+              50: '#FFF1F2',
+              100: '#FFE4E6',
+              200: '#FECDD3',
+              300: '#FDA4AF',
+              400: '#FB7185',
+              500: '#F43F5E',
+              600: '#E11D48',
+              700: '#BE123C',
+              800: '#9F1239',
+              900: '#881337',
+            },
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .bg-gradient-rose {
+        background: linear-gradient(135deg, #F43F5E 0%, #BE123C 100%);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="1.homepage.html" class="flex items-center space-x-2">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            <span class="text-xl font-bold">Wander Any Place</span>
+          </a>
+        </div>
+        <nav class="flex items-center space-x-6">
+          <a href="1.homepage.html" class="text-slate-600 hover:text-rose-600 transition-colors">Home</a>
+          <a href="2.pre-visa.html" class="text-slate-600 hover:text-rose-600 transition-colors">Visa</a>
+          <a href="2.pre-app.html" class="text-slate-600 hover:text-rose-600 transition-colors">Apps</a>
+          <a href="#" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-rose text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4 text-shadow">12306 Train Ticket Booking Service</h1>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">Professional train ticket booking assistance and passport verification services for foreign travelers in China</p>
+        <a href="#booking" class="bg-white text-rose-600 font-bold px-6 py-3 rounded-lg hover:bg-slate-100 transition-colors inline-block">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Service 1: Train Ticket Booking -->
+        <div class="bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <svg aria-hidden="true" data-icon="ri:train-fill" class="iconify text-blue-600 w-10 h-10 mr-4" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2a1 1 0 0 1 1 1v1h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h1V2a1 1 0 0 1 1-1h12zm-2 4H6v10h10V6zm-6 2a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm4 0a1 1 0 1 0 0 2a1 1 0 0 0 0-2z" fill="currentColor"></path></svg>
+            <h3 class="text-xl font-semibold">Train Ticket Booking</h3>
+          </div>
+          <ul class="list-disc pl-6 space-y-2 text-slate-600">
+            <li>Book tickets for all types of trains (G, D, C, K, T, etc.)</li>
+            <li>Assistance with seat selection and class upgrades</li>
+            <li>Real-time availability checks</li>
+            <li>Group booking discounts</li>
+            <li>Special assistance for complex itineraries</li>
+          </ul>
+        </div>
+        
+        <!-- Service 2: Passport Verification -->
+        <div class="bg-slate-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <svg aria-hidden="true" data-icon="ri:passport-fill" class="iconify text-blue-600 w-10 h-10 mr-4" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2zm-7 2a5 5 0 1 0 4.995 5.217A3.5 3.5 0 0 1 17 9.5V7h-2v2.5a1.5 1.5 0 1 0 3 0V6h1v2.5a3.5 3.5 0 0 1-6.995.217A5 5 0 0 0 13 4z" fill="currentColor"></path></svg>
+            <h3 class="text-xl font-semibold">Passport Verification</h3>
+          </div>
+          <ul class="list-disc pl-6 space-y-2 text-slate-600">
+            <li>Assistance with passport verification for 12306 account</li>
+            <li>Step-by-step guidance through the verification process</li>
+            <li>Support for foreign passports</li>
+            <li>Fast processing times</li>
+            <li>Expert advice on documentation requirements</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form Section -->
+  <section id="booking" class="py-16 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Booking Request</h2>
+      
+      <div class="bg-white p-8 rounded-xl shadow-md">
+        <form action="#" method="post">
+          <div class="space-y-6">
+            <!-- Personal Information -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Personal Information</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                  <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                  <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="passport" class="block text-sm font-medium text-slate-700 mb-1">Passport Number</label>
+                  <input type="text" id="passport" name="passport" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+              </div>
+            </div>
+            
+            <!-- Travel Details -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Travel Details</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="departure" class="block text-sm font-medium text-slate-700 mb-1">Departure City</label>
+                  <input type="text" id="departure" name="departure" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="arrival" class="block text-sm font-medium text-slate-700 mb-1">Arrival City</label>
+                  <input type="text" id="arrival" name="arrival" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="date" class="block text-sm font-medium text-slate-700 mb-1">Travel Date</label>
+                  <input type="date" id="date" name="date" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="passengers" class="block text-sm font-medium text-slate-700 mb-1">Number of Passengers</label>
+                  <input type="number" id="passengers" name="passengers" min="1" max="10" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+              </div>
+            </div>
+            
+            <!-- Service Type -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Service Type</h3>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <input type="checkbox" id="ticket-booking" name="services" value="ticket-booking" class="w-4 h-4 text-rose-600 focus:ring-rose-500 border-slate-300 rounded">
+                  <label for="ticket-booking" class="ml-2 text-slate-700">Train Ticket Booking</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="passport-verification" name="services" value="passport-verification" class="w-4 h-4 text-rose-600 focus:ring-rose-500 border-slate-300 rounded">
+                  <label for="passport-verification" class="ml-2 text-slate-700">Passport Verification</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="both" name="services" value="both" class="w-4 h-4 text-rose-600 focus:ring-rose-500 border-slate-300 rounded">
+                  <label for="both" class="ml-2 text-slate-700">Both Services</label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional Information -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Additional Information</label>
+              <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500" placeholder="Please provide any additional details or special requests"></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="pt-4">
+              <button type="submit" class="w-full bg-rose-600 text-white font-bold py-3 rounded-lg hover:bg-rose-700 transition-colors">Submit Request</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+      
+      <div class="space-y-4">
+        <div class="bg-slate-50 p-4 rounded-lg">
+          <h3 class="font-semibold mb-2">How long does the booking process take?</h3>
+          <p class="text-slate-600">The booking process typically takes 1-2 business days, depending on availability and verification requirements.</p>
+        </div>
+        <div class="bg-slate-50 p-4 rounded-lg">
+          <h3 class="font-semibold mb-2">What documents do I need for passport verification?</h3>
+          <p class="text-slate-600">You will need a clear scan or photo of your passport information page.</p>
+        </div>
+        <div class="bg-slate-50 p-4 rounded-lg">
+          <h3 class="font-semibold mb-2">How do I pay for the service?</h3>
+          <p class="text-slate-600">We accept payment via WeChat Pay, Alipay, and international credit cards.</p>
+        </div>
+        <div class="bg-slate-50 p-4 rounded-lg">
+          <h3 class="font-semibold mb-2">Can I make changes to my booking after submitting?</h3>
+          <p class="text-slate-600">Yes, you can contact us to make changes to your booking before the ticket is issued.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Need Assistance?</h2>
+      <p class="text-lg mb-8">If you have any questions or need help with your booking, please contact us:</p>
+      <div class="space-y-4">
+        <p class="text-slate-600"><strong>Email:</strong> booking@wanderanyplace.com</p>
+        <p class="text-slate-600"><strong>Phone:</strong> +86 123 4567 8910</p>
+        <p class="text-slate-600"><strong>WeChat:</strong> WanderAnyPlace</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Guides</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Tips</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Connect With Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:facebook-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:twitter-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:instagram-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:youtube-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17zm9.69-6.31a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0zm-6.19 0a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Wander Any Place. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

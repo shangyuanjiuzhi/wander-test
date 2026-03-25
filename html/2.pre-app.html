@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Necessary Apps for China Travel - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="./iconfont.css">
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部视觉冲击区 -->
+  <header class="relative h-[550px] flex items-center justify-center overflow-hidden">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../img/img-app-1.jpg" alt="China travel apps" class="w-full h-full object-cover brightness-75">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6 flex justify-between items-center">
+      <div class="text-white text-2xl font-bold flex items-center gap-2">
+        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+        <span class="text-2xl font-bold text-white font-sans italic">Wander Any Place</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-white font-medium">
+        <a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a>
+        <a href="#" class="hover:text-rose-400 transition-colors">Destinations</a>
+      </div>
+    </nav>
+    <!-- 核心内容 -->
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Necessary Apps for China Travel
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        Essential applications you need for a smooth travel experience in China
+      </p>
+      
+
+  </header>
+
+  <!-- Apps Information Section -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Travel Apps</h2>
+      </div>
+      
+      <!-- Phone Number Notice -->
+      <div class="bg-rose-50 border-l-4 border-rose-500 p-4 mb-6 rounded-r-lg">
+        <div class="flex items-start">
+          <svg class="icon text-rose-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" aria-hidden="true">
+            <use xlink:href="#icon-sim"></use>
+          </svg>
+          <div>
+            <h5 class="font-semibold text-rose-700 mb-1">Chinese Phone Number Required</h5>
+            <p class="text-gray-600">Some apps may require a Chinese phone number. <a href="2.pre-simcard.html" class="font-bold underline hover:text-rose-800">Click here</a> for instructions on how to obtain one.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="border-b border-gray-200 mb-6">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="app-tabs" role="tablist">
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-rose-600 text-rose-600 rounded-t-lg active" id="overview-tab" data-tab="overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+              App Overview
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="railway-tab" data-tab="railway" type="button" role="tab" aria-controls="railway" aria-selected="false">
+              Railway 12306
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="maps-tab" data-tab="maps" type="button" role="tab" aria-controls="maps" aria-selected="false">
+              Amap/ Baidu Maps
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="didi-tab" data-tab="didi" type="button" role="tab" aria-controls="didi" aria-selected="false">
+              DiDi
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="dianping-tab" data-tab="dianping" type="button" role="tab" aria-controls="dianping" aria-selected="false">
+              Dianping
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="alipay-tab" data-tab="alipay" type="button" role="tab" aria-controls="alipay" aria-selected="false">
+              Alipay
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="wechat-tab" data-tab="wechat" type="button" role="tab" aria-controls="wechat" aria-selected="false">
+              WeChat
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- App Overview -->
+        <div class="tab-pane active" id="overview">
+          <div class="flex-1 min-w-[300px]">
+              <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <svg class="icon text-rose-600 w-8 h-8 mr-3" aria-hidden="true">
+                    <use xlink:href="#icon-app"></use>
+                  </svg>
+                  Necessary Apps for China Travel
+                </h3>
+                
+                <p class="text-slate-600 mb-6">A Guide to Download Apps When Visiting China</p>
+               
+
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Chinese Apps
+                          <div class="mt-1 text-[10px] text-gray-500">
+                            <em>Click on the icons to directly link to official websites</em>
+                          </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Worldwide Apps
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Description
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.12306.cn/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-blue-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-icon_case_12306"></use>
+                                </svg>
+                              </div>
+                              <span>Railway12306</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-blue-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-train-line"></use>
+                            </svg>
+                            <span>Trainline</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Official app for booking train tickets in China
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.amap.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-green-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-gaodeditux"></use>
+                                </svg>
+                              </div>
+                              <span>Amap</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-green-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-google"></use>
+                            </svg>
+                            <span>Google Maps</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Popular mapping and navigation app in China
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://map.baidu.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-green-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-baidu-copy"></use>
+                                </svg>
+                              </div>
+                              <span>Baidu Maps</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-green-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-google"></use>
+                            </svg>
+                            <span>Google Maps</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Baidu's mapping service with comprehensive coverage in China
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.didiglobal.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-orange-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-didichuhang"></use>
+                                </svg>
+                              </div>
+                              <span>DiDi</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-orange-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-Uber"></use>
+                            </svg>
+                            <span>Uber/Lyft</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Leading ride-hailing app in China
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.dianping.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-orange-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-dazhongdianping"></use>
+                                </svg>
+                              </div>
+                              <span>Dianping</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-orange-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-yelp"></use>
+                            </svg>
+                            <span>Yelp</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Local business review and discovery platform
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://translate.google.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-blue-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-googletranslate"></use>
+                                </svg>
+                              </div>
+                              <span>Google Translate</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-blue-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-googletranslate"></use>
+                            </svg>
+                            <span>Google Translate</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Language translation tool for communication
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.alipay.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-blue-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-alipay"></use>
+                                </svg>
+                              </div>
+                              <span>Alipay</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-blue-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-paypal"></use>
+                            </svg>
+                            <span>PayPal</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          Digital payment platform widely used in China
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <a href="https://www.wechat.com/" target="_blank" class="flex items-center hover:text-rose-600 transition-colors">
+                              <div class="block rounded-full p-2 mr-3 w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1">
+                                <svg class="icon text-green-600 w-6 h-6" aria-hidden="true">
+                                  <use xlink:href="#icon-weixin"></use>
+                                </svg>
+                              </div>
+                              <span>WeChat</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <svg class="icon text-green-600 w-6 h-6 mr-3" aria-hidden="true">
+                              <use xlink:href="#icon-whatapp"></use>
+                            </svg>
+                            <span>WhatsApp</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          All-in-one messaging, social media, and payment app
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+
+              </div>
+          </div>
+        </div>
+        
+        <!-- Railway 12306 -->
+        <div class="tab-pane hidden" id="railway">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-blue-600 w-8 h-8 mr-3" aria-hidden="true">
+                <use xlink:href="#icon-icon_case_12306"></use>
+              </svg>
+              Railway 12306 Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-4">Everything you need to know about using the official Chinese train booking app.</p>
+            
+            <!-- Service Announcement -->
+            <div class="bg-rose-50 border-l-4 border-rose-500 p-4 mb-6 rounded-r-lg">
+              <div class="flex items-start">
+                <svg class="icon text-white-500 w-6 h-6 mr-3 mt-1 flex-shrink-0" aria-hidden="true">
+                  <use xlink:href="#icon-chepiao"></use>
+                </svg>
+                <div>
+                  <h5 class="font-semibold text-rose-700 mb-1">Need Help with Train Tickets?</h5>
+                  <p class="text-white-600">If you need train ticket booking service or passport verification assistance, please <a href="pre-12306-booking.html" class="font-bold underline hover:text-rose-800">click here</a> for professional support.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Grid Layout - 2 columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- 1. How to Install -->
+              <div class="col-span-1 md:col-span-2">
+                <h4 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <svg class="icon text-rose-600 w-8 h-8 mr-3" aria-hidden="true">
+                    <use xlink:href="#icon-anzhuang"></use>
+                  </svg>
+                  How to Install
+                </h4>
+                
+                <div class="bg-gray-50 p-2 rounded-lg">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 1: Download App</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-1.jpg" alt="Download 12306 App" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 2: Install App</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-2.jpg" alt="Install 12306 App" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 3: Open App</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-3.jpg" alt="Open 12306 App" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 4: Register</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-4.jpg" alt="Register 12306" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 5: Search Trains</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-5.jpg" alt="Search Trains" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 6: Book Tickets</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-6.jpg" alt="Book Tickets" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 2. How to Use -->
+              <div class="col-span-1 md:col-span-2">
+                <h4 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <svg class="icon text-rose-600 w-8 h-8 mr-3" aria-hidden="true">
+                    <use xlink:href="#icon-train-line"></use>
+                  </svg>
+                  How to Take Train
+                </h4>
+                
+                <div class="bg-gray-50 p-2 rounded-lg">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 1: Take Train</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-taketrain-1.jpg" alt="Take Train" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Step 2: Check Ticket</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-12306/12306-taketrain-2.jpg" alt="Check Ticket" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 3. Notes -->
+              <div class="col-span-1 md:col-span-2">
+                <div class="bg-gray-50 p-3 rounded-lg mt-4">
+                  <h4 class="font-semibold text-lg mb-2">Travel Tips</h4>
+                  <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                    <li>Document Consistency:<br>
+                    Carry the original passport used for registration; copies/photos are invalid.</li>
+                    <li>Refund & Rescheduling:<br>
+                    Refund fees: Free ≥8 days before departure; 5% (48h8d), 10% (24h48h), 20% (<24h).<br>
+                    Rescheduling: Allowed once, up to 30 minutes before departure.</li>
+                    <li>App Service Time:<br>
+                    Query and ticket refund services: 24 hours a day<br>
+                    Ticket purchase: Daily 5:00 AM to 1:00 AM (next day) China Standard Time(CST); Every Tuesday: 5:00 AM to 11:30 PM CST</li>  
+                    <li>Limitation of free cabin luggage:<br>
+                    20 kg for adults and 10 kg for children.<br>
+                    The maximum dimension of each item is 160cm in total (rod-shaped items 200 cm) for traditional trains, and 130 cm for bullet trains.</li>
+                  </ul>
+                </div>
+                
+                <!-- Source Note -->
+                <p class="text-sm text-slate-500 mt-3 flex items-center">
+                  <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                  Source: 
+                  <a href="http://xhslink.com/o/AlNy9Tev3Kw" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                    Xiaohongshu (Little Red Book)
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- WeChat -->
+        <div class="tab-pane hidden" id="wechat">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-green-600 w-8 h-8 mr-3" aria-hidden="true">
+                <use xlink:href="#icon-weixin"></use>
+              </svg>
+              WeChat Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-4">A comprehensive guide to using WeChat in China.</p>
+            
+            <!-- Grid Layout - 2 columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Step 1: Register -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 1-2: Register an Account and Verify Identity</h4>
+              
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-weixin/weixin-1.jpg" alt="Register WeChat" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 2: Profile -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 3-4: Set Up Profile and Add Friends</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-weixin/weixin-2.jpg" alt="Set Up Profile" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 3: Add Friends -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 5-6: Add Friends and Start Chatting</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-weixin/weixin-3.jpg" alt="Add Friends" class="w-full rounded-lg shadow-md mb-2">
+      
+                </div>
+              </div>
+              
+              <!-- Step 4: Explore -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 7-8: Explore Features</h4>
+                
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-weixin/weixin-4.jpg" alt="WeChat Features" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- WeChat Pay -->
+              <div class="col-span-1 md:col-span-2">
+                <h4 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <svg class="icon text-green-600 w-8 h-8 mr-3" aria-hidden="true">
+                    <use xlink:href="#icon-weixinzhifu"></use>
+                  </svg>
+                  WeChat Pay
+                </h4>
+                
+                <div class="bg-gray-50 p-2 rounded-lg">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">What is WeChat Pay?</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-weixin/weixinpay-0.jpg" alt="WeChat Pay Step" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Where to use WeChat Pay?</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-weixin/weixinpay-1.jpg" alt="WeChat Pay" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">Where to use WeChat Pay?</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-weixin/weixinpay-2.jpg" alt="WeChat Pay" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg mb-2">How to use WeChat Pay?</h4>
+                      <div class="bg-gray-50 p-3 rounded-lg">
+                        <img src="../img/img-app-weixin/weixinpay-3.jpg" alt="WeChat Pay" class="w-full rounded-lg shadow-md mb-2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Travel Tips -->
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+              <h4 class="font-semibold text-lg mb-2">Travel Tips</h4>
+              <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                <li>Set up WeChat Pay before your trip</li>
+                <li>Save important contacts</li>
+                <li>Use WeChat's translation feature</li>
+                <li>Download offline maps</li>
+                <li>Monitor data usage abroad</li>
+              </ul>
+            </div>
+            
+            <!-- Source Note -->
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="http://xhslink.com/o/AuLNRg0tcR8" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                Xiaohongshu (Little Red Book)
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- DiDi -->
+        <div class="tab-pane hidden" id="didi">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-orange-600 w-8 h-8 mr-3" aria-hidden="true">
+                <use xlink:href="#icon-didichuhang"></use>
+              </svg>
+              DiDi Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-4">A comprehensive guide to using DiDi for ride-hailing in China.</p>
+            
+            <!-- Grid Layout - 2 columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Step 1: Download and Register -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 1-2: Download and Register</h4>
+              
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-didi/didi-1.jpg" alt="Download DiDi" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 2: Set Up Profile -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 3-4: Set Up Profile</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-didi/didi-2.jpg" alt="Set Up Profile" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 3: Book a Ride -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 5-6: Book a Ride</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-didi/didi-3.jpg" alt="Book a Ride" class="w-full rounded-lg shadow-md mb-2">
+      
+                </div>
+              </div>
+            </div>
+            
+            <!-- Travel Tips -->
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+
+              <h4 class="font-semibold text-lg mb-2">Travel Tips</h4>
+              <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                <li>Set up DiDi before your trip</li>
+                <li>Link a payment method</li>
+                <li>Use the English version if available</li>
+                <li>Have your destination written in Chinese</li>
+                <li>Check prices before confirming rides</li>
+              </ul>
+            </div>
+            
+            <!-- Source Note -->
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="http://xhslink.com/o/4Z5CNpYxqnD" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                Xiaohongshu (Little Red Book)
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- Dianping -->
+        <div class="tab-pane hidden" id="dianping">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-orange-600 w-8 h-8 mr-3" aria-hidden="true">
+                <use xlink:href="#icon-dazhongdianping"></use>
+              </svg>
+              Dianping Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-4">A comprehensive guide to using Dianping for local business reviews in China.</p>
+            
+            <!-- Grid Layout - 2 columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Step 1: Download and Register -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 1-2: Download and Register</h4>
+              
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-1.jpg" alt="Download Dianping" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 2: Set Up Profile -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 3-4: Set Up Profile</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-2.jpg" alt="Set Up Profile" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 3: Explore Restaurants -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 5-6: Explore Restaurants</h4>
+               
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-3.jpg" alt="Explore Restaurants" class="w-full rounded-lg shadow-md mb-2">
+      
+                </div>
+              </div>
+              
+              <!-- Step 4: Read Reviews -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 7-8: Read Reviews</h4>
+                
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-4.jpg" alt="Read Reviews" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 5: Make Reservations -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 9-10: Make Reservations</h4>
+                
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-5.jpg" alt="Make Reservations" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+              
+              <!-- Step 6: Leave Reviews -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 11-12: Leave Reviews</h4>
+                
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-dazhong/dazhong-6.jpg" alt="Leave Reviews" class="w-full rounded-lg shadow-md mb-2">
+                  
+                </div>
+              </div>
+            </div>
+            
+            <!-- Travel Tips -->
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+              <h4 class="font-semibold text-lg mb-2">Travel Tips</h4>
+              <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                <li>Use Dianping to find popular local restaurants</li>
+                <li>Check ratings and reviews before visiting</li>
+                <li>Look for special deals and discounts</li>
+                <li>Use the map feature to find nearby businesses</li>
+                <li>Save your favorite places for future reference</li>
+              </ul>
+            </div>
+            
+            <!-- Source Note -->
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="http://xhslink.com/o/917fJZjoutl" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                Xiaohongshu (Little Red Book)
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- Alipay -->
+        <div class="tab-pane hidden" id="alipay">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-blue-600 w-8 h-8 mr-3" aria-hidden="true">
+                <use xlink:href="#icon-alipay"></use>
+              </svg>
+              Alipay Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-4">A comprehensive guide to using Alipay for digital payments in China.</p>
+            
+            <!-- Guide Section (0-7) -->
+            <div class="mb-8">
+     
+                <h4 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <svg class="icon text-rose-600 w-8 h-8 mr-3" aria-hidden="true">
+                    <use xlink:href="#icon-anzhuang"></use>
+                  </svg>
+                  How to Install
+                </h4>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Step 1 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 1: Install and Open</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-2.jpg" alt="Install Alipay" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 2: Register Account</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-3.jpg" alt="Register Account" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 3: Verify Identity</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-4.jpg" alt="Verify Identity" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 4: Set Up Password</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-5.jpg" alt="Set Up Password" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 5: Add Payment Method</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-6.jpg" alt="Add Payment Method" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div>
+                  <h4 class="font-semibold text-lg mb-2">Step 6: Complete Setup</h4>
+                  <div class="bg-gray-50 p-3 rounded-lg">
+                    <img src="../img/img-app-Alipay/alipay-7.jpg" alt="Complete Setup" class="w-full rounded-lg shadow-md mb-2">
+                  </div>
+                </div>
+    
+            
+
+              <!-- Step 7 -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 7: How to Use Alipay</h4>
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-Alipay/alipay-8.jpg" alt="How to Use Alipay" class="w-full rounded-lg shadow-md mb-2">
+                </div>
+              </div>
+
+            
+
+              <!-- Step 9 -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 8: Important Notes</h4>
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-Alipay/alipay-9.jpg" alt="Important Notes" class="w-full rounded-lg shadow-md mb-2">
+                </div>
+              </div>
+              
+              <!-- Step 10 -->
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Step 9: Checklist</h4>
+                <div class="bg-gray-50 p-3 rounded-lg">
+                  <img src="../img/img-app-Alipay/alipay-10.jpg" alt="Checklist" class="w-full rounded-lg shadow-md mb-2">
+                </div>
+              </div>
+            </div>
+          </div>
+            
+            <!-- Travel Tips -->
+            <div class="bg-gray-50 p-3 rounded-lg mt-4">
+              <h4 class="font-semibold text-lg mb-2">Travel Tips</h4>
+              <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                <li>Set up Alipay before your trip</li>
+                <li>Link an international credit card if possible</li>
+                <li>Keep your password secure</li>
+                <li>Use the "TourPass" feature for foreign visitors</li>
+                <li>Check exchange rates before making payments</li>
+              </ul>
+            </div>
+            
+            <!-- Source Note -->
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="http://xhslink.com/o/1rXfCDV0c9i" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                Xiaohongshu (Little Red Book)
+              </a>
+            </p>
+          </div>
+        </div>
+        
+        <!-- Amap/ Baidu Maps -->
+        <div class="tab-pane hidden" id="maps">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <svg class="icon text-blue-600 w-8 h-8 mr-2" aria-hidden="true">
+                <use xlink:href="#icon-gaodeditux"></use>
+              </svg>
+              Amap 
+              <svg class="icon text-blue-600 w-8 h-8 mx-2" aria-hidden="true">
+                <use xlink:href="#icon-baidu-copy"></use>
+              </svg>
+              Baidu Maps Guide
+            </h3>
+            
+            <p class="text-slate-600 mb-6">A comprehensive guide to using mapping apps in China.</p>
+            
+            <!-- Amap Section -->
+            <div class="mb-6">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <svg class="icon text-blue-600 w-6 h-6 mr-2" aria-hidden="true">
+                  <use xlink:href="#icon-gaodeditux"></use>
+                </svg>
+                Amap
+              </h4>
+              <div class="bg-gray-50 p-3 rounded-lg">
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <h4 class="font-semibold text-lg mb-2">Step 1: Download and Install</h4>
+                    <img src="../img/img-app-map/map-gaode-01.jpg" alt="Amap" class="w-full rounded-lg shadow-md">
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-2">Step 2: Set Up and Use</h4>
+                    <img src="../img/img-app-map/map-gaode-02.png" alt="Amap" class="w-full rounded-lg shadow-md">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Baidu Maps Section -->
+            <div class="mb-6">
+              <h4 class="font-semibold text-lg mb-3 flex items-center">
+                <svg class="icon text-blue-600 w-6 h-6 mr-2" aria-hidden="true">
+                  <use xlink:href="#icon-baidu-copy"></use>
+                </svg>
+                Baidu Maps
+              </h4>
+              <div class="bg-gray-50 p-3 rounded-lg">
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <h4 class="font-semibold text-lg mb-2">Step 1: Download and Install</h4>
+                    <img src="../img/img-app-map/map-baidu-01.jpg" alt="Baidu Maps" class="w-full rounded-lg shadow-md">
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-2">Step 2: Set Up and Use</h4>
+                    <img src="../img/img-app-map/map-baidu-02.png" alt="Baidu Maps" class="w-full rounded-lg shadow-md">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Notes Section -->
+            <div class="mt-8">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h5 class="font-semibold text-lg mb-3">Travel Tips </h5>
+                <ul class="list-disc pl-6 mt-1 space-y-1 text-slate-600 text-sm">
+                  <li>Download offline maps before your trip</li>
+                  <li>Both Amap and Baidu Maps have English versions</li>
+                  <li>Use the apps to find nearby restaurants, attractions, and services</li>
+                  <li>Check real-time traffic conditions before traveling</li>
+                  <li>Save important locations for easy access</li>
+                  <li>Use the apps to navigate public transportation</li>
+                </ul>
+              </div>
+              
+              <!-- Source Note -->
+              <p class="text-sm text-slate-500 mt-3 flex items-center">
+                <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                Source: 
+                <a href="http://xhslink.com/o/6BGpzy3Uz37" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                  Xiaohongshu (Little Red Book)
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Guides</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Tips</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Connect With Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:facebook-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:twitter-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:instagram-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:youtube-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17zm9.69-6.31a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0zm-6.19 0a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Wander Any Place. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

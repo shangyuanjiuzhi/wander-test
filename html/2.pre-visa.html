@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa Information - Wander Any City</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部视觉冲击区 -->
+  <header class="relative h-[550px] flex items-center justify-center overflow-hidden">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../img/img-visa-1.jpg" alt="China visa information" class="w-full h-full object-cover brightness-75">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6 flex justify-between items-center">
+      <div class="text-white text-2xl font-bold flex items-center gap-2">
+        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+        <span class="text-2xl font-bold text-white font-sans italic">Wander Any City</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-white font-medium">
+        <a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a>
+        <a href="#" class="hover:text-rose-400 transition-colors">Destinations</a>
+      </div>
+    </nav>
+    <!-- 核心内容 -->
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Visa Information for China Travel
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        Everything you need to know about visa requirements, visa-free transit policy, and entry procedures for traveling to China
+      </p>
+    </div>
+  </header>
+
+  <!-- Visa Information Section -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Visa Requirements</h2>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="border-b border-gray-200 mb-6">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="visa-policy-tabs" role="tablist">
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-rose-600 text-rose-600 rounded-t-lg active" id="240-hour-tab" data-tab="240-hour" type="button" role="tab" aria-controls="240-hour" aria-selected="true">
+              Visa-Free Policy Overview
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="regional-tab" data-tab="overview" type="button" role="tab" aria-controls="overview" aria-selected="false">
+              240-hour Visa-Free Transit Policy
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="regional-tab" data-tab="regional" type="button" role="tab" aria-controls="regional" aria-selected="false">
+              Regional Visa-Free Policy
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="unilateral-tab" data-tab="unilateral" type="button" role="tab" aria-controls="unilateral" aria-selected="false">
+              Unilateral & Mutual Visa-Free Policy
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- 240-hour Visa-Free Transit Policy -->
+        <div class="tab-pane active" id="240-hour">
+          <div class="flex flex-wrap gap-8">
+            <div class="flex-1 min-w-[300px]">
+              <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                  <span class="iconfont icon-xinxikongxin text-rose-600 text-3xl mr-3"></span>
+                  Visa-free Policy Overview
+                </h3>
+                <h4 class="text-xl font-bold text-slate-800 mb-3">1. Visa-Free Transit Policy</h4>
+                <h10 class="text-lg font-bold text-slate-800 mb-3">1) 240-hour Visa-Free Transit Policy</h10>
+                <p class="text-slate-600 mb-4">
+                  Allows citizens of <span class="font-bold text-rose-600">55 countries</span>, including Indonesia, to transit through China without a visa for up to <span class="font-bold text-rose-600">10 days</span> (240 hours). Travelers must hold valid international travel documents and confirmed tickets to a third country or region.
+                </p>
+                <h10 class="text-lg font-bold text-slate-800 mb-3">2) 24-hour Visa-Free Transit Policy</h10>
+                <p class="text-slate-600 mb-4">
+                  All open ports offer 24-hour visa-free transit services to <span class="font-bold text-rose-600">global travelers</span>.Travelers with valid international travel documents, taking international flights, ships, or trains, transiting through China to a third country or region, can stay at the port for no more than 24 hours without a visa.
+                </p>
+                <h4 class="text-xl font-bold text-slate-800 mb-3">2. Regional Visa-Free Policy</h4>
+                <p class="text-slate-600 mb-4">
+                  Includes various regional visa-free policies such as the <span class="font-bold text-rose-600">59-country</span> visa-free policy for Hainan, cruise visa-free policy, and ASEAN tourist group visa-free policies for Xishuangbanna and Guilin.
+                </p>
+                <h4 class="text-xl font-bold text-slate-800 mb-3">3. Unilateral & Mutual Visa-Free Policy</h4>
+                <p class="text-slate-600 mb-4">
+                  Includes unilateral visa-free policies implemented by China for <span class="font-bold text-rose-600">50 countries</span>, as well as mutual visa-free agreements signed with <span class="font-bold text-rose-600">30 countries</span>, allowing citizens to enter each other's territory without a visa for specific periods.
+                </p>
+                <p class="text-slate-600 mb-4 font-bold">
+                  For details, please refer to the "240-hour Visa-Free Transit Policy", "Regional Visa-Free Policy", and "Unilateral & Mutual Visa-Free Policy" tabs.
+                </p>
+              </div>
+
+              <!-- Eligible Activities -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                  <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="iconfont icon-duigou text-rose-600 text-3xl mr-3"></span>
+                    Allowed Activities
+                  </h3>
+                  <ul class="space-y-3 text-slate-600">
+                    <li class="flex items-center">
+                      <span class="iconfont icon-duigou text-rose-600 text-xl mr-2"></span>
+                      Tourism
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-duigou text-rose-600 text-xl mr-2"></span>
+                      Business
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-duigou text-rose-600 text-xl mr-2"></span>
+                      Exchange Visits
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-duigou text-rose-600 text-xl mr-2"></span>
+                      Family Visits
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                  <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="iconfont icon-cha text-rose-600 text-3xl mr-3"></span>
+                    Restricted Activities
+                  </h3>
+                  <ul class="space-y-3 text-slate-600">
+                    <li class="flex items-center">
+                      <span class="iconfont icon-cha text-rose-600 text-xl mr-2"></span>
+                      Work
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-cha text-rose-600 text-xl mr-2"></span>
+                      Study
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-cha text-rose-600 text-xl mr-2"></span>
+                      News Reporting
+                    </li>
+                    <li class="flex items-center">
+                      <span class="iconfont icon-cha text-rose-600 text-xl mr-2"></span>
+                      Other activities requiring approval
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visa Calculator -->
+            <div class="flex-1 min-w-[300px]">
+              <div class="bg-gradient-to-br from-rose-50 to-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                  <span class="iconfont icon-jisuanqi text-rose-600 text-3xl mr-3"></span>
+                  Visa Calculator
+                </h3>
+                <p class="text-slate-500 mb-4">Check eligibility for both regional visa-free policies (e.g., Hainan) and 240-hour visa-free transit</p>
+                <form id="visa-checker" class="space-y-4">
+                  <div class="form-group">
+                    <label for="nationality" class="block text-sm font-medium text-slate-700 mb-1">Nationality</label>
+                    <div class="relative">
+                      <select id="nationality" name="nationality" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                        <option value="">Select nationality</option>
+                        <option value="eligible_all">Albania</option>
+                        <option value="eligible_30days">Andorra</option>
+                        <option value="eligible_30days">Antigua and Barbuda</option>
+                        <option value="eligible_all">Argentina</option>
+                        <option value="eligible_30days">Armenia</option>
+                        <option value="eligible_all">Australia</option>
+                        <option value="eligible_all">Austria</option>
+                        <option value="eligible_30days">Azerbaijan</option>
+                        <option value="eligible_30days">Bahamas</option>
+                        <option value="eligible_30days">Bahrain</option>
+                        <option value="eligible_30days">Barbados</option>
+                        <option value="eligible_all">Belarus</option>
+                        <option value="eligible_all">Belgium</option>
+                        <option value="eligible_all">Bosnia and Herzegovina</option>
+                        <option value="eligible_all">Brazil</option> 
+                        <option value="eligible_all">Brunei</option>
+                        <option value="eligible_all">Bulgaria</option>
+                        <option value="eligible_all">Canada</option>
+                        <option value="eligible_all">Chile</option>
+                        <option value="eligible_all">Croatia</option>
+                        <option value="eligible_all">Cyprus</option>
+                        <option value="eligible_transit_hainan">Czech Republic</option>
+                        <option value="eligible_all">Denmark</option>
+                        <option value="eligible_30days">Ecuador</option>
+                        <option value="eligible_all">Estonia</option>
+                        <option value="eligible_30days">Fiji</option>
+                        <option value="eligible_all">Finland</option>
+                        <option value="eligible_all">France</option>
+                        <option value="eligible_30days">Georgia</option>
+                        <option value="eligible_all">Germany</option>
+                        <option value="eligible_all">Greece</option>
+                        <option value="eligible_30days">Grenada</option>
+                        <option value="eligible_all">Hungary</option>
+                        <option value="eligible_all">Iceland</option>
+                        <option value="eligible_transit_hainan">Indonesia</option>
+                        <option value="eligible_all">Ireland</option>
+                        <option value="eligible_all">Italy</option>
+                        <option value="eligible_all">Japan</option>
+                        <option value="eligible_30days_hainan">Kazakhstan</option>
+                        <option value="eligible_30days">Kuwait</option>
+                        <option value="eligible_all">Latvia</option>
+                        <option value="eligible_30days">Liechtenstein</option>
+                        <option value="eligible_transit_hainan">Lithuania</option>
+                        <option value="eligible_all">Luxembourg</option>
+                        <option value="eligible_30days_hainan">Malaysia</option>
+                        <option value="eligible_30days">Maldives</option>
+                        <option value="eligible_all">Malta</option>
+                        <option value="eligible_30days">Mauritius</option>
+                        <option value="eligible_transit_hainan">Mexico</option>
+                        <option value="eligible_all">Monaco</option>
+                        <option value="eligible_all">Montenegro</option>
+                        <option value="eligible_all">Netherlands</option>
+                        <option value="eligible_all">New Zealand</option>
+                        <option value="eligible_all">North Macedonia</option>
+                        <option value="eligible_all">Norway</option>
+                        <option value="eligible_30days">Oman</option>
+                        <option value="eligible_30days">Peru</option>
+                        <option value="eligible_hainan">Philippines</option>
+                        <option value="eligible_all">Poland</option>
+                        <option value="eligible_all">Portugal</option>
+                        <option value="eligible_all">Qatar</option>
+                        <option value="eligible_all">Romania</option>
+                        <option value="eligible_all">Russia</option>
+                        <option value="eligible_30days">Samoa</option>
+                        <option value="eligible_30days">San Marino</option>
+                         <option value="eligible_30days">Saudi Arabia</option>                       
+                        <option value="eligible_all">Serbia</option>
+                        <option value="eligible_30days">Seychelles</option>
+                        <option value="eligible_all">Singapore</option>
+                        <option value="eligible_all">Slovakia</option>
+                        <option value="eligible_all">Slovenia</option>
+                        <option value="eligible_30days">Solomon Islands</option>
+                        <option value="eligible_all">South Korea</option>
+                        <option value="eligible_all">Spain</option>
+                        <option value="eligible_30days">Suriname</option>
+                        <option value="eligible_all">Sweden</option>
+                        <option value="eligible_all">Switzerland</option>
+                        <option value="eligible_30days_hainan">Thailand</option>
+                        <option value="eligible_30days">The Dominican Republic</option>
+                        <option value="eligible_30days">Tonga</option>
+                        <option value="eligible_transit_hainan">Ukraine</option>
+                        <option value="eligible_transit_hainan">United Arab Emirates</option>
+                        <option value="eligible_all">United Kingdom</option>
+                        <option value="eligible_transit_hainan">United States</option>
+                        <option value="eligible_30days">Uruguay</option>
+                        <option value="eligible_30days">Uzbekistan</option>
+                        <option value="not_eligible">Other countries</option>
+                        
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="arrival-date" class="block text-sm font-medium text-slate-700 mb-1">Arrival Date in China</label>
+                    <input type="date" id="arrival-date" name="arrival-date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                  </div>
+                  <div class="form-group">
+                    <label for="departure-date" class="block text-sm font-medium text-slate-700 mb-1">Departure Date from China</label>
+                    <input type="date" id="departure-date" name="departure-date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                  </div>
+                  <div class="form-group">
+                    <label for="trip" class="block text-sm font-medium text-slate-700 mb-1">Itinerary Type</label>
+                    <div class="relative">
+                      <select id="trip" name="trip" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                        <option value="transit">Transit: Country A → China → Country C</option>
+                        <option value="to_china">Final destination: China</option>
+                        <option value="round">Round trip to China</option>
+                        <option value="hainan">Direct flight to Hainan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group" id="ticket-group">
+                    <label for="ticket" class="block text-sm font-medium text-slate-700 mb-1">Confirmed onward ticket?</label>
+                    <div class="relative">
+                      <select id="ticket" name="ticket" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="button" id="check-eligibility" class="w-full bg-rose-600 text-white py-2 px-4 rounded-lg hover:bg-rose-700 focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 transition">
+                    Check 
+                  </button>
+                </form>
+                <div id="result" class="mt-4 p-4 rounded-lg hidden"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visa-Free Policy Overview -->
+        <div class="tab-pane" id="overview">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-hege1 text-rose-600 text-4xl mr-3"></span>
+              240-hour Visa-Free Transit Policy Expansion
+            </h3>
+
+            
+            <p class="text-slate-600 mb-4">
+              The National Immigration Administration (NIA) (Chinese version only) announced that, starting June 12, 2025, nationals of Indonesia may enter China under the 240-hour visa-free transit policy. This brings the total number of eligible countries to 55.
+            </p>
+
+            <p class="text-slate-600 mb-4">
+              Citizens of 55 countries, including Indonesia, Russia, and the United Kingdom, may transit through China using the 240-hour visa-free transit policy if they hold valid international travel documents and interline tickets with confirmed dates and seats to a third country or region. They may enter China through any of the 60 open ports across 24 provinces (autonomous regions and municipalities directly under the central government), such as Beijing and Shanghai, and stay in designated areas for up to 10 days.
+            </p>
+
+            <p class="text-slate-600 mb-4">
+              During this period, visa-free transit travelers may engage in tourism, business, exchange visits, or family visits. Activities such as work, study, or news reporting still require prior approval and appropriate visas.
+            </p>
+
+            <p class="text-slate-600 mb-4">
+              According to the NIA, adding Indonesia to the list of countries eligible for the 240-hour visa-free transit policy is a significant measure to implement the principles established in the central conference on work related to neighboring countries and China's commitment to deepening regional cooperation with ASEAN countries. This measure will further strengthen bilateral ties, facilitate trade and investment, and promote cultural exchange and mutual understanding between China and Indonesia.
+            </p>
+
+            <p class="text-slate-600 mt-4">
+              Moving forward, the NIA will continue to deepen the institutional openness of immigration management, continually improve the policies facilitating entry and exit for immigrants, and enhance the convenience for foreign nationals to study, work, and live in China. With improved management and service measures, the NIA invites more international friends to come to China.
+            </p>
+
+            <p class="text-sm text-slate-500 mt-4 flex items-center">
+              <i class="iconfont icon-calendar w-4 h-4 mr-1"></i>
+              Effective Date: June 12, 2025
+            </p>
+
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="https://en.nia.gov.cn/n147413/c183100/content.html" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                National Immigration Administration (NIA) 
+              </a>
+            </p>
+
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-xiazai w-4 h-4 mr-1"></i>
+              Download: 
+              <a href="../ref/240-visa-free-policy.xlsx" download class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                240-hour Visa-Free Transit Policy Countries (Excel)
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Regional Visa-Free Policy -->
+        <div class="tab-pane" id="regional">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-hege1 text-rose-600 text-4xl mr-3"></span>
+              Regional Visa-Free Policy
+            </h3>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">59-country Visa-Free Policy for Hainan (30 days)</h4>
+            <p class="text-slate-600 mb-4">
+              Citizens of 59 countries including European, American, Oceanian, and Asian countries can enter Hainan without a visa for tourism, business, visits, family visits, medical treatment, exhibitions, sports competitions, etc. (excluding work and study). They can stay for up to 30 days in the administrative region of Hainan.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Cruise Visa-Free Policy</h4>
+            <p class="text-slate-600 mb-4">
+              Foreign tourist groups (2 or more people) traveling by cruise and organized by Chinese travel agencies can enter visa-free through 13 cruise ports in coastal cities. They must travel with the same cruise to the next port until exiting China. They can stay for up to 15 days in 11 coastal provinces and Beijing.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">ASEAN Tourist Group Visa-Free Policy for Xishuangbanna, Yunnan</h4>
+            <p class="text-slate-600 mb-4">
+              ASEAN country tourist groups (2 or more people) can enter visa-free through Xishuangbanna ports. They must be organized by Chinese travel agencies and enter and exit as a group. They can stay for up to 6 days in Xishuangbanna Dai Autonomous Prefecture, Yunnan Province.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">ASEAN Tourist Group Visa-Free Policy for Guilin, Guangxi</h4>
+            <p class="text-slate-600 mb-4">
+              ASEAN country tourist groups (2 or more people) can enter visa-free through Guilin Airport Port. They must be organized by Chinese travel agencies and enter and exit as a group. They can stay for up to 6 days in Guilin, Guangxi Zhuang Autonomous Region.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Hong Kong and Macau Foreign Tourist Group Visa-Free Policy for Guangdong</h4>
+            <p class="text-slate-600 mb-4">
+              Citizens of countries with diplomatic relations with China who hold ordinary passports and have been to Hong Kong or Macau can enter the 9 mainland cities of the Greater Bay Area and Shantou for tourism without a visa. They must be organized by travel agencies registered in Hong Kong or Macau (2 or more people) and enter and exit as a group. They can stay for up to 6 days.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Hong Kong and Macau Foreign Tourist Group Visa-Free Policy for Hainan</h4>
+            <p class="text-slate-600 mb-4">
+              Citizens of countries with diplomatic relations with China who hold ordinary passports and have been to Hong Kong or Macau can enter Hainan for tourism without a visa. They must be organized by travel agencies registered in Hong Kong or Macau (2 or more people) and enter and exit as a group. They can stay for up to 6 days in Hainan Province.
+            </p>
+
+            <p class="text-slate-600 mt-4">
+              For all above policies, the stay period is calculated from 00:00 the day after entry. If eligible for mutual visa exemption agreements or other visa exemption policies of the Chinese government, those provisions shall apply.
+            </p>
+
+            <p class="text-sm text-slate-500 mt-4 flex items-center">
+              <svg aria-hidden="true" data-icon="ri:calendar-line" class="iconify w-4 h-4 mr-1 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" fill="currentColor"></path></svg>
+              Effective Date: Feb 14th,2025
+            </p>
+
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Source: 
+              <a href="https://en.nia.gov.cn//n147418/n147463/c180637/content.html" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                National Immigration Administration (NIA) 
+              </a>
+            </p>
+
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-xiazai w-4 h-4 mr-1"></i>
+              Download: 
+              <a href="../ref/59-hainan-visa-free-countries.xlsx" download class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                59 Countries for Hainan Visa-Free Policy (Excel)
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Unilateral & Mutual Visa-Free Policy -->
+        <div class="tab-pane" id="unilateral">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-hege1 text-rose-600 text-4xl mr-3"></span>
+              Unilateral & Mutual Visa-Free Policy
+            </h3>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Unilateral Visa-Free Policy</h4>
+            <p class="text-slate-600 mb-4">
+              China implements unilateral visa-free policies for citizens of certain countries, allowing them to enter China without a visa for specific purposes and durations. These policies are typically aimed at promoting tourism, business exchanges, and cultural interactions.
+            </p>
+            <p class="text-slate-600 mb-4">
+              The unilateral visa-free policy may include visa-free entry for tourism, business meetings, or transit purposes, with varying stay durations depending on the country and the specific policy.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Mutual Visa-Free Policy</h4>
+            <p class="text-slate-600 mb-4">
+              China has signed mutual visa-free agreements with several countries, allowing citizens of both countries to enter each other's territory without a visa for certain periods. These agreements are reciprocal and typically apply to ordinary passport holders for tourism, business, or family visit purposes.
+            </p>
+            <p class="text-slate-600 mb-4">
+              The duration of stay under mutual visa-free agreements varies by country, ranging from 14 days to 90 days. Citizens of countries with mutual visa-free agreements can enter China without a visa for tourism, business, or family visits within the specified period.
+            </p>
+
+            <h4 class="text-xl font-bold text-slate-800 mb-3">Key Requirements</h4>
+            <ul class="list-disc pl-6 mt-2 space-y-1 text-slate-600 mb-6">
+              <li>Valid passport with at least 6 months of validity remaining</li>
+              <li>Confirmed return or onward ticket (for some policies)</li>
+              <li>Sufficient funds for the duration of stay</li>
+              <li>No criminal record or other inadmissibility issues</li>
+              <li>Compliance with the specific purpose and duration of stay</li>
+            </ul>
+
+            <p class="text-slate-600 mt-4">
+              For detailed information on specific countries and their eligibility under unilateral and mutual visa-free policies, please refer to the official sources provided below.
+            </p>
+
+            <p class="text-sm text-slate-500 mt-4 flex items-center">
+              <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+              Sources: 
+              <a href="https://www.nia.gov.cn/n741440/n741577/c1731154/content.html" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                National Immigration Administration (NIA) (Chinese version only)
+              </a>
+              <span class="mx-2">|</span>
+              <a href="https://cs.mfa.gov.cn/wgrlh/lhqz/lhqzjjs/202510/t20251023_11739051.shtml" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline">
+                Ministry of Foreign Affairs (MFA)
+              </a>
+            </p>
+
+            <p class="text-sm text-slate-500 mt-3 flex items-center">
+              <i class="iconfont icon-xiazai w-4 h-4 mr-1"></i>
+              Download: 
+              <a href="../ref/Unilateral_Mutual _Visa-Free_ Policy.xlsx" download class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                Countries for Unilateral & Mutual Visa-Free Policy (Excel)
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="../js/visa.js"></script>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Guides</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Tips</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Connect With Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:facebook-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:twitter-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:instagram-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z" fill="currentColor"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
+              <svg aria-hidden="true" data-icon="ri:youtube-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17zm9.69-6.31a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0zm-6.19 0a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Wander Any Place. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
