@@ -3,7 +3,7 @@
 <html lang="zh-CN"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>wander- explore China</title>
+<title>Wander Any Place- Explore China</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 <script src="iconfont/iconfont.js"></script>
@@ -26,10 +26,9 @@
 <span class="text-2xl font-bold text-white font-sans italic">Wander Any Place</span><br/>
 </div>
 <div class="hidden md:flex space-x-8 text-white font-medium">
-<a class="hover:text-rose-400 transition-colors" href="#">Destinations</a>
-<a class="hover:text-rose-400 transition-colors" href="#">How it works</a>
-<a class="hover:text-rose-400 transition-colors" href="#">Our Guides</a>
-<button class="bg-rose-600 px-5 py-2 rounded-full hover:bg-rose-700 transition-all">Sign In</button>
+<a class="hover:text-rose-400 transition-colors" href="html/2.Destination.html">Destinations</a>
+<a class="hover:text-rose-400 transition-colors" href="html/2.booking.html">Booking Services</a>
+<a class="hover:text-rose-400 transition-colors" href="html/2.aboutus.html">About Us</a>
 </div>
 </nav>
 <!-- 核心内容 -->
@@ -46,8 +45,8 @@
 <div class="pl-6 pr-3 text-slate-400">
 <svg aria-hidden="true" class="iconify w-6 h-6 iconify--ri" data-icon="ri:search-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z" fill="currentColor"></path></svg>
 </div>
-<input class="w-full py-3 outline-none text-lg text-slate-700 bg-transparent" placeholder="Where to?" type="text"/>
-<button class="bg-rose-600 text-white px-8 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95">
+<input id="search-input" class="w-full py-3 outline-none text-lg text-slate-700 bg-transparent" placeholder="Search attractions..." type="text" onkeyup="handleSearch(event)"/>
+<button id="search-btn" class="bg-rose-600 text-white px-8 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95" onclick="performSearch()">
             Search
           </button>
 </div>
@@ -63,155 +62,160 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
 <!-- Visa Requirements -->
-<a href="html/2.pre-visa.html" class="group cursor-pointer block">
-<div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-<div class="p-6 flex flex-col items-center text-center">
+<a href="html/2.pre-visa.html" class="group cursor-pointer block h-full">
+<div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+<div class="p-6 flex flex-col items-center text-center flex-grow">
 <div class="bg-white p-4 rounded-2xl mb-4">
 <span class="iconfont text-rose-600 text-5xl">&#xe891;</span>
 </div>
 <h3 class="font-bold text-xl mb-2 text-slate-800 group-hover:text-rose-600 transition-colors">Visa Requirements</h3>
-<div class="text-slate-600 text-sm">
-<p class="mb-3">Check visa requirements and apply in advance</p>
-<span class="iconfont text-rose-600 text-xl mx-auto">&#xe627;</span>
-</div>
+<p class="text-slate-600 text-sm mb-4">Check visa requirements and apply in advance</p>
+<span class="iconfont text-rose-600 text-xl mt-auto">&#xe627;</span>
 </div>
 </div>
 </a>
 
 <!-- Essential Apps -->
-<a href="html/2.pre-app.html" class="group cursor-pointer block">
-<div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-<div class="p-6 flex flex-col items-center text-center">
+<a href="html/2.pre-app.html" class="group cursor-pointer block h-full">
+<div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+<div class="p-6 flex flex-col items-center text-center flex-grow">
 <div class="bg-white p-4 rounded-2xl mb-4">
 <span class="iconfont text-rose-600 text-5xl">&#xe509;</span>
 </div>
 <h3 class="font-bold text-xl mb-2 text-slate-800 group-hover:text-rose-600 transition-colors">Essential Apps</h3>
-<div class="text-slate-600 text-sm">
-<p class="mb-3">Download necessary apps for China</p>
-<span class="iconfont text-rose-600 text-xl mx-auto">&#xe627;</span>
-</div>
+<p class="text-slate-600 text-sm mb-4">Download necessary apps for China</p>
+<span class="iconfont text-rose-600 text-xl mt-auto">&#xe627;</span>
 </div>
 </div>
 </a>
 
 <!-- Payment Methods -->
-<a href="html/2.payment-methods.html" class="group cursor-pointer block">
-<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-<div class="p-6 flex flex-col items-center text-center">
+<a href="html/2.payment-methods.html" class="group cursor-pointer block h-full">
+<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+<div class="p-6 flex flex-col items-center text-center flex-grow">
 <div class="bg-white p-4 rounded-2xl mb-4">
 <span class="iconfont text-rose-600 text-5xl">&#xe69f;</span>
 </div>
 <h3 class="font-bold text-xl mb-2 text-slate-800 group-hover:text-rose-600 transition-colors">Payment Methods</h3>
-<div class="text-slate-600 text-sm">
-<p class="mb-3">Set up mobile payments and carry cash</p>
-<span class="iconfont text-rose-600 text-xl mx-auto">&#xe627;</span>
+<p class="text-slate-600 text-sm mb-4">Set up mobile payments and carry cash</p>
+<span class="iconfont text-rose-600 text-xl mt-auto">&#xe627;</span>
 </div>
 </div>
-</div>
+</a>
 
 <!-- Transportation -->
-<a href="html/2.transportation.html" class="group cursor-pointer block">
-<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-<div class="p-6 flex flex-col items-center text-center">
+<a href="html/2.transportation.html" class="group cursor-pointer block h-full">
+<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+<div class="p-6 flex flex-col items-center text-center flex-grow">
 <div class="bg-white p-4 rounded-2xl mb-4">
 <span class="iconfont text-rose-600 text-5xl">&#xe60b;</span>
 </div>
 <h3 class="font-bold text-xl mb-2 text-slate-800 group-hover:text-rose-600 transition-colors">Transportation</h3>
-<div class="text-slate-600 text-sm">
-<p class="mb-3">Research local transport options</p>
-<span class="iconfont text-rose-600 text-xl mx-auto">&#xe627;</span>
-</div>
+<p class="text-slate-600 text-sm mb-4">Research local transport options</p>
+<span class="iconfont text-rose-600 text-xl mt-auto">&#xe627;</span>
 </div>
 </div>
 </a>
 
 <!-- Essential Packing -->
-<a href="html/2.essential packing copy.html">
-<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-<div class="p-6 flex flex-col items-center text-center">
+<a href="html/2.essential packing copy.html" class="group cursor-pointer block h-full">
+<div class="group cursor-pointer bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+<div class="p-6 flex flex-col items-center text-center flex-grow">
 <div class="bg-white p-4 rounded-2xl mb-4">
 <span class="iconfont text-rose-600 text-5xl">&#xe6b4;</span>
 </div>
 <h3 class="font-bold text-xl mb-2 text-slate-800 group-hover:text-rose-600 transition-colors">Essential Packing</h3>
-<div class="text-slate-600 text-sm">
-<p class="mb-3">Bring comfortable shoes and necessary items</p>
-<span class="iconfont text-rose-600 text-xl mx-auto">&#xe627;</span>
-</div>
+<p class="text-slate-600 text-sm mb-4">Bring comfortable shoes and necessary items</p>
+<span class="iconfont text-rose-600 text-xl mt-auto">&#xe627;</span>
 </div>
 </div>
 </a>
 </section>
 <!-- 底部目的地展示区 -->
-<section class="py-16 bg-gray-50">
+<section class="py-16 bg-gradient-to-b from-gray-50 to-white">
 <div class="max-w-7xl mx-auto px-6">
 <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
 <h2 class="text-3xl font-bold text-slate-900">Popular China Tour Destinations</h2>
 </div>
-<!-- 目的地列表 (手动编写重复元素) -->
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- 目的地列表 (错落有致布局) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
 <!-- 北京 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
+<a href="html/3.beijing/3.beijing.html" class="group cursor-pointer">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
 <img alt="Forbidden City in Beijing China" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-2" src="img/img-2.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
 <p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Beijing</p>
+</a>
+<!-- 上海 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Skyline of Shanghai Pudong" class="w-full h-full object-cover" id="img-3" src="img/img-3.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
 </div>
-<!-- 上海 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Skyline of Shanghai Pudong" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-3" src="img/img-3.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Shanghai</p>
+<p class="text-center font-bold text-lg text-gray-500">Shanghai</p>
 </div>
-<!-- 西安 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Ancient City Wall in Xi'an" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-4" src="img/img-4.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<!-- 西安 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Ancient City Wall in Xi'an" class="w-full h-full object-cover" id="img-4" src="img/img-4.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Xi'an</p>
 </div>
-<!-- 成都 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Giant Panda in Chengdu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-5" src="img/img-5.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<p class="text-center font-bold text-lg text-gray-500">Xi'an</p>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Chengdu</p>
+<!-- 成都 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Giant Panda in Chengdu" class="w-full h-full object-cover" id="img-5" src="img/img-5.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
 </div>
-<!-- 杭州 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="West Lake in Hangzhou" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-6" src="img/img-6.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Hangzhou</p>
+<p class="text-center font-bold text-lg text-gray-500">Chengdu</p>
 </div>
-<!-- 桂林 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Karst mountains in Guilin" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-7" src="img/img-7.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<!-- 杭州 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="West Lake in Hangzhou" class="w-full h-full object-cover" id="img-6" src="img/img-6.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Guilin</p>
 </div>
-<!-- 丽江 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Old town of Lijiang Yunnan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-8" src="img/img-8.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<p class="text-center font-bold text-lg text-gray-500">Hangzhou</p>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Lijiang</p>
+<!-- 桂林 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Karst mountains in Guilin" class="w-full h-full object-cover" id="img-7" src="img/img-7.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
 </div>
-<!-- 张家界 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3">
-<img alt="Zhangjiajie avatar mountains pillars" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" id="img-9" src="img/img-9.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
-<p class="text-center font-bold text-lg text-slate-700 group-hover:text-rose-600 transition-colors">Zhangjiajie</p>
+<p class="text-center font-bold text-lg text-gray-500">Guilin</p>
+</div>
+<!-- 丽江 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Old town of Lijiang Yunnan" class="w-full h-full object-cover" id="img-8" src="img/img-8.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
+</div>
+</div>
+<p class="text-center font-bold text-lg text-gray-500">Lijiang</p>
+</div>
+<!-- 张家界 - Coming Soon -->
+<div class="opacity-70 group">
+<div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md mb-3 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+<img alt="Zhangjiajie avatar mountains pillars" class="w-full h-full object-cover" id="img-9" src="img/img-9.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+<span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full text-sm">Coming Soon</span>
+</div>
+</div>
+<p class="text-center font-bold text-lg text-gray-500">Zhangjiajie</p>
 </div>
 </div>
 </div>
@@ -237,7 +241,7 @@
           <ul class="space-y-2 text-gray-400">
             <li><a href="index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
             <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Guides</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
             <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
@@ -246,33 +250,237 @@
           <h4 class="font-bold mb-4">Resources</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
-            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Tips</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
           </ul>
         </div>
 
-        <div>
-          <h4 class="font-bold mb-4">Connect With Us</h4>
-          <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-              <svg aria-hidden="true" data-icon="ri:facebook-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" fill="currentColor"></path></svg>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-              <svg aria-hidden="true" data-icon="ri:twitter-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"></path></svg>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-              <svg aria-hidden="true" data-icon="ri:instagram-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3z" fill="currentColor"></path></svg>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-              <svg aria-hidden="true" data-icon="ri:youtube-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17zm9.69-6.31a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0zm-6.19 0a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0z" fill="currentColor"></path></svg>
-            </a>
-          </div>
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-        <p>&copy; 2024 Wander Any Place. All rights reserved.</p>
-      </div>
-    </div>
   </footer>
+
+<script>
+// 景点搜索字典 - 包含所有北京景点
+const attractionsDict = {
+  // 城市入口
+  "Beijing": "html/3.beijing/3.beijing.html",
+  "北京": "html/3.beijing/3.beijing.html",
+  
+  // 历史古迹 (3.1.x)
+  "Great Wall": "html/3.beijing/3.1.1 beijing-greatwall.html",
+  "Great Wall of China": "html/3.beijing/3.1.1 beijing-greatwall.html",
+  "长城": "html/3.beijing/3.1.1 beijing-greatwall.html",
+  "Forbidden City": "html/3.beijing/3.1.2 beijing-forbiddencity.html",
+  "Palace Museum": "html/3.beijing/3.1.2 beijing-forbiddencity.html",
+  "故宫": "html/3.beijing/3.1.2 beijing-forbiddencity.html",
+  "Summer Palace": "html/3.beijing/3.1.3 beijing-summerpalace.html",
+  "颐和园": "html/3.beijing/3.1.3 beijing-summerpalace.html",
+  "Temple of Heaven": "html/3.beijing/3.1.4 beijing-templeofheaven.html",
+  "天坛": "html/3.beijing/3.1.4 beijing-templeofheaven.html",
+  "Tiananmen Square": "html/3.beijing/3.1.5 beijing-tiananmensquare.html",
+  "天安门广场": "html/3.beijing/3.1.5 beijing-tiananmensquare.html",
+  "Old Summer Palace": "html/3.beijing/3.1.6 beijing-yuanmingyuan.html",
+  "圆明园": "html/3.beijing/3.1.6 beijing-yuanmingyuan.html",
+  "Jingshan Park": "html/3.beijing/3.1.7 beijing-jingshanpark.html",
+  "景山公园": "html/3.beijing/3.1.7 beijing-jingshanpark.html",
+  "Ming Tombs": "html/3.beijing/3.1.8 beijing-mingtombs.html",
+  "明十三陵": "html/3.beijing/3.1.8 beijing-mingtombs.html",
+  "Beihai Park": "html/3.beijing/3.1.9 beijing-beihaispark.html",
+  "北海公园": "html/3.beijing/3.1.9 beijing-beihaispark.html",
+  "Ditan Park": "html/3.beijing/3.1.11 beijing-ditanpark.html",
+  "地坛公园": "html/3.beijing/3.1.11 beijing-ditanpark.html",
+  "Confucius Temple": "html/3.beijing/3.1.10 beijing-confuciustemple.html",
+  "孔庙": "html/3.beijing/3.1.10 beijing-confuciustemple.html",
+  "Zhongshan Park": "html/3.beijing/3.1.12 beijing-zhongshanpark.html",
+  "中山公园": "html/3.beijing/3.1.12 beijing-zhongshanpark.html",
+  "Ritan Park": "html/3.beijing/3.1.13 beijing-ritanpark.html",
+  "日坛公园": "html/3.beijing/3.1.13 beijing-ritanpark.html",
+  "Xiannongtan": "html/3.beijing/3.1.14 beijing-xiannongtan.html",
+  "先农坛": "html/3.beijing/3.1.14 beijing-xiannongtan.html",
+  "Yuetan Park": "html/3.beijing/3.1.15 beijing-yuetanpark.html",
+  "月坛公园": "html/3.beijing/3.1.15 beijing-yuetanpark.html",
+  "Lugou Bridge": "html/3.beijing/3.1.16 beijing-lugoubridge.html",
+  "卢沟桥": "html/3.beijing/3.1.16 beijing-lugoubridge.html",
+  "Yuan Dadu": "html/3.beijing/3.1.17 beijing-yuandadu.html",
+  "元大都城垣遗址": "html/3.beijing/3.1.17 beijing-yuandadu.html",
+  
+  // 自然景观 (3.2.x)
+  "Zhoukoudian": "html/3.beijing/3.2.1 beijing-Zhoukoudian Peking Man Site.html",
+  "周口店": "html/3.beijing/3.2.1 beijing-Zhoukoudian Peking Man Site.html",
+  "Fragrant Hills": "html/3.beijing/3.2.2 beijing-Fragrant Hills Park.html",
+  "香山公园": "html/3.beijing/3.2.2 beijing-Fragrant Hills Park.html",
+  "Olympic Forest Park": "html/3.beijing/3.2.3 beijing-Beijing Olympic Forest Park.html",
+  "奥林匹克森林公园": "html/3.beijing/3.2.3 beijing-Beijing Olympic Forest Park.html",
+  "Yuyuantan Park": "html/3.beijing/3.2.4 beijing-Yuyuantan Park.html",
+  "玉渊潭公园": "html/3.beijing/3.2.4 beijing-Yuyuantan Park.html",
+  "National Botanical Garden": "html/3.beijing/3.2.5 beijing-National Botanical Garden.html",
+  "国家植物园": "html/3.beijing/3.2.5 beijing-National Botanical Garden.html",
+  "Grand View Garden": "html/3.beijing/3.2.6 beijing-Beijing Grand View Garden.html",
+  "大观园": "html/3.beijing/3.2.6 beijing-Beijing Grand View Garden.html",
+  "Chaoyang Park": "html/3.beijing/3.2.7 beijing-Chaoyang Park.html",
+  "朝阳公园": "html/3.beijing/3.2.7 beijing-Chaoyang Park.html",
+  "Badachu Park": "html/3.beijing/3.2.8 beijing-Badachu Park.html",
+  "八大处公园": "html/3.beijing/3.2.8 beijing-Badachu Park.html",
+  "Garden Expo Park": "html/3.beijing/3.2.9 beijing-Beijing Garden Expo Park.html",
+  "园博园": "html/3.beijing/3.2.9 beijing-Beijing Garden Expo Park.html",
+  
+  // 购物商圈 (3.3.x)
+  "Wangfujing": "html/3.beijing/3.3.1 beijing-Wangfujing Pedestrian Street.html",
+  "王府井": "html/3.beijing/3.3.1 beijing-Wangfujing Pedestrian Street.html",
+  "The Place": "html/3.beijing/3.3.2 beijing-The Place.html",
+  "世贸天阶": "html/3.beijing/3.3.2 beijing-The Place.html",
+  "Xidan": "html/3.beijing/3.3.3 beijing-Xidan Commercial Street.html",
+  "西单": "html/3.beijing/3.3.3 beijing-Xidan Commercial Street.html",
+  "Sanlitun Taikoo Li": "html/3.beijing/3.3.4 beijing-Sanlitun Taikoo Li.html",
+  "三里屯太古里": "html/3.beijing/3.3.4 beijing-Sanlitun Taikoo Li.html",
+  "Blue Harbor": "html/3.beijing/3.3.5 beijing-Blue Harbor.html",
+  "蓝色港湾": "html/3.beijing/3.3.5 beijing-Blue Harbor.html",
+  
+  // 博物馆 (3.4.x)
+  "National Museum": "html/3.beijing/3.4.1 beijing-National Museum of China Guide.html",
+  "国家博物馆": "html/3.beijing/3.4.1 beijing-National Museum of China Guide.html",
+  "Capital Museum": "html/3.beijing/3.4.2 beijing-Capital Museum Guide.html",
+  "首都博物馆": "html/3.beijing/3.4.2 beijing-Capital Museum Guide.html",
+  "Guanfu Museum": "html/3.beijing/3.4.3 beijing-Guanfu Museum Guide.html",
+  "观复博物馆": "html/3.beijing/3.4.3 beijing-Guanfu Museum Guide.html",
+  
+  // 现代地标 (3.5.x)
+  "Bird's Nest": "html/3.beijing/3.5.1 beijing-Bird's Nest.html",
+  "鸟巢": "html/3.beijing/3.5.1 beijing-Bird's Nest.html",
+  "Water Cube": "html/3.beijing/3.5.2 beijing-Water Cube.html",
+  "水立方": "html/3.beijing/3.5.2 beijing-Water Cube.html",
+  "798 Art District": "html/3.beijing/3.5.3 beijing-798 Art District.html",
+  "798艺术区": "html/3.beijing/3.5.3 beijing-798 Art District.html",
+  "CCTV Headquarters": "html/3.beijing/3.5.4 beijing-CCTV Headquarters.html",
+  "CCTV大楼": "html/3.beijing/3.5.4 beijing-CCTV Headquarters.html",
+  "National Centre for the Performing Arts": "html/3.beijing/3.5.5 beijing-National Centre for the Performing Arts.html",
+  "国家大剧院": "html/3.beijing/3.5.5 beijing-National Centre for the Performing Arts.html",
+  "Galaxy SOHO": "html/3.beijing/3.5.6 beijing-Galaxy SOHO.html",
+  "银河SOHO": "html/3.beijing/3.5.6 beijing-Galaxy SOHO.html",
+  "Red Brick Art Museum": "html/3.beijing/3.5.7 beijing-Red Brick Art Museum.html",
+  "红砖美术馆": "html/3.beijing/3.5.7 beijing-Red Brick Art Museum.html",
+  "CCTV Tower": "html/3.beijing/3.5.8 beijing-CCTV Tower.html",
+  "中央电视塔": "html/3.beijing/3.5.8 beijing-CCTV Tower.html",
+  "Song Art Museum": "html/3.beijing/3.5.9 beijing-Song Art Museum.html",
+  "松美术馆": "html/3.beijing/3.5.9 beijing-Song Art Museum.html",
+  "Shougang Park": "html/3.beijing/3.5.10 beijing-Shougang Park.html",
+  "首钢园": "html/3.beijing/3.5.10 beijing-Shougang Park.html",
+  
+  // 寺庙宗教 (3.6.x)
+  "Lama Temple": "html/3.beijing/3.6.1 beijing-Lama Temple.html",
+  "雍和宫": "html/3.beijing/3.6.1 beijing-Lama Temple.html",
+  "Hongluo Temple": "html/3.beijing/3.6.2 beijing-Hongluo Temple.html",
+  "红螺寺": "html/3.beijing/3.6.2 beijing-Hongluo Temple.html",
+  "Tanzhe Temple": "html/3.beijing/3.6.3 beijing-Tanzhe Temple.html",
+  "潭柘寺": "html/3.beijing/3.6.3 beijing-Tanzhe Temple.html",
+  "White Cloud Temple": "html/3.beijing/3.6.4 beijing-White Cloud Temple.html",
+  "白云观": "html/3.beijing/3.6.4 beijing-White Cloud Temple.html",
+  "Fayuan Temple": "html/3.beijing/3.6.5 beijing-Fayuan Temple.html",
+  "法源寺": "html/3.beijing/3.6.5 beijing-Fayuan Temple.html",
+  "Five Pagoda Temple": "html/3.beijing/3.6.6 beijing-Five Pagoda Temple.html",
+  "五塔寺": "html/3.beijing/3.6.6 beijing-Five Pagoda Temple.html",
+  
+  // 郊区景点 (3.7.x)
+  "Fangshan Shidu": "html/3.beijing/3.7.1 beijing-Fangshan Shidu Scenic Area.html",
+  "十渡风景区": "html/3.beijing/3.7.1 beijing-Fangshan Shidu Scenic Area.html",
+  "Yudu Mountain": "html/3.beijing/3.7.2 beijing-Yudu Mountain Scenic Area.html",
+  "玉渡山": "html/3.beijing/3.7.2 beijing-Yudu Mountain Scenic Area.html",
+  "Phoenix Ridge": "html/3.beijing/3.7.3 beijing-Phoenix Ridge Scenic Area.html",
+  "凤凰岭": "html/3.beijing/3.7.3 beijing-Phoenix Ridge Scenic Area.html",
+  "Longqingxia": "html/3.beijing/3.7.4 beijing-Longqingxia.html",
+  "龙庆峡": "html/3.beijing/3.7.4 beijing-Longqingxia.html",
+  
+  // 娱乐体验 (3.8.x)
+  "Beijing Happy Valley": "html/3.beijing/3.8.1 beijing-Beijing Happy Valley.html",
+  "欢乐谷": "html/3.beijing/3.8.1 beijing-Beijing Happy Valley.html",
+  "Universal Beijing Resort": "html/3.beijing/3.8.2 beijing-Universal Beijing Resort.html",
+  "环球影城": "html/3.beijing/3.8.2 beijing-Universal Beijing Resort.html",
+  "Houhai Bar Street": "html/3.beijing/3.8.3 beijing-Houhai Bar Street.html",
+  "后海酒吧街": "html/3.beijing/3.8.3 beijing-Houhai Bar Street.html",
+  "Sanlitun Nightclubs": "html/3.beijing/3.8.4 beijing-Sanlitun Nightclubs.html",
+  "三里屯夜店": "html/3.beijing/3.8.4 beijing-Sanlitun Nightclubs.html",
+  "Qushuilanting Bathhouse": "html/3.beijing/3.8.5 beijing-Qushuilanting Bathhouse.html",
+  "曲水兰亭": "html/3.beijing/3.8.5 beijing-Qushuilanting Bathhouse.html"
+};
+
+// 计算编辑距离 (Levenshtein距离)
+function levenshteinDistance(s1, s2) {
+  const costs = [];
+  for (let i = 0; i <= s1.length; i++) {
+    let lastValue = i;
+    for (let j = 0; j <= s2.length; j++) {
+      if (i === 0) {
+        costs[j] = j;
+      } else if (j > 0) {
+        let newValue = costs[j - 1];
+        if (s1.charAt(i - 1) !== s2.charAt(j - 1)) {
+          newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+        }
+        costs[j - 1] = lastValue;
+        lastValue = newValue;
+      }
+    }
+    if (i > 0) {
+      costs[s2.length] = lastValue;
+    }
+  }
+  return costs[s2.length];
+}
+
+// 搜索函数 - 支持模糊匹配，无提示直接跳转
+function performSearch() {
+  const input = document.getElementById('search-input');
+  const query = input.value.trim().toLowerCase();
+  
+  if (!query) {
+    // 空输入直接跳转到北京景点总览
+    window.location.href = 'html/3.beijing/3.1 beijing- attractions.html';
+    return;
+  }
+  
+  // 精确匹配或包含匹配
+  for (const [name, path] of Object.entries(attractionsDict)) {
+    if (name.toLowerCase() === query || name.toLowerCase().includes(query)) {
+      window.location.href = path;
+      return;
+    }
+  }
+  
+  // 模糊匹配 - 查找最相似的景点
+  let bestMatch = null;
+  let bestDistance = Infinity;
+  
+  for (const [name, path] of Object.entries(attractionsDict)) {
+    const distance = levenshteinDistance(query, name.toLowerCase());
+    const maxLen = Math.max(query.length, name.length);
+    const similarity = 1 - (distance / maxLen);
+    
+    // 相似度超过60%认为是有效匹配
+    if (similarity > 0.6 && distance < bestDistance) {
+      bestDistance = distance;
+      bestMatch = { name, path, similarity };
+    }
+  }
+  
+  if (bestMatch) {
+    // 直接跳转到最相似的景点
+    window.location.href = bestMatch.path;
+  } else {
+    // 完全匹配不上，跳转到北京景点总览页面
+    window.location.href = 'html/3.beijing/3.1 beijing- attractions.html';
+  }
+}
+
+// 回车键触发搜索
+function handleSearch(event) {
+  if (event.key === 'Enter') {
+    performSearch();
+  }
+}
+</script>
 </body></html>
