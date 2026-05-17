@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Noto Sans SC', 'sans-serif'],
+          },
+          colors: {
+            'rose': {
+              50: '#FFF1F2',
+              100: '#FFE4E6',
+              200: '#FECDD3',
+              300: '#FDA4AF',
+              400: '#FB7185',
+              500: '#F43F5E',
+              600: '#E11D48',
+              700: '#BE123C',
+              800: '#9F1239',
+              900: '#881337',
+            },
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto { content-visibility: auto; }
+      .bg-gradient-rose { background: linear-gradient(135deg, #F43F5E 0%, #BE123C 100%); }
+      .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex items-center space-x-2">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            <span class="text-xl font-bold">Wander Any Place</span>
+          </a>
+        </div>
+        <nav class="flex items-center space-x-6">
+          <a href="../index.html" class="text-slate-600 hover:text-rose-600 transition-colors">Home</a>
+          <a href="2.pre-visa.html" class="text-slate-600 hover:text-rose-600 transition-colors">Visa</a>
+          <a href="2.pre-app.html" class="text-slate-600 hover:text-rose-600 transition-colors">Apps</a>
+          <a href="2.booking.html" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors">Booking</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-gradient-rose text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4 text-shadow">About Us</h1>
+        <p class="text-xl max-w-3xl mx-auto">Discover who we are and our mission to make your China journey unforgettable</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Who We Are</h2>
+      <div class="bg-slate-50 p-8 rounded-xl shadow-md">
+        <p class="text-slate-600 leading-relaxed mb-6">
+          <strong>Wander Any Place</strong> is your premier travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing, we are a newly founded company committed to providing comprehensive travel services and information for international travelers.
+        </p>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Our platform serves as a bridge between curious travelers and the wonders of China. We understand that planning a trip to China can be overwhelming — from visa requirements to navigating local apps, from finding the best destinations to booking services. That's why we've created an all-in-one resource to simplify your journey.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          Whether you're a first-time visitor or a seasoned traveler returning to explore more of this vast and diverse country, Wander Any Place is here to guide you every step of the way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Vision</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg aria-hidden="true" data-icon="ri:compass-3-fill" class="iconify text-rose-600" width="1.5em" height="1.5em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+          </div>
+          <h3 class="font-semibold text-lg text-center mb-2">Our Mission</h3>
+          <p class="text-slate-600 text-sm text-center">To provide accurate, up-to-date travel information and services that help international travelers navigate China with confidence and ease.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg aria-hidden="true" data-icon="ri:global-line" class="iconify text-rose-600" width="1.5em" height="1.5em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+          </div>
+          <h3 class="font-semibold text-lg text-center mb-2">Our Vision</h3>
+          <p class="text-slate-600 text-sm text-center">To become the most trusted travel companion for anyone visiting China, transforming complex travel logistics into seamless experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">What We Offer</h2>
+      <div class="bg-slate-50 p-8 rounded-xl shadow-md">
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg aria-hidden="true" data-icon="ri:information-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m1 15h-2v-6h2v6m0-8h-2V7h2v2" fill="currentColor"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Travel Information</h3>
+              <p class="text-slate-600">Comprehensive guides on visa requirements, essential apps, payment methods, transportation options, and packing essentials.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg aria-hidden="true" data-icon="ri:service-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Booking Services</h3>
+              <p class="text-slate-600">From train ticket booking to car charters, temporary driver's licenses to scenic spot interpreters — we handle the logistics so you can focus on the experience.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg aria-hidden="true" data-icon="ri:community-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3m-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3m0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5m8 0c-.29 0-.62.02-.97.05c1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5" fill="currentColor"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Community-Driven</h3>
+              <p class="text-slate-600">Looking ahead, we plan to expand our platform with user-generated content, allowing travelers to share experiences and contribute to our information base.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <svg aria-hidden="true" data-icon="ri:store-2-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m-1.999 14.413l-3.713-3.705L9.713 9.25a5 5 0 0 0-1.32 4.678c.848 2.166 3.02 3.836 5.654 4.16m5.314-4.16a5 5 0 0 0-1.32-4.678l3.713-3.705l-1.414-1.414l-3.713 3.705l-1.414 1.414l1.413 1.413l-2.586 2.586l1.414 1.414l2.586-2.586z" fill="currentColor"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">OTA Integration</h3>
+              <p class="text-slate-600">We aim to integrate OTA services to provide a seamless booking experience, connecting you with the best accommodation and activity options in China.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="text-rose-600 text-4xl mb-4">
+            <svg aria-hidden="true" data-icon="ri:shield-check-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91c4.59-1.15 8-5.86 8-10.91V5l-8-3m7 10.09c0 4-2.55 7.7-6 8.83c-3.45-1.13-6-4.82-6-8.83V6.31l6-2.25l6 2.25v5.78M9.5 10.5l1.5 1.5l3-3" fill="currentColor"></path></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Trusted & Secure</h3>
+          <p class="text-slate-600 text-sm">All services include formal contracts to ensure your safety and satisfaction.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="text-rose-600 text-4xl mb-4">
+            <svg aria-hidden="true" data-icon="ri:customer-service-2-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">24/7 Support</h3>
+          <p class="text-slate-600 text-sm">Our dedicated team is available to assist you throughout your journey.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="text-rose-600 text-4xl mb-4">
+            <svg aria-hidden="true" data-icon="ri:wallet-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2m-9-9a3 3 0 1 0 0-6a3 3 0 0 0 0 6m5 11H5a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h1a2 2 0 0 0 2-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" fill="currentColor"></path></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Flexible Payment</h3>
+          <p class="text-slate-600 text-sm">Pay upon arrival in China (except for pre-booked services). No hidden fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+      <div class="bg-slate-50 p-8 rounded-xl shadow-md">
+        <div class="text-center mb-6">
+          <p class="text-slate-600 mb-4">Have questions or suggestions? We'd love to hear from you!</p>
+          <div class="flex items-center justify-center gap-2 text-lg">
+            <svg aria-hidden="true" data-icon="ri:mail-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6m-2 0l-8 5l-8-5h16m0 12H4V8l8 5l8-5v10" fill="currentColor"></path></svg>
+            <a href="mailto:wanderanyplace@gmail.com" class="text-rose-600 hover:text-rose-700 transition-colors">wanderanyplace@gmail.com</a>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 pt-6 mt-6">
+          <p class="text-center text-slate-500 text-sm">
+            For booking inquiries, please visit our <a href="2.booking.html" class="text-rose-600 hover:text-rose-700 transition-colors">Booking Services</a> page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">We Value Your Feedback</h2>
+      <div class="bg-white p-8 rounded-xl shadow-md">
+        <p class="text-slate-600 mb-6 text-center">
+          We're constantly working to improve our platform and services. If you have any suggestions, found any errors in our information, or would like to see specific content added, please let us know!
+        </p>
+        
+        <form id="feedback-form" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="fb-name" class="block text-sm font-medium text-slate-700 mb-1">Your Name</label>
+              <input type="text" id="fb-name" name="name" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+            </div>
+            <div>
+              <label for="fb-email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <input type="email" id="fb-email" name="email" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+            </div>
+          </div>
+          <div>
+            <label for="fb-subject" class="block text-sm font-medium text-slate-700 mb-1">Subject</label>
+            <select id="fb-subject" name="subject" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+              <option value="">Select a topic...</option>
+              <option value="Information Correction">Information Correction</option>
+              <option value="Content Suggestion">Content Suggestion</option>
+              <option value="Booking Inquiry">Booking Inquiry</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="fb-message" class="block text-sm font-medium text-slate-700 mb-1">Your Message <span class="text-rose-500">*</span></label>
+            <textarea id="fb-message" name="message" rows="4" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500" placeholder="Tell us what's on your mind..."></textarea>
+          </div>
+          <div class="pt-2">
+            <button type="submit" id="fb-submit-btn" class="w-full bg-rose-600 text-white font-bold py-3 rounded-lg hover:bg-rose-700 transition-colors flex items-center justify-center">
+              <svg aria-hidden="true" data-icon="ri:send-plane-fill" class="iconify mr-2 w-5 h-5" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2l-7 20l-4-9l-9-4l20-7z" fill="currentColor"></path></svg>
+              Submit Feedback
+            </button>
+          </div>
+        </form>
+        
+        <div id="feedback-status" class="hidden mt-6 p-4 rounded-lg text-center"></div>
+        
+        <div class="mt-6 pt-6 border-t border-slate-200">
+          <p class="text-sm text-slate-500 text-center">
+            Thank you for your feedback! We'll review your message and get back to you as soon as possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const statusDiv = document.getElementById('feedback-status');
+      const submitBtn = document.getElementById('fb-submit-btn');
+      const name = document.getElementById('fb-name').value;
+      const email = document.getElementById('fb-email').value;
+      const subject = document.getElementById('fb-subject').value;
+      const message = document.getElementById('fb-message').value;
+      
+      if (!message.trim()) {
+        statusDiv.className = 'mt-6 p-4 rounded-lg text-center bg-red-100 text-red-700';
+        statusDiv.textContent = 'Please enter your message.';
+        statusDiv.classList.remove('hidden');
+        return;
+      }
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg aria-hidden="true" data-icon="ri:loader-4-fill" class="iconify mr-2 w-5 h-5 animate-spin" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1m0 16a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1M4.93 4.93a1 1 0 0 1 1.41 0l1.41 1.41a1 1 0 1 1-1.41 1.41L4.93 6.34a1 1 0 0 1 0-1.41m11.31 11.31a1 1 0 0 1 1.41 0l1.41 1.41a1 1 0 0 1-1.41 1.41l-1.41-1.41a1 1 0 0 1 0-1.41M2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m16 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1M6.34 17.66a1 1 0 0 1 0 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41a1 1 0 0 1 1.41 0M17.66 6.34a1 1 0 0 1 0 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41a1 1 0 0 1 1.41 0" fill="currentColor"></path></svg> Sending...';
+      
+      try {
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+          ? 'http://localhost:3001/api/send-feedback'
+          : '/api/send-feedback';
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          statusDiv.className = 'mt-6 p-4 rounded-lg text-center bg-green-100 text-green-700';
+          statusDiv.textContent = result.message;
+          statusDiv.classList.remove('hidden');
+          this.reset();
+          
+          if (result.previewUrl) {
+            const link = document.createElement('a');
+            link.href = result.previewUrl;
+            link.target = '_blank';
+            link.textContent = ' Click here to preview the email';
+            link.className = 'underline ml-2';
+            statusDiv.appendChild(link);
+          }
+        } else {
+          statusDiv.className = 'mt-6 p-4 rounded-lg text-center bg-red-100 text-red-700';
+          statusDiv.textContent = result.error || 'Failed to send. Please try again.';
+          statusDiv.classList.remove('hidden');
+        }
+      } catch (error) {
+        statusDiv.className = 'mt-6 p-4 rounded-lg text-center bg-red-100 text-red-700';
+        statusDiv.textContent = 'Error: Could not connect to server. Make sure the server is running on port 3001.';
+        statusDiv.classList.remove('hidden');
+        console.error('Error:', error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg aria-hidden="true" data-icon="ri:send-plane-fill" class="iconify mr-2 w-5 h-5" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2l-7 20l-4-9l-9-4l20-7z" fill="currentColor"></path></svg> Submit Feedback';
+      }
+    });
+  </script>
+</body>
+</html>
