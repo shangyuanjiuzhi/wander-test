@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Services - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Noto Sans SC', 'sans-serif'],
+          },
+          colors: {
+            'rose': {
+              50: '#FFF1F2',
+              100: '#FFE4E6',
+              200: '#FECDD3',
+              300: '#FDA4AF',
+              400: '#FB7185',
+              500: '#F43F5E',
+              600: '#E11D48',
+              700: '#BE123C',
+              800: '#9F1239',
+              900: '#881337',
+            },
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto { content-visibility: auto; }
+      .bg-gradient-rose { background: linear-gradient(135deg, #F43F5E 0%, #BE123C 100%); }
+      .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex items-center space-x-2">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            <span class="text-xl font-bold">Wander Any Place</span>
+          </a>
+        </div>
+        <nav class="flex items-center space-x-6">
+          <a href="../index.html" class="text-slate-600 hover:text-rose-600 transition-colors">Home</a>
+          <a href="2.pre-visa.html" class="text-slate-600 hover:text-rose-600 transition-colors">Visa</a>
+          <a href="2.pre-app.html" class="text-slate-600 hover:text-rose-600 transition-colors">Apps</a>
+          <a href="#" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-gradient-rose text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4 text-shadow">Booking Services</h1>
+        <p class="text-xl mb-8 max-w-3xl mx-auto">Comprehensive travel assistance services for your China journey</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
+      <div class="bg-slate-50 p-8 rounded-xl shadow-md">
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Wander Any Place is your premier travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing, we are a newly founded company committed to providing comprehensive travel services and information.
+        </p>
+        <p class="text-slate-600 leading-relaxed mb-6">
+          Currently, we offer travel information and services in the format of concise guides and updates. Looking ahead, we plan to expand our platform with user-generated content, allowing travelers to share experiences and contribute to our information base. We also aim to integrate OTA services to provide a seamless booking experience.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          Your support means the world to us as we continue to grow and improve. Together, let's make your China adventure unforgettable!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-rose-600 font-bold text-xl">1</span>
+          </div>
+          <h3 class="font-semibold mb-2">Submit Request</h3>
+          <p class="text-slate-600 text-sm">Fill out the form with your details and required services</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-rose-600 font-bold text-xl">2</span>
+          </div>
+          <h3 class="font-semibold mb-2">We Contact You</h3>
+          <p class="text-slate-600 text-sm">Our team will reach out within 24 hours to discuss your needs</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+          <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-rose-600 font-bold text-xl">3</span>
+          </div>
+          <h3 class="font-semibold mb-2">Get Serviced</h3>
+          <p class="text-slate-600 text-sm">Receive professional assistance and enjoy your trip</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+        <h3 class="text-xl font-bold mb-4">Service Fees</h3>
+        <p class="text-slate-600 mb-4">A small service fee applies for each service requested. Examples:</p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-600">
+          <li>Single service: Starting from USD $5 per item</li>
+          <li>Package deals available for multiple services</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+        <h3 class="text-xl font-bold mb-4">Payment Information</h3>
+        <ul class="list-disc pl-6 space-y-2 text-slate-600">
+          <li><strong>Payment Methods:</strong> Pay upon arrival in China (except for pre-booked services)</li>
+          <li><strong>Secure Transactions:</strong> All services include a formal contract to ensure your safety and satisfaction</li>
+          <li><strong>Transparent Pricing:</strong> No hidden fees - you'll know exactly what you're paying for</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Booking Request Form</h2>
+
+      <div class="bg-slate-50 p-8 rounded-xl shadow-md">
+        <div id="status-message" class="hidden mb-6 p-4 rounded-lg"></div>
+        <form id="booking-form">
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Personal Information</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name <span class="text-rose-500">*</span></label>
+                  <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="passengers" class="block text-sm font-medium text-slate-700 mb-1">Number of People <span class="text-rose-500">*</span></label>
+                  <input type="number" id="passengers" name="passengers" min="1" max="20" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="wechat" class="block text-sm font-medium text-slate-700 mb-1">WeChat</label>
+                  <input type="text" id="wechat" name="wechat" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="whatsapp" class="block text-sm font-medium text-slate-700 mb-1">WhatsApp</label>
+                  <input type="text" id="whatsapp" name="whatsapp" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email <span class="text-rose-500">*</span></label>
+                  <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500">
+                </div>
+                <p class="text-sm text-slate-500 col-span-2">At least one contact method is required (Phone/WeChat/WhatsApp)</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Select Services <span class="text-rose-500">*</span></h3>
+              <p class="text-sm text-slate-500 mb-4">Please check the services you need:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Chinese Phone Number Required" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Chinese Phone Number Required</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Train Ticket Booking Service" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Train Ticket Booking Service</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Passport Verification Assistance" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Passport Verification Assistance</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Temporary Driver's License" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Temporary Driver's License</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Car Charter" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Car Charter</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Ticket Booking Services" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Ticket Booking Services</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Scenic Spot Interpretation Services" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Scenic Spot Interpretation Services</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors" id="others-label">
+                  <input type="checkbox" name="services" value="Others" id="others-checkbox" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded" onclick="toggleOthersInput()">
+                  <span class="ml-3 text-slate-700">Others</span>
+                </label>
+              </div>
+              <div id="others-input-container" class="mt-4 hidden">
+                <label for="others-detail" class="block text-sm font-medium text-slate-700 mb-1">Please specify your requirements:</label>
+                <textarea id="others-detail" name="others" rows="3" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500" placeholder="Describe your specific needs..."></textarea>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" id="submit-btn" class="w-full bg-rose-600 text-white font-bold py-3 rounded-lg hover:bg-rose-700 transition-colors flex items-center justify-center">
+                <svg aria-hidden="true" data-icon="ri:send-plane-fill" class="iconify mr-2 w-5 h-5" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2l-7 20l-4-9l-9-4l20-7z" fill="currentColor"></path></svg>
+                Submit Booking Request
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Need Assistance?</h2>
+      <p class="text-lg mb-8">If you have any questions about our services, feel free to contact us:</p>
+      <div class="space-y-4">
+        <p class="text-slate-600"><strong>Email:</strong> wanderanyplace@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+  <script>
+    function toggleOthersInput() {
+      const checkbox = document.getElementById('others-checkbox');
+      const container = document.getElementById('others-input-container');
+      if (checkbox.checked) {
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    document.getElementById('booking-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const statusMessage = document.getElementById('status-message');
+      
+      // Get form data
+      const name = document.getElementById('name').value;
+      const passengers = document.getElementById('passengers').value;
+      const phone = document.getElementById('phone').value;
+      const wechat = document.getElementById('wechat').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const email = document.getElementById('email').value;
+      const services = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
+      const others = document.getElementById('others-checkbox').checked ? document.getElementById('others-detail').value : '';
+
+      // Validate at least one contact method
+      if (!phone && !wechat && !whatsapp) {
+        statusMessage.className = 'mb-6 p-4 rounded-lg bg-red-100 text-red-700';
+        statusMessage.textContent = 'Please fill in at least one contact method (Phone/WeChat/WhatsApp)';
+        statusMessage.classList.remove('hidden');
+        return;
+      }
+
+      // Validate
+      if (services.length === 0) {
+        statusMessage.className = 'mb-6 p-4 rounded-lg bg-red-100 text-red-700';
+        statusMessage.textContent = 'Please select at least one service';
+        statusMessage.classList.remove('hidden');
+        return;
+      }
+
+      // Show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<svg aria-hidden="true" data-icon="ri:loader-4-fill" class="iconify mr-2 w-5 h-5 animate-spin" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1m0 16a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1M4.93 4.93a1 1 0 0 1 1.41 0l1.41 1.41a1 1 0 1 1-1.41 1.41L4.93 6.34a1 1 0 0 1 0-1.41m11.31 11.31a1 1 0 0 1 1.41 0l1.41 1.41a1 1 0 0 1-1.41 1.41l-1.41-1.41a1 1 0 0 1 0-1.41M2 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m16 0a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1M6.34 17.66a1 1 0 0 1 0 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41a1 1 0 0 1 1.41 0M17.66 6.34a1 1 0 0 1 0 1.41l-1.41 1.41a1 1 0 1 1-1.41-1.41l1.41-1.41a1 1 0 0 1 1.41 0" fill="currentColor"></path></svg> Sending...';
+
+      try {
+        const response = await fetch('/api/send-booking-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, passengers, phone, wechat, whatsapp, email, services, others })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          statusMessage.className = 'mb-6 p-4 rounded-lg bg-green-100 text-green-700';
+          statusMessage.textContent = result.message;
+          statusMessage.classList.remove('hidden');
+          
+          // Reset form
+          this.reset();
+          document.getElementById('others-input-container').classList.add('hidden');
+          
+          // If preview URL available, show link
+          if (result.previewUrl) {
+            const link = document.createElement('a');
+            link.href = result.previewUrl;
+            link.target = '_blank';
+            link.textContent = ' Click here to preview the email';
+            link.className = 'underline ml-2';
+            statusMessage.appendChild(link);
+          }
+        } else {
+          statusMessage.className = 'mb-6 p-4 rounded-lg bg-red-100 text-red-700';
+          statusMessage.textContent = result.error || 'Failed to send. Please try again.';
+          statusMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        statusMessage.className = 'mb-6 p-4 rounded-lg bg-red-100 text-red-700';
+        statusMessage.textContent = 'Error: Could not connect to server. Make sure the server is running on port 3001.';
+        statusMessage.classList.remove('hidden');
+        console.error('Error:', error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<svg aria-hidden="true" data-icon="ri:send-plane-fill" class="iconify mr-2 w-5 h-5" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13M22 2l-7 20l-4-9l-9-4l20-7z" fill="currentColor"></path></svg> Submit Booking Request';
+      }
+    });
+  </script>
+</body>
+</html>
