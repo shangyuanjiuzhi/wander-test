@@ -269,139 +269,78 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-white py-12">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <div class="flex items-center gap-2 mb-4">
-            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-            <span class="text-xl font-bold italic">Wander Any Place</span>
-          </div>
-          <p class="text-gray-400 text-sm">Your ultimate guide to exploring China</p>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
         </div>
+
         <div>
-          <h4 class="font-semibold mb-4">Quick Links</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
             <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Essential Apps</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
             <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold mb-4">Resources</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Travel Tips</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Contact Us</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Feedback</a></li>
-          </ul>
+
+          <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@126.com</p>
+          <p class="text-slate-400">Phone: +86 13146113272</p>
         </div>
-        <div>
-          <h4 class="font-semibold mb-4">Contact</h4>
-          <p class="text-gray-400 text-sm mb-2">Email: info@wanderanyplace.com</p>
-          <p class="text-gray-400 text-sm">We're here to help with your China travel plans!</p>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-        <p>© 2024 Wander Any Place. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Packing list data for different destinations
+    // Season-specific clothing items
+    const seasonItems = {
+      spring: ["Light jacket", "Raincoat/Windbreaker","Hoodie","Long pants"],
+      summer: ["Hat","Raincoat/Windbreaker","T-shirt","Shorts","Rain boots","Sandals","Skirt"],
+      autumn: ["Light jacket", "Windbreaker","Windproof jacket","Long pants","Hoodie"],
+      winter: ["Heavy coat", "Scarf","Gloves","Warm clothes"]
+    };
+
+    // Destination names
     const packingData = {
-      beijing: {
-        name: "Beijing",
-        seasonItems: {
-          spring: ["Light jacket", "Comfortable walking shoes", "Umbrella", "Sunscreen"],
-          summer: ["Light clothing", "Hat", "Sunglasses", "Sunblock", "Mosquito repellent"],
-          autumn: ["Layered clothing", "Scarf", "Comfortable shoes", "Camera"],
-          winter: ["Heavy coat", "Thermal underwear", "Gloves", "Hat", "Mouth mask"]
-        },
-        specialItems: ["Comfortable walking shoes for sightseeing", "Face mask for smog", "Power bank"]
-      },
-      shanghai: {
-        name: "Shanghai",
-        seasonItems: {
-          spring: ["Light jacket", "Raincoat", "Comfortable shoes"],
-          summer: ["Light clothing", "Hat", "Sunglasses", "Sunblock", "Mosquito repellent"],
-          autumn: ["Light jacket", "Scarf", "Comfortable shoes"],
-          winter: ["Warm coat", "Thermal underwear", "Scarf", "Gloves"]
-        },
-        specialItems: ["Business casual attire", "Comfortable walking shoes", "Umbrella"]
-      },
-      xian: {
-        name: "Xi'an",
-        seasonItems: {
-          spring: ["Light jacket", "Comfortable walking shoes", "Sunscreen"],
-          summer: ["Light clothing", "Hat", "Sunglasses", "Sunblock"],
-          autumn: ["Layered clothing", "Comfortable shoes", "Camera"],
-          winter: ["Heavy coat", "Thermal underwear", "Hat", "Gloves"]
-        },
-        specialItems: ["Comfortable walking shoes for terra-cotta warriors", "Sunscreen", "Hat"]
-      },
-      chengdu: {
-        name: "Chengdu",
-        seasonItems: {
-          spring: ["Light jacket", "Raincoat", "Comfortable shoes"],
-          summer: ["Light clothing", "Hat", "Sunblock", "Mosquito repellent"],
-          autumn: ["Light jacket", "Comfortable shoes"],
-          winter: ["Warm coat", "Scarf"]
-        },
-        specialItems: ["Comfortable shoes for hiking", "Umbrella", "Snacks for pandas"]
-      },
-      hangzhou: {
-        name: "Hangzhou",
-        seasonItems: {
-          spring: ["Light jacket", "Raincoat", "Comfortable shoes"],
-          summer: ["Light clothing", "Hat", "Sunglasses", "Sunblock", "Mosquito repellent"],
-          autumn: ["Light jacket", "Comfortable shoes"],
-          winter: ["Warm coat", "Scarf"]
-        },
-        specialItems: ["Comfortable walking shoes", "Umbrella", "Camera for West Lake"]
-      },
-      guilin: {
-        name: "Guilin",
-        seasonItems: {
-          spring: ["Light jacket", "Raincoat", "Comfortable shoes"],
-          summer: ["Light clothing", "Hat", "Sunglasses", "Sunblock", "Mosquito repellent"],
-          autumn: ["Light jacket", "Comfortable shoes"],
-          winter: ["Warm coat", "Scarf"]
-        },
-        specialItems: ["Comfortable shoes for hiking", "Umbrella", "Camera", "Sunscreen"]
-      },
-      lijiang: {
-        name: "Lijiang",
-        seasonItems: {
-          spring: ["Light jacket", "Comfortable hiking shoes", "Sunscreen"],
-          summer: ["Light clothing", "Hat", "Sunblock", "Raincoat"],
-          autumn: ["Layered clothing", "Comfortable shoes", "Camera"],
-          winter: ["Heavy coat", "Thermal underwear", "Hat", "Gloves"]
-        },
-        specialItems: ["Hiking boots", "Sunscreen", "Hat", "Camera"]
-      },
-      zhangjiajie: {
-        name: "Zhangjiajie",
-        seasonItems: {
-          spring: ["Light jacket", "Comfortable hiking shoes", "Raincoat", "Sunscreen"],
-          summer: ["Light clothing", "Hat", "Sunblock", "Mosquito repellent", "Raincoat"],
-          autumn: ["Layered clothing", "Comfortable hiking shoes", "Camera"],
-          winter: ["Heavy coat", "Thermal underwear", "Hat", "Gloves", "Non-slip shoes"]
-        },
-        specialItems: ["Hiking boots", "Raincoat", "Sunscreen", "Water bottle", "Snacks"]
-      }
+      beijing: { name: "Beijing" },
+      shanghai: { name: "Shanghai" },
+      xian: { name: "Xi'an" },
+      chengdu: { name: "Chengdu" },
+      hangzhou: { name: "Hangzhou" },
+      guilin: { name: "Guilin" },
+      lijiang: { name: "Lijiang" },
+      zhangjiajie: { name: "Zhangjiajie" }
     };
 
     // Basic items for all trips
     const basicItems = {
-      documents: ["Passport / ID Card", "Visa (if required)", "Flight tickets", "Hotel reservations", "Travel insurance", "Driver's license (if renting car)"],
-      toiletries: ["Toothbrush & toothpaste", "Shampoo & conditioner", "Soap / body wash", "Deodorant", "Sunscreen", "Moisturizer", "Toilet paper", "Feminine products", "Razor", "Hairbrush / comb"],
-      medications: ["Prescription medications", "Pain relievers", "Cold medicine", "Diarrhea medicine", "Band-aids", "Motion sickness pills"],
-      electronics: ["Phone & charger", "Power bank", "Universal adapter", "Camera & accessories", "Headphones", "Laptop (optional)"],
-      clothing: ["Underwear", "Socks", "Shirts / blouses", "Pants / skirts", "Jacket / sweater", "Sleepwear", "Swimsuit (if needed)", "Comfortable shoes", "Formal wear (optional)"],
-      other: ["Wallet & cash", "Credit cards", "Umbrella / raincoat", "Water bottle", "Snacks", "Reusable tote bag", "Lock for luggage"]
+      documents: ["Passport / ID Card", "Visa (if required)","Student ID (if applicable)", "Flight tickets", "Hotel reservations", "Travel insurance", "Driver's license (if renting car)"],
+      toiletries: ["Toothbrush & toothpaste", "Shampoo & conditioner", "Soap / body wash", "Deodorant", "Sunscreen(Summer)", "Moisturizer", "Toilet paper/tissues/disposable towels", "Feminine products", "Razor", "Hairbrush / comb","Dental floss","Facial cleanser","Cotton pads","Hair ties","Antiperspirant","Perfume","Cosmetics","Body lotion/Face mask/Hand cream/Lip balm","Curling iron/Straightener","Disposable toilet seat cover/Disposable bed sheet"],
+      medications: ["Prescription medications", "Pain relievers", "Cold medicine", "Diarrhea medicine", "Band-aids", "Motion sickness pills","Vitamins (if needed)","Eye drops","Digestion tablets"],
+      electronics: ["Phone & charger", "Power bank", "Universal adapter", "Camera & accessories(memory card, SD card, card reader)", "Headphones", "Laptop/Pad (optional)","Data cable/Selfie stick/Tripod","USB drive"],
+      clothing: ["Underwear", "Socks",  "Sleepwear", "Swimsuit (if needed)", "Comfortable shoes", "Formal wear (optional)"],
+      other: ["Wallet & cash", "Credit cards", "Umbrella / raincoat", "Water bottle", "Snacks", "Reusable tote bag", "Lock for luggage","Cotton swabs","Contact lenses & solution","Face masks","Eco-friendly chopsticks & spoon","SIM card ejector tool","Watch","Sunglasses","Insulated water bottle","Insect repellent (Spring/Summer)"]
     };
 
     // Get season from date
@@ -417,6 +356,21 @@
     function getSeasonName(season) {
       const names = { spring: "Spring", summer: "Summer", autumn: "Autumn", winter: "Winter" };
       return names[season];
+    }
+
+    // Check if travel dates span multiple seasons
+    function getSeasonsSpanned(departureDate, returnDate) {
+      const depart = new Date(departureDate);
+      const returnD = new Date(returnDate);
+      const seasons = new Set();
+      
+      const current = new Date(depart);
+      while (current <= returnD) {
+        seasons.add(getSeason(current));
+        current.setDate(current.getDate() + 1);
+      }
+      
+      return Array.from(seasons);
     }
 
     // Simplify weather text - English only with standardized format
@@ -613,7 +567,7 @@
       loadingSpinner.classList.remove('hidden');
 
       const season = getSeason(departDate);
-      const destination = packingData[selectedDestination];
+      const destName = packingData[selectedDestination]?.name || selectedDestination;
       const tripDays = Math.ceil((returnDt - departDate) / (1000 * 60 * 60 * 24)) || 3;
 
       let aiSuggestions = null;
@@ -621,6 +575,8 @@
         const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
           ? 'http://localhost:3001/api/packing-suggestions'
           : '/api/packing-suggestions';
+        console.log('Calling API:', apiUrl);
+        console.log('Request body:', { destination: selectedDestination, departureDate, returnDate });
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
@@ -632,12 +588,17 @@
             returnDate
           })
         });
+        console.log('Response status:', response.status);
         
         if (response.ok) {
           const data = await response.json();
+          console.log('API Response:', data);
           aiSuggestions = data.suggestions;
+        } else {
+          console.log('API returned error:', await response.text());
         }
       } catch (error) {
+        console.error('API Error:', error);
         console.log('API not available, using default data');
       }
 
@@ -645,25 +606,40 @@
       btnContent.innerHTML = '<span class="iconfont icon-search text-xl mr-2"></span> Generate My Checklist';
       loadingSpinner.classList.add('hidden');
 
+      // Check if travel spans multiple seasons
+      const seasonsSpanned = getSeasonsSpanned(departureDate, returnDate);
+      const isMultiSeason = seasonsSpanned.length > 1;
+      const displaySeason = seasonsSpanned[0]; // Use first season for default items
+
       let checklistHTML = `
         <div class="mb-6 p-4 bg-rose-50 rounded-lg">
           <div class="flex flex-wrap gap-4 text-slate-700">
-            <span><strong>Destination:</strong> ${destination.name}</span>
-            <span><strong>Season:</strong> ${getSeasonName(season)}</span>
+            <span><strong>Destination:</strong> ${destName}</span>
+            <span><strong>Season:</strong> ${getSeasonName(displaySeason)}</span>
             <span><strong>Dates:</strong> ${departureDate} to ${returnDate}</span>
           </div>
         </div>
       `;
 
+      if (isMultiSeason) {
+        checklistHTML += `
+          <div class="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <p class="text-amber-700 text-sm">
+              <strong>Note:</strong> Your travel dates span ${seasonsSpanned.length} seasons (${seasonsSpanned.map(s => getSeasonName(s)).join(', ')}). 
+              Default clothing suggestions are based on the starting season (${getSeasonName(displaySeason)}).
+            </p>
+          </div>
+        `;
+      }
+
       if (aiSuggestions && aiSuggestions.weather) {
-        const simplifiedWeather = simplifyWeather(aiSuggestions.weather);
         checklistHTML += `
           <div class="mb-6 p-4 bg-blue-50 rounded-lg">
             <h4 class="font-semibold text-blue-800 mb-2 flex items-center">
               <span class="iconfont icon-weather text-blue-600 mr-2"></span>
               Weather Overview
             </h4>
-            <p class="text-blue-700">${simplifiedWeather}</p>
+            <p class="text-blue-700">${aiSuggestions.weather}</p>
           </div>
         `;
       }
@@ -686,23 +662,34 @@
         toiletries: 'Toiletries',
         medications: 'Medications',
         electronics: 'Electronics',
-        clothing: 'Clothing (AI Recommended)',
-        other: 'Other Essentials (AI Recommended)'
+        clothing: 'Clothing',
+        other: 'Other Essentials'
       };
 
       Object.keys(basicItems).forEach(category => {
         let items = basicItems[category];
         
-        if (category === 'clothing' && aiSuggestions && aiSuggestions.clothing && aiSuggestions.clothing.length > 0) {
-          items = aiSuggestions.clothing;
-          // Add destination-specific items
-          const destSpecificItems = destination.seasonItems[season] || [];
-          const specialItems = destination.specialItems || [];
-          items = [...items, ...destSpecificItems, ...specialItems];
-        }
-        
-        if (category === 'other' && aiSuggestions && aiSuggestions.essentials && aiSuggestions.essentials.length > 0) {
-          items = aiSuggestions.essentials;
+        // Add clothing items - prioritize AI recommendations, fallback to season-specific items
+        if (category === 'clothing') {
+          let additionalItems = [];
+          
+          // First try AI recommendations
+          if (aiSuggestions && aiSuggestions.weather) {
+            const weatherText = aiSuggestions.weather;
+            const clothingMatch = weatherText.match(/Recommended clothing:\s*([^.]+)/i);
+            if (clothingMatch) {
+              const clothingStr = clothingMatch[1].trim();
+              additionalItems = clothingStr.split(/[,，]/).map(item => item.trim().replace(/^and\s+/i, '')).filter(item => item.length > 0);
+            }
+          }
+          
+          // Fallback to season-specific items if no AI recommendations
+          if (additionalItems.length === 0) {
+            const destSpecificItems = seasonItems[displaySeason] || [];
+            additionalItems = destSpecificItems;
+          }
+          
+          items = [...items, ...additionalItems];
         }
 
         checklistHTML += `
