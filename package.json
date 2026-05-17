@@ -2,7 +2,9 @@
   "name": "wander-any-place",
   "version": "1.0.0",
   "description": "Travel website for China destinations",
+  "private": true,
   "dependencies": {
-    "openai": "^4.0.0"
+    "openai": "^4.0.0",
+    "resend": "^3.0.0"
   }
 }
