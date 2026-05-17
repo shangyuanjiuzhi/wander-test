@@ -621,7 +621,8 @@
         </div>
       `;
 
-      if (isMultiSeason) {
+      // Only show multi-season warning when AI is not available
+      if (isMultiSeason && !aiSuggestions) {
         checklistHTML += `
           <div class="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
             <p class="text-amber-700 text-sm">
@@ -672,14 +673,22 @@
         // Add clothing items - prioritize AI recommendations, fallback to season-specific items
         if (category === 'clothing') {
           let additionalItems = [];
-          
+
+          // Non-clothing items to exclude from AI recommendations
+          const nonClothingItems = ['umbrella', 'raincoat', 'rain coat', 'sunglasses', 'sunscreen', 'sunblock'];
+
           // First try AI recommendations
           if (aiSuggestions && aiSuggestions.weather) {
             const weatherText = aiSuggestions.weather;
             const clothingMatch = weatherText.match(/Recommended clothing:\s*([^.]+)/i);
             if (clothingMatch) {
               const clothingStr = clothingMatch[1].trim();
-              additionalItems = clothingStr.split(/[,，]/).map(item => item.trim().replace(/^and\s+/i, '')).filter(item => item.length > 0);
+              additionalItems = clothingStr.split(/[,，]/).map(item => item.trim().replace(/^and\s+/i, '')).filter(item => {
+                // Filter out non-clothing items (case insensitive)
+                const itemLower = item.toLowerCase();
+                const isNonClothing = nonClothingItems.some(nonItem => itemLower.includes(nonItem));
+                return item.length > 0 && !isNonClothing;
+              });
             }
           }
           
