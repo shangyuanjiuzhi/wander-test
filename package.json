@@ -4,7 +4,9 @@
   "description": "Travel website for China destinations",
   "private": true,
   "dependencies": {
-    "openai": "^4.0.0",
-    "resend": "^3.0.0"
+    "openai": "^4.52.0"
+  },
+  "overrides": {
+    "glob": "^11.0.0"
   }
 }
