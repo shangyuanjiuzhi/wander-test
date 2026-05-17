@@ -680,15 +680,19 @@
           // First try AI recommendations
           if (aiSuggestions && aiSuggestions.weather) {
             const weatherText = aiSuggestions.weather;
+            console.log('AI Weather Text:', weatherText);
             const clothingMatch = weatherText.match(/Recommended clothing:\s*([^.]+)/i);
             if (clothingMatch) {
               const clothingStr = clothingMatch[1].trim();
+              console.log('Clothing String:', clothingStr);
               additionalItems = clothingStr.split(/[,，]/).map(item => item.trim().replace(/^and\s+/i, '')).filter(item => {
                 // Filter out non-clothing items (case insensitive)
                 const itemLower = item.toLowerCase();
                 const isNonClothing = nonClothingItems.some(nonItem => itemLower.includes(nonItem));
+                console.log('Item:', item, '- Non-clothing:', isNonClothing);
                 return item.length > 0 && !isNonClothing;
               });
+              console.log('Filtered additionalItems:', additionalItems);
             }
           }
           
