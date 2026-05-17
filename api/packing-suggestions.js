@@ -77,59 +77,29 @@ function getSeasonCN(season) {
 }
 
 function parseAIResponse(responseText) {
-  const sections = responseText.split(/[\n\r]+/).filter(line => line.trim());
-  const result = { weather: '', clothing: [], essentials: [], tips: '' };
-
-  let currentSection = null;
-  let weatherLines = [];
-
-  sections.forEach(line => {
-    const trimmedLine = line.trim();
-    if (!trimmedLine) return;
-
-    if (trimmedLine.toLowerCase().includes('temperature') || trimmedLine.includes('°C') ||
-        trimmedLine.toLowerCase().includes('weather') || trimmedLine.toLowerCase().includes('climate') ||
-        trimmedLine.toLowerCase().includes('average') || trimmedLine.toLowerCase().includes('daytime') ||
-        trimmedLine.toLowerCase().includes('nighttime') || trimmedLine.toLowerCase().includes('humidity') ||
-        trimmedLine.toLowerCase().includes('rain') || trimmedLine.toLowerCase().includes('wind') ||
-        trimmedLine.toLowerCase().includes('sunny') || trimmedLine.toLowerCase().includes('cloudy')) {
-      currentSection = 'weather';
-      weatherLines.push(trimmedLine);
-    } else if (trimmedLine.toLowerCase().includes('clothing') || trimmedLine.toLowerCase().includes('clothes') ||
-               trimmedLine.toLowerCase().includes('shirt') || trimmedLine.toLowerCase().includes('pants') ||
-               trimmedLine.toLowerCase().includes('jacket') || trimmedLine.toLowerCase().includes('shoes')) {
-      currentSection = 'clothing';
-    } else if (trimmedLine.toLowerCase().includes('essential') || trimmedLine.toLowerCase().includes('accessories') ||
-               trimmedLine.toLowerCase().includes('gadgets') || trimmedLine.toLowerCase().includes('items') ||
-               trimmedLine.toLowerCase().includes('personal')) {
-      currentSection = 'essentials';
-    } else if (trimmedLine.toLowerCase().includes('tips') || trimmedLine.toLowerCase().includes('note')) {
-      currentSection = 'tips';
-    } else if (currentSection === 'clothing' && (trimmedLine.match(/^[-•*]\s*(.+)/) || trimmedLine.match(/^\d+[.)]\s*(.+)/))) {
-      const item = trimmedLine.replace(/^[-•*]\s*/, '').replace(/^\d+[.)]\s*/, '').trim();
-      if (item && !result.clothing.includes(item)) result.clothing.push(item);
-    } else if (currentSection === 'essentials' && (trimmedLine.match(/^[-•*]\s*(.+)/) || trimmedLine.match(/^\d+[.)]\s*(.+)/))) {
-      const item = trimmedLine.replace(/^[-•*]\s*/, '').replace(/^\d+[.)]\s*/, '').trim();
-      if (item && !result.essentials.includes(item)) result.essentials.push(item);
-    } else if (currentSection === 'tips' && trimmedLine) {
-      result.tips += trimmedLine + ' ';
-    }
-  });
-
-  result.weather = weatherLines.join(' ');
+  const result = { weather: responseText, clothing: [], essentials: [] };
+  
+  // Extract clothing suggestions from response
+  const clothingMatch = responseText.match(/Recommended clothing:\s*([^.]+)/i);
+  if (clothingMatch) {
+    const clothingStr = clothingMatch[1].trim();
+    // Split by commas and clean up
+    result.clothing = clothingStr.split(/[,，]/).map(item => item.trim()).filter(item => item.length > 0);
+  }
+  
   return result;
 }
 
 module.exports = async function handler(req, res) {
   console.log('API called with method:', req.method);
-  
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const { destination, departureDate, returnDate } = req.body;
-    
+
     console.log('Received parameters:', { destination, departureDate, returnDate });
 
     if (!destination || !departureDate || !returnDate) {
@@ -144,53 +114,58 @@ module.exports = async function handler(req, res) {
     const season = getSeason(departureDate);
     const seasonCN = getSeasonCN(season);
 
-    const standardWeatherDesc = (standardWeather[destination] && standardWeather[destination][season]) 
+    const standardWeatherDesc = (standardWeather[destination] && standardWeather[destination][season])
       ? standardWeather[destination][season]
       : 'Temperature: 15-25°C · Day: 20°C · Night: 12°C · Variable weather';
 
-    const prompt = `A user plans to travel to ${destInfo.name} from ${departureDate} to ${returnDate}. The season during this period is ${seasonCN}.
+    const prompt = `You are a professional historical weather data analyst. Only output data statistics, no extra explanations or introductions.
 
-Based on historical weather data from the past 2 years for ${destInfo.name} during ${seasonCN}:
+Input: A user plans to travel to ${destInfo.name} from ${departureDate} to ${returnDate}.
+
+Output format (English only, one single sentence):
+Based on historical weather data from the past 2 years for ${destInfo.name} during this period: Average temperature ranges from {min}°C to {max}°C. Recommended clothing: {1-5 specific clothing items}. Historical weather conditions are mainly {dominant weather pattern}.
 
 Requirements:
-1. Weather: First line must start with "Temperature:" and include: temperature range (e.g., 15-28°C), average daytime temp (e.g., Day: 22°C), average nighttime temp (e.g., Night: 10°C), and weather conditions (rain, wind, humidity, sunny, cloudy, etc.)
-2. Clothing: List 8-12 specific clothing items suitable for this weather (e.g., long sleeve shirts, jeans, light jacket, rain jacket, etc.)
-3. Essentials: List 8-12 essential items (accessories, protective gear, practical gadgets)
-4. Use bullet points (-) for clothing and essentials lists
-5. Reply in English only, keep it concise`;
+1. Min temperature: Average minimum from past 2 years during ${departureDate} to ${returnDate}
+2. Max temperature: Average maximum from past 2 years during ${departureDate} to ${returnDate}
+3. Clothing: List 1-5 specific clothing items based on the temperature range
+4. Weather conditions: The most common weather pattern (e.g., sunny, cloudy, rainy, humid)
+5. Reply in English only, one single sentence`;
 
     console.log('API Key available:', !!process.env.DEEPSEEK_API_KEY);
-    
+
     const deepseekClient = new OpenAI({
       baseURL: 'https://api.deepseek.com',
       apiKey: process.env.DEEPSEEK_API_KEY
     });
 
     console.log('Calling DeepSeek API...');
-    
+
     const completion = await deepseekClient.chat.completions.create({
       model: 'deepseek-chat',
       messages: [
         {
           role: 'system',
-          content: 'You are a professional travel packing consultant. Provide accurate and specific clothing suggestions based on weather conditions. Format your response clearly.'
+          content: 'You are a professional historical weather data analyst. Only output data statistics in the exact format requested. No explanations, no introductions, no multiple lines.'
         },
         {
           role: 'user',
           content: prompt
         }
       ],
-      temperature: 0.7,
-      max_tokens: 1500
+      temperature: 0.3,
+      max_tokens: 200
     });
 
     console.log('DeepSeek API response received');
     console.log('AI Response:', completion.choices[0].message.content);
-    
+
     const aiResponse = completion.choices[0].message.content;
     const parsedResponse = parseAIResponse(aiResponse);
     
-    if (!parsedResponse.weather || !parsedResponse.weather.includes('Temperature')) {
+    console.log('Parsed clothing items:', parsedResponse.clothing);
+
+    if (!parsedResponse.weather || parsedResponse.weather.length < 10) {
       console.log('Using standard weather data');
       parsedResponse.weather = standardWeatherDesc;
     }
