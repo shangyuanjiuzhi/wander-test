@@ -41,30 +41,39 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800">
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center">
-          <a href="../index.html" class="flex items-center space-x-2">
-            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-            <span class="text-xl font-bold">Wander Any Place</span>
-          </a>
-        </div>
-        <div class="hidden md:flex items-center space-x-8 text-black font-medium">
-          <a class="hover:text-rose-400 transition-colors" href="../index.html">Home</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.Destination.html">Destinations</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.booking.html">Booking Services</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.aboutus.html">About Us</a>
-        </div>
+<body class="bg-white font-sans text-slate-800">
+  <!-- 顶部导航 -->
+  <header class="mobile-header-nav" style="background: black; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #F43F5E;"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+        <span style="color: white;">Wander Any Place</span>
       </div>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../index.html" style="color: white;">Home</a>
+        <a href="2.Destination.html" style="color: white;">Destinations</a>
+        <a href="2.booking.html" style="color: white;">Booking Services</a>
+        <a href="2.aboutus.html" style="color: white;">About Us</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
 
-  <section class="bg-gradient-rose text-white py-16">
-    <div class="max-w-7xl mx-auto px-6">
+  <header class="bg-rose-600 text-white py-24" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
       <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4 text-shadow">About Us</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
         <p class="text-xl max-w-3xl mx-auto">Discover who we are and our mission to make your China journey unforgettable</p>
       </div>
     </div>
@@ -115,38 +124,38 @@
       <div class="bg-slate-50 p-8 rounded-xl shadow-md">
         <div class="space-y-6">
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-             <i class="iconfont icon-xinxikongxin text-rose-600 text-xl"></i> 
+            <div class="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+             <i class="iconfont icon-xinxikongxin text-white text-xl"></i> 
             </div>
             <div>
-              <h3 class="font-semibold text-lg mb-1">Travel Information</h3>
+              <h3 class="font-semibold text-lg mb-1 text-gray-800">Travel Information</h3>
               <p class="text-slate-600">Comprehensive guides on visa requirements, essential apps, payment methods, transportation options, and packing essentials.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="iconfont icon-6 text-rose-600 text-xl"></i> 
+            <div class="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="iconfont icon-6 text-white text-xl"></i> 
             </div>
             <div>
-              <h3 class="font-semibold text-lg mb-1">Booking Services</h3>
+              <h3 class="font-semibold text-lg mb-1 text-gray-800">Booking Services</h3>
               <p class="text-slate-600">From train ticket booking to car charters, temporary driver's licenses to scenic spot interpreters — we handle the logistics so you can focus on the experience.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="iconfont icon-fenxiang text-rose-600 text-xl"></i> 
+            <div class="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="iconfont icon-fenxiang text-white text-xl"></i> 
             </div>
             <div>
-              <h3 class="font-semibold text-lg mb-1">Community-Driven</h3>
+              <h3 class="font-semibold text-lg mb-1 text-gray-800">Community-Driven</h3>
               <p class="text-slate-600">Looking ahead, we plan to expand our platform with user-generated content, allowing travelers to share experiences and contribute to our information base.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <i class="iconfont icon-renwu text-rose-600 text-xl"></i> 
+            <div class="w-10 h-10 bg-rose-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="iconfont icon-renwu text-white text-xl"></i> 
             </div>
             <div>
-              <h3 class="font-semibold text-lg mb-1">OTA Integration</h3>
+              <h3 class="font-semibold text-lg mb-1 text-gray-800">OTA Integration</h3>
               <p class="text-slate-600">We aim to integrate OTA services to provide a seamless booking experience, connecting you with the best accommodation and activity options in China.</p>
             </div>
           </div>
@@ -275,9 +284,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 

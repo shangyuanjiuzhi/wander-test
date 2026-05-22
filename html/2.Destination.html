@@ -11,26 +11,35 @@
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
-  <header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center">
-          <a href="../index.html" class="flex items-center space-x-2">
-            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-            <span class="text-xl font-bold">Wander Any Place</span>
-          </a>
-        </div>
-        <div class="hidden md:flex items-center space-x-8 text-black font-medium">
-          <a class="hover:text-rose-400 transition-colors" href="../index.html">Home</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.Destination.html">Destinations</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.booking.html">Booking Services</a>
-          <a class="hover:text-rose-400 transition-colors" href="2.aboutus.html">About Us</a>
-        </div>
+  <!-- 顶部导航 -->
+  <header class="mobile-header-nav" style="background: black; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #F43F5E;"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+        <span style="color: white;">Wander Any Place</span>
       </div>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../index.html" style="color: white;">Home</a>
+        <a href="2.Destination.html" style="color: white;">Destinations</a>
+        <a href="2.booking.html" style="color: white;">Booking Services</a>
+        <a href="2.aboutus.html" style="color: white;">About Us</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
 
-  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16">
+  <header class="bg-red-500 text-white py-16" style="margin-top: 70px;">
     <div class="max-w-7xl mx-auto px-6 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Explore China</h1>
       <p class="text-lg text-white/90 max-w-2xl mx-auto">
@@ -678,9 +687,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 
@@ -748,9 +757,13 @@
 function toggleMobileMenu() {
   const mobileNav = document.getElementById('mobileNav');
   const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
   if (mobileNav && menuBtn) {
     mobileNav.classList.toggle('active');
     menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
   }
 }
 </script>

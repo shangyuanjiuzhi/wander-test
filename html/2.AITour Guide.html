@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tour Guide - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    .category-btn {
+      transition: all 0.3s ease;
+    }
+    .category-btn.active {
+      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+    }
+    .selection-card {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .selection-card:hover {
+      background: #f9fafb;
+    }
+    .selection-card.selected {
+      background: #fff1f2;
+    }
+    .selection-card.selected td {
+      background: #fff1f2;
+    }
+    .loading-spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #f43f5e;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .itinerary-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-left: 4px solid #f43f5e;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: #f43f5e;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+  <nav class="mobile-header-nav">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao"></i>
+        <span>Wander Any Place</span>
+      </div>
+      <div class="desktop-nav" id="desktopNavLinks">
+        <a href="../../index.html">Home</a>
+        <a href="2.Destination.html">Destinations</a>
+        <a href="2.booking.html">Booking Services</a>
+        <a href="2.aboutus.html">About Us</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">AI Tour Guide</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Create your personalized Beijing itinerary with AI-powered recommendations
+      </p>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <!-- 表单区域 -->
+    <div id="formSection" class="bg-white rounded-2xl shadow-lg p-8">
+      <!-- 目的地选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-dingwei1 text-rose-600 mr-2"></span>
+          Destination
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <label class="selection-card relative p-4 border-2 border-gray-200 rounded-xl flex items-center justify-center cursor-pointer selected">
+            <input type="radio" name="destination" value="beijing" checked class="hidden">
+            <span class="font-medium">Beijing</span>
+            <span class="check-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 日期选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-shijian text-rose-600 mr-2"></span>
+          Travel Dates
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Departure Date</label>
+            <input type="date" id="departureDate" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rose-500 focus:outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Return Date</label>
+            <input type="date" id="returnDate" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rose-500 focus:outline-none transition-colors">
+          </div>
+        </div>
+      </div>
+
+      <!-- 景点选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-jingdian text-rose-600 mr-2"></span>
+          Select Attractions
+        </h3>
+        
+        <!-- 景点分类标签 -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button class="category-btn active px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="imperial">Imperial Relics</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="park">Special Parks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="shopping">Shopping Malls</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="museum">Museums</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="landmark">City Landmarks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="temple">Temples</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="hiking">Hiking Spots</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="entertainment">Entertainment</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="villages">Village Tours</button>
+        </div>
+        
+        <!-- 景点列表 -->
+        <div id="attractionsList" class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="px-4 py-3 text-left text-sm font-semibold text-slate-700 border-b">Attraction</th>
+                <th class="px-4 py-3 text-left text-sm font-semibold text-slate-700 border-b">Duration</th>
+                <th class="px-4 py-3 text-center text-sm font-semibold text-slate-700 border-b">Select</th>
+              </tr>
+            </thead>
+            <tbody id="attractionsTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 餐饮选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-canyin text-rose-600 mr-2"></span>
+          Select Food & Dining
+        </h3>
+        
+        <!-- 餐饮分类标签 -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button class="category-btn active px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-specialties">Local Specialties</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-desserts">Royal Desserts</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-snacks">Hidden Gem Snacks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-michelin">Michelin Restaurants</button>
+        </div>
+        
+        <!-- 餐饮列表 -->
+        <div id="foodList" class="overflow-x-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="px-4 py-3 text-left text-sm font-semibold text-slate-700 border-b">Food & Dining</th>
+                <th class="px-4 py-3 text-center text-sm font-semibold text-slate-700 border-b">Select</th>
+              </tr>
+            </thead>
+            <tbody id="foodTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 生成按钮 -->
+      <div class="text-center">
+        <button id="generateBtn" onclick="generateItinerary()" class="bg-gradient-to-r from-rose-600 to-rose-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+          <span id="btnContent">
+            <span class="iconfont icon-a-21 pb-1 mr-2"></span>
+            Generate My Itinerary
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 加载状态 -->
+    <div id="loadingSection" class="hidden bg-white rounded-2xl shadow-lg p-12 text-center">
+      <div class="loading-spinner mx-auto mb-4"></div>
+      <p class="text-slate-600">AI is creating your personalized itinerary...</p>
+    </div>
+
+    <!-- 结果区域 -->
+    <div id="resultSection" class="hidden">
+    </div>
+  </main>
+
+  <script>
+    // Attractions data
+    const attractionsData = {
+      attractions: [
+        // Imperial Relics (17)
+        { id: 'great-wall', name: 'Great Wall of China', time: '4-6 hours', category: 'imperial' },
+        { id: 'forbidden-city', name: 'Forbidden City', time: '3-4 hours', category: 'imperial' },
+        { id: 'summer-palace', name: 'Summer Palace', time: '2-3 hours', category: 'imperial' },
+        { id: 'temple-of-heaven', name: 'Temple of Heaven', time: '2-3 hours', category: 'imperial' },
+        { id: 'tiananmen-square', name: 'Tiananmen Square', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuanmingyuan', name: 'Yuanmingyuan (Old Summer Palace)', time: '2-3 hours', category: 'imperial' },
+        { id: 'jingshan-park', name: 'Jingshan Park', time: '1 hour', category: 'imperial' },
+        { id: 'ming-tombs', name: 'Ming Tombs', time: '2-3 hours', category: 'imperial' },
+        { id: 'beihai-park', name: 'Beihai Park', time: '2-3 hours', category: 'imperial' },
+        { id: 'confucius-temple', name: 'Confucius Temple and Guozijian', time: '1-2 hours', category: 'imperial' },
+        { id: 'ditan-park', name: 'Ditan Park', time: '1-2 hours', category: 'imperial' },
+        { id: 'zhongshan-park', name: 'Zhongshan Park', time: '1 hour', category: 'imperial' },
+        { id: 'ritan-park', name: 'Ritan Park', time: '1 hour', category: 'imperial' },
+        { id: 'xiannongtan', name: 'Xiannongtan (Temple of Agriculture)', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuetan-park', name: 'Yuetan Park (Temple of Moon)', time: '1-2 hours', category: 'imperial' },
+        { id: 'lugou-bridge', name: 'Lugou Bridge (Marco Polo Bridge)', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuandadu', name: 'Yuan Dadu City Wall Relics Park', time: '1-2 hours', category: 'imperial' },
+        // Special Parks (9)
+        { id: 'zhoukoudian', name: 'Zhoukoudian Peking Man Site', time: '2-3 hours', category: 'park' },
+        { id: 'fragrant-hills', name: 'Fragrant Hills Park', time: '3-4 hours', category: 'park' },
+        { id: 'olympic-forest-park', name: 'Beijing Olympic Forest Park', time: '2-3 hours', category: 'park' },
+        { id: 'yuyuantan-park', name: 'Yuyuantan Park', time: '2-3 hours', category: 'park' },
+        { id: 'national-botanical', name: 'National Botanical Garden', time: '2-3 hours', category: 'park' },
+        { id: 'grand-view-garden', name: 'Beijing Grand View Garden', time: '2-3 hours', category: 'park' },
+        { id: 'chaoyang-park', name: 'Chaoyang Park', time: '2-3 hours', category: 'park' },
+        { id: 'badachu-park', name: 'Badachu Park', time: '2-3 hours', category: 'park' },
+        { id: 'garden-expo-park', name: 'Beijing Garden Expo Park', time: '2-3 hours', category: 'park' },
+        // Shopping Malls (5)
+        { id: 'wangfujing', name: 'Wangfujing Pedestrian Street', time: '2-3 hours', category: 'shopping' },
+        { id: 'the-place', name: 'The Place', time: '1-2 hours', category: 'shopping' },
+        { id: 'xidan-commercial', name: 'Xidan Commercial Street', time: '2-3 hours', category: 'shopping' },
+        { id: 'sanlitun-taikoo', name: 'Sanlitun Taikoo Li', time: '2-3 hours', category: 'shopping' },
+        { id: 'blue-harbor', name: 'Blue Harbor', time: '1-2 hours', category: 'shopping' },
+        // Museums (3)
+        { id: 'national-museum', name: 'National Museum of China', time: '2-3 hours', category: 'museum' },
+        { id: 'capital-museum', name: 'Capital Museum', time: '2-3 hours', category: 'museum' },
+        { id: 'guanfu-museum', name: 'Guanfu Museum', time: '1-2 hours', category: 'museum' },
+        // City Landmarks (10)
+        { id: 'birds-nest', name: "Bird's Nest (National Stadium)", time: '1-2 hours', category: 'landmark' },
+        { id: 'water-cube', name: 'Water Cube (National Aquatics Center)', time: '1-2 hours', category: 'landmark' },
+        { id: '798-art', name: '798 Art District', time: '2-3 hours', category: 'landmark' },
+        { id: 'cctv-headquarters', name: 'CCTV Headquarters', time: '1-2 hours', category: 'landmark' },
+        { id: 'ncpa', name: 'National Centre for the Performing Arts', time: '1 hour', category: 'landmark' },
+        { id: 'galaxy-soho', name: 'Galaxy SOHO', time: '1-2 hours', category: 'landmark' },
+        { id: 'red-brick-art', name: 'Red Brick Art Museum', time: '1-2 hours', category: 'landmark' },
+        { id: 'cctv-tower', name: 'CCTV Tower', time: '1-2 hours', category: 'landmark' },
+        { id: 'song-art-museum', name: 'Song Art Museum', time: '1-2 hours', category: 'landmark' },
+        { id: 'shougang-park', name: 'Shougang Park', time: '2-3 hours', category: 'landmark' },
+        // Temples (6)
+        { id: 'lama-temple', name: 'Yonghe Temple (Lama Temple)', time: '1-2 hours', category: 'temple' },
+        { id: 'hongluo-temple', name: 'Hongluo Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'tanzhe-temple', name: 'Tanzhe Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'white-cloud-temple', name: 'Baiyun Guan (White Cloud Temple)', time: '1-2 hours', category: 'temple' },
+        { id: 'fayuan-temple', name: 'Fayuan Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'five-pagoda', name: 'Five Pagoda Temple (Wuta Si)', time: '1-2 hours', category: 'temple' },
+        // Hiking Spots (4)
+        { id: 'fangshan-shidu', name: 'Fangshan Shidu Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'yudu-mountain', name: 'Yudu Mountain Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'phoenix-ridge', name: 'Beijing Phoenix Ridge Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'longqingxia', name: 'Longqingxia', time: '3-4 hours', category: 'hiking' },
+        // Entertainment (5)
+        { id: 'beijing-happy-valley', name: 'Beijing Happy Valley', time: '3-4 hours', category: 'entertainment' },
+        { id: 'universal-beijing', name: 'Universal Beijing Resort', time: '4-5 hours', category: 'entertainment' },
+        { id: 'houhai-bar', name: 'Houhai Bar Street', time: '2-3 hours', category: 'entertainment' },
+        { id: 'sanlitun-nightclubs', name: 'Sanlitun Nightclubs', time: '2-3 hours', category: 'entertainment' },
+        { id: 'qushuilanting', name: 'Qushuilanting Bathhouse', time: '1-2 hours', category: 'entertainment' }
+      ],
+      villages: [
+        { id: 'cuandixia', name: 'Cuandixia Village', time: '4-5 hours', category: 'village' },
+        { id: 'lingshui', name: 'Lingshui Village', time: '3-4 hours', category: 'village' },
+        { id: 'gubei', name: 'Gubei Water Town', time: '4-5 hours', category: 'village' },
+        { id: 'liuliqu', name: 'Liuliqu Village', time: '3-4 hours', category: 'village' }
+      ]
+    };
+
+    // Food data
+    const foodData = {
+      'food-specialties': [
+        { id: 'hotpot', name: '老北京涮羊肉 Beijing Hot Pot' },
+        { id: 'peking-duck', name: '北京烤鸭 Peking Duck' },
+        { id: 'zhajiang', name: '炸酱面 Zhajiang Noodles' },
+        { id: 'zhizi', name: '炙子烤肉 Zhizi Roast Meat' }
+      ],
+      'food-desserts': [
+        { id: 'almond-tofu', name: '杏仁豆腐 Almond Tofu' },
+        { id: 'lvdagun', name: '驴打滚 Rolling Donkey' },
+        { id: 'wandouhuang', name: '豌豆黄 Pea Cake' },
+        { id: 'aiwowowo', name: '艾窝窝 Ai Wo Wo' }
+      ],
+      'food-snacks': [
+        { id: 'douzhi', name: '豆汁 Douzhi' },
+        { id: 'baodu', name: '爆肚儿 Bao Dur' },
+        { id: 'luzhu', name: '卤煮 Lu Zhu' },
+        { id: 'chaogan', name: '炒肝 Chao Gan' }
+      ],
+      'food-michelin': [
+        { id: 'chaoshangchao', name: '潮上潮 Chao Shang Chao' },
+        { id: 'xinrongji', name: '新荣记 Xin Rong Ji' },
+        { id: 'jingji', name: '京季 Jing Ji' },
+        { id: 'kingjoy', name: '京兆尹 King Joy' },
+        { id: 'lushanglu', name: '鲁上鲁 Lu Shang Lu' },
+        { id: 'wulixiang', name: '屋里厢 Wu Li Xiang' }
+      ]
+    };
+
+    // Selected items
+    let selectedAttractions = [];
+    let selectedFood = [];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAttractions('imperial');
+      renderFood('food-specialties');
+      setDefaultDates();
+      setupCategoryButtons();
+      setupSelectionCards();
+    });
+
+    // Set default dates
+    function setDefaultDates() {
+      const today = new Date();
+      const nextWeek = new Date(today);
+      nextWeek.setDate(today.getDate() + 7);
+      
+      document.getElementById('departureDate').value = today.toISOString().split('T')[0];
+      document.getElementById('returnDate').value = nextWeek.toISOString().split('T')[0];
+    }
+
+    // Setup category buttons
+    function setupCategoryButtons() {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const category = this.dataset.category;
+          const parent = this.closest('.mb-8');
+          
+          // Update active state
+          parent.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Render corresponding list
+          if (category === 'villages') {
+            renderAttractions('villages');
+          } else if (category === 'attractions') {
+            renderAttractions('imperial');
+          } else if (category.startsWith('food-')) {
+            renderFood(category);
+          } else {
+            renderAttractions(category);
+          }
+        });
+      });
+    }
+
+    // Render attractions
+    function renderAttractions(category) {
+      const container = document.getElementById('attractionsTableBody');
+      let items;
+      
+      if (category === 'villages') {
+        items = attractionsData.villages;
+      } else {
+        items = attractionsData.attractions.filter(item => item.category === category);
+      }
+      
+      container.innerHTML = items.map(item => `
+        <tr class="selection-card cursor-pointer hover:bg-gray-50 ${selectedAttractions.includes(item.id) ? 'selected' : ''}" data-id="${item.id}" data-type="attraction">
+          <td class="px-4 py-3 border-b">${item.name}</td>
+          <td class="px-4 py-3 border-b">${item.time}</td>
+          <td class="px-4 py-3 border-b text-center">
+            <div class="w-6 h-6 rounded-full border-2 ${selectedAttractions.includes(item.id) ? 'bg-rose-500 border-rose-500' : 'border-gray-300'} inline-flex items-center justify-center">
+              ${selectedAttractions.includes(item.id) ? '<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+      
+      setupSelectionCards();
+    }
+
+    // Render food
+    function renderFood(category) {
+      const container = document.getElementById('foodTableBody');
+      const items = foodData[category] || [];
+      
+      container.innerHTML = items.map(item => `
+        <tr class="selection-card cursor-pointer hover:bg-gray-50 ${selectedFood.includes(item.id) ? 'selected' : ''}" data-id="${item.id}" data-type="food">
+          <td class="px-4 py-3 border-b">${item.name}</td>
+          <td class="px-4 py-3 border-b text-center">
+            <div class="w-6 h-6 rounded-full border-2 ${selectedFood.includes(item.id) ? 'bg-rose-500 border-rose-500' : 'border-gray-300'} inline-flex items-center justify-center">
+              ${selectedFood.includes(item.id) ? '<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+      
+      setupSelectionCards();
+    }
+
+    // Setup selection cards
+    function setupSelectionCards() {
+      document.querySelectorAll('.selection-card').forEach(card => {
+        card.onclick = function() {
+          const id = this.dataset.id;
+          const type = this.dataset.type;
+          
+          if (type === 'attraction') {
+            if (selectedAttractions.includes(id)) {
+              selectedAttractions = selectedAttractions.filter(i => i !== id);
+              this.classList.remove('selected');
+            } else {
+              selectedAttractions.push(id);
+              this.classList.add('selected');
+            }
+          } else {
+            if (selectedFood.includes(id)) {
+              selectedFood = selectedFood.filter(i => i !== id);
+              this.classList.remove('selected');
+            } else {
+              selectedFood.push(id);
+              this.classList.add('selected');
+            }
+          }
+        };
+      });
+    }
+
+    // Generate itinerary
+    async function generateItinerary() {
+      const departureDate = document.getElementById('departureDate').value;
+      const returnDate = document.getElementById('returnDate').value;
+      
+      if (!departureDate || !returnDate) {
+        alert('Please select travel dates');
+        return;
+      }
+
+      if (selectedAttractions.length === 0 && selectedFood.length === 0) {
+        alert('Please select at least one attraction or food');
+        return;
+      }
+
+      // Show loading
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('loadingSection').classList.remove('hidden');
+
+      // Simulate AI generation
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Generate itinerary
+      const itinerary = generateRandomItinerary(departureDate, returnDate);
+
+      // Hide loading, show result
+      document.getElementById('loadingSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      document.getElementById('resultSection').innerHTML = itinerary;
+    }
+
+    // Generate random itinerary
+    function generateRandomItinerary(departureDate, returnDate) {
+      const startDate = new Date(departureDate);
+      const endDate = new Date(returnDate);
+      const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+      
+      let result = `
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6">Your Personalized Itinerary</h2>
+          <div class="space-y-6">
+      `;
+
+      for (let i = 0; i < Math.min(days, 7); i++) {
+        const currentDate = new Date(startDate);
+        currentDate.setDate(startDate.getDate() + i);
+        const dateStr = currentDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+        
+        // Get random attractions for this day
+        const dayAttractions = [];
+        const shuffledAttractions = [...selectedAttractions].sort(() => Math.random() - 0.5);
+        const numAttractions = Math.min(2, shuffledAttractions.length, 3);
+        
+        for (let j = 0; j < numAttractions && j < shuffledAttractions.length; j++) {
+          const attrId = shuffledAttractions[j];
+          const attr = attractionsData.attractions.find(a => a.id === attrId) || 
+                       attractionsData.villages.find(a => a.id === attrId);
+          if (attr) {
+            dayAttractions.push(attr);
+          }
+        }
+
+        // Get random food for this day
+        const shuffledFood = [...selectedFood].sort(() => Math.random() - 0.5);
+        const selectedFoodItem = shuffledFood[0] ? foodData['food-specialties'].find(f => f.id === shuffledFood[0]) || 
+                               foodData['food-desserts'].find(f => f.id === shuffledFood[0]) ||
+                               foodData['food-snacks'].find(f => f.id === shuffledFood[0]) ||
+                               foodData['food-michelin'].find(f => f.id === shuffledFood[0]) : null;
+
+        result += `
+          <div class="itinerary-card p-6">
+            <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-riqi text-rose-600 mr-2"></span>
+              Day ${i + 1}: ${dateStr}
+            </h3>
+            <div class="relative pl-6 border-l-2 border-gray-200">
+        `;
+
+        let timeSlot = 9;
+        dayAttractions.forEach((attr, idx) => {
+          const timeStr = `${timeSlot}:00 - ${timeSlot + Math.ceil(Math.random() * 2) + 1}:00`;
+          result += `
+            <div class="timeline-item relative mb-4">
+              <p class="text-sm text-slate-500">${timeStr}</p>
+              <p class="font-medium text-slate-800">${attr.name}</p>
+              <p class="text-sm text-slate-500">Duration: ${attr.time}</p>
+            </div>
+          `;
+          timeSlot += 3;
+        });
+
+        if (selectedFoodItem) {
+          result += `
+            <div class="timeline-item relative">
+              <p class="text-sm text-slate-500">Lunch/Dinner</p>
+              <p class="font-medium text-slate-800 flex items-center">
+                <span class="iconfont icon-canyin text-rose-600 mr-2"></span>
+                ${selectedFoodItem.name}
+              </p>
+            </div>
+          `;
+        }
+
+        result += `
+            </div>
+          </div>
+        `;
+      }
+
+      result += `
+          </div>
+          <button onclick="resetForm()" class="mt-6 w-full py-3 bg-gray-100 text-slate-700 rounded-xl font-medium hover:bg-gray-200 transition-colors">
+            Generate New Itinerary
+          </button>
+        </div>
+      `;
+
+      return result;
+    }
+
+    // Reset form
+    function resetForm() {
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('formSection').classList.remove('hidden');
+      selectedAttractions = [];
+      selectedFood = [];
+      setDefaultDates();
+      renderAttractions('imperial');
+      renderFood('food-specialties');
+      
+      // Reset category button active states
+      const attractionSection = document.querySelector('#formSection > div:nth-child(3)');
+      if (attractionSection) {
+        attractionSection.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const imperialBtn = attractionSection.querySelector('.category-btn[data-category="imperial"]');
+        if (imperialBtn) imperialBtn.classList.add('active');
+      }
+      
+      const foodSection = document.querySelector('#formSection > div:nth-child(4)');
+      if (foodSection) {
+        foodSection.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const foodBtn = foodSection.querySelector('.category-btn[data-category="food-specialties"]');
+        if (foodBtn) foodBtn.classList.add('active');
+      }
+    }
+  </script>
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

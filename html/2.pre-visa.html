@@ -11,39 +11,40 @@
 
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
-  <!-- 顶部视觉冲击区 -->
-  <header class="responsive-header flex items-center justify-center">
-    <!-- 背景图占位 -->
-    <div class="absolute inset-0 z-0">
-      <img src="../img/img-visa-1.jpg" alt="China visa information" class="w-full h-full object-cover brightness-75 header-bg">
-      <div class="absolute inset-0 bg-black/30"></div>
-    </div>
-    <!-- 导航栏 -->
-    <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
-      <div class="text-white text-xl sm:text-2xl font-bold flex items-center gap-2">
-        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
-        <span class="font-bold text-white font-sans italic">Wander Any Place</span>
+  <!-- 顶部导航 -->
+  <nav class="mobile-header-nav">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao"></i>
+        <span>Wander Any Place</span>
       </div>
-      <div class="hidden md:flex space-x-8 text-white font-medium">
-        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      <div class="desktop-nav" id="desktopNavLinks">
+        <a href="../../index.html">Home</a>
+        <a href="2.Destination.html">Destinations</a>
+        <a href="2.booking.html">Booking Services</a>
+        <a href="2.aboutus.html">About Us</a>
       </div>
-      <!-- 移动端菜单按钮 -->
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
         <span></span>
         <span></span>
         <span></span>
       </button>
-    </nav>
-    <!-- 移动端导航覆盖层 -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
-      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
-      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
-      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
-      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
+  
+  <!-- 顶部视觉冲击区 -->
+  <header class="responsive-header flex items-center justify-center" style="margin-top: 70px;">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../img/img-visa-1.jpg" alt="China visa information" class="w-full h-full object-cover brightness-75 header-bg">
+      <div class="absolute inset-0 bg-black/30"></div>
     </div>
     <!-- 核心内容 -->
     <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
@@ -521,9 +522,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 
@@ -549,9 +550,13 @@
 function toggleMobileMenu() {
   const mobileNav = document.getElementById('mobileNav');
   const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
   if (mobileNav && menuBtn) {
     mobileNav.classList.toggle('active');
     menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
   }
 }
 </script>

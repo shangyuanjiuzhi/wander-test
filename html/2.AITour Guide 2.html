@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tour Guide - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    .category-btn {
+      transition: all 0.3s ease;
+    }
+    .category-btn.active {
+      background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+    }
+    .selection-card {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .selection-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .selection-card.selected {
+      border-color: #f43f5e;
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+    }
+    .selection-card.selected .check-icon {
+      display: flex;
+    }
+    .check-icon {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      background: #f43f5e;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .loading-spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #f43f5e;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .itinerary-card {
+      background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+      border-left: 4px solid #f43f5e;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: #f43f5e;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+  <header class="mobile-header-nav" style="background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #F43F5E;"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+        <span style="color: #F43F5E;">Wander Any Place</span>
+      </div>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: #71717a;">
+        <a href="2.essential%20packing%20copy.html" style="color: #71717a;">Packing List</a>
+        <a href="#" style="color: #71717a;">AI Tour Guide</a>
+        <a href="3.beijing/3.beijing.html" style="color: #71717a;">Beijing</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="2.essential%20packing%20copy.html" onclick="toggleMobileMenu()">Packing List</a>
+    <a href="#" onclick="toggleMobileMenu()">AI Tour Guide</a>
+    <a href="3.beijing/3.beijing.html" onclick="toggleMobileMenu()">Beijing</a>
+  </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">AI Tour Guide</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Create your personalized Beijing itinerary with AI-powered recommendations
+      </p>
+    </div>
+  </header>
+
+  <!-- 主内容 -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <!-- 表单区域 -->
+    <div id="formSection" class="bg-white rounded-2xl shadow-lg p-8">
+      <!-- 目的地选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-dingwei1 text-rose-600 mr-2"></span>
+          Destination
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <label class="selection-card relative p-4 border-2 border-gray-200 rounded-xl flex items-center justify-center cursor-pointer selected">
+            <input type="radio" name="destination" value="beijing" checked class="hidden">
+            <span class="font-medium">Beijing</span>
+            <span class="check-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 日期选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-shijian text-rose-600 mr-2"></span>
+          Travel Dates
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Departure Date</label>
+            <input type="date" id="departureDate" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rose-500 focus:outline-none transition-colors">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Return Date</label>
+            <input type="date" id="returnDate" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-rose-500 focus:outline-none transition-colors">
+          </div>
+        </div>
+      </div>
+
+      <!-- 景点选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-jingdian text-rose-600 mr-2"></span>
+          Select Attractions
+        </h3>
+        
+        <!-- 景点分类标签 -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button class="category-btn active px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="imperial">Imperial Relics</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="park">Special Parks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="shopping">Shopping Malls</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="museum">Museums</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="landmark">City Landmarks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="temple">Temples</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="hiking">Hiking Spots</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="entertainment">Entertainment</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="villages">Village Tours</button>
+        </div>
+        
+        <!-- 景点列表 -->
+        <div id="attractionsList" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        </div>
+      </div>
+
+      <!-- 餐饮选择 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="iconfont icon-canyin text-rose-600 mr-2"></span>
+          Select Food & Dining
+        </h3>
+        
+        <!-- 餐饮分类标签 -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <button class="category-btn active px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-specialties">Local Specialties</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-desserts">Royal Desserts</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-snacks">Hidden Gem Snacks</button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-slate-700 rounded-full font-medium text-sm" data-category="food-michelin">Michelin Restaurants</button>
+        </div>
+        
+        <!-- 餐饮列表 -->
+        <div id="foodList" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        </div>
+      </div>
+
+      <!-- 生成按钮 -->
+      <div class="text-center">
+        <button id="generateBtn" onclick="generateItinerary()" class="bg-gradient-to-r from-rose-600 to-rose-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-rose-700 hover:to-rose-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+          <span id="btnContent">
+            <span class="iconfont icon-a-21 pb-1 mr-2"></span>
+            Generate My Itinerary
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 加载状态 -->
+    <div id="loadingSection" class="hidden bg-white rounded-2xl shadow-lg p-12 text-center">
+      <div class="loading-spinner mx-auto mb-4"></div>
+      <p class="text-slate-600">AI is creating your personalized itinerary...</p>
+    </div>
+
+    <!-- 结果区域 -->
+    <div id="resultSection" class="hidden">
+    </div>
+  </main>
+
+  <script>
+    // Attractions data
+    const attractionsData = {
+      attractions: [
+        // Imperial Relics (17)
+        { id: 'great-wall', name: 'Great Wall of China', time: '4-6 hours', category: 'imperial' },
+        { id: 'forbidden-city', name: 'Forbidden City', time: '3-4 hours', category: 'imperial' },
+        { id: 'summer-palace', name: 'Summer Palace', time: '2-3 hours', category: 'imperial' },
+        { id: 'temple-of-heaven', name: 'Temple of Heaven', time: '2-3 hours', category: 'imperial' },
+        { id: 'tiananmen-square', name: 'Tiananmen Square', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuanmingyuan', name: 'Yuanmingyuan (Old Summer Palace)', time: '2-3 hours', category: 'imperial' },
+        { id: 'jingshan-park', name: 'Jingshan Park', time: '1 hour', category: 'imperial' },
+        { id: 'ming-tombs', name: 'Ming Tombs', time: '2-3 hours', category: 'imperial' },
+        { id: 'beihai-park', name: 'Beihai Park', time: '2-3 hours', category: 'imperial' },
+        { id: 'confucius-temple', name: 'Confucius Temple and Guozijian', time: '1-2 hours', category: 'imperial' },
+        { id: 'ditan-park', name: 'Ditan Park', time: '1-2 hours', category: 'imperial' },
+        { id: 'zhongshan-park', name: 'Zhongshan Park', time: '1 hour', category: 'imperial' },
+        { id: 'ritan-park', name: 'Ritan Park', time: '1 hour', category: 'imperial' },
+        { id: 'xiannongtan', name: 'Xiannongtan (Temple of Agriculture)', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuetan-park', name: 'Yuetan Park (Temple of Moon)', time: '1-2 hours', category: 'imperial' },
+        { id: 'lugou-bridge', name: 'Lugou Bridge (Marco Polo Bridge)', time: '1-2 hours', category: 'imperial' },
+        { id: 'yuandadu', name: 'Yuan Dadu City Wall Relics Park', time: '1-2 hours', category: 'imperial' },
+        // Special Parks (9)
+        { id: 'zhoukoudian', name: 'Zhoukoudian Peking Man Site', time: '2-3 hours', category: 'park' },
+        { id: 'fragrant-hills', name: 'Fragrant Hills Park', time: '3-4 hours', category: 'park' },
+        { id: 'olympic-forest-park', name: 'Beijing Olympic Forest Park', time: '2-3 hours', category: 'park' },
+        { id: 'yuyuantan-park', name: 'Yuyuantan Park', time: '2-3 hours', category: 'park' },
+        { id: 'national-botanical', name: 'National Botanical Garden', time: '2-3 hours', category: 'park' },
+        { id: 'grand-view-garden', name: 'Beijing Grand View Garden', time: '2-3 hours', category: 'park' },
+        { id: 'chaoyang-park', name: 'Chaoyang Park', time: '2-3 hours', category: 'park' },
+        { id: 'badachu-park', name: 'Badachu Park', time: '2-3 hours', category: 'park' },
+        { id: 'garden-expo-park', name: 'Beijing Garden Expo Park', time: '2-3 hours', category: 'park' },
+        // Shopping Malls (5)
+        { id: 'wangfujing', name: 'Wangfujing Pedestrian Street', time: '2-3 hours', category: 'shopping' },
+        { id: 'the-place', name: 'The Place', time: '1-2 hours', category: 'shopping' },
+        { id: 'xidan-commercial', name: 'Xidan Commercial Street', time: '2-3 hours', category: 'shopping' },
+        { id: 'sanlitun-taikoo', name: 'Sanlitun Taikoo Li', time: '2-3 hours', category: 'shopping' },
+        { id: 'blue-harbor', name: 'Blue Harbor', time: '1-2 hours', category: 'shopping' },
+        // Museums (3)
+        { id: 'national-museum', name: 'National Museum of China', time: '2-3 hours', category: 'museum' },
+        { id: 'capital-museum', name: 'Capital Museum', time: '2-3 hours', category: 'museum' },
+        { id: 'guanfu-museum', name: 'Guanfu Museum', time: '1-2 hours', category: 'museum' },
+        // City Landmarks (10)
+        { id: 'birds-nest', name: "Bird's Nest (National Stadium)", time: '1-2 hours', category: 'landmark' },
+        { id: 'water-cube', name: 'Water Cube (National Aquatics Center)', time: '1-2 hours', category: 'landmark' },
+        { id: '798-art', name: '798 Art District', time: '2-3 hours', category: 'landmark' },
+        { id: 'cctv-headquarters', name: 'CCTV Headquarters', time: '1-2 hours', category: 'landmark' },
+        { id: 'ncpa', name: 'National Centre for the Performing Arts', time: '1 hour', category: 'landmark' },
+        { id: 'galaxy-soho', name: 'Galaxy SOHO', time: '1-2 hours', category: 'landmark' },
+        { id: 'red-brick-art', name: 'Red Brick Art Museum', time: '1-2 hours', category: 'landmark' },
+        { id: 'cctv-tower', name: 'CCTV Tower', time: '1-2 hours', category: 'landmark' },
+        { id: 'song-art-museum', name: 'Song Art Museum', time: '1-2 hours', category: 'landmark' },
+        { id: 'shougang-park', name: 'Shougang Park', time: '2-3 hours', category: 'landmark' },
+        // Temples (6)
+        { id: 'lama-temple', name: 'Yonghe Temple (Lama Temple)', time: '1-2 hours', category: 'temple' },
+        { id: 'hongluo-temple', name: 'Hongluo Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'tanzhe-temple', name: 'Tanzhe Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'white-cloud-temple', name: 'Baiyun Guan (White Cloud Temple)', time: '1-2 hours', category: 'temple' },
+        { id: 'fayuan-temple', name: 'Fayuan Temple', time: '1-2 hours', category: 'temple' },
+        { id: 'five-pagoda', name: 'Five Pagoda Temple (Wuta Si)', time: '1-2 hours', category: 'temple' },
+        // Hiking Spots (4)
+        { id: 'fangshan-shidu', name: 'Fangshan Shidu Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'yudu-mountain', name: 'Yudu Mountain Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'phoenix-ridge', name: 'Beijing Phoenix Ridge Scenic Area', time: '3-4 hours', category: 'hiking' },
+        { id: 'longqingxia', name: 'Longqingxia', time: '3-4 hours', category: 'hiking' },
+        // Entertainment (5)
+        { id: 'beijing-happy-valley', name: 'Beijing Happy Valley', time: '3-4 hours', category: 'entertainment' },
+        { id: 'universal-beijing', name: 'Universal Beijing Resort', time: '4-5 hours', category: 'entertainment' },
+        { id: 'houhai-bar', name: 'Houhai Bar Street', time: '2-3 hours', category: 'entertainment' },
+        { id: 'sanlitun-nightclubs', name: 'Sanlitun Nightclubs', time: '2-3 hours', category: 'entertainment' },
+        { id: 'qushuilanting', name: 'Qushuilanting Bathhouse', time: '1-2 hours', category: 'entertainment' }
+      ],
+      villages: [
+        { id: 'cuandixia', name: 'Cuandixia Village', time: '4-5 hours', category: 'village' },
+        { id: 'lingshui', name: 'Lingshui Village', time: '3-4 hours', category: 'village' },
+        { id: 'gubei', name: 'Gubei Water Town', time: '4-5 hours', category: 'village' },
+        { id: 'liuliqu', name: 'Liuliqu Village', time: '3-4 hours', category: 'village' }
+      ]
+    };
+
+    // Food data
+    const foodData = {
+      'food-specialties': [
+        { id: 'hotpot', name: '老北京涮羊肉 Beijing Hot Pot' },
+        { id: 'peking-duck', name: '北京烤鸭 Peking Duck' },
+        { id: 'zhajiang', name: '炸酱面 Zhajiang Noodles' },
+        { id: 'zhizi', name: '炙子烤肉 Zhizi Roast Meat' }
+      ],
+      'food-desserts': [
+        { id: 'almond-tofu', name: '杏仁豆腐 Almond Tofu' },
+        { id: 'lvdagun', name: '驴打滚 Rolling Donkey' },
+        { id: 'wandouhuang', name: '豌豆黄 Pea Cake' },
+        { id: 'aiwowowo', name: '艾窝窝 Ai Wo Wo' }
+      ],
+      'food-snacks': [
+        { id: 'douzhi', name: '豆汁 Douzhi' },
+        { id: 'baodu', name: '爆肚儿 Bao Dur' },
+        { id: 'luzhu', name: '卤煮 Lu Zhu' },
+        { id: 'chaogan', name: '炒肝 Chao Gan' }
+      ],
+      'food-michelin': [
+        { id: 'chaoshangchao', name: '潮上潮 Chao Shang Chao' },
+        { id: 'xinrongji', name: '新荣记 Xin Rong Ji' },
+        { id: 'jingji', name: '京季 Jing Ji' },
+        { id: 'kingjoy', name: '京兆尹 King Joy' },
+        { id: 'lushanglu', name: '鲁上鲁 Lu Shang Lu' },
+        { id: 'wulixiang', name: '屋里厢 Wu Li Xiang' }
+      ]
+    };
+
+    // Selected items
+    let selectedAttractions = [];
+    let selectedFood = [];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAttractions('imperial');
+      renderFood('food-specialties');
+      setDefaultDates();
+      setupCategoryButtons();
+      setupSelectionCards();
+    });
+
+    // Set default dates
+    function setDefaultDates() {
+      const today = new Date();
+      const nextWeek = new Date(today);
+      nextWeek.setDate(today.getDate() + 7);
+      
+      document.getElementById('departureDate').value = today.toISOString().split('T')[0];
+      document.getElementById('returnDate').value = nextWeek.toISOString().split('T')[0];
+    }
+
+    // Setup category buttons
+    function setupCategoryButtons() {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const category = this.dataset.category;
+          const parent = this.closest('.mb-8');
+          
+          // Update active state
+          parent.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Render corresponding list
+          if (category === 'villages') {
+            renderAttractions('villages');
+          } else if (category === 'attractions') {
+            renderAttractions('imperial');
+          } else if (category.startsWith('food-')) {
+            renderFood(category);
+          } else {
+            renderAttractions(category);
+          }
+        });
+      });
+    }
+
+    // Render attractions
+    function renderAttractions(category) {
+      const container = document.getElementById('attractionsList');
+      let items;
+      
+      if (category === 'villages') {
+        items = attractionsData.villages;
+      } else {
+        items = attractionsData.attractions.filter(item => item.category === category);
+      }
+      
+      container.innerHTML = items.map(item => `
+        <div class="selection-card relative p-3 border-2 border-gray-200 rounded-xl cursor-pointer ${selectedAttractions.includes(item.id) ? 'selected' : ''}" data-id="${item.id}" data-type="attraction">
+          <div class="text-sm font-medium text-center">${item.name}</div>
+          <span class="check-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+        </div>
+      `).join('');
+      
+      setupSelectionCards();
+    }
+
+    // Render food
+    function renderFood(category) {
+      const container = document.getElementById('foodList');
+      const items = foodData[category] || [];
+      
+      container.innerHTML = items.map(item => `
+        <div class="selection-card relative p-3 border-2 border-gray-200 rounded-xl cursor-pointer ${selectedFood.includes(item.id) ? 'selected' : ''}" data-id="${item.id}" data-type="food">
+          <div class="text-sm font-medium text-center">${item.name}</div>
+          <span class="check-icon"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
+        </div>
+      `).join('');
+      
+      setupSelectionCards();
+    }
+
+    // Setup selection cards
+    function setupSelectionCards() {
+      document.querySelectorAll('.selection-card').forEach(card => {
+        card.onclick = function() {
+          const id = this.dataset.id;
+          const type = this.dataset.type;
+          
+          if (type === 'attraction') {
+            if (selectedAttractions.includes(id)) {
+              selectedAttractions = selectedAttractions.filter(i => i !== id);
+              this.classList.remove('selected');
+            } else {
+              selectedAttractions.push(id);
+              this.classList.add('selected');
+            }
+          } else {
+            if (selectedFood.includes(id)) {
+              selectedFood = selectedFood.filter(i => i !== id);
+              this.classList.remove('selected');
+            } else {
+              selectedFood.push(id);
+              this.classList.add('selected');
+            }
+          }
+        };
+      });
+    }
+
+    // Generate itinerary
+    async function generateItinerary() {
+      const departureDate = document.getElementById('departureDate').value;
+      const returnDate = document.getElementById('returnDate').value;
+      
+      if (!departureDate || !returnDate) {
+        alert('Please select travel dates');
+        return;
+      }
+
+      if (selectedAttractions.length === 0 && selectedFood.length === 0) {
+        alert('Please select at least one attraction or food');
+        return;
+      }
+
+      // Show loading
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('loadingSection').classList.remove('hidden');
+      
+      const btn = document.getElementById('generateBtn');
+      btn.disabled = true;
+
+      try {
+        const isLocalFile = window.location.protocol === 'file:';
+        const apiUrl = isLocalFile 
+          ? '/api/tour-suggestions' // Will use fallback on local file access
+          : (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? '/api/tour-suggestions' // Use Vercel dev server path
+            : '/api/tour-suggestions'); // Production path
+
+        const requestBody = {
+          destination: 'beijing',
+          departureDate,
+          returnDate,
+          attractions: selectedAttractions,
+          food: selectedFood
+        };
+
+        console.log('Calling API:', apiUrl);
+        console.log('Request body:', requestBody);
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          displayItinerary(data);
+        } else {
+          const errorText = await response.text();
+          console.error('API Error:', errorText);
+          // Use fallback itinerary
+          displayFallbackItinerary(departureDate, returnDate);
+        }
+      } catch (error) {
+        console.error('API Error:', error);
+        // Use fallback itinerary
+        displayFallbackItinerary(departureDate, returnDate);
+      }
+
+      btn.disabled = false;
+    }
+
+    // Display itinerary
+    function displayItinerary(data) {
+      document.getElementById('loadingSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      
+      const resultSection = document.getElementById('resultSection');
+      resultSection.innerHTML = `
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-800">Your Beijing Itinerary</h2>
+              <p class="text-slate-600">${data.departureDate} - ${data.returnDate}</p>
+            </div>
+            <button onclick="resetForm()" class="px-4 py-2 bg-gray-200 text-slate-700 rounded-lg hover:bg-gray-300 transition-colors">
+              Create New Itinerary
+            </button>
+          </div>
+          
+          <div class="prose max-w-none">
+            ${data.itinerary.replace(/\n/g, '<br>')}
+          </div>
+        </div>
+      `;
+    }
+
+    // New itinerary builder based on user's rules
+    // Rule: ≥2 items in a combo = trigger combo schedule; otherwise pair attractions (morning + afternoon) with food in evening
+    function buildItinerary(days, imperialRelics, greatWallAndLongTrips, landmarksAndShopping, otherAttractions, nightActivities, foods, selectedForbiddenCityRelated, selectedSummerPalaceCombo) {
+      const allDays = [];
+      
+      // Define classic lines - separate core attractions from wangfujing
+      const line1Core = ['tiananmen-square', 'forbidden-city', 'jingshan-park'];
+      const line1Wangfujing = 'wangfujing';
+      const line3 = ['lama-temple', 'confucius-temple', 'temple-of-heaven'];
+      const summerCombo = ['summer-palace', 'yuanmingyuan'];
+      const museumBeihai = ['national-museum', 'beihai-park'];
+      const olympicLine = ['olympic-forest-park', 'birds-nest', 'water-cube'];
+      
+      // Full day attractions
+      const fullDayAttractions = [
+        'great-wall', 'zhoukoudian', 'fragrant-hills', 'national-botanical', 
+        'badachu-park', 'garden-expo-park', 'red-brick-art', 'song-art-museum',
+        'hongluo-temple', 'tanzhe-temple', 'fangshan-shidu', 'yudu-mountain',
+        'phoenix-ridge', 'longqingxia', 'beijing-happy-valley', 'universal-beijing'
+      ];
+      
+      // Classic night activities
+      const classicNight = [
+        'sanlitun-nightclubs', 'houhai-bar', 'qushuilanting', 'blue-harbor',
+        'olympic-forest-park', 'birds-nest', 'water-cube', 'galaxy-soho'
+      ];
+      
+      // Get selected items with details
+      const allAttractions = [...attractionsData.attractions, ...attractionsData.villages];
+      // Include all selected attractions including those from special combos
+      const selectedAttractionDetails = [
+        ...imperialRelics, 
+        ...greatWallAndLongTrips, 
+        ...landmarksAndShopping, 
+        ...otherAttractions,
+        ...(selectedForbiddenCityRelated || []),
+        ...(selectedSummerPalaceCombo || [])
+      ];
+      
+      // Separate attractions into categories
+      // Note: selectedForbiddenCityRelated contains forbidden-city, jingshan-park which are part of Line1
+      const selectedLine1Core = selectedAttractionDetails.filter(a => line1Core.includes(a.id));
+      const forbiddenCityIds = selectedForbiddenCityRelated ? selectedForbiddenCityRelated.map(a => a.id) : [];
+      const line1FromForbidden = selectedForbiddenCityRelated ? selectedForbiddenCityRelated.filter(a => ['forbidden-city', 'jingshan-park'].includes(a.id)) : [];
+      // Remove duplicates by id
+      const allLine1Core = [...new Map([...selectedLine1Core, ...line1FromForbidden].map(a => [a.id, a])).values()];
+      const selectedWangfujing = selectedAttractionDetails.find(a => a.id === line1Wangfujing);
+      const selectedLine3 = selectedAttractionDetails.filter(a => line3.includes(a.id));
+      const selectedSummerCombo = selectedAttractionDetails.filter(a => summerCombo.includes(a.id));
+      const selectedMuseumBeihai = selectedAttractionDetails.filter(a => museumBeihai.includes(a.id));
+      const selectedOlympic = selectedAttractionDetails.filter(a => olympicLine.includes(a.id));
+      
+      // Full day attractions (excluding Great Wall which is handled separately)
+      const selectedFullDay = selectedAttractionDetails.filter(a => 
+        fullDayAttractions.includes(a.id) && a.id !== 'great-wall'
+      );
+      
+      // Great Wall - always full day
+      const greatWall = selectedAttractionDetails.find(a => a.id === 'great-wall');
+      
+      // Shopping attractions (to be placed on last day)
+      const shoppingAttractions = selectedAttractionDetails.filter(a => 
+        a.category === 'shopping' && !line1Core.includes(a.id) && a.id !== line1Wangfujing
+      );
+      
+      // Standalone attractions pool (not in any combo)
+      let standalonePool = [];
+      
+      // Helper to get evening with food
+      let foodIndex = 0;
+      const getEvening = () => {
+        if (foodIndex < foods.length && foods[foodIndex]) {
+          const food = foods[foodIndex];
+          foodIndex++;
+          return `${food.name} for dinner`;
+        }
+        return '-';
+      };
+      
+      // Helper to add a day
+      const addDay = (theme, morning, afternoon, evening, remark = '') => {
+        if (allDays.length < days) {
+          allDays.push({ theme, morning, afternoon, evening, remark });
+          return true;
+        }
+        return false;
+      };
+      
+      // Helper to add day with single attraction (full day)
+      const addFullDayAttraction = (attraction) => {
+        if (allDays.length < days) {
+          allDays.push({
+            theme: 'Full Day Adventure',
+            morning: `Full day: Explore ${attraction.name}`,
+            afternoon: '-',
+            evening: getEvening(),
+            remark: ''
+          });
+          return true;
+        }
+        return false;
+      };
+      
+      // Helper to pair attractions (morning + afternoon)
+      const pairAttractions = (pool) => {
+        const paired = [];
+        for (let i = 0; i < pool.length; i += 2) {
+          const morning = pool[i] ? `Visit ${pool[i].name}` : '-';
+          const afternoon = pool[i + 1] ? `Explore ${pool[i + 1].name}` : '-';
+          paired.push({ morning, afternoon });
+        }
+        return paired;
+      };
+      
+      // ============ COMBO RULES (trigger only if ≥2 items) ============
+      
+      // Rule 1: Line1 Core (Tiananmen, Forbidden City, Jingshan) - ≥2 items = same day
+      // allLine1Core includes both imperialRelics and selectedForbiddenCityRelated versions
+      if (allLine1Core.length >= 2 && allDays.length < days) {
+        const half = Math.ceil(allLine1Core.length / 2);
+        const morning = allLine1Core.slice(0, half).map(a => `Visit ${a.name}`).join(', ');
+        const afternoon = allLine1Core.slice(half).map(a => `Explore ${a.name}`).join(', ') || '-';
+        let evening = selectedWangfujing ? `Visit ${selectedWangfujing.name}` : '-';
+        if (evening !== '-' && foodIndex < foods.length) {
+          evening += `, ${foods[foodIndex].name} for dinner`;
+          foodIndex++;
+        } else if (evening === '-' && foodIndex < foods.length) {
+          evening = `${foods[foodIndex].name} for dinner`;
+          foodIndex++;
+        }
+        addDay('Explore Central Axis', morning, afternoon, evening);
+      }
+      
+      // Rule 2: Line3 (Lama Temple, Confucius Temple, Temple of Heaven) - ≥2 items = same day
+      if (selectedLine3.length >= 2 && allDays.length < days) {
+        const half = Math.ceil(selectedLine3.length / 2);
+        const morning = selectedLine3.slice(0, half).map(a => `Visit ${a.name}`).join(', ');
+        const afternoon = selectedLine3.slice(half).map(a => `Explore ${a.name}`).join(', ') || '-';
+        addDay('Explore Ancient Temples', morning, afternoon, getEvening(), 
+          '✨ In the evening, consider taking Hutong Walk Line 6 to experience authentic Beijing culture');
+      }
+      
+      // Rule 3: Summer Palace + Yuanmingyuan - ≥2 items = same day
+      if (selectedSummerCombo.length >= 2 && allDays.length < days) {
+        const summerPalace = selectedSummerCombo.find(a => a.id === 'summer-palace');
+        const yuanmingyuan = selectedSummerCombo.find(a => a.id === 'yuanmingyuan');
+        const morning = summerPalace ? `Visit ${summerPalace.name}` : '-';
+        const afternoon = yuanmingyuan ? `Explore ${yuanmingyuan.name}` : '-';
+        
+        let evening = getEvening();
+        const sanlitun = nightActivities.find(a => a.id === 'sanlitun-nightclubs');
+        const blueHarbor = nightActivities.find(a => a.id === 'blue-harbor');
+        if (sanlitun) {
+          evening = evening === '-' ? `Then: Explore Sanlitun` : `${evening}, Then: Explore Sanlitun`;
+        } else if (blueHarbor) {
+          evening = evening === '-' ? `Then: Visit Blue Harbor` : `${evening}, Then: Visit Blue Harbor`;
+        }
+        addDay('Summer Palace Day', morning, afternoon, evening);
+      }
+      
+      // Rule 4: National Museum + Beihai Park - ≥2 items = same day
+      if (selectedMuseumBeihai.length >= 2 && allDays.length < days) {
+        const museum = selectedMuseumBeihai.find(a => a.id === 'national-museum');
+        const beihai = selectedMuseumBeihai.find(a => a.id === 'beihai-park');
+        const morning = museum ? `Visit ${museum.name}` : '-';
+        const afternoon = beihai ? `Explore ${beihai.name}` : '-';
+        addDay('Museum & Park Day', morning, afternoon, getEvening());
+      }
+      
+      // ============ GREAT WALL (always full day) ============
+      if (greatWall && allDays.length < days) {
+        let evening = getEvening();
+        if (selectedOlympic.length > 0) {
+          const olympicNames = selectedOlympic.slice(0, 2).map(a => a.name).join(', ');
+          evening = evening === '-' ? `Evening at ${olympicNames}` : `${evening}, Then: Evening at ${olympicNames}`;
+        }
+        addDay('Great Wall Day', `Full day: Explore ${greatWall.name}`, '-', evening);
+      }
+      
+      // ============ SINGLE ITEMS FROM COMBOS (add to standalone pool) ============
+      // For Line3, Summer Palace combo, Museum+Beihai - only add to pool if < 2 items
+      if (allLine1Core.length === 1) standalonePool.push(allLine1Core[0]);
+      
+      // Line3 - only add single items if not triggering combo
+      if (selectedLine3.length === 1) standalonePool.push(selectedLine3[0]);
+      
+      // Museum+Beihai - only add single items if not triggering combo
+      if (selectedMuseumBeihai.length === 1) standalonePool.push(selectedMuseumBeihai[0]);
+      
+      // Summer Palace combo - only add single items if not triggering combo
+      if (selectedSummerCombo.length === 1) standalonePool.push(selectedSummerCombo[0]);
+      
+      // Wangfujing standalone
+      if (selectedWangfujing && allLine1Core.length < 2) {
+        standalonePool.push(selectedWangfujing);
+      }
+      
+      // Olympic items standalone (if not used with Great Wall)
+      // Skip classic night attractions - they should only be scheduled in the evening
+      if (!greatWall) {
+        selectedOlympic.forEach(a => {
+          if (!classicNight.includes(a.id)) {
+            standalonePool.push(a);
+          }
+        });
+      }
+      
+      // Forbidden City related items that didn't trigger any combo - add to pool
+      if (selectedForbiddenCityRelated) {
+        selectedForbiddenCityRelated.forEach(a => {
+          // Skip if already in allLine1Core (forbidden-city, jingshan-park)
+          if (!allLine1Core.some(l => l.id === a.id) && !standalonePool.some(p => p.id === a.id)) {
+            standalonePool.push(a);
+          }
+        });
+      }
+      
+      // Other attractions not in any combo - add to standalone pool for pairing
+      const comboIds = [
+        ...line1Core, line1Wangfujing, ...line3, ...summerCombo, ...museumBeihai, ...olympicLine,
+        ...fullDayAttractions
+      ];
+      
+      // Add otherAttractions that are not in any combo and not classic night activities
+      otherAttractions.forEach(a => {
+        if (!comboIds.includes(a.id) && !classicNight.includes(a.id)) {
+          standalonePool.push(a);
+        }
+      });
+      
+      // Add remaining imperial relics and landmarks that weren't handled and not classic night activities
+      imperialRelics.forEach(a => {
+        if (!comboIds.includes(a.id) && !standalonePool.some(p => p.id === a.id) && !classicNight.includes(a.id)) {
+          standalonePool.push(a);
+        }
+      });
+      
+      // Add remaining landmarks and shopping that weren't handled and not classic night activities
+      landmarksAndShopping.forEach(a => {
+        if (!comboIds.includes(a.id) && !standalonePool.some(p => p.id === a.id) && !classicNight.includes(a.id)) {
+          standalonePool.push(a);
+        }
+      });
+      
+      // ============ FULL DAY ATTRACTIONS ============
+      selectedFullDay.forEach(attraction => {
+        if (allDays.length < days) {
+          addFullDayAttraction(attraction);
+        }
+      });
+      
+      // ============ PAIR REMAINING STANDALONE ATTRACTIONS ============
+      const pairs = pairAttractions(standalonePool);
+      pairs.forEach(pair => {
+        if (allDays.length < days) {
+          addDay('Cultural Exploration', pair.morning, pair.afternoon, getEvening());
+        }
+      });
+      
+      // ============ REMAINING NIGHT ACTIVITIES ============
+      const remainingNight = nightActivities.filter(a => 
+        !(greatWall && olympicLine.includes(a.id))
+      );
+      
+      // Track which night activities were successfully scheduled in the evening
+      const scheduledNightActivities = [];
+      
+      remainingNight.forEach(nightAct => {
+        const dayWithoutNight = allDays.find(d => d.evening === '-' || d.evening.includes('for dinner'));
+        if (dayWithoutNight) {
+          if (nightAct.id === 'qushuilanting') {
+            dayWithoutNight.evening = `Relax at ${nightAct.name} (No dinner planned)`;
+            dayWithoutNight.remark = '⚠️ No dinner on this day due to Qushuilanting visit';
+          } else {
+            dayWithoutNight.evening = dayWithoutNight.evening === '-' 
+              ? `Evening: Visit ${nightAct.name}` 
+              : `${dayWithoutNight.evening}, Then: Visit ${nightAct.name}`;
+          }
+          scheduledNightActivities.push(nightAct.id);
+        }
+      });
+      
+      // If any classic night activities couldn't be scheduled in the evening, add them to standalone pool for daytime
+      const unscheduledNight = remainingNight.filter(a => !scheduledNightActivities.includes(a.id));
+      unscheduledNight.forEach(nightAct => {
+        if (!standalonePool.some(p => p.id === nightAct.id)) {
+          standalonePool.push(nightAct);
+        }
+      });
+      
+      // Re-pair standalone attractions including unscheduled night activities
+      const finalPairs = pairAttractions(standalonePool);
+      let pairIndex = 0;
+      allDays.forEach(day => {
+        if (day.morning === '-' && pairIndex < finalPairs.length) {
+          day.morning = finalPairs[pairIndex].morning;
+          day.afternoon = finalPairs[pairIndex].afternoon;
+          pairIndex++;
+        }
+      });
+      
+      // ============ FILL REMAINING DAYS ============
+      while (allDays.length < days - (shoppingAttractions.length > 0 ? 1 : 0)) {
+        addDay('Leisure Day', 'Free time for relaxation', 'Optional activities', getEvening());
+      }
+      
+      // ============ SHOPPING ON LAST DAY ============
+      // Filter out shopping attractions that have already been scheduled in the evening
+      const scheduledInEvening = [];
+      allDays.forEach(day => {
+        if (day.evening) {
+          shoppingAttractions.forEach(shop => {
+            if (day.evening.includes(shop.name)) {
+              scheduledInEvening.push(shop.id);
+            }
+          });
+        }
+      });
+      
+      const remainingShopping = shoppingAttractions.filter(a => !scheduledInEvening.includes(a.id));
+      
+      if (remainingShopping.length > 0 && allDays.length < days) {
+        const shoppingNames = remainingShopping.map(a => a.name).join(', ');
+        addDay('Shopping Day', `Shopping at ${shoppingNames}`, 'Continue shopping', getEvening());
+      }
+      
+      // Final fill if still not enough days
+      while (allDays.length < days) {
+        addDay('Leisure Day', 'Free time for relaxation', 'Optional activities', getEvening());
+      }
+      
+      return allDays;
+    }
+
+    // Display fallback itinerary
+    function displayFallbackItinerary(departureDate, returnDate) {
+      document.getElementById('loadingSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+      
+      // Calculate number of days
+      const start = new Date(departureDate);
+      const end = new Date(returnDate);
+      const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+      
+      // Get selected attractions with details
+      const allAttractions = [...attractionsData.attractions, ...attractionsData.villages];
+      const selectedAttractionDetails = selectedAttractions.map(id => 
+        allAttractions.find(a => a.id === id)
+      ).filter(Boolean);
+      
+      // Get selected food
+      const allFood = Object.values(foodData).flat();
+      const selectedFoodDetails = selectedFood.map(id =>
+        allFood.find(f => f.id === id)
+      ).filter(Boolean);
+      
+      // Forbidden City related attractions - must be scheduled together
+      const forbiddenCityRelated = ['forbidden-city', 'jingshan-park', 'beihai-park', 'lama-temple', 'confucius-temple'];
+      const selectedForbiddenCityRelated = selectedAttractionDetails.filter(a => forbiddenCityRelated.includes(a.id));
+      
+      // Summer Palace and Yuanmingyuan combination
+      const summerPalaceCombo = ['summer-palace', 'yuanmingyuan'];
+      const selectedSummerPalaceCombo = selectedAttractionDetails.filter(a => summerPalaceCombo.includes(a.id));
+      
+      // Categorize attractions
+      const imperialRelics = selectedAttractionDetails.filter(a => 
+        a.category === 'imperial' && a.id !== 'great-wall' && 
+        !forbiddenCityRelated.includes(a.id) && 
+        !summerPalaceCombo.includes(a.id)
+      );
+      const greatWallAndLongTrips = selectedAttractionDetails.filter(a => 
+        a.id === 'great-wall' || a.category === 'hiking' || a.category === 'village' ||
+        a.id === 'tanzhe-temple' || a.id === 'hongluo-temple'
+      );
+      const landmarksAndShopping = selectedAttractionDetails.filter(a => 
+        a.category === 'landmark' || a.category === 'shopping'
+      );
+      const otherAttractions = selectedAttractionDetails.filter(a => 
+        !imperialRelics.includes(a) && 
+        !greatWallAndLongTrips.includes(a) && 
+        !landmarksAndShopping.includes(a) &&
+        !forbiddenCityRelated.includes(a.id) &&
+        !summerPalaceCombo.includes(a.id) &&
+        !a.id.includes('nightclubs') && !a.id.includes('houhai') && !a.id.includes('qushuilanting')
+      );
+      
+      // Night activities
+      const selectedNightActivities = selectedAttractionDetails.filter(a => 
+        ['sanlitun-nightclubs', 'houhai-bar', 'qushuilanting', 'blue-harbor',
+         'olympic-forest-park', 'birds-nest', 'water-cube', 'galaxy-soho'].includes(a.id) || 
+        a.id.includes('nightclubs') || a.id.includes('houhai') || a.id.includes('qushuilanting')
+      );
+      
+      // Build itinerary
+      const itinerary = buildItinerary(days, imperialRelics, greatWallAndLongTrips, landmarksAndShopping, otherAttractions, selectedNightActivities, selectedFoodDetails, selectedForbiddenCityRelated, selectedSummerPalaceCombo);
+      
+      const resultSection = document.getElementById('resultSection');
+      resultSection.innerHTML = `
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-800">Your Beijing Itinerary</h2>
+              <p class="text-slate-600">${departureDate} - ${returnDate} (${days} days)</p>
+            </div>
+            <button onclick="resetForm()" class="px-4 py-2 bg-gray-200 text-slate-700 rounded-lg hover:bg-gray-300 transition-colors">
+              Create New Itinerary
+            </button>
+          </div>
+          
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <p class="text-amber-700 text-sm">
+              <strong>Note:</strong> AI service is currently unavailable. Showing personalized itinerary based on your selections.
+            </p>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-amber-50">
+                  <th class="border border-amber-200 px-4 py-3 text-left font-semibold text-amber-800">Day</th>
+                  <th class="border border-amber-200 px-4 py-3 text-left font-semibold text-amber-800">Morning</th>
+                  <th class="border border-amber-200 px-4 py-3 text-left font-semibold text-amber-800">Afternoon</th>
+                  <th class="border border-amber-200 px-4 py-3 text-left font-semibold text-amber-800">Evening</th>
+                  <th class="border border-amber-200 px-4 py-3 text-left font-semibold text-amber-800">Remark</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${itinerary.map((day, index) => `
+                  <tr>
+                    <td class="border border-amber-200 px-4 py-3 font-medium">Day ${index + 1}<br><span class="text-sm font-normal">${day.theme}</span></td>
+                    <td class="border border-amber-200 px-4 py-3">${day.morning}</td>
+                    <td class="border border-amber-200 px-4 py-3">${day.afternoon}</td>
+                    <td class="border border-amber-200 px-4 py-3">${day.evening}</td>
+                    <td class="border border-amber-200 px-4 py-3 text-red-600 text-sm">${day.remark || ''}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    // Reset form
+    function resetForm() {
+      document.getElementById('resultSection').classList.add('hidden');
+      document.getElementById('formSection').classList.remove('hidden');
+      selectedAttractions = [];
+      selectedFood = [];
+      setDefaultDates();
+      renderAttractions('imperial');
+      renderFood('food-specialties');
+      
+      // Reset category button active states to Imperial Relics
+      const attractionSection = document.querySelector('#formSection > div:nth-child(3)');
+      if (attractionSection) {
+        attractionSection.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const imperialBtn = attractionSection.querySelector('.category-btn[data-category="imperial"]');
+        if (imperialBtn) imperialBtn.classList.add('active');
+      }
+      
+      const foodSection = document.querySelector('#formSection > div:nth-child(4)');
+      if (foodSection) {
+        foodSection.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const foodBtn = foodSection.querySelector('.category-btn[data-category="food-specialties"]');
+        if (foodBtn) foodBtn.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
