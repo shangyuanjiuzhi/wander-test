@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Essential Packing Checklist - Wander Any Place</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
   <script src="../iconfont/iconfont.js"></script>
   <link rel="stylesheet" href="../iconfont/iconfont.css">
   <link rel="stylesheet" href="../css/styles.css">
@@ -18,23 +17,39 @@
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
   <!-- 顶部视觉冲击区 -->
-  <header class="relative h-[550px] flex items-center justify-center overflow-hidden">
+  <header class="responsive-header flex items-center justify-center">
     <!-- 背景图占位 -->
     <div class="absolute inset-0 z-0">
       <img src="../img/img-packing.webp" alt="Travel packing essentials" class="w-full h-full object-cover brightness-75 header-bg">
       <div class="absolute inset-0 bg-black/30"></div>
     </div>
     <!-- 导航栏 -->
-    <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6 flex justify-between items-center">
-      <div class="text-white text-2xl font-bold flex items-center gap-2">
-        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-        <span class="text-2xl font-bold text-white font-sans italic">Wander Any Place</span>
+    <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
+      <div class="text-white text-xl sm:text-2xl font-bold flex items-center gap-2">
+        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
+        <span class="font-bold text-white font-sans italic">Wander Any Place</span>
       </div>
       <div class="hidden md:flex space-x-8 text-white font-medium">
-        <a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a>
-        <a href="#" class="hover:text-rose-400 transition-colors">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
       </div>
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
     <!-- 核心内容 -->
     <div class="relative z-10 text-center px-4 max-w-4xl">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
@@ -269,6 +284,7 @@
   </section>
 
   <!-- Footer -->
+    <!-- 页脚 -->
   <footer class="bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -287,7 +303,7 @@
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
             <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
             <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
@@ -303,14 +319,13 @@
           </ul>
         </div>
 
-          <div>
+         <div>
           <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-          <p class="text-slate-400">Email: wanderanyplace@126.com</p>
-          <p class="text-slate-400">Phone: +86 13146113272</p>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
         </div>
       </div>
-    </div>
   </footer>
+
 
   <script>
     // Season-specific clothing items
@@ -750,5 +765,15 @@
       document.getElementById('checklistResult').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
 </body>
 </html>

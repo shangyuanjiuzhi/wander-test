@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="../index.html" class="flex items-center space-x-2">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            <span class="text-xl font-bold">Wander Any Place</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8 text-black font-medium">
+          <a class="hover:text-rose-400 transition-colors" href="../index.html">Home</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.Destination.html">Destinations</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.booking.html">Booking Services</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.aboutus.html">About Us</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Explore China</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Discover amazing destinations across China, from vibrant cities to serene landscapes
+      </p>
+    </div>
+  </header>
+
+  <section class="bg-white border-b border-gray-100 py-4 sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-wrap justify-center gap-2">
+        <span class="text-sm text-gray-500 mr-3">Jump to:</span>
+        <button onclick="scrollToLetter('A')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">A</button>
+        <button onclick="scrollToLetter('B')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">B</button>
+        <button onclick="scrollToLetter('C')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">C</button>
+        <button onclick="scrollToLetter('F')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">F</button>
+        <button onclick="scrollToLetter('G')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">G</button>
+        <button onclick="scrollToLetter('H')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">H</button>
+        <button onclick="scrollToLetter('I')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">I</button>
+        <button onclick="scrollToLetter('J')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">J</button>
+        <button onclick="scrollToLetter('L')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">L</button>
+        <button onclick="scrollToLetter('N')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">N</button>
+        <button onclick="scrollToLetter('Q')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">Q</button>
+        <button onclick="scrollToLetter('S')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">S</button>
+        <button onclick="scrollToLetter('T')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">T</button>
+        <button onclick="scrollToLetter('X')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">X</button>
+        <button onclick="scrollToLetter('Y')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">Y</button>
+        <button onclick="scrollToLetter('Z')" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-rose-500 hover:text-white text-gray-600 font-bold transition-colors">Z</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex border-b border-gray-200">
+        <button id="domestic-tab" class="tab-btn border-b-2 border-rose-600 text-rose-600 font-semibold py-4 px-6 mr-6" onclick="switchTab('domestic')">
+          <i class="fa fa-map-marker mr-2"></i>Provinces & Municipalities
+        </button>
+        <button id="hkmacao-tab" class="tab-btn border-b-2 border-transparent text-gray-600 font-semibold py-4 px-6" onclick="switchTab('hkmacao')">
+          <i class="fa fa-flag mr-2"></i>HK, Macau & Taiwan
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="domestic-content" class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Letter A -->
+      <div id="letter-A" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">A</div>
+          <h2 class="text-2xl font-bold text-gray-800">A</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-purple-600 text-xl font-bold">AH</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Anhui Province</h3>
+                <p class="text-sm text-gray-500 mt-1">安徽省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter B -->
+      <div id="letter-B" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">B</div>
+          <h2 class="text-2xl font-bold text-gray-800">B</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="3.beijing/3.beijing.html" class="group bg-white rounded-xl p-5 border border-gray-100 hover:border-rose-300 hover:shadow-md transition-all duration-300 block">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-red-100 to-rose-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-red-600 text-xl font-bold">BJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 group-hover:text-rose-600 transition-colors text-lg">Beijing Municipality</h3>
+                <p class="text-sm text-gray-500 mt-1">北京市</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Letter C -->
+      <div id="letter-C" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">C</div>
+          <h2 class="text-2xl font-bold text-gray-800">C</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">CQ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Chongqing Municipality</h3>
+                <p class="text-sm text-gray-500 mt-1">重庆市</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter F -->
+      <div id="letter-F" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">F</div>
+          <h2 class="text-2xl font-bold text-gray-800">F</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">FJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Fujian Province</h3>
+                <p class="text-sm text-gray-500 mt-1">福建省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter G -->
+      <div id="letter-G" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">G</div>
+          <h2 class="text-2xl font-bold text-gray-800">G</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-orange-100 to-amber-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-orange-600 text-xl font-bold">GS</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Gansu Province</h3>
+                <p class="text-sm text-gray-500 mt-1">甘肃省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-red-100 to-orange-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-red-600 text-xl font-bold">GD</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Guangdong Province</h3>
+                <p class="text-sm text-gray-500 mt-1">广东省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-teal-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">GX</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Guangxi Zhuang Autonomous Region</h3>
+                <p class="text-sm text-gray-500 mt-1">广西壮族自治区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-yellow-100 to-amber-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-yellow-600 text-xl font-bold">GZ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Guizhou Province</h3>
+                <p class="text-sm text-gray-500 mt-1">贵州省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter H -->
+      <div id="letter-H" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">H</div>
+          <h2 class="text-2xl font-bold text-gray-800">H</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-teal-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">HI</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Hainan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">海南省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">HE</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Hebei Province</h3>
+                <p class="text-sm text-gray-500 mt-1">河北省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-cyan-600 text-xl font-bold">HLJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Heilongjiang Province</h3>
+                <p class="text-sm text-gray-500 mt-1">黑龙江省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-purple-100 to-violet-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-purple-600 text-xl font-bold">HA</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Henan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">河南省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-indigo-100 to-blue-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-indigo-600 text-xl font-bold">HB</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Hubei Province</h3>
+                <p class="text-sm text-gray-500 mt-1">湖北省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-pink-100 to-rose-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-pink-600 text-xl font-bold">HN</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Hunan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">湖南省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter I -->
+      <div id="letter-I" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">I</div>
+          <h2 class="text-2xl font-bold text-gray-800">I</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">IM</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Inner Mongolia Autonomous Region</h3>
+                <p class="text-sm text-gray-500 mt-1">内蒙古自治区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter J -->
+      <div id="letter-J" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">J</div>
+          <h2 class="text-2xl font-bold text-gray-800">J</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">JS</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Jiangsu Province</h3>
+                <p class="text-sm text-gray-500 mt-1">江苏省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-red-100 to-pink-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-red-600 text-xl font-bold">JX</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Jiangxi Province</h3>
+                <p class="text-sm text-gray-500 mt-1">江西省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-pink-600 text-xl font-bold">JL</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Jilin Province</h3>
+                <p class="text-sm text-gray-500 mt-1">吉林省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter L -->
+      <div id="letter-L" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-rose-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">L</div>
+          <h2 class="text-2xl font-bold text-gray-800">L</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-orange-100 to-red-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-orange-600 text-xl font-bold">LN</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Liaoning Province</h3>
+                <p class="text-sm text-gray-500 mt-1">辽宁省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter N -->
+      <div id="letter-N" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">N</div>
+          <h2 class="text-2xl font-bold text-gray-800">N</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-yellow-600 text-xl font-bold">NX</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Ningxia Hui Autonomous Region</h3>
+                <p class="text-sm text-gray-500 mt-1">宁夏回族自治区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Q -->
+      <div id="letter-Q" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">Q</div>
+          <h2 class="text-2xl font-bold text-gray-800">Q</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-teal-100 to-green-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-teal-600 text-xl font-bold">QH</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Qinghai Province</h3>
+                <p class="text-sm text-gray-500 mt-1">青海省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter S -->
+      <div id="letter-S" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-rose-500 to-red-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">S</div>
+          <h2 class="text-2xl font-bold text-gray-800">S</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-purple-600 text-xl font-bold">SN</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Shaanxi Province</h3>
+                <p class="text-sm text-gray-500 mt-1">陕西省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-yellow-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">SD</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Shandong Province</h3>
+                <p class="text-sm text-gray-500 mt-1">山东省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-red-100 to-rose-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-red-600 text-xl font-bold">SH</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Shanghai Municipality</h3>
+                <p class="text-sm text-gray-500 mt-1">上海市</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-orange-100 to-amber-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-orange-600 text-xl font-bold">SX</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Shanxi Province</h3>
+                <p class="text-sm text-gray-500 mt-1">山西省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">SC</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Sichuan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">四川省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter T -->
+      <div id="letter-T" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">T</div>
+          <h2 class="text-2xl font-bold text-gray-800">T</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">TJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Tianjin Municipality</h3>
+                <p class="text-sm text-gray-500 mt-1">天津市</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-purple-100 to-violet-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-purple-600 text-xl font-bold">XZ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Tibet Autonomous Region</h3>
+                <p class="text-sm text-gray-500 mt-1">西藏自治区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter X -->
+      <div id="letter-X" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">X</div>
+          <h2 class="text-2xl font-bold text-gray-800">X</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-amber-600 text-xl font-bold">XJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Xinjiang Uygur Autonomous Region</h3>
+                <p class="text-sm text-gray-500 mt-1">新疆维吾尔自治区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Y -->
+      <div id="letter-Y" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">Y</div>
+          <h2 class="text-2xl font-bold text-gray-800">Y</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-yellow-100 to-green-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-yellow-600 text-xl font-bold">YN</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Yunnan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">云南省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Z -->
+      <div id="letter-Z" class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">Z</div>
+          <h2 class="text-2xl font-bold text-gray-800">Z</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-teal-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">ZJ</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Zhejiang Province</h3>
+                <p class="text-sm text-gray-500 mt-1">浙江省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hkmacao-content" class="bg-gray-50 py-12 hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white flex items-center justify-center font-bold text-xl mr-4 shadow-lg">HK</div>
+          <h2 class="text-2xl font-bold text-gray-800">Hong Kong, Macau & Taiwan</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-red-100 to-rose-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-red-600 text-xl font-bold">HK</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Hong Kong Special Administrative Region</h3>
+                <p class="text-sm text-gray-500 mt-1">香港特别行政区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-green-600 text-xl font-bold">MC</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Macau Special Administrative Region</h3>
+                <p class="text-sm text-gray-500 mt-1">澳门特别行政区</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="group bg-white rounded-xl p-5 border border-gray-200 grayscale opacity-70 cursor-not-allowed transition-all duration-300">
+            <div class="flex items-start">
+              <div class="w-24 h-16 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg mr-4 flex items-center justify-center">
+                <span class="text-blue-600 text-xl font-bold">TW</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800 text-lg">Taiwan Province</h3>
+                <p class="text-sm text-gray-500 mt-1">台湾省</p>
+                <p class="text-xs text-gray-400 mt-1">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+
+  <button id="back-to-top" class="fixed bottom-8 right-8 bg-rose-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-rose-700">
+    <i class="iconfont icon-zhiding text-4xl"></i>
+  </button>
+
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('[id$="-content"]').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-rose-600', 'text-rose-600');
+        btn.classList.add('border-transparent', 'text-gray-600');
+      });
+      document.getElementById(tabName + '-content').classList.remove('hidden');
+      document.getElementById(tabName + '-tab').classList.remove('border-transparent', 'text-gray-600');
+      document.getElementById(tabName + '-tab').classList.add('border-rose-600', 'text-rose-600');
+    }
+
+    function scrollToLetter(letter) {
+      const element = document.getElementById('letter-' + letter);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
+</body>
+</html>

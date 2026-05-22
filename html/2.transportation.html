@@ -1,361 +1,781 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transportation Services - Wander Any Place</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
-    <script src="../iconfont/iconfont.js"></script>
-    <link rel="stylesheet" href="../iconfont/iconfont.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="./iconfont.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transportation in China - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../css/styles.css">
 
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
-    <!-- Hero Section -->
-    <header class="relative h-[550px] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img alt="China transportation overview" class="w-full h-full object-cover brightness-75" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/2be9696e20144876a94f6d6d50b64947.jpg"/>
-            <div class="absolute inset-0 bg-black/30"></div>
+  <!-- 顶部视觉冲击区 -->
+  <header class="responsive-header flex items-center justify-center">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../img/img-transportation/img-transportation-1.png" alt="China transportation" class="w-full h-full object-cover brightness-75 header-bg">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <!-- 导航栏 -->
+   <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
+      <div class="text-white text-xl sm:text-2xl font-bold flex items-center gap-2">
+        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
+        <span class="font-bold text-white font-sans italic">Wander Any Place</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-white font-medium">
+        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      </div>
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+    <!-- 核心内容 -->
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Comprehensive Transportation in China
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        A guide to navigating China's extensive transportation network
+      </p>
+    </div>
+  </header>
+
+  <!-- Transportation Information Section -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Transportation Options</h2>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="mb-8 border-b border-gray-200">
+        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="transportationTabs" role="tablist">
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-rose-600 text-rose-600 rounded-t-lg active" id="overview-tab" data-tab="overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+              Overview
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="car-rental-tab" data-tab="car-rental" type="button" role="tab" aria-controls="car-rental" aria-selected="false">
+              Car Rental
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="subway-tab" data-tab="subway" type="button" role="tab" aria-controls="subway" aria-selected="false">
+              Subway Systems
+            </button>
+          </li>
+          <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 border-b-2 border-transparent hover:text-rose-600 hover:border-rose-600 rounded-t-lg" id="bike-tab" data-tab="bike" type="button" role="tab" aria-controls="bike" aria-selected="false">
+              Shared Bikes
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Overview Tab -->
+        <div class="tab-pane active" id="overview">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-bus-alt text-rose-600 text-4xl mr-3"></span>
+              Transportation Overview in China
+            </h3>
+
+            <div>
+              <p class="text-slate-600 mb-4">
+                China boasts one of the most extensive and modern transportation networks in the world, making it relatively easy for travelers to navigate the country. Whether you're traveling between major cities or within urban areas, there are several convenient options available.
+              </p>
+
+              <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border-collapse rounded-lg shadow-sm">
+                  <thead>
+                    <tr class="bg-rose-600 text-white">
+                      <th class="px-4 py-3 text-left font-semibold">Transportation</th>
+                      <th class="px-4 py-3 text-left font-semibold">Type/Ticketing Method</th>
+                      <th class="px-4 py-3 text-left font-semibold">Description</th>
+                      <th class="px-4 py-3 text-left font-semibold">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800" rowspan="2">High-Speed Rail</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">12306 (Online)</td>
+                      <td class="px-4 py-3 text-slate-600">Official train ticketing system in China, available both as a website （<a href="https://www.12306.cn" target="_blank" class="text-rose-600 hover:underline">12306.cn</a>）and a mobile app（12306 App）.
+                      </td>
+                      <td class="px-4 py-3 text-slate-600" rowspan="2"><strong>1. Tickets can be purchased online or offline up to 15 days in advance (including day of travel).</strong> For example, if you plan to travel on May 15th, you can start buying tickets from May 1st.<br><br>  
+                        2. For detailed information on using 12306 App please refer to our <a href="2.pre-app.html#Railway 12306" class="text-rose-600 hover:text-rose-700 hover:underline">Railway 12306 Guide</a>. <br><br>
+                        <div class="bg-rose-50 p-3 rounded-lg mb-2">
+                          <strong class="text-rose-600">Need assistance with ticket booking?</strong><br>
+                          <a href="2.booking.html" class="text-rose-600 hover:underline font-bold">Click here</a> for professional booking services
+                        </div><br>  
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Offline Purchase</td>
+                      <td class="px-4 py-3 text-slate-600">Tickets can be purchased at ticket counters or self-service machines at train stations.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800" rowspan="2">Charter Services</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">Charter Teams/Platforms</td>
+                      <td class="px-4 py-3 text-slate-600">This is currently most convenient way for foreign travelers. Many teams specialize in serving foreign customers, and drivers usually speak English or Mandarin. You can search for "car service" on Xiaohongshu (Little Red Book) or WeChat to find official accounts of many teams.</td>
+                      
+                      <td class="px-4 py-3 text-slate-600" rowspan="2">
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                          <strong class="text-rose-600">Need charter services?</strong><br>
+                          Please  <a href="2.booking.html" class="text-rose-600 hover:underline font-bold">click here</a> for booking inquiries
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Through Travel Agencies</td>
+                      <td class="px-4 py-3 text-slate-600">If you already have a domestic travel agency arranging your trip, you can ask them to help book charter services. They often have long-term cooperative teams and can get package services.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Subway Systems</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">Public Transport</td>
+                      <td class="px-4 py-3 text-slate-600">Extensive, modern subway networks in major Chinese cities, with clean stations and trains. Most systems have English signage and announcements.</td>
+                      <td class="px-4 py-3 text-slate-600">Fastest way to travel during rush hour. For short distances in non-rush hours, shared bikes are also a good option.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Car Rental</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">Self-Drive</td>
+                      <td class="px-4 py-3 text-slate-600">Both international and local car rental companies operate throughout China, offering a variety of vehicles to suit different needs. Foreigners need to obtain a Temporary Driving Permit to legally drive in China.<br> <strong>For detailed information, please refer to the "Car Rental" tab.</strong></td>
+                      <td class="px-4 py-3 text-slate-600">
+                        <div class="bg-rose-50 p-3 rounded-lg">
+                          <strong class="text-rose-600">Need assistance with Temporary Driving Permit?</strong><br>
+                          Please <a href="2.booking.html" class="text-rose-600 hover:underline font-bold">click here</a> 
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800" rowspan="2">Taxi Services</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">Traditional Taxis</td>
+                      <td class="px-4 py-3 text-slate-600">Widely available in all cities, can be flagged down on the street or found at taxi stands, have metered fares.</td>
+                      <td class="px-4 py-3 text-slate-600" rowspan="2">1. Traditional taxis are rarely used by both locals and tourists now. <br><br> 2. Language barriers may exist with drivers.<br><br>  3. For detailed information on using DiDi, please refer to our <a href="2.pre-app.html#didi" class="text-rose-600 hover:text-rose-700 hover:underline">DiDi Guide</a>.</td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Ride-hailing Apps (Didi)</td>
+                      <td class="px-4 py-3 text-slate-600">Didi Chuxing is the most popular ride-hailing app in China, offering convenient and affordable transportation services. </td>
+                    </tr>
+                    <tr class="border-b border-gray-200">
+                      <td class="px-4 py-3 font-semibold text-slate-800">Shared Bikes</td>
+                      <td class="px-4 py-3 font-semibold text-slate-800">Mobile App/WeChat mini-program/AliPay</td>
+                      <td class="px-4 py-3 text-slate-600">Widely available in most Chinese cities, shared bikes offer a convenient way to travel short distances. Users can unlock bikes using mobile apps and pay for usage by the minute or hour.</td>
+                      <td class="px-4 py-3 text-slate-600">1. Requires a local mobile number and payment method <br>
+                        <p class="text-slate-600 mt-1 text-sm">If you require a Chinese phone number. <a href="2.pre-simcard.html" class="font-bold underline hover:text-rose-800">Click here</a> for instructions on how to obtain one.</p></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <nav class="absolute top-0 left-0 right-0 z-20 px-8 py-6 flex justify-between items-center">
-            <div class="text-white text-2xl font-bold flex items-center gap-2">
-                <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-                <span class="text-2xl font-bold text-white font-sans italic">Wander Any Place</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-white font-medium">
-                <a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a>
-                <a href="#" class="hover:text-rose-400 transition-colors">Destinations</a>
-            </div>
-        </nav>
-        <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                Comprehensive Transportation Solutions for Inbound Travelers
-            </h1>
-            <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
-                Explore China with ease - Car Rental, Subway, Chartered Car, and Ride-hailing services tailored for international visitors
+        
+        <!-- Car Rental Tab -->
+        <div class="tab-pane" id="car-rental">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-qiche text-rose-600 text-4xl mr-3"></span>
+              Car Rental
+            </h3>
+
+            <p class="text-slate-600 mb-4">
+              Car rental services in China provide travelers with the freedom to explore at their own pace. Both international and local car rental companies operate throughout the country, offering a variety of vehicles to suit different needs. Foreigners can legally drive in China with an Temporary Driving Permit.
             </p>
-            <div class="relative max-w-2xl mx-auto">
-                <div class="bg-white rounded-full shadow-2xl p-2 flex items-center">
-                    <div class="pl-6 pr-3 text-slate-400">
-                        <svg aria-hidden="true" class="iconify w-6 h-6 iconify--ri" data-icon="ri:search-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="m18.031 16.617l4.283 4.282l-1.415 1.415l-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9s9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617m-2.006-.742A6.98 6.98 0 0 0 18 11c0-3.867-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7a6.98 6.98 0 0 0 4.875-1.975z" fill="currentColor"></path></svg>
-                    </div>
-                    <input class="w-full py-3 outline-none text-lg text-slate-700 bg-transparent" placeholder="Search transportation services..." type="text"/>
-                    <button class="bg-rose-600 text-white px-8 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95">
-                        Search
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Overview Section -->
-    <section id="overview" class="bg-white border-b border-gray-100 py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
-                <h2 class="text-3xl font-bold text-slate-900">Transportation Overview in China</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <p class="text-lg text-slate-700 mb-4">
-                        China offers a diverse and efficient transportation network designed to meet the needs of international travelers. Whether you're exploring major cities or remote regions, our tailored services provide seamless mobility with English support and international payment options.
-                    </p>
-                    <p class="text-lg text-slate-700 mb-6">
-                        All our transportation services are vetted for safety, reliability, and compliance with international standards. Our multilingual support team is available 24/7 to assist with bookings, route planning, and emergency assistance.
-                    </p>
-                    <ul class="space-y-2 text-slate-700">
-                        <li class="flex items-center gap-2">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-5 h-5 iconify--ri" data-icon="ri:check-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"></path></svg>
-                            English-speaking drivers and support staff
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-5 h-5 iconify--ri" data-icon="ri:check-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"></path></svg>
-                            International driver's license compatibility
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-5 h-5 iconify--ri" data-icon="ri:check-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"></path></svg>
-                            Cashless payment options (Visa, Mastercard, Alipay)
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-5 h-5 iconify--ri" data-icon="ri:check-line" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"></path></svg>
-                            Comprehensive insurance coverage
-                        </li>
-                    </ul>
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-2xl">
-                    <img alt="China transportation network" class="w-full h-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/6d1435ad26ca45f0942b35c3d6289353.jpg"/>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transportation Tabs Section -->
-    <section id="transport-tabs" class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Tab Navigation -->
-            <div class="border-b border-gray-200 mb-6">
-                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="transport-tabs" role="tablist">
-                    <li class="mr-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 border-rose-600 text-rose-600 rounded-t-lg active" id="car-rental-tab" data-tab="car-rental" type="button" role="tab" aria-controls="car-rental" aria-selected="true">
-                            Car Rental
-                        </button>
-                    </li>
-                    <li class="mr-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="subway-tab" data-tab="subway" type="button" role="tab" aria-controls="subway" aria-selected="false">
-                            Subway
-                        </button>
-                    </li>
-                    <li class="mr-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="chartered-car-tab" data-tab="chartered-car" type="button" role="tab" aria-controls="chartered-car" aria-selected="false">
-                            Chartered Car
-                        </button>
-                    </li>
-                    <li class="mr-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="ride-hailing-tab" data-tab="ride-hailing" type="button" role="tab" aria-controls="ride-hailing" aria-selected="false">
-                            Ride-hailing
-                        </button>
-                    </li>
+            <div class="bg-gray-50 p-4 rounded-lg mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-2">Step 1: Obtain Temporary Driving Permit</h5>
+                <ul class="list-disc pl-6 space-y-2 text-slate-600">
+                  <li><strong>Required Documents(Figure 1):</strong> <br>
+                    1. Passport <br> 
+                    2. Driver's license: Need translation and notarization <br>
+                    3. Driver's License Translation <br>
+                    4. 2 recent 1-inch color photos with white background (can be taken at the Vehicle Management Station) <br>
+                    5. Temporary accommodation certificate (can be provided by police station or hotel) <br>
+                  <li><strong>Application Location(Figure 2):</strong> Local Vehicle Management Stations </li>
+                  <li><strong>Validity Period:</strong> The validity period is consistent with the visa stay period. For those staying in China for less than or equal to 3 months, a temporary driving permit with a validity period of 3 months can be applied for; for those staying for more than 3 months, the validity period can be extended to one year.</li>
+                  <li><strong>Processing Time:</strong> About 2 hours with complete materials</li>
+                  <li><strong>Important Reminder:</strong> <br>
+                    1. Temporary Driving Permit can only be used for car rental<br>
+                    2. Driver's license translation must be done by a qualified translation agency<br>
+                    3. The temporary driving permit should be carried at all times and used together with the foreign driver's license and its Chinese translation<br>
+                    4. When driving a rented Chinese motor vehicle, please carry the rental contract with the vehicle for traffic police inspection<br>
+                    5. Applicants aged 70 or above need to first take a competency test at each driver's theory test center, and can only apply after passing the test (detailed addresses can be found on the Traffic Management 12123 APP)<br>
+                  </li>
                 </ul>
+                
+                <div class="bg-rose-50 p-3 rounded-lg mt-3">
+                  <strong class="text-rose-600">Need assistance with temporary driver's license application?</strong><br>
+                  Please <a href="2.booking.html" class="text-rose-600 hover:underline font-bold">click here</a> for professional assistance
+                </div>
+              </div>
+              <div class="flex space-x-6">
+                <div class="flex flex-col items-center">
+                  <h6 class="text-center font-semibold mb-2">Figure 1. Required Documents</h6>
+                  <img src="../img/img-transportation/img-car-rental.jpg" alt="Required documents for car rental" class="w-full max-w-xs h-auto rounded-lg shadow-md">
+                  <p class="text-xs text-slate-500 mt-1 text-center">Image source: <a href="http://xhslink.com/o/5uPJIjGPFN2" class="text-rose-600 hover:underline">http://xhslink.com/o/5uPJIjGPFN2</a></p>
+                </div>
+                <div class="flex flex-col items-center">
+                  <h6 class="text-center font-semibold mb-2">Figure 2. Application Location</h6>
+                  <img src="../img/img-transportation/img-car-rental2.jpg" alt="Application location for temporary driving permit" class="w-full max-w-xs h-[405px] object-cover rounded-lg shadow-md">
+                  <p class="text-xs text-slate-500 mt-1 text-center">Image source: <a href="http://xhslink.com/o/5uPJIjGPFN2" class="text-rose-600 hover:underline">http://xhslink.com/o/5uPJIjGPFN2</a></p>
+                </div>
+              </div>
             </div>
 
-            <!-- Car Rental Tab Content -->
-            <div id="car-rental" class="tab-pane active">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl shadow-md p-6">
-                        <div class="bg-rose-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-8 h-8 iconify--ri" data-icon="ri:car-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 7h2c.55 0 1 .45 1 1v3.5c0 .83-.5 1.54-1.24 1.86l-1.95.8A4.992 4.992 0 0 0 17 19c0 .34.02.67.07 1H6.93c.05-.33.07-.66.07-1a4.992 4.992 0 0 0-1.81-3.84l-1.95-.8A1.99 1.99 0 0 1 1 11.5V8c0-.55.45-1 1-1h2V5c0-1.1-.9-2-2-2H2C1.45 3 1 3.45 1 4v1c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-.55-.45-1-1-1h-2c-1.1 0-2 .9-2 2v2zM5 8H3v3.5c0 .14.08.26.21.32l1.95.8c.12.05.25.08.39.08H17c.14 0 .27-.03.39-.08l1.95-.8c.13-.06.21-.18.21-.32V8h-2v1h2v2.5c0 .08-.04.15-.08.2l-1.95.8c-.34.14-.73.2-1.12.2H8.25c-.39 0-.78-.07-1.12-.2L5.08 11.7c-.04-.05-.08-.12-.08-.2V9h2V8zm14 2v1.5c0 .08-.04.15-.08.2l-1.95.8c-.34.14-.73.2-1.12.2H8.25c-.39 0-.78-.07-1.12-.2L5.08 11.7c-.04-.05-.08-.12-.08-.2V10h14z" fill="currentColor"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Car Rental Services</h3>
-                        <p class="text-slate-600 mb-4">
-                            Rent a car with international driver's license compatibility. Choose from a wide range of vehicles including economy, luxury, and SUVs with GPS navigation in English.
-                        </p>
-                        <ul class="space-y-2 text-slate-700 mb-6">
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Airport pickup and drop-off
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Unlimited mileage options
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                24/7 roadside assistance
-                            </li>
-                        </ul>
-                        <button class="bg-rose-600 text-white px-6 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95 w-full">
-                            Book Now
-                        </button>
-                    </div>
-                    <div class="md:col-span-2 rounded-2xl overflow-hidden shadow-md">
-                        <img alt="Car rental fleet" class="w-full h-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/14d5b7c9b1284fdea55d6632815bd270.jpg"/>
-                    </div>
-                </div>
+            <div class="bg-gray-50 p-4 rounded-lg mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-semibold mb-2">Step 2: Car Rental and Precautions</h5>
+                <ul class="list-disc pl-6 space-y-2 text-slate-600">
+                  <li><strong>Rental Platforms:</strong> Can choose platforms like "eHi", "Shenzhou Car Rental", "Ctrip Car Rental", or search for "car rental" on Alipay or WeChat to find mini-programs</li>
+                  <li><strong>Payment Method:</strong> Generally requires an international credit card as deposit</li>
+                  <li><strong>Car Rental Insurance:</strong> Must confirm the vehicle has full insurance when booking, clarify exemption clauses, sometimes insurance types have different restrictions on area and time</li>
+                  <li class="bg-rose-50 p-3 rounded-lg"><strong class="text-rose-600">Special Reminder: Self-driving in Xinjiang and Tibet</strong><br>
+                    - If going to Tibet or Xinjiang, control will be stricter, must go through formal channels<br>
+                    - Border Permit: Individuals cannot freely enter Tibetan areas, need travel agency to apply for entry approval letter in advance<br>
+                    - Pick-up Process: If there are changes in the itinerary during actual pick-up, must contact the travel agency in advance for processing<br>
+                    - Monthly Quota: Generally more than one month in advance, must contact the travel agency in advance for processing<br>
+                  </li>
+                  <li><strong>Vehicle Inspection Process:</strong> Must inspect the vehicle's exterior and interior when picking up the car to ensure good condition</li>
+                  <li><strong>Highway Fees:</strong> In China, highway fees are borne by the driver, usually paid at the exit</li>
+                  <li><strong>Traffic Violation Handling:</strong> If traffic violations occur during the rental period, need to handle them yourself or entrust the car rental company to handle them</li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-center">
+                <img src="../img/img-transportation/img-car-rental 3.png" alt="Car rental platforms" class="w-full max-w-m h-auto rounded-lg shadow-md">
+              </div>
             </div>
-
-            <!-- Subway Tab Content -->
-            <div id="subway" class="tab-pane hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="md:col-span-2 rounded-2xl overflow-hidden shadow-md">
-                        <img alt="China subway network" class="w-full h-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/7214c95a164b4014ae492977724d833a.jpg"/>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-md p-6">
-                        <div class="bg-rose-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-8 h-8 iconify--ri" data-icon="ri:subway-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 15c0 .55-.45 1-1 1s-1-.45-1-1v-1H5v1c0 1.1.9 2 2 2s2-.9 2-2v-4c0-1.1-.9-2-2-2s-2 .9-2 2v1h2v-1c0-.55.45-1 1-1s1 .45 1 1v4zm4 4c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-6c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-8h-2v1c0 .55-.45 1-1 1s-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v1h2v-1c0-1.1-.9-2-2-2s-2 .9-2 2v4c0 1.1.9 2 2 2s2-.9 2-2v-1z" fill="currentColor"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Subway Services</h3>
-                        <p class="text-slate-600 mb-4">
-                            Navigate China's extensive subway systems with our tourist-friendly subway cards and English digital maps. Available in Beijing, Shanghai, Guangzhou, and other major cities.
-                        </p>
-                        <ul class="space-y-2 text-slate-700 mb-6">
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Unlimited ride tourist cards
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                English station announcements
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Airport subway line transfers
-                            </li>
-                        </ul>
-                        <button class="bg-rose-600 text-white px-6 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95 w-full">
-                            Get Subway Card
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chartered Car Tab Content -->
-            <div id="chartered-car" class="tab-pane hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-2xl shadow-md p-6">
-                        <div class="bg-rose-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-8 h-8 iconify--ri" data-icon="ri:van-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 7h-1.4c.28-.62.4-1.3.4-2a5 5 0 0 0-5-5c-.7 0-1.38.12-2 .4V2c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v2c-1.66 0-3 1.34-3 3v9c0 1.1.9 2 2 2v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2v-1c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM5 6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v1H5V6zm-1 8v-5h2v5H4zm4 0v-5h2v5H8zm4 0v-5h2v5h-2zm5 0v-5c0-.55.45-1 1-1s1 .45 1 1v5h-2zm-8 5H6v-2h4v2zm6 0h-4v-2h4v2z" fill="currentColor"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Chartered Car Services</h3>
-                        <p class="text-slate-600 mb-4">
-                            Private chartered cars with professional English-speaking drivers for personalized travel. Ideal for family trips, business travel, and group excursions.
-                        </p>
-                        <ul class="space-y-2 text-slate-700 mb-6">
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Customizable tour routes
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Luxury vehicle options
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Multi-day trip packages
-                            </li>
-                        </ul>
-                        <button class="bg-rose-600 text-white px-6 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95 w-full">
-                            Customize Your Trip
-                        </button>
-                    </div>
-                    <div class="md:col-span-2 rounded-2xl overflow-hidden shadow-md">
-                        <img alt="Chartered car service" class="w-full h-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/3dd548fa6f1c4d9fae2f80fbdd623a96.jpg"/>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ride-hailing Tab Content -->
-            <div id="ride-hailing" class="tab-pane hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="md:col-span-2 rounded-2xl overflow-hidden shadow-md">
-                        <img alt="Ride-hailing services in China" class="w-full h-full object-cover" src="https://modao.cc/agent-py/media/generated_images/2026-01-12/07734d201046435fbdbf30c76c3770a6.jpg"/>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-md p-6">
-                        <div class="bg-rose-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <svg aria-hidden="true" class="iconify text-rose-600 w-8 h-8 iconify--ri" data-icon="ri:taxi-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" fill="currentColor"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 text-slate-900">Ride-hailing Services</h3>
-                        <p class="text-slate-600 mb-4">
-                            Access China's top ride-hailing platforms with our international-friendly service. No Chinese phone number required - book rides with English interface and international payment.
-                        </p>
-                        <ul class="space-y-2 text-slate-700 mb-6">
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Airport/Station transfers
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                Fixed price guarantee
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="iconify text-rose-600 w-4 h-4 iconify--ri" data-icon="ri:check-fill" height="1em" role="img" viewbox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"></path></svg>
-                                English-speaking drivers available
-                            </li>
-                        </ul>
-                        <button class="bg-rose-600 text-white px-6 py-3 rounded-full font-bold hover:bg-rose-700 transition-transform active:scale-95 w-full">
-                            Book a Ride
-                        </button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
-                        Wander Any Place
-                    </h3>
-                    <p class="text-gray-400 mb-4">
-                        Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+        <!-- Subway Systems Tab -->
+        <div class="tab-pane" id="subway">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-ditie text-rose-600 text-4xl mr-3"></span>
+              Subway Systems
+            </h3>
+
+            <p class="text-slate-600 mb-4">
+              China's major cities have modern, efficient subway systems that are the best way to navigate urban areas. Most systems are clean, safe, and affordable, with English signage and announcements in larger cities.
+            </p>
+
+            <div class="bg-gray-50 p-6 rounded-lg mb-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-4">How to Buy Subway Tickets</h4>
+              
+              <div class="mb-6">
+                <h5 class="font-semibold mb-3">Step-by-Step Guide</h5>
+                <p class="text-slate-800 mb-3">Subway ticket purchase offers three methods: 1. Alipay, 2. WeChat Pay, 3. Offline purchase.</p>
+                <!-- Alipay Payment -->
+                <div class="mb-8">
+                  <h6 class="font-semibold text-lg mb-4">1. Alipay Payment</h6>
+                  <p class="text-slate-600 mb-4">This can also be used for <strong>bus rides</strong> in some cities.</p>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-1.jpg" alt="Alipay payment step 1" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 1: Open Alipay app and select the "transport" feature.</p>
+                      <p class="text-slate-600 mt-1 text-sm">For Alipay download and installation instructions, please refer to the <a href="2.pre-app.html#alipay" class="text-blue-600 hover:underline">Alipay</a> in the pre-app section.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-2.jpg" alt="Alipay payment step 2" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 2: Select your city and get metro code.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-3.jpg" alt="Alipay payment step 3" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 3: Show the QR code when you take the subway.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- WeChat Pay -->
+                <div class="mb-8">
+                  <h6 class="font-semibold text-lg mb-4">2. WeChat Pay</h6>
+                  <p class="text-slate-600 mb-4">This can also be used for <strong>bus rides</strong> in some cities.</p>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-4.jpg" alt="WeChat Pay step 1" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 1: Open WeChat app and search for metro card.</p>
+                      <p class="text-slate-600 mt-1 text-sm">For WeChat download and installation instructions, please refer to the <a href="2.pre-app.html#wechat" class="text-blue-600 hover:underline">WeChat</a> in the pre-app section.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-5.jpg" alt="WeChat Pay step 2" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 2: Agree to the terms and conditions.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-6.jpg" alt="WeChat Pay step 3" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 3: Show the QR code when you take the subway.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Offline Purchase -->
+                <div class="mb-8">
+                  <h6 class="font-semibold text-lg mb-4">3. Offline Purchase</h6>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-7.jpg" alt="Offline purchase step 1" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 1: Locate the ticket vending machine at the subway station</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-8.jpg" alt="Offline purchase step 2" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 2: Use Amap to check your destination</p>
+                      <p class="text-slate-600 mt-1 text-sm">For Amap download and installation instructions, please refer to the <a href="2.pre-app.html#amap" class="text-blue-600 hover:underline">Amap/Baidu maps</a> in the pre-app section.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-9.jpg" alt="Offline purchase step 3" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 3: Switch language to English</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-10.jpg" alt="Offline purchase step 4" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 4: Choose your line and destination</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-11.jpg" alt="Offline purchase step 5" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 5: Choose the number of tickets you need</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-12.jpg" alt="Offline purchase step 6" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 6: Confirm your purchase</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-13.jpg" alt="Offline purchase step 7" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 7: Choose your payment method</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-14.jpg" alt="Offline purchase step 8" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 8: Get your ticket from the machine</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-15.jpg" alt="Offline purchase step 9" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 9: Use your ticket to enter</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                      <img src="../img/img-transportation/img-subway-16.jpg" alt="Offline purchase step 10" class="w-full h-80 object-cover rounded-lg">
+                      <p class="text-slate-600 mt-2 text-sm">Step 10: Insert your ticket after finishing your trip</p>
+                    </div>
+                  </div>
+                  <div class="mt-6 pt-4 border-t border-gray-200">
+                    <p class="text-sm text-slate-500 flex items-center">
+                      <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                      Sources:
+                      <a href="http://xhslink.com/o/6nIFSn3Vc2S" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline ml-1">
+                        Guide for Foreigners Taking Subway in China
+                      </a>
+                      <span class="mx-2">|</span>
+                      <a href="http://xhslink.com/o/6wG32z9GjQj" target="_blank" rel="noopener noreferrer" class="text-rose-600 hover:text-rose-700 hover:underline">
+                        How to Buy Subway Tickets in China
+                      </a>
                     </p>
+                  </div>
                 </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="1.homepage.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-                        <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
-                        <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
-                        <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Resources</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
-                        <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Travel Apps</a></li>
-                        <li><a href="2.pre-simcard.html" class="hover:text-rose-400 transition-colors">SIM Card Guide</a></li>
-                        <li><a href="#" class="hover:text-rose-400 transition-colors">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Connect With Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-                            <svg aria-hidden="true" data-icon="ri:facebook-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" fill="currentColor"></path></svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-                            <svg aria-hidden="true" data-icon="ri:twitter-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"></path></svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-                            <svg aria-hidden="true" data-icon="ri:instagram-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 22 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0-3-3z" fill="currentColor"></path></svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-rose-400 transition-colors">
-                            <svg aria-hidden="true" data-icon="ri:youtube-line" class="iconify w-6 h-6 iconify--ri" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17zm9.69-6.31a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0zm-6.19 0a1.25 1.25 0 0 0 0 1.77l4.24 3.53a1.25 1.25 0 0 0 1.77-1.77l-4.24-3.53a1.25 1.25 0 0 0-1.77 0z" fill="currentColor"></path></svg>
-                        </a>
-                    </div>
-                </div>
+              </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Wander Any Place. All rights reserved.</p>
+
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+              <h3 class="text-xl font-bold text-slate-800 mb-6">Subway Maps</h3>
+              <div class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-600 mb-6">
+                <p class="text-rose-600 font-bold">Need subway maps for other cities? Let us know!</p>
+                <p class="text-slate-600 mt-2">If you need subway maps for other cities in China, please <a href="feedback.html" class="text-rose-600 hover:underline font-bold">click here</a> to tell us.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Beijing Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Beijing Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    One of the oldest and busiest subway systems in China, with over 20 lines covering the entire city.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://www.bjsubway.com/en/" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 1 (east-west), Line 2 (loop line), Line 4 (north-south)
+                  </p>
+                </div>
+
+                <!-- Shanghai Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Shanghai Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    The longest subway system in the world, with extensive coverage of Shanghai and its suburbs.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://service.shmetro.com/en/yxxlt/index.htm" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 2 (airport line), Line 10 (tourist areas)
+                  </p>
+                </div>
+
+                <!-- Xi'an Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Xi'an Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    Modern system connecting Xi'an's historical sites with residential areas.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://www.xianrail.com/#/planConstruction" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 2 (city center to North Station), Line 4 (connects historical sites)
+                  </p>
+                </div>
+
+                <!-- Chengdu Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Chengdu Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    Expanding system serving China's tech hub in Sichuan province.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://www.chengdurail.com/ckfw/xlt.htm" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 1 (south-north), Line 2 (east-west)
+                  </p>
+                </div>
+
+                <!-- Hangzhou Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Hangzhou Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    Modern system serving the capital of Zhejiang province, near Shanghai.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://www.hzmetro.com/#/operation/networkMap" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map (Only Chinese)
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 1 (city center to Xiaoshan Airport), Line 2 (connects major areas)
+                  </p>
+                </div>
+
+                <!-- Guangzhou Subway -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Guangzhou Subway</h4>
+                  <p class="text-slate-600 mb-3">
+                    Extensive system serving the capital of Guangdong province, with connections to Hong Kong.
+                  </p>
+                  <p class="text-sm text-slate-500 flex items-center mb-2">
+                    <i class="iconfont icon-lianjie w-4 h-4 mr-1"></i>
+                    <a href="https://ydyc.gzmtr.cn:19090/indexBrowser.html#/index" target="_blank" class="text-rose-600 hover:text-rose-700 hover:underline">
+                      Official Website and Map
+                    </a>
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Key Lines:</strong> Line 3 (connects to Zhujiang New Town), Line 5 (connects to Pazhou Exhibition Center)
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h5 class="font-semibold mb-2">Tips for Using Subways in China</h5>
+              <ul class="list-disc pl-6 space-y-1 text-slate-600">
+                <li>Purchase tickets from vending machines (many accept mobile payments)</li>
+                <li>Keep your ticket until you exit the station</li>
+                <li>Stand on the right side of escalators to allow others to pass on the left</li>
+                <li>Give up seats to elderly, pregnant women, and children</li>
+                <li>Be aware of peak hours (7:30-9:00 AM and 5:30-7:30 PM)</li>
+                <li>Most stations have English signage, but having station names in Chinese is helpful</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('[data-tab]');
-            const tabPanes = document.querySelectorAll('.tab-pane');
+        <!-- Shared Bikes Tab -->
+        <div class="tab-pane" id="bike">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+              <span class="iconfont icon-zixingche text-rose-600 text-4xl mr-3"></span>
+              Shared Bikes
+            </h3>
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
+            <p class="text-slate-600 mb-4">
+              Shared bikes have become a popular and convenient transportation option in many Chinese cities, especially for short distances. They are easy to use and relatively inexpensive, making them a great choice for exploring urban areas.
+            </p>
 
-                    // Remove active class from all tabs
-                    tabs.forEach(t => {
-                        t.classList.remove('border-rose-600', 'text-rose-600');
-                        t.classList.add('border-transparent');
-                        t.setAttribute('aria-selected', 'false');
-                    });
+            <div class="bg-gray-50 p-6 rounded-lg mb-8">
+              <h4 class="text-xl font-semibold text-slate-800 mb-4">How to Use Shared Bikes</h4>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <img src="../img/img-transportation/img-bike-1.png" alt="Shared bike step 1" class="w-full h-auto object-cover rounded-lg">
+                  <p class="text-slate-600 mt-2 text-sm">Step 1: Use Wechat mini-program / Alipay to open or download a bike-sharing app like Mobike or Hellobike</p>
+                  <p class="text-slate-600 mt-1 text-sm">For Wechat / Alipay download and installation instructions, please refer to the <a href="2.pre-app.html#alipay" class="text-blue-600 hover:underline">Wechat / Alipay</a> in the pre-app section.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <img src="../img/img-transportation/img-bike-2.png" alt="Shared bike step 2" class="w-full h-auto object-cover rounded-lg">
+                  <p class="text-slate-600 mt-2 text-sm">Step 2: Register and verify your account with a local phone number</p>
+                  <p class="text-slate-600 mt-1 text-sm">If you require a Chinese phone number. <a href="2.pre-simcard.html" class="font-bold underline hover:text-rose-800">Click here</a> for instructions on how to obtain one.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <img src="../img/img-transportation/img-bike-3.png" alt="Shared bike step 3" class="w-full h-auto object-cover rounded-lg">
+                  <p class="text-slate-600 mt-2 text-sm">Step 3: Park the bike in designated areas and lock it when finished</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <img src="../img/img-transportation/img-bike-4.png" alt="Shared bike step 4" class="w-full h-auto object-cover rounded-lg">
+                  <p class="text-slate-600 mt-2 text-sm">Step 4: Pay for the ride </p>
+                </div>
+              </div>
+            </div>
 
-                    // Add active class to current tab
-                    this.classList.remove('border-transparent');
-                    this.classList.add('border-rose-600', 'text-rose-600');
-                    this.setAttribute('aria-selected', 'true');
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+              <h3 class="text-xl font-bold text-slate-800 mb-6">Foreigner-Friendly Bike-Sharing Apps Recommendation</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Hellobike -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-slate-800 mb-2">Hellobike</h4>
+                  <p class="text-slate-600 mb-3">
+                    Another popular bike-sharing app with a wide network of bikes in urban areas.
+                  </p>
+                  <p class="text-slate-600 text-sm">
+                    <strong>Features:</strong> Low rates, easy-to-use interface, available in many cities
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                    // Hide all tab panes
-                    tabPanes.forEach(pane => {
-                        pane.classList.add('hidden');
-                        pane.classList.remove('active');
-                    });
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h5 class="font-semibold mb-2">Tips for Using Shared Bikes in China</h5>
+              <ul class="list-disc pl-6 space-y-1 text-slate-600">
+                <li>Download the app and register before your trip to avoid language barriers</li>
+                <li>Make sure you have a local mobile number for verification</li>
+                <li>Park bikes only in designated areas to avoid fines</li>
+                <li>Be aware of traffic rules and ride safely</li>
+                <li>Check the bike for any damage before unlocking it</li>
+                <li>Keep your phone charged as you'll need it to unlock and lock the bike</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    // Show target tab pane
-                    const targetPane = document.getElementById(targetTab);
-                    if (targetPane) {
-                        targetPane.classList.remove('hidden');
-                        targetPane.classList.add('active');
-                    }
-                });
-            });
+  <!-- Footer -->
+    <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri mr-2" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+
+  <script src="../js/transportation.js"></script>
+  <!-- Image Viewer Modal -->
+  <div id="imageViewerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90">
+    <button id="closeModal" class="absolute top-4 right-4 text-white text-4xl hover:text-rose-400 transition-colors z-50">&times;</button>
+    
+    <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10094;
+    </button>
+    
+    <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10095;
+    </button>
+    
+    <div class="relative max-w-7xl max-h-[90vh] flex items-center justify-center p-4">
+      <img id="modalImage" src="" alt="" class="max-w-full max-h-[90vh] object-contain">
+    </div>
+    
+    <div id="imageCounter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black/50 px-4 py-2 rounded-lg">
+      <span id="currentIndex">1</span> / <span id="totalImages">1</span>
+    </div>
+  </div>
+
+  <script>
+    // Image Viewer functionality
+    let allImages = [];
+    let currentImageIndex = 0;
+    
+    // Initialize image viewer
+    function initImageViewer() {
+      // Get all images except background image
+      const images = document.querySelectorAll('img:not(.header-bg)');
+      allImages = Array.from(images);
+      
+      // Add click event to each image
+      allImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openImageViewer(index);
         });
-    </script>
+      });
+      
+      // Close modal on background click
+      document.getElementById('imageViewerModal').addEventListener('click', (e) => {
+        if (e.target.id === 'imageViewerModal') {
+          closeImageViewer();
+        }
+      });
+      
+      // Close modal on button click
+      document.getElementById('closeModal').addEventListener('click', closeImageViewer);
+      
+      // Previous image
+      document.getElementById('prevImage').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPreviousImage();
+      });
+      
+      // Next image
+      document.getElementById('nextImage').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNextImage();
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('imageViewerModal');
+        if (!modal.classList.contains('hidden')) {
+          if (e.key === 'Escape') {
+            closeImageViewer();
+          } else if (e.key === 'ArrowLeft') {
+            showPreviousImage();
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          }
+        }
+      });
+    }
+    
+    function openImageViewer(index) {
+      currentImageIndex = index;
+      const modal = document.getElementById('imageViewerModal');
+      const modalImage = document.getElementById('modalImage');
+      const currentIndexEl = document.getElementById('currentIndex');
+      const totalImagesEl = document.getElementById('totalImages');
+      
+      modalImage.src = allImages[index].src;
+      modalImage.alt = allImages[index].alt;
+      currentIndexEl.textContent = index + 1;
+      totalImagesEl.textContent = allImages.length;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeImageViewer() {
+      const modal = document.getElementById('imageViewerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+    
+    function showPreviousImage() {
+      currentImageIndex--;
+      if (currentImageIndex < 0) {
+        currentImageIndex = allImages.length - 1;
+      }
+      updateModalImage();
+    }
+    
+    function showNextImage() {
+      currentImageIndex++;
+      if (currentImageIndex >= allImages.length) {
+        currentImageIndex = 0;
+      }
+      updateModalImage();
+    }
+    
+    function updateModalImage() {
+      const modalImage = document.getElementById('modalImage');
+      const currentIndexEl = document.getElementById('currentIndex');
+      
+      modalImage.src = allImages[currentImageIndex].src;
+      modalImage.alt = allImages[currentImageIndex].alt;
+      currentIndexEl.textContent = currentImageIndex + 1;
+    }
+    
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', initImageViewer);
+  </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
 </body>
 </html>

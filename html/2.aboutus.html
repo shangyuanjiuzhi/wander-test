@@ -6,8 +6,7 @@
   <title>About Us - Wander Any Place</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/styles.css">
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="../iconfont/iconfont.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
   <script>
     tailwind.config = {
@@ -45,19 +44,19 @@
 <body class="bg-slate-50 font-sans text-slate-800">
   <header class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
+      <div class="flex justify-between items-center h-16">
         <div class="flex items-center">
           <a href="../index.html" class="flex items-center space-x-2">
             <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
             <span class="text-xl font-bold">Wander Any Place</span>
           </a>
         </div>
-        <nav class="flex items-center space-x-6">
-          <a href="../index.html" class="text-slate-600 hover:text-rose-600 transition-colors">Home</a>
-          <a href="2.pre-visa.html" class="text-slate-600 hover:text-rose-600 transition-colors">Visa</a>
-          <a href="2.pre-app.html" class="text-slate-600 hover:text-rose-600 transition-colors">Apps</a>
-          <a href="2.booking.html" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors">Booking</a>
-        </nav>
+        <div class="hidden md:flex items-center space-x-8 text-black font-medium">
+          <a class="hover:text-rose-400 transition-colors" href="../index.html">Home</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.Destination.html">Destinations</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.booking.html">Booking Services</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.aboutus.html">About Us</a>
+        </div>
       </div>
     </div>
   </header>
@@ -76,7 +75,7 @@
       <h2 class="text-3xl font-bold text-center mb-8">Who We Are</h2>
       <div class="bg-slate-50 p-8 rounded-xl shadow-md">
         <p class="text-slate-600 leading-relaxed mb-6">
-          <strong>Wander Any Place</strong> is your premier travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing, we are a newly founded company committed to providing comprehensive travel services and information for international travelers.
+          <strong>Wander Any Place</strong> is your premier comprehensive travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing as a newly founded company, we are committed to providing comprehensive travel services and information for international travelers. Our aim is to become a leading information-focused OTA platform, offering travel information, services, and booking solutions that extend beyond international independent travelers visiting China.
         </p>
         <p class="text-slate-600 leading-relaxed mb-6">
           Our platform serves as a bridge between curious travelers and the wonders of China. We understand that planning a trip to China can be overwhelming — from visa requirements to navigating local apps, from finding the best destinations to booking services. That's why we've created an all-in-one resource to simplify your journey.
@@ -94,14 +93,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white p-6 rounded-xl shadow-md">
           <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg aria-hidden="true" data-icon="ri:compass-3-fill" class="iconify text-rose-600" width="1.5em" height="1.5em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+            <i class="iconfont icon-icon_shiyongwendang text-rose-600 text-xl"></i>
           </div>
           <h3 class="font-semibold text-lg text-center mb-2">Our Mission</h3>
           <p class="text-slate-600 text-sm text-center">To provide accurate, up-to-date travel information and services that help international travelers navigate China with confidence and ease.</p>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-md">
           <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg aria-hidden="true" data-icon="ri:global-line" class="iconify text-rose-600" width="1.5em" height="1.5em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+            <i class="iconfont icon-renwu1 text-rose-600 text-xl"></i> 
           </div>
           <h3 class="font-semibold text-lg text-center mb-2">Our Vision</h3>
           <p class="text-slate-600 text-sm text-center">To become the most trusted travel companion for anyone visiting China, transforming complex travel logistics into seamless experiences.</p>
@@ -117,7 +116,7 @@
         <div class="space-y-6">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <svg aria-hidden="true" data-icon="ri:information-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m1 15h-2v-6h2v6m0-8h-2V7h2v2" fill="currentColor"></path></svg>
+             <i class="iconfont icon-xinxikongxin text-rose-600 text-xl"></i> 
             </div>
             <div>
               <h3 class="font-semibold text-lg mb-1">Travel Information</h3>
@@ -126,7 +125,7 @@
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <svg aria-hidden="true" data-icon="ri:service-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+              <i class="iconfont icon-6 text-rose-600 text-xl"></i> 
             </div>
             <div>
               <h3 class="font-semibold text-lg mb-1">Booking Services</h3>
@@ -135,7 +134,7 @@
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <svg aria-hidden="true" data-icon="ri:community-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3m-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3m0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5m8 0c-.29 0-.62.02-.97.05c1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5" fill="currentColor"></path></svg>
+              <i class="iconfont icon-fenxiang text-rose-600 text-xl"></i> 
             </div>
             <div>
               <h3 class="font-semibold text-lg mb-1">Community-Driven</h3>
@@ -144,7 +143,7 @@
           </div>
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-              <svg aria-hidden="true" data-icon="ri:store-2-line" class="iconify text-rose-600" width="1.25em" height="1.25em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m-1.999 14.413l-3.713-3.705L9.713 9.25a5 5 0 0 0-1.32 4.678c.848 2.166 3.02 3.836 5.654 4.16m5.314-4.16a5 5 0 0 0-1.32-4.678l3.713-3.705l-1.414-1.414l-3.713 3.705l-1.414 1.414l1.413 1.413l-2.586 2.586l1.414 1.414l2.586-2.586z" fill="currentColor"></path></svg>
+              <i class="iconfont icon-renwu text-rose-600 text-xl"></i> 
             </div>
             <div>
               <h3 class="font-semibold text-lg mb-1">OTA Integration</h3>
@@ -162,21 +161,21 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-xl shadow-md text-center">
           <div class="text-rose-600 text-4xl mb-4">
-            <svg aria-hidden="true" data-icon="ri:shield-check-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91c4.59-1.15 8-5.86 8-10.91V5l-8-3m7 10.09c0 4-2.55 7.7-6 8.83c-3.45-1.13-6-4.82-6-8.83V6.31l6-2.25l6 2.25v5.78M9.5 10.5l1.5 1.5l3-3" fill="currentColor"></path></svg>
+           <i class="iconfont icon-anquanzhongxin text-rose-600 text-4xl"></i> 
           </div>
           <h3 class="font-semibold text-lg mb-2">Trusted & Secure</h3>
           <p class="text-slate-600 text-sm">All services include formal contracts to ensure your safety and satisfaction.</p>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-md text-center">
           <div class="text-rose-600 text-4xl mb-4">
-            <svg aria-hidden="true" data-icon="ri:customer-service-2-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2m0 18a8 8 0 1 1 0-16a8 8 0 0 1 0 16m-1-13h2v6h-2V7m-1.536 9.95a5.001 5.001 0 0 0 6.95 0a5.001 5.001 0 0 0-6.95 0" fill="currentColor"></path></svg>
+            <i class="iconfont icon-shijian text-rose-600 text-4xl"></i> 
           </div>
           <h3 class="font-semibold text-lg mb-2">24/7 Support</h3>
           <p class="text-slate-600 text-sm">Our dedicated team is available to assist you throughout your journey.</p>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-md text-center">
           <div class="text-rose-600 text-4xl mb-4">
-            <svg aria-hidden="true" data-icon="ri:wallet-line" class="iconify" width="1em" height="1em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2m-9-9a3 3 0 1 0 0-6a3 3 0 0 0 0 6m5 11H5a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h1a2 2 0 0 0 2-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" fill="currentColor"></path></svg>
+          <i class="iconfont icon-daizhifu text-rose-600 text-4xl"></i> 
           </div>
           <h3 class="font-semibold text-lg mb-2">Flexible Payment</h3>
           <p class="text-slate-600 text-sm">Pay upon arrival in China (except for pre-booked services). No hidden fees.</p>
@@ -258,6 +257,7 @@
     </div>
   </section>
 
+    <!-- 页脚 -->
   <footer class="bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -275,8 +275,8 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
             <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
@@ -288,6 +288,7 @@
             <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
             <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
             <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
           </ul>
         </div>
 
@@ -297,6 +298,7 @@
         </div>
       </div>
   </footer>
+
 
   <script>
     document.getElementById('feedback-form').addEventListener('submit', async function(e) {
@@ -361,5 +363,15 @@
       }
     });
   </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
 </body>
 </html>

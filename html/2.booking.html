@@ -6,8 +6,6 @@
   <title>Booking Services - Wander Any Place</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/styles.css">
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
   <script>
     tailwind.config = {
@@ -45,19 +43,19 @@
 <body class="bg-slate-50 font-sans text-slate-800">
   <header class="bg-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
+      <div class="flex justify-between items-center h-16">
         <div class="flex items-center">
           <a href="../index.html" class="flex items-center space-x-2">
             <svg aria-hidden="true" data-icon="ri:map-pin-2-fill" class="iconify text-rose-500 iconify--ri" width="2em" height="2em" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0M12 13a2 2 0 1 0 0-4a2 2 0 0 0 0 4" fill="currentColor"></path></svg>
             <span class="text-xl font-bold">Wander Any Place</span>
           </a>
         </div>
-        <nav class="flex items-center space-x-6">
-          <a href="../index.html" class="text-slate-600 hover:text-rose-600 transition-colors">Home</a>
-          <a href="2.pre-visa.html" class="text-slate-600 hover:text-rose-600 transition-colors">Visa</a>
-          <a href="2.pre-app.html" class="text-slate-600 hover:text-rose-600 transition-colors">Apps</a>
-          <a href="#" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700 transition-colors">Contact</a>
-        </nav>
+        <div class="hidden md:flex items-center space-x-8 text-black font-medium">
+          <a class="hover:text-rose-400 transition-colors" href="../index.html">Home</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.Destination.html">Destinations</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.booking.html">Booking Services</a>
+          <a class="hover:text-rose-400 transition-colors" href="2.aboutus.html">About Us</a>
+        </div>
       </div>
     </div>
   </header>
@@ -76,7 +74,7 @@
       <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
       <div class="bg-slate-50 p-8 rounded-xl shadow-md">
         <p class="text-slate-600 leading-relaxed mb-6">
-          Wander Any Place is your premier travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing, we are a newly founded company committed to providing comprehensive travel services and information.
+          <strong>Wander Any Place</strong> is your premier comprehensive travel information and OTA (Online Travel Agency) platform dedicated to exploring China. Established in Beijing as a newly founded company, we are committed to providing comprehensive travel services and information for international travelers. Our aim is to become a leading information-focused OTA platform, offering travel information, services, and booking solutions that extend beyond international independent travelers visiting China.
         </p>
         <p class="text-slate-600 leading-relaxed mb-6">
           Currently, we offer travel information and services in the format of concise guides and updates. Looking ahead, we plan to expand our platform with user-generated content, allowing travelers to share experiences and contribute to our information base. We also aim to integrate OTA services to provide a seamless booking experience.
@@ -191,8 +189,8 @@
                   <span class="ml-3 text-slate-700">Passport Verification Assistance</span>
                 </label>
                 <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
-                  <input type="checkbox" name="services" value="Temporary Driver's License" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
-                  <span class="ml-3 text-slate-700">Temporary Driver's License</span>
+                  <input type="checkbox" name="services" value="Temporary Driver's License Assistance" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Temporary Driver's License Assistance</span>
                 </label>
                 <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
                   <input type="checkbox" name="services" value="Car Charter" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
@@ -205,6 +203,22 @@
                 <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
                   <input type="checkbox" name="services" value="Scenic Spot Interpretation Services" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
                   <span class="ml-3 text-slate-700">Scenic Spot Interpretation Services</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Hanfu Photography Booking" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Hanfu Photography Booking</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Hutong/Attraction Tour Guide" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Hutong/Attraction Tour Guide</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Customized Itinerary" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Customized Itinerary</span>
+                </label>
+                <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors">
+                  <input type="checkbox" name="services" value="Airport/Station Transfer" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded">
+                  <span class="ml-3 text-slate-700">Airport/Station Transfer</span>
                 </label>
                 <label class="flex items-center p-3 bg-white border border-slate-200 rounded-lg hover:border-rose-300 cursor-pointer transition-colors" id="others-label">
                   <input type="checkbox" name="services" value="Others" id="others-checkbox" class="w-5 h-5 text-rose-600 focus:ring-rose-500 rounded" onclick="toggleOthersInput()">
@@ -239,6 +253,7 @@
     </div>
   </section>
 
+    <!-- 页脚 -->
   <footer class="bg-gray-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -257,7 +272,7 @@
           <ul class="space-y-2 text-gray-400">
             <li><a href="../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
             <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
             <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
@@ -269,6 +284,7 @@
             <li><a href="2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
             <li><a href="2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
             <li><a href="2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
           </ul>
         </div>
 
@@ -278,6 +294,7 @@
         </div>
       </div>
   </footer>
+
 
   <script>
     function toggleOthersInput() {
@@ -369,5 +386,15 @@
       }
     });
   </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
 </body>
 </html>
