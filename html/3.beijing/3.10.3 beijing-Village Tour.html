@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ancient Villages Around Beijing - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+
+  <script>
+    function openTab(tabName) {
+      var i, tabContent, tabBtn;
+      tabContent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+      }
+      tabBtn = document.getElementsByClassName("tab-btn");
+      for (i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].className = tabBtn[i].className.replace(" text-rose-600 border-rose-600", " text-slate-500");
+        tabBtn[i].className = tabBtn[i].className.replace(" border-b-2", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      event.currentTarget.className += " text-rose-600 border-b-2 border-rose-600";
+    }
+
+    let currentSlide = {};
+    
+    function nextSlide(carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel');
+      if (!carousel) return;
+      const items = carousel.querySelectorAll('.carousel-item');
+      if (!currentSlide[carouselId]) currentSlide[carouselId] = 0;
+      items[currentSlide[carouselId]].classList.remove('active');
+      items[currentSlide[carouselId]].classList.add('hidden');
+      currentSlide[carouselId] = (currentSlide[carouselId] + 1) % items.length;
+      items[currentSlide[carouselId]].classList.add('active');
+      items[currentSlide[carouselId]].classList.remove('hidden');
+      updateIndicators(carouselId);
+    }
+    
+    function prevSlide(carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel');
+      if (!carousel) return;
+      const items = carousel.querySelectorAll('.carousel-item');
+      if (!currentSlide[carouselId]) currentSlide[carouselId] = 0;
+      items[currentSlide[carouselId]].classList.remove('active');
+      items[currentSlide[carouselId]].classList.add('hidden');
+      currentSlide[carouselId] = (currentSlide[carouselId] - 1 + items.length) % items.length;
+      items[currentSlide[carouselId]].classList.add('active');
+      items[currentSlide[carouselId]].classList.remove('hidden');
+      updateIndicators(carouselId);
+    }
+    
+    function goToSlide(index, carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel');
+      if (!carousel) return;
+      const items = carousel.querySelectorAll('.carousel-item');
+      if (!currentSlide[carouselId]) currentSlide[carouselId] = 0;
+      items[currentSlide[carouselId]].classList.remove('active');
+      items[currentSlide[carouselId]].classList.add('hidden');
+      currentSlide[carouselId] = index;
+      items[currentSlide[carouselId]].classList.add('active');
+      items[currentSlide[carouselId]].classList.remove('hidden');
+      updateIndicators(carouselId);
+    }
+    
+    function updateIndicators(carouselId) {
+      const indicators = document.querySelectorAll(`#${carouselId}-carousel .indicator-btn`);
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide[carouselId]) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    function copyAddress() {
+      navigator.clipboard.writeText("Ancient Villages, Beijing, China");
+      alert("Address copied to clipboard!");
+    }
+
+    function openLightbox(imageUrl) {
+      const lightbox = document.createElement('div');
+      lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
+      lightbox.onclick = function() {
+        lightbox.remove();
+      };
+      
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      img.className = 'max-w-[90vw] max-h-[90vh] object-contain';
+      img.onclick = function(e) {
+        e.stopPropagation();
+      };
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'absolute top-4 right-4 text-white text-2xl hover:text-gray-300';
+      closeBtn.innerHTML = '&times;';
+      closeBtn.onclick = function() {
+        lightbox.remove();
+      };
+      
+      lightbox.appendChild(img);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+    }
+  </script>
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+  <nav class="mobile-header-nav">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao"></i>
+        <span>Wander Any Place</span>
+      </div>
+      <div class="desktop-nav" id="desktopNavLinks">
+        <a href="../../index.html">Home</a>
+        <a href="../2.Destination.html">Destinations</a>
+        <a href="../2.booking.html">Booking Services</a>
+        <a href="../2.aboutus.html">About Us</a>
+      </div>
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  <!-- 移动端导航覆盖层 -->
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
+  
+  <!-- Hero Section -->
+  <header class="responsive-header flex items-center justify-center" style="margin-top: 70px;">
+    <div class="absolute inset-0 z-0">
+      <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /Ancient Village.jpeg" alt="Ancient Villages Around Beijing" class="w-full h-full object-cover brightness-75">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Ancient Villages Around Beijing
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        Explore traditional Chinese villages with rich history and unique architecture
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-500 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Village Tour Guide</h2>
+      </div>
+
+      <!-- Village Tab Navigation -->
+      <div class="flex border-b border-gray-200 mb-6">
+        <button class="tab-btn px-6 py-3 text-rose-600 border-b-2 border-rose-600 font-medium" onclick="openTab('cuan-tab')">Cuandixia</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('lingshui-tab')">Lingshui</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('gubei-tab')">Gubei Water Town</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('liuliqu-tab')">Liuliqu</button>
+      </div>
+
+      <!-- Cuandixia Village Tab -->
+      <div class="tab-content" id="cuan-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Cuandixia Village (爨底下村)</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
+            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('cuan')">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div id="cuan-carousel" class="h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-guanjingtai.PNG" alt="Cuandixia Village Panorama" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Golden Toad Mountain Viewing Platform (金蟾山观景台)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-guanjingtai.PNG')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-yixiantian.jpg" alt="Yixiantian - Natural Gorge" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Yixiantian - Natural Gorge (一线天)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-yixiantian.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-Ming-Qing Courtyard.jpg" alt="Traditional Courtyard Houses" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Traditional Courtyard Houses (明清四合院)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-Ming-Qing Courtyard.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cuandixia-Clay Oven Bread.jpg" alt="Clay Oven Bread" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Clay Oven Bread (窑烤面包)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cuandixia-Clay Oven Bread.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('cuan')">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="flex flex-col gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+              <h4 class="font-bold text-slate-700 mb-2">Village Introduction</h4>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Cuandixia Village</strong>, located in Mentougou District, is a well-preserved ancient village with over <span class="text-rose-600 font-bold">400 years</span> of history. Built during the Ming Dynasty, the village features unique architectural style with <span class="text-rose-600 font-bold">76 courtyard houses</span> arranged in a terraced pattern along the mountain slope.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The village is famous for its "gold ingot" layout, where the streets and alleys form the shape of ancient Chinese gold ingots. Each courtyard has its own unique features, with elaborate wood carvings and stone inscriptions. The village has been used as a filming location for many movies and TV dramas.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Must-Visit Attractions:</strong> (1) <span class="text-rose-600 font-medium">Golden Toad Mountain Viewing Platform (金蟾山观景台)</span> - The best spot to overlook the entire "gold ingot" shaped ancient village. (2) <span class="text-rose-600 font-medium">Yixiantian (一线天)</span> - A natural gorge formed by water erosion, with towering cliffs and only a narrow strip of sky visible. It's cool and perfect for photos, and was also a filming location for the movie "The Warlords". (3) <span class="text-rose-600 font-medium">Ming-Qing Courtyard Houses (明清四合院)</span> - Over 70 mountain courtyard houses from the Ming and Qing dynasties still exist in the village.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Must-Try Food:</strong> <span class="text-rose-600 font-medium">Clay Oven Bread (窑烤面包)</span> - The clay oven bread at the village entrance is extremely popular. Be sure to try the freshly baked ones - crispy on the outside, soft on the inside. The croissants come highly recommended!
+              </p>
+            </div>
+            
+
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Cuandixia Village, Mentougou District, Beijing</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <p class="text-slate-600">8:00 - 17:30 (All year round)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">April - June, September - October</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">Free </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Take bus 892 from Pingguoyuan Subway Station (Line 1) to Cuandixia Village</li>
+                  <li>Self-drive: About 1.5 hours from downtown Beijing</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tips</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Wear comfortable walking shoes</li>
+                  <li>Try local farm food in village restaurants</li>
+                  <li>Overnight stays available in courtyard guesthouses</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lingshui Village Tab -->
+      <div class="tab-content hidden" id="lingshui-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Lingshui Village (灵水村)</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
+            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('lingshui')">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div id="lingshui-carousel" class="h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Cypress Embracing Elm.jpg" alt="Dragon King Temple Stage" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Dragon King Temple Stage and Cypress Embracing Elm (龙王庙戏台及柏抱榆)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Cypress Embracing Elm.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Ganoderma Cypress.jpg" alt="Ganoderma Cypress" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Ganoderma Cypress (灵芝柏)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Ganoderma Cypress.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Octagonal Dragon Pool .jpg" alt="Octagonal Dragon Pool" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Octagonal Dragon Pool (八角龙池)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Octagonal Dragon Pool .jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('lingshui')">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="flex flex-col gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+              <h4 class="font-bold text-slate-700 mb-2">Village Introduction</h4>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Lingshui Village</strong>, also known as the "Scholar Village", has a history of over <span class="text-rose-600 font-bold">600 years</span>. During the Ming and Qing dynasties, this small village produced <span class="text-rose-600 font-bold">22 Jinshi (Imperial Scholars)</span> and numerous Juren (Provincial Graduates), making it famous as a "village of scholars".
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The village is nestled in a valley surrounded by mountains, with ancient trees over 1,000 years old. Key attractions include the <span class="text-rose-600 font-bold">Ancestral Hall of the Five Scholars</span>, <span class="text-rose-600 font-bold">Yin-Yang Well</span>, and various well-preserved courtyards. It was also the filming location for the popular TV show "Where Are We Going, Dad?".
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Must-visit attractions here: (1) <span class="text-rose-600 font-bold">Dragon King Temple Stage and Cypress Embracing Elm (龙王庙戏台及柏抱榆)</span>: A thousand-year-old cypress tree has mulberry and elm trees naturally growing from its trunk, three trees in one body, one of the Eight Sceneries of Lingshui. (2) <span class="text-rose-600 font-bold">Ganoderma Cypress (灵芝柏)</span>: This ancient cypress resembles a blooming ganoderma mushroom, offering a panoramic view of the village's stone-paved roads, perfect for photos. (3) <span class="text-rose-600 font-bold">Octagonal Dragon Pool (八角龙池)</span>: The source of life for this ancient village, it served as the drinking water and water storage pool for villagers during the Ming and Qing dynasties. The Qing Dynasty "<span class="text-rose-600 font-bold">Three Prohibitions Stele (三禁碑)</span>" beside the pool witnesses our ancestors' advanced ecological protection awareness and holds great historical value.
+              </p>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Lingshui Village, Mentougou District, Beijing</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <p class="text-slate-600">8:00 - 18:00 (All year round)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">May - June, September - November</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">¥20 per person</p>
+
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Take bus 892 from Pingguoyuan Subway Station to Lingshui Village</li>
+                  <li>Self-drive: About 1.5 hours from downtown Beijing</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tips</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Visit the ancient scholar's residences</li>
+                  <li>Try local wild vegetable dishes</li>
+                  <li>Climb the nearby hill for panoramic views</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gubei Water Town Tab -->
+      <div class="tab-content hidden" id="gubei-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Gubei Water Town (古北水镇)</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
+            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('gubei')">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div id="gubei-carousel" class="h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun.jpg" alt="Yongshun Dyeing Workshop" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Yongshun Dyeing Workshop (永顺染坊)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun2.jpg" alt="Yongshun Dyeing Workshop" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Yongshun Dyeing Workshop (永顺染坊)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun2.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- wine.jpg" alt="Sima Xiao Shao Distillery" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Sima Xiao Shao Distillery (司马小烧酒坊)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- wine.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Simatai Great Wall .jpg" alt="Simatai Great Wall" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Simatai Great Wall (司马台长城) 夜晚景观</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Simatai Great Wall .jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church.jpg" alt="Hilltop Church" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Hilltop Church (山顶教堂)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church2.jpg" alt="Hilltop Church" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Hilltop Church (山顶教堂)景观</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church2.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Drone.jpg" alt="Drone Show" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Drone Show (无人机表演)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Drone.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Water Dance Show.jpg" alt="Water Dance Show" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Great Wall Music Water Dance Show (长城音乐水舞秀)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Water Dance Show.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-qiaotougao.jpg" alt="Qiaotou Cake" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Qiaotou Cake (桥头糕)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-qiaotougao.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-doufu.jpeg" alt="Tofu Cakes" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Tofu Cakes (豆腐角)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-doufu.jpeg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-kaoli.PNG" alt="Gubei Roasted Pear" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Gubei Roasted Pear (古北烤梨)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-kaoli.PNG')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-luobosi.jpg" alt="Shredded Radish Pancake" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Shredded Radish Pancake (萝卜丝饼)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-luobosi.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('gubei')">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="flex flex-col gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+              <h4 class="font-bold text-slate-700 mb-2">Town Introduction</h4>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Gubei Water Town</strong> is a large-scale ancient town resort located in Miyun District, built along the banks of the Baihe River. Combining traditional northern Chinese architecture with water town features, it spans <span class="text-rose-600 font-bold">9 square kilometers</span> and features over <span class="text-rose-600 font-bold">430 courtyard houses</span>.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The town offers a unique experience with its <span class="text-rose-600 font-bold">night views</span> - when all the lanterns are lit, the town transforms into a magical world. Key attractions include the <span class="text-rose-600 font-bold">Great Wall Observation Deck (长城观景台)</span>, <span class="text-rose-600 font-bold">Wuzhen Water Street (乌镇水街)</span>, and traditional craft workshops.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Must-visit attractions: (1) <span class="text-rose-600 font-bold">Yongshun Dyeing Workshop (永顺染坊)</span>: Colorful fabrics, ideal for Hanfu photos. (2) <span class="text-rose-600 font-bold">Sima Xiao Shao Distillery (司马小烧酒坊)</span>: Traditional brewing, free tasting. (3) <span class="text-rose-600 font-bold">Simatai Great Wall (司马台长城)</span>: Day hike or night cable car with golden lights. For detailed guide, see <a href="3.1.1 beijing-Simatai Great Wall.html" class="text-blue-600 underline hover:text-blue-800">Simatai Great Wall</a>. (4) <span class="text-rose-600 font-bold">Hilltop Church (山顶教堂)</span>: Panoramic views, sunset & night lights. (5) <span class="text-rose-600 font-bold">Drone Show (无人机表演)</span>: Nightly at Sun-Moon Island Plaza (日月岛广场), romantic light patterns. (6) <span class="text-rose-600 font-bold">Great Wall Music Water Dance Show (长城音乐水舞秀)</span>: Wangjing Street, spectacular water-fire-light show.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Must-Try Food: (1) <span class="text-rose-600 font-bold">Qiaotou Cake (桥头糕)</span>: ¥10 each, filled with sweet red bean paste, soft and chewy. (2) <span class="text-rose-600 font-bold">Tofu Cakes (豆腐角)</span>: Wangjing Street specialty, crispy outside with juicy tofu inside. (3) <span class="text-rose-600 font-bold">Gubei Roasted Pear (古北烤梨)</span>: ¥16 each, warm and comforting, served in a reusable enamel cup. (4) <span class="text-rose-600 font-bold">Shredded Radish Pancake (萝卜丝饼)</span>: Savory and crispy, affordable and filling.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Gubei Water Town, Miyun District, Beijing</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <p class="text-slate-600">9:00 - 22:00 (Extended hours in peak season)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">Spring (April-June), Autumn (September-November)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">¥140 per person (peak season)</p>
+                <p class="text-slate-600">¥120 per person (off-season)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Tourist shuttle from Dongzhimen Long-Distance Bus Station</li>
+                  <li>Self-drive: About 2 hours from downtown Beijing</li>
+                  <li>High-speed train to Miyun West Station, then taxi</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tips</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Stay overnight to experience the beautiful night views</li>
+                  <li>Visit during weekdays to avoid crowds</li>
+                  <li>Try local snacks like fried chestnuts and osmanthus cakes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liuliqu Village Tab -->
+      <div class="tab-content hidden" id="liuliqu-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Liuliqu Village (琉璃渠村)</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
+            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('liuliqu')">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+            <div id="liuliqu-carousel" class="h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Jinyu Glazed Cultural and Creative Industrial Park (金隅琉璃文化创意产业园)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall2" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Jinyu Glazed Cultural and Creative Industrial Park (金隅琉璃文化创意产业园)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Sanguange Overpass Building.jpg" alt="Sanguange Overpass Building" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Sanguange Overpass Building (三官阁过街楼)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Sanguange Overpass Building.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Royal Glazed Art Museum .jpg" alt="Royal Glazed Art Museum" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Royal Glazed Art Museum (皇家琉璃艺术馆)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Royal Glazed Art Museum .jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fengsha Railway.jpg" alt="Fengsha Railway" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Fengsha Railway (丰沙铁路)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fengsha Railway.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fire Pot Tofu Feast.jpg" alt="Fire Pot Tofu Feast" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Fire Pot Tofu Feast (火盆锅豆腐宴)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fire Pot Tofu Feast.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative h-full">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli- Fire sichuan.jpg" alt="Fried Sichuan Pepper Sprouts" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>Fried Sichuan Pepper Sprouts (炸花椒芽)</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli- Fire sichuan.jpg')">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('liuliqu')">
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="flex flex-col gap-4">
+            <div class="bg-white rounded-xl shadow-lg p-6 h-full">
+              <h4 class="font-bold text-slate-700 mb-2">Village Introduction</h4>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                <strong>Liuliqu Village</strong> is famous for its <span class="text-rose-600 font-bold">ancient glassmaking tradition</span>. For over <span class="text-rose-600 font-bold">700 years</span>, this village supplied glazed tiles for the imperial palaces, including the Forbidden City. The village is also known as the "Capital of Glaze".
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Key attractions include the <span class="text-rose-600 font-bold">Glaze Culture Exhibition Hall (琉璃文化展览馆)</span>, <span class="text-rose-600 font-bold">Yuhuang Pavilion (玉皇阁)</span>, and the well-preserved <span class="text-rose-600 font-bold">ancient streets (古街)</span>. The village retains its traditional layout with stone-paved roads and courtyard houses.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Must-visit attractions: (1) <span class="text-rose-600 font-bold">Jinyu Glazed Cultural and Creative Industrial Park (金隅琉璃文化创意产业园)</span>: An art space converted from an old kiln factory, free to enter. The dragon and phoenix wall and long glazed cultural wall at the entrance are stunning, visited by many celebrities for filming. (2) <span class="text-rose-600 font-bold">Sanguange Overpass Building (三官阁过街楼)</span>: Beijing's only glazed screen-style overpass building, built in the Qing Dynasty, full of ancient charm, photogenic from all angles. (3) <span class="text-rose-600 font-bold">Royal Glazed Art Museum (皇家琉璃艺术馆)</span>: Houses a large collection of Ming and Qing dynasty palace glazed components, including ridge beasts removed from the Forbidden City, offering close-up views of imperial glazing craftsmanship. (4) <span class="text-rose-600 font-bold">Fengsha Railway (丰沙铁路)</span>: Abandoned railway tracks in the village, perfect for watching freight trains pass by, popular with photographers and children.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Must-Try Food: (1) <span class="text-rose-600 font-bold">Fire Pot Tofu Feast (火盆锅豆腐宴)</span>: Local specialty, heated with charcoal, tender tofu and pork belly in rich broth, perfect for cool weather. (2) <span class="text-rose-600 font-bold">Fried Sichuan Pepper Sprouts (炸花椒芽)</span>: Fresh pepper sprouts coated in batter and fried, crispy outside tender inside, with unique numbing aroma, worth trying.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Liuliqu Village, Mentougou District, Beijing</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <p class="text-slate-600">Open all day (exhibition halls have specific hours)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">April - June, September - November</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">Free entry to the village</p>
+                <p class="text-slate-600">Exhibition halls may have small fees</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Take bus 929 or 892 from Pingguoyuan Subway Station</li>
+                  <li>Self-drive: About 1 hour from downtown Beijing</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tips</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Visit the Glaze Culture Exhibition Hall</li>
+                  <li>Walk along the ancient stone streets</li>
+                  <li>Try local Mentougou specialties</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Booking Advertisement -->
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="mt-6 p-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl shadow-lg">
+      <p class="text-white font-bold text-center text-lg">
+        🎉 Ready to Explore Ancient Villages? 🎉
+      </p>
+      <p class="text-white text-center mt-2">
+        Book your village tour now and experience traditional Chinese culture!
+      </p>
+      <div class="text-center mt-3">
+        <a href="../2.booking.html" class="inline-block bg-white text-rose-600 font-bold px-6 py-2 rounded-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-md">
+          🏘️ Book Now →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

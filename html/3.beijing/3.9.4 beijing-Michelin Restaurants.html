@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michelin Restaurants - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <style>
+    .michelin-star {
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+    <nav class="mobile-header-nav">
+      <div class="nav-container">
+        <div class="logo" id="mobileLogo">
+          <i class="iconfont icon-ditu-dibiao"></i>
+          <span>Wander Any Place</span>
+        </div>
+        <div class="desktop-nav" id="desktopNavLinks">
+          <a href="../../index.html">Home</a>
+          <a href="../2.Destination.html">Destinations</a>
+          <a href="../2.booking.html">Booking Services</a>
+          <a href="../2.aboutus.html">About Us</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Michelin Restaurants</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Discover the finest Michelin-starred restaurants in Beijing, offering exceptional culinary experiences
+      </p>
+    </div>
+  </header>
+
+  <!-- 米其林餐厅列表 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- 潮上潮 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="chaoshangchao-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg"  alt="Cantonese Cuisine" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>脆皮炸乳鸽皇</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg"  alt="Signature Dish" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>吊卢烧饼配隆江猪手（半打）</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg" alt="Private Dining" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>潮式冻午笋饭</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg"  alt="Fresh Seafood" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>佛手柑</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Chao Shang Chao4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('chaoshangchao')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('chaoshangchao')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">Chao Shang Chao (潮上潮)</h2>
+              <span class="bg-rose-600 text-white text-xs px-2 py-1 rounded-full">Michelin 3 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                Chao Shang Chao is a <span class="text-rose-600 font-bold">Michelin 3-star restaurant</span> specializing in <span class="text-rose-600 font-bold">premium Cantonese cuisine</span>. Located in the Zhengda building, it offers an exceptional dining experience with the finest seafood, bird's nest, and other luxury ingredients prepared with impeccable technique. The restaurant is renowned for its elegant ambiance and impeccable service.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 脆皮炸乳鸽皇<br>
+                2. 吊炉烧饼配隆江猪手（半打）<br>
+                3. 潮式冻午笋饭<br>
+                4. 佛手柑
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥800-2000</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">Zhengda Building, Gongtibeili, Chaoyang District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('Zhengda Building, Gongtibeili, Chaoyang District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 新荣记 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="xinrongji-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg" alt="Zhejiang Cuisine" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>脆皮妙龄鸽</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg" alt="Signature Yellow Croaker" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>黄金脆带鱼</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg" alt="Premium Seafood" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>沙蒜烧豆面</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg" alt="Dongpo Pork" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p> 家烧东海大黄鱼</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Xin Rong Ji 4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('xinrongji')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('xinrongji')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">Xin Rong Ji (新荣记)</h2>
+              <span class="bg-rose-600 text-white text-xs px-2 py-1 rounded-full">Michelin 3 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                Xin Rong Ji is a <span class="text-rose-600 font-bold">Michelin 3-star restaurant</span> specializing in <span class="text-rose-600 font-bold">Zhejiang cuisine</span> with a focus on fresh seafood. The restaurant is known for its high-quality ingredients and authentic flavors, offering a refined dining experience that highlights the natural taste of ingredients. Its elegant ambiance and impeccable service make it a top choice for business dinners and special occasions.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 脆皮妙龄鸽<br>
+                2. 黄金脆带鱼<br>
+                3. 沙蒜烧豆面<br>
+                4. 家烧东海大黄鱼
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥500-1000</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">No. 8 Dongzhimen Wai Street, Chaoyang District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 8 Dongzhimen Wai Street, Chaoyang District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 京季 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="jingji-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg" alt="Creative Cantonese" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>官府黄焖佛跳墙</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg" alt="Crispy Roasted Duck" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>咖喱汁脆皮牛腩</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg" alt="Wagyu Beef" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>北方虾酱蒸青岛</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg" alt="Bird's Nest Dessert" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>老北京烧油皮带鱼</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Jing Ji4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('jingji')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('jingji')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">Jing Ji (京季荣派官府菜)</h2>
+              <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">Michelin 2 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                Jing Ji is a <span class="text-rose-600 font-bold">Michelin 2-star restaurant</span> offering <span class="text-rose-600 font-bold">creative Cantonese cuisine</span> with a modern twist. The restaurant combines traditional Cantonese cooking techniques with innovative presentations, creating dishes that are both visually stunning and delicious. Located in a sophisticated setting, it provides an exceptional dining experience for discerning food lovers.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 官府黄焖佛跳墙<br>
+                2. 咖喱汁脆皮牛腩<br>
+                3. 北方虾酱蒸青岛<br>
+                4. 老北京烧油皮带鱼
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥400-800</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">Pacific Place Building, Jingguan Tower, Chaoyang District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('Pacific Place Building, Jingguan Tower, Chaoyang District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 京兆尹 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="kingjoy-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg" alt="Vegetarian Cuisine" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>桃胶珍菌卤味饭</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg" alt="Buddha's Delight" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>糖醋藕排</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg" alt="Truffle Tofu" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>金刚沙豆腐</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg" alt="Braised Mushroom" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>松茸杂菌煎</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/King Joy4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('kingjoy')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('kingjoy')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">King Joy (京兆尹)</h2>
+              <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">Michelin 2 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                King Joy is a <span class="text-rose-600 font-bold">Michelin 2-star vegetarian restaurant</span> located in a traditional courtyard house near the Forbidden City. It offers <span class="text-rose-600 font-bold">creative vegetarian cuisine</span> that combines traditional Chinese flavors with modern presentation. The restaurant's tranquil atmosphere and healthy, artistic dishes make it a unique dining destination for those seeking a refined vegetarian experience.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 桃胶珍菌卤味饭<br>
+                2. 糖醋藕排<br>
+                3. 金刚沙豆腐<br>
+                4. 松茸杂菌煎
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥600-1200</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">No. 23 Donghuamen Street, Dongcheng District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 23 Donghuamen Street, Dongcheng District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 鲁上鲁 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="lushanglu-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg" alt="Innovative Chinese" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>烤鸭鱼子酱阳光煎</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg" alt="Braised Pork Belly" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>手打威海扇贝丸子</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg" alt="Roasted Suckling Pig" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>青岛大虾烧胶州白</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg" alt="Steamed Fish" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>烧鸭春卷帕玛芝士</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Lu Shang Lu4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('lushanglu')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('lushanglu')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">Lu Shang Lu (鲁上鲁)</h2>
+              <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">Michelin 2 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                Lu Shang Lu is a <span class="text-rose-600 font-bold">Michelin 2-star restaurant</span> offering <span class="text-rose-600 font-bold">innovative Chinese cuisine</span>. The restaurant is known for its creative approach to traditional dishes, presenting classic flavors in a modern way. With an elegant atmosphere and thoughtful service, it provides a memorable dining experience for guests seeking contemporary Chinese fine dining.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 烤鸭鱼子酱阳光煎<br>
+                2. 手打威海扇贝丸子<br>
+                3. 青岛大虾烧胶州白<br>
+                4. 烧鸭春卷帕玛芝士
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥500-1000</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">Sanlitun Village, Chaoyang District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('Sanlitun Village, Chaoyang District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 屋里厢 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="wulixiang-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg" alt="Shanghai Cuisine" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>沪式牛肉粒</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg" alt="Steamed Hairy Crab" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>本帮熏鱼</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg" alt="Shanghai Braised Pork" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>响油鳝丝</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg" alt="Crab Roe Xiaolongbao" class="h-full object-contain gallery-image">
+                    <div class="gallery-caption">
+                      <p>腌笃鲜</p>
+                    </div>
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg', ['../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang1.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang2.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang3.jpeg', '../../img/3. img-beijing/3.9.4  Michelin Restaurants/Wu Li Xiang4.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('wulixiang')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('wulixiang')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center gap-3 mb-4">
+              <h2 class="text-2xl font-bold text-slate-800">Wu Li Xiang (屋里厢)</h2>
+              <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">Michelin 2 Star</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Introduction</h3>
+              <p class="text-slate-600 mb-4">
+                Wu Li Xiang is a <span class="text-rose-600 font-bold">Michelin 2-star restaurant</span> specializing in <span class="text-rose-600 font-bold">Shanghai cuisine</span>. The restaurant offers authentic dishes from the Shanghai region, prepared with traditional techniques and high-quality ingredients. Its warm, inviting atmosphere provides a comfortable setting for enjoying classic Shanghai flavors in an elegant environment.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Dishes</h3>
+              <p class="text-slate-600 mb-4">
+                1. 沪式牛肉粒<br>
+                2. 本帮熏鱼<br>
+                3. 响油鳝丝<br>
+                4. 腌笃鲜
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Price Range</h3>
+              <p class="text-slate-600 mb-4">
+                Average cost per person: <span class="text-rose-600 font-bold">¥400-800</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Address</h3>
+              <div class="flex items-center">
+                <p class="text-slate-600">Jiaguang Building, Xinyuanli, Chaoyang District, Beijing</p>
+                <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('Jiaguang Building, Xinyuanli, Chaoyang District, Beijing')" title="Copy address">
+                  <i class="iconfont icon-fuzhi"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 更多餐厅推荐 -->
+      <div class="bg-gradient-to-r from-amber-100 to-amber-50 rounded-2xl p-8 text-center">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">For More Michelin Restaurants</h3>
+        <p class="text-slate-600 mb-4">
+          For Michelin 1-star restaurants and more dining options, please visit <a href="https://www.dianping.com" target="_blank" class="text-rose-600 hover:underline"></a>Dianping (大众点评)</a>.
+        </p>
+        <p class="text-slate-600">
+          For installation and usage instructions, please refer to the Dianping section in <a href="../2.pre-app.html" class="text-rose-600 hover:underline">Necessary Apps for China Travel</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+<script src="../../js/gallery-lightbox.js"></script>
+<script src="../../../js/common.js"></script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

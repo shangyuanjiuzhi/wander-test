@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanfu Photography - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+
+  <style>
+    .section-card {
+      transition: all 0.3s ease;
+    }
+    .section-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .image-card {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Copied to clipboard!');
+      }, function(err) {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+    <nav class="mobile-header-nav">
+      <div class="nav-container">
+        <div class="logo" id="mobileLogo">
+          <i class="iconfont icon-ditu-dibiao"></i>
+          <span>Wander Any Place</span>
+        </div>
+        <div class="desktop-nav" id="desktopNavLinks">
+          <a href="../../index.html">Home</a>
+          <a href="../2.Destination.html">Destinations</a>
+          <a href="../2.booking.html">Booking Services</a>
+          <a href="../2.aboutus.html">About Us</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Hanfu Photography in Beijing</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Experience traditional Chinese clothing and capture stunning photos at Beijing's historic landmarks
+      </p>
+    </div>
+  </header>
+
+  <!-- 汉服拍摄介绍 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-slate-800 mb-6">About Hanfu Photography</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <p class="text-slate-600 mb-4">
+                <span class="text-rose-600 font-bold">Hanfu</span> is the traditional clothing of the Han Chinese people, with a history dating back thousands of years. In recent years, Hanfu photography has become increasingly popular among both locals and tourists in Beijing.
+              </p>
+              <p class="text-slate-600 mb-4">
+                Wearing traditional Hanfu while visiting Beijing's historic sites allows you to immerse yourself in the city's rich cultural heritage and create unique, timeless photographs that blend history with modern aesthetics.
+              </p>
+              <p class="text-slate-600">
+                Many photography studios in Beijing now offer complete Hanfu photography packages, including costume rental, professional makeup, and guided photo sessions at iconic locations.
+              </p>
+              <div class="mt-6 p-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl shadow-lg">
+                <p class="text-white font-bold text-center text-lg">
+                  🎉 Ready to Capture Beautiful Memories? 🎉
+                </p>
+                <p class="text-white text-center mt-2">
+                  Book your Hanfu rental or photography session now!
+                </p>
+                <div class="text-center mt-3">
+                  <a href="../2.booking.html" class="inline-block bg-white text-rose-600 font-bold px-6 py-2 rounded-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-md">
+                    📸 Book Now →
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-md h-96 flex-shrink-0">
+              <img src="../../img/3. img-beijing/3.10.1 Hanfu/Hanfu3.jpeg" alt="Hanfu Photography" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 适合拍摄的景点 -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-slate-800 mb-6">Best Locations for Hanfu Photography</h2>
+        <div id="app">
+          <div class="content">
+            <!-- dataInfo：滚动卡片数据  swiperIndex：滚动序列 @change：滚动事件-->
+            <cc-scrool-card :data-info="data" :swiper-index="swiperIndex" @change="swiperChangeClick" @open-lightbox="openLightbox"></cc-scrool-card>
+          </div>
+
+          <!-- Lightbox Modal -->
+          <div v-if="lightboxVisible" class="lightbox-modal" @click="closeLightbox">
+            <div class="lightbox-content" @click.stop>
+              <button class="lightbox-close" @click="closeLightbox">&times;</button>
+              <img :src="lightboxImage" alt="Enlarged view" class="lightbox-image">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 价格和拍摄详情 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-slate-800 mb-6">Pricing & Photoshoot Details</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Hanfu Rental Only -->
+            <div class="border border-gray-200 rounded-xl p-6">
+              <h3 class="text-xl font-bold text-slate-800 mb-4">Hanfu Rental Only</h3>
+              <p class="text-slate-600 mb-4">
+                Choose from a variety of Hanfu styles including Ming Dynasty, Tang Dynasty, Qing Dynasty, etc. All costumes include basic accessories and makeup services.
+              </p>
+              <p class="text-slate-500 text-sm mb-4">Prices include makeup services and costumes</p>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span class="text-slate-700">Basic</span>
+                  <span class="text-rose-600 font-bold">¥69-129/day</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span class="text-slate-700">Premium</span>
+                  <span class="text-rose-600 font-bold">¥139-299/day</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-slate-700">Custom</span>
+                  <span class="text-rose-600 font-bold">¥300+/day</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Photography + Hanfu Package -->
+            <div class="border border-gray-200 rounded-xl p-6">
+              <h3 class="text-xl font-bold text-slate-800 mb-4">Photography + Hanfu Package</h3>
+              <p class="text-slate-600 mb-4">
+                Complete packages include Hanfu rental, professional makeup & hair styling, and a dedicated photographer.
+              </p>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span class="text-slate-700">Basic Package</span>
+                  <span class="text-rose-600 font-bold">¥399-699</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-slate-700">Premium Package</span>
+                  <span class="text-rose-600 font-bold">¥799-1299</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-sm text-slate-600 mb-1"><strong>Basic Package:</strong> 1 outfit, 1 hour shoot, 20-30 photos, 5-8 retouched</p>
+                <p class="text-sm text-slate-600"><strong>Premium Package:</strong> 2 outfits, 2 hour shoot, 40-60 photos, 12-18 retouched</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Photo Gallery - Horizontal Layout -->
+          <div class="mt-8">
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Perfect For</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="relative group">
+                <img src="../../img/3. img-beijing/3.10.1 Hanfu/child.jpeg" alt="Children" class="w-full h-48 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                  <span class="text-white text-sm font-medium">Kids & Children</span>
+                </div>
+              </div>
+              <div class="relative group">
+                <img src="../../img/3. img-beijing/3.10.1 Hanfu/girlfriend.jpeg" alt="Girlfriends" class="w-full h-48 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                  <span class="text-white text-sm font-medium">Besties & Groups</span>
+                </div>
+              </div>
+              <div class="relative group">
+                <img src="../../img/3. img-beijing/3.10.1 Hanfu/couple.jpeg" alt="Couple" class="w-full h-48 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                  <span class="text-white text-sm font-medium">Couples & Partners</span>
+                </div>
+              </div>
+              <div class="relative group">
+                <img src="../../img/3. img-beijing/3.10.1 Hanfu/family.jpeg" alt="Family" class="w-full h-48 object-cover rounded-lg">
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                  <span class="text-white text-sm font-medium">Families</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    // 自定义滚动卡片组件
+    Vue.component('cc-scrool-card', {
+      props: {
+        dataInfo: {
+          type: Object,
+          required: true
+        },
+        swiperIndex: {
+          type: Number,
+          default: 0
+        }
+      },
+      template: `
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div v-for="(img, index) in dataInfo.headImgs" :key="index" class="swiper-slide">
+              <div class="gallery-container relative w-full h-96 rounded-lg overflow-hidden cursor-pointer" @click="openLightbox(img)">
+                <img :src="img" :alt="dataInfo.goodsName" class="w-full h-full object-cover">
+                <div class="gallery-zoom-overlay" @click.stop="openLightbox(img)">
+                  <div class="gallery-zoom-icon" @click.stop="openLightbox(img)">
+                    <i class="iconfont icon-fangdaqi text-2xl"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-2 text-center">
+                <h3 class="font-bold">{{ getLocationName(index) }}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      `,
+      methods: {
+        getLocationName(index) {
+          const locations = ['Forbidden City', 'Summer Palace', 'Hutongs', 'Temple of Heaven', 'Beihai Park', 'Yonghe Lama Temple'];
+          return locations[index] || '';
+        },
+        openLightbox(img) {
+          this.$emit('open-lightbox', img);
+        }
+      },
+      mounted() {
+        // 这里可以初始化swiper
+        // 为了演示，我们简化处理
+      }
+    });
+
+    // 主应用
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          swiperIndex: 0,
+          lightboxVisible: false,
+          lightboxImage: '',
+          data: {
+            "headImgs": [
+              "../../img/3. img-beijing/3.10.1 Hanfu/Forbidden City.jpeg",
+              "../../img/3. img-beijing/3.10.1 Hanfu/Summer Palace.jpeg",
+              "../../img/3. img-beijing/3.10.1 Hanfu/hutong.jpeg",
+              "../../img/3. img-beijing/3.10.1 Hanfu/temple of heaven.jpeg",
+              "../../img/3. img-beijing/3.10.1 Hanfu/beihai.jpeg",
+              "../../img/3. img-beijing/3.10.1 Hanfu/Yonghe Lama Temple.jpeg"
+            ],
+            "goodsName": "Hanfu Photography Locations"
+          }
+        }
+      },
+      methods: {
+        swiperChangeClick(e) {
+          this.swiperIndex = e.detail.current;
+          console.log("swiperIndex = " + this.swiperIndex);
+        },
+        openLightbox(img) {
+          this.lightboxImage = img;
+          this.lightboxVisible = true;
+          document.body.style.overflow = 'hidden';
+        },
+        closeLightbox() {
+          this.lightboxVisible = false;
+          this.lightboxImage = '';
+          document.body.style.overflow = 'auto';
+        }
+      }
+    });
+  </script>
+  <style>
+    .content {
+      display: flex;
+      padding-top: 29px;
+    }
+    .swiper-container {
+      width: 100%;
+    }
+    .swiper-wrapper {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+    }
+    .swiper-slide {
+      flex: 0 0 280px;
+    }
+    .swiper-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+      gap: 8px;
+    }
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ccc;
+      display: inline-block;
+    }
+    .swiper-pagination-bullet-active {
+      background: #f43f5e;
+    }
+
+    /* Gallery Zoom Styles */
+    .gallery-container:hover .gallery-zoom-overlay {
+      opacity: 1;
+    }
+    .gallery-zoom-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-zoom-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .gallery-zoom-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+
+    /* Lightbox Modal Styles */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 36px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close:hover {
+      color: #f43f5e;
+    }
+  </style>
+
+  
+<script src="../../../js/common.js"></script>
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

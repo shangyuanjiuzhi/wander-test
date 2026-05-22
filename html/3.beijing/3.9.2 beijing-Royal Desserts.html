@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Desserts - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <style>
+    .food-image {
+      height: 240px;
+      object-fit: cover;
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Address copied to clipboard!');
+      }, function(err) {
+        console.error('Failed to copy: ', err);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    });
+  </script>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+    <nav class="mobile-header-nav">
+      <div class="nav-container">
+        <div class="logo" id="mobileLogo">
+          <i class="iconfont icon-ditu-dibiao"></i>
+          <span>Wander Any Place</span>
+        </div>
+        <div class="desktop-nav" id="desktopNavLinks">
+          <a href="../../index.html">Home</a>
+          <a href="../2.Destination.html">Destinations</a>
+          <a href="../2.booking.html">Booking Services</a>
+          <a href="../2.aboutus.html">About Us</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Royal Desserts</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Discover the exquisite royal desserts of Beijing, with a rich history and unique flavors
+      </p>
+    </div>
+  </header>
+
+  <!-- 皇家甜品列表 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- 杏仁豆腐 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div id="almondtofu-carousel" class="map-carousel w-full h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu1.webp" alt="Almond Tofu 1" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu1.webp', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu1.webp', '../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu2.webp'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu2.webp" alt="Almond Tofu 2" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu2.webp', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu1.webp', '../../img/3. img-beijing/3.9.2 Royal Desserts /Almond Tofu2.webp'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('almondtofu')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('almondtofu')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">杏仁豆腐 Almond Tofu</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Almond Tofu is a traditional <span class="text-rose-600 font-bold">royal dessert</span> in Beijing with a history of over 300 years. It is made from <span class="text-rose-600 font-bold">almond juice</span> and <span class="text-rose-600 font-bold">agar</span>, creating a smooth and delicate texture similar to tofu. It has a refreshing almond flavor and is often served with osmanthus syrup, hawthorn, and other ingredients.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Ingredients</h3>
+              <p class="text-slate-600 mb-4">
+                1. Almond juice or almond powder<br>
+                2. Agar or gelatin<br>
+                3. Sugar<br>
+                4. Osmanthus syrup (for serving)<br>
+                5. Hawthorn or raisins (for garnish)
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">老舍茶馆 Lao She Teahouse</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 3 Qianmen West Street, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 3 Qianmen West Street, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">全聚德 Quanjude</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 30 Qianmen Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 30 Qianmen Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 驴打滚 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="gallery-container relative w-full h-full">
+              <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Rolling Donkey.webp" alt="Rolling Donkey" class="h-full object-contain gallery-image">
+              <div class="gallery-zoom-overlay">
+                <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Rolling Donkey.webp', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Rolling Donkey.webp'])">
+                  <i class="iconfont icon-fangdaqi text-2xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">驴打滚 Rolling Donkey (Lǘ Dǎ Gǔn)</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Rolling Donkey is a traditional Beijing dessert with a history of over 200 years. It is made from <span class="text-rose-600 font-bold">glutinous rice skin</span> filled with <span class="text-rose-600 font-bold">red bean paste</span>, then rolled in <span class="text-rose-600 font-bold">soybean powder</span>. The name comes from its appearance, which resembles a donkey rolling in the dust. It has a soft and chewy texture with a sweet bean flavor.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Ingredients</h3>
+              <p class="text-slate-600 mb-4">
+                1. Glutinous rice flour<br>
+                2. Red bean paste<br>
+                3. Soybean powder<br>
+                4. Water<br>
+                5. Sugar (optional)
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">稻香村 Daoxiangcun</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 133 Wangfujing Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 133 Wangfujing Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">功德林素菜饭庄 Gong Delin</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 11 Beixinqiao Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 11 Beixinqiao Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 豌豆黄 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="gallery-container relative w-full h-full">
+              <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Pea Cake.webp" alt="Pea Cake" class="h-full object-contain gallery-image">
+              <div class="gallery-zoom-overlay">
+                <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Pea Cake.webp', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Pea Cake.webp'])">
+                  <i class="iconfont icon-fangdaqi text-2xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">豌豆黄 Pea Cake (Wan Dou Huang)</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Pea Cake is a traditional <span class="text-rose-600 font-bold">royal dessert</span> in Beijing with a history of over 300 years. It is made from <span class="text-rose-600 font-bold">yellow peas</span> that are boiled, mashed, strained, and then chilled to form a smooth cake. It has a delicate pea flavor and a soft, melt-in-your-mouth texture, often served in small square pieces.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Ingredients</h3>
+              <p class="text-slate-600 mb-4">
+                1. Yellow peas<br>
+                2. Sugar<br>
+                3. Water<br>
+                4. Agar (optional, for firm texture)
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">老舍茶馆 Lao She Teahouse</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 3 Qianmen West Street, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 3 Qianmen West Street, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">稻香村 Daoxiangcun</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 133 Wangfujing Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 133 Wangfujing Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 艾窝窝 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div id="aiwowo-carousel" class="map-carousel w-full h-full">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo1.jpeg" alt="Ai Wo Wo 1" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo1.jpeg', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo1.jpeg', '../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo2.webp'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo2.webp" alt="Ai Wo Wo 2" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo2.webp', ['../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo1.jpeg', '../../img/3. img-beijing/3.9.2 Royal Desserts /Ai Wo Wo2.webp'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('aiwowo')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('aiwowo')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">艾窝窝 Ai Wo Wo (Sticky Rice Balls)</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Ai Wo Wo is a traditional <span class="text-rose-600 font-bold">royal dessert</span> in Beijing with a history of over 600 years. It is made from <span class="text-rose-600 font-bold">glutinous rice</span> that is steamed and then stuffed with various fillings such as <span class="text-rose-600 font-bold">red bean paste</span>, sesame paste, jujube paste, or walnut paste. It has a soft and chewy texture with a sweet filling.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Ingredients</h3>
+              <p class="text-slate-600 mb-4">
+                1. Glutinous rice<br>
+                2. Red bean paste (traditional filling)<br>
+                3. Sesame paste (alternative filling)<br>
+                4. Jujube paste (alternative filling)<br>
+                5. Walnut paste (alternative filling)
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">功德林素菜饭庄 Gong Delin</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 11 Beixinqiao Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 11 Beixinqiao Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">稻香村 Daoxiangcun</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 133 Wangfujing Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 133 Wangfujing Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+<script src="../../js/gallery-lightbox.js"></script>
+<script src="../../../js/common.js"></script>
+  <script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

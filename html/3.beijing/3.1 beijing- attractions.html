@@ -1,1 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beijing Attractions - Wander Any Place</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
 
+  <style>
+    .attraction-card {
+      transition: all 0.3s ease;
+    }
+    .attraction-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .rank-badge {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+    .rank-badge-1 {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    }
+    .rank-badge-2 {
+      background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    }
+    .rank-badge-3 {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    }
+    .rating-star {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
+        <span class="text-2xl font-bold text-rose-600 font-sans italic">Wander Any Place</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-slate-700 font-medium">
+        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Attractions</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Discover the most amazing attractions in Beijing, from ancient landmarks to modern marvels
+      </p>
+    </div>
+  </header>
+
+  <!-- 景点列表 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- 分类按钮 -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button class="category-btn bg-rose-600 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-700 transition-colors" data-category="imperial">Imperial Relics</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="park">Special Parks</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="shopping">Shopping Malls</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="museum">Museums</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="landmark">City Landmarks</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="temple">Temples</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="hiking">Hiking Spots</button>
+        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="entertainment">Entertainment</button>
+      </div>
+      
+      <!-- 景点1: Great Wall -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/img-badaling1.webp" alt="Great Wall" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Great Wall of China</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★★</span>
+              <span class="ml-2 text-sm text-slate-500">4.9</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the Seven Wonders of the World, the Great Wall is a symbol of Chinese civilization. Stretching over 21,000 kilometers, it's an ancient military defense project that showcases the wisdom and courage of the Chinese people.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              4-6 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Yanqing District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥40/person
+            </span>
+          </div>
+          <a href="3.1.1 beijing-greatwall.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点2: Forbidden City -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/img-beijing-forb-city.png" alt="Forbidden City" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Forbidden City</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★★</span>
+              <span class="ml-2 text-sm text-slate-500">4.8</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The imperial palace complex of the Ming and Qing dynasties, with over 9,000 rooms and 600 years of history. It's the largest ancient palatial structure in the world and a UNESCO World Heritage site.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥60/person
+            </span>
+          </div>
+          <a href="3.1.2 beijing-forbiddencity.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点3: Summer Palace -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/img-beijing-summer.png" alt="Summer Palace" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Summer Palace</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.7</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A beautiful imperial garden and summer retreat with stunning lake views and traditional pavilions. Covering 290 hectares, it's renowned for its harmonious blend of natural scenery and traditional Chinese architecture.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥30/person
+            </span>
+          </div>
+          <a href="3.1.3 beijing-summerpalace.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点4: Temple of Heaven -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/img-beijing-temple.png" alt="Temple of Heaven" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Temple of Heaven</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A masterpiece of Chinese architecture and a UNESCO World Heritage site. Built in the 15th century, it was where emperors prayed for good harvests and is famous for its Hall of Prayer for Good Harvests.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥35/person
+            </span>
+          </div>
+          <a href="3.1.4 beijing-templeofheaven.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点5: Tiananmen Square -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.5 tiananmen/tiananmen1.jpeg" alt="Tiananmen Square" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Tiananmen Square</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the largest public squares in the world, located in the heart of Beijing. It's surrounded by important buildings including the Great Hall of the People and the National Museum of China.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.1.5 beijing-tiananmensquare.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点6: Yuanmingyuan -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.6 yuanmingyuan/yuanmingyuan1.jpeg" alt="Yuanmingyuan" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            6
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yuanmingyuan (Old Summer Palace)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Once known as the "Garden of Gardens," Yuanmingyuan was a vast imperial garden complex. Although largely destroyed in the 19th century, its ruins remain a poignant reminder of China's history and a popular historical site.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥25/person
+            </span>
+          </div>
+          <a href="3.1.6 beijing-yuanmingyuan.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点7: Jingshan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.7 jingshan park/jingshan1.jpeg" alt="Jingshan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            7
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Jingshan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Located just north of the Forbidden City, Jingshan Park offers panoramic views of Beijing from its hilltop. It's a popular spot for locals to exercise and enjoy the scenery, with beautiful gardens and historical structures.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥2/person
+            </span>
+          </div>
+          <a href="3.1.7 beijing-jingshanpark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点8: Ming Tombs -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.8 mingtomb/mingtomb1.jpeg" alt="Ming Tombs" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            8
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Ming Tombs</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The Ming Tombs are the final resting place of 13 emperors of the Ming Dynasty. The most famous is the Changling Tomb, known for its grand architecture and historical significance.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Changping District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥40/person
+            </span>
+          </div>
+          <a href="3.1.8 beijing-mingtombs.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点9: Beihai Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.9 beihaipark/beihai1.jpeg" alt="Beihai Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            9
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beihai Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the oldest and most beautiful imperial gardens in Beijing, Beihai Park features a large lake, traditional pavilions, and the iconic White Dagoba on Jade Flower Island. It's a peaceful retreat in the heart of the city.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.1.9 beijing-beihaispark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点10: Confucius Temple and Guozijian -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.10 confucius_guozijian/confu1.jpeg" alt="Confucius Temple and Guozijian" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            10
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Confucius Temple and Guozijian</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The Confucius Temple is dedicated to the great philosopher Confucius, while Guozijian was China's highest educational institution during the Yuan, Ming, and Qing dynasties. Together, they form an important cultural and historical site.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥30/person
+            </span>
+          </div>
+          <a href="3.1.10 beijing-confuciustemple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点11: Ditan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.11 ditan/ditan1.jpeg" alt="Ditan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            11
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Ditan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Also known as the Temple of Earth, Ditan Park is one of the four major imperial temples in Beijing. It was where emperors prayed for good harvests and is now a popular park for locals to exercise and relax.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥2/person
+            </span>
+          </div>
+          <a href="3.1.11 beijing-ditanpark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点12: Zhongshan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.12 zhongshan park/zhongshan1.jpeg" alt="Zhongshan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            12
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Zhongshan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Located to the south of the Forbidden City, Zhongshan Park is a beautiful imperial garden dedicated to Sun Yat-sen, the founding father of modern China. It features traditional pavilions, gardens, and historical relics.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥3/person
+            </span>
+          </div>
+          <a href="3.1.12 beijing-zhongshanpark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点13: Ritan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.13 ritan park/ritan1.jpeg" alt="Ritan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            13
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Ritan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Also known as the Temple of the Sun, Ritan Park is one of the four major imperial temples in Beijing. It was where emperors offered sacrifices to the sun god and is now a peaceful park with beautiful gardens and lakes.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥2/person
+            </span>
+          </div>
+          <a href="3.1.13 beijing-ritanpark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点14: Xiannongtan -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.14 xiannongtan/xiannongtan1.jpeg" alt="Xiannongtan" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            14
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Xiannongtan</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Also known as the Temple of Agriculture, Xiannongtan is where emperors performed rituals to pray for good harvests. It features ancient buildings and is an important cultural and historical site in Beijing.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥15/person
+            </span>
+          </div>
+          <a href="3.1.14 beijing-xiannongtan.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点15: Yuetan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.15 yuetan park/yuetan1.jpeg" alt="Yuetan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            15
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yuetan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Also known as the Temple of the Moon, Yuetan Park is one of the four major imperial temples in Beijing. It was where emperors offered sacrifices to the moon god and is now a beautiful park with traditional architecture and gardens.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥1/person
+            </span>
+          </div>
+          <a href="3.1.15 beijing-yuetanpark.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点16: Lugou Bridge -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.16 lugouqiao/lugouqiao1.jpeg" alt="Lugou Bridge" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            16
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Lugou Bridge</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Also known as the Marco Polo Bridge, Lugou Bridge is a historic stone bridge built in the 12th century. It's famous for its 501 stone lions, each with a different expression, and its role in the beginning of the Second Sino-Japanese War.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Fengtai District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥20/person
+            </span>
+          </div>
+          <a href="3.1.16 beijing-lugoubridge.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点17: Yuan Dadu City Wall Relics Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="imperial" data-page="2">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.1.17 yuandadu/yuandadu1.jpeg" alt="Yuan Dadu City Wall Relics Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            17
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yuan Dadu City Wall Relics Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            This park preserves the remains of the city wall from the Yuan Dynasty (1271-1368). It features historical relics, beautiful gardens, and walking paths, offering a glimpse into Beijing's ancient history.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.1.17 beijing-yuandadu.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 特色公园 -->
+      <!-- 景点: Zhoukoudian Peking Man Site -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.1 zhoukoudian /zhoukoudian1.jpeg" alt="Zhoukoudian Peking Man Site" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Zhoukoudian Peking Man Site</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A UNESCO World Heritage site where the fossilized remains of Peking Man (Homo erectus) were discovered. It's an important archaeological site that provides insights into early human evolution.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Fangshan District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥30/person
+            </span>
+          </div>
+          <a href="3.2.1 beijing-Zhoukoudian Peking Man Site.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Fragrant Hills Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.2 xiagnshan/xiangshan1.jpeg" alt="Fragrant Hills Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Fragrant Hills Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Famous for its autumn foliage, Fragrant Hills Park is a beautiful natural area with hiking trails, temples, and scenic viewpoints. It's a popular destination for both locals and tourists.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.2.2 beijing-Fragrant Hills Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Beijing Olympic Forest Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.3  Beijing Olympic Forest Park /olympic park1.jpeg" alt="Beijing Olympic Forest Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beijing Olympic Forest Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Built for the 2008 Beijing Olympics, this park features beautiful landscapes, lakes, and walking paths. It's a popular spot for jogging, cycling, and enjoying nature in the city.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.2.3 beijing-Beijing Olympic Forest Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Yuyuantan Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan1.jpeg" alt="Yuyuantan Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yuyuantan Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Famous for its cherry blossoms in spring, Yuyuantan Park is a beautiful urban park with a large lake, walking paths, and various recreational facilities. It's a popular spot for picnics and outdoor activities.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.2.4 beijing-Yuyuantan Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: National Botanical Garden -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.5 National Botanical Garden /National Botanical Garden1.jpeg" alt="National Botanical Garden" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">National Botanical Garden</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A vast botanical garden featuring a wide variety of plants from around the world. It includes greenhouses, gardens, and walking trails, making it a perfect place for nature lovers and families.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.2.5 beijing-National Botanical Garden.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Beijing Grand View Garden -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.6 daguanyuan/daguanyuan1.jpeg" alt="Beijing Grand View Garden" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            6
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beijing Grand View Garden</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Built based on the classical novel "Dream of the Red Chamber," this garden features traditional Chinese architecture, ponds, and beautiful landscaping. It's a cultural and historical site that attracts many visitors.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥40/person
+            </span>
+          </div>
+          <a href="3.2.6 beijing-Beijing Grand View Garden.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Chaoyang Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.7 Chaoyang Park/chaoyangpark1.jpeg" alt="Chaoyang Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            7
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Chaoyang Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the largest parks in Beijing, Chaoyang Park features lakes, hills, and various recreational facilities. It's a popular spot for jogging, cycling, and outdoor activities, especially on weekends.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥5/person
+            </span>
+          </div>
+          <a href="3.2.7 beijing-Chaoyang Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Badachu Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.8  Badachu Park/Badachu Park1.jpeg" alt="Badachu Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            8
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Badachu Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Located in the western hills of Beijing, Badachu Park is known for its eight ancient temples and beautiful natural scenery. It's a popular hiking destination with panoramic views of the city.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Shijingshan District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.2.8 beijing-Badachu Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Beijing Garden Expo Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.2.9 Beijing Garden Expo Park /Beijing Garden Expo Park1.jpeg" alt="Beijing Garden Expo Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            9
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beijing Garden Expo Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Built for the 2013 Beijing Garden Expo, this park features gardens from different regions of China and around the world. It's a large-scale park with beautiful landscapes, lakes, and various themed gardens.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              4-5 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Fengtai District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥100/person
+            </span>
+          </div>
+          <a href="3.2.9 beijing-Beijing Garden Expo Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 购物广场 -->
+      <!-- 景点: Wangfujing Pedestrian Street -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.3.1 Wangfujing Pedestrian Street/wangfujing1.jpeg" alt="Wangfujing Pedestrian Street" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Wangfujing Pedestrian Street</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of Beijing's most famous shopping streets, Wangfujing offers a wide range of shops, restaurants, and entertainment options. It's a bustling area that showcases both traditional and modern Chinese culture.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.3.1 beijing-Wangfujing Pedestrian Street.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: The Place (世贸天阶) -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.3.2 The Place/The Place1.jpeg" alt="The Place" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">The Place</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Famous for its massive LED sky screen, The Place is a modern shopping and entertainment complex in Beijing's CBD. It features international brands, restaurants, and a vibrant nightlife scene.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.3.2 beijing-The Place.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Xidan Commercial Street -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.3.3 Xidan Commercial Street /Xidan Commercial Street1.jpeg" alt="Xidan Commercial Street" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Xidan Commercial Street</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of Beijing's oldest and most popular shopping districts, Xidan features a mix of traditional shops and modern department stores. It's a favorite among locals for its affordable prices and wide variety of goods.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.3.3 beijing-Xidan Commercial Street.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Sanlitun Taikoo Li -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.3.4 Sanlitun Taikoo Li /Sanlitun Taikoo Li .jpg" alt="Sanlitun Taikoo Li" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Sanlitun Taikoo Li</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A modern shopping and entertainment complex in the heart of Beijing, Sanlitun Taikoo Li features international luxury brands, trendy restaurants, and vibrant nightlife. It's a popular destination for both locals and tourists.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.3.4 beijing-Sanlitun Taikoo Li.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Blue Harbor -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.3.5 Blue Harbor /Blue Harbor.jpeg" alt="Blue Harbor" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Blue Harbor</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A modern shopping and entertainment complex with a European-style waterfront design, featuring international brands, restaurants, and a vibrant atmosphere. It's a popular spot for socializing and entertainment.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3+ hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.3.5 beijing-Blue Harbor.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 博物馆 -->
+      <!-- 景点: National Museum of China -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="museum" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.4.1 National Museum of China /National Museum of China.jpeg" alt="National Museum of China" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">National Museum of China</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.7</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the largest museums in the world, the National Museum of China showcases China's rich history and culture through a vast collection of artifacts spanning thousands of years.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free (reservation required)
+            </span>
+          </div>
+          <a href="3.4.1 beijing-National Museum of China Guide.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Capital Museum -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="museum" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.4.2 Capital Museum /Capital Museum.jpeg" alt="Capital Museum" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Capital Museum</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Located in the heart of Beijing, the Capital Museum showcases the history and culture of the city through a diverse collection of artifacts, including ancient pottery, jade, and calligraphy.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free (reservation required)
+            </span>
+          </div>
+          <a href="3.4.2 beijing-Capital Museum Guide.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Guanfu Museum -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="museum" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.4.3  Guanfu Museum/Guanfu Museum.jpeg" alt="Guanfu Museum" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Guanfu Museum</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Founded by Ma Weidu, a famous Chinese collector, the Guanfu Museum is known for its collection of Chinese antiques, including furniture, porcelain, and works of art from different dynasties.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥40
+            </span>
+          </div>
+          <a href="3.4.3 beijing-Guanfu Museum Guide.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 城市地标 -->
+      <!-- 景点: Bird's Nest -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.1 Birds Nest/ Birds Nest1.jpeg" alt="Bird's Nest" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Bird's Nest (National Stadium)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The iconic Bird's Nest stadium was built for the 2008 Beijing Olympics. Its unique design resembles a bird's nest and has become one of Beijing's most recognizable landmarks.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥80/person
+            </span>
+          </div>
+          <a href="3.5.1 beijing-Bird's Nest.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Water Cube -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.2 Water Cube/Water Cube1.jpeg" alt="Water Cube" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Water Cube (National Aquatics Center)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The Water Cube is another iconic venue from the 2008 Beijing Olympics. Its bubble-like design represents water and houses swimming pools and aquatic facilities.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥30/person
+            </span>
+          </div>
+          <a href="3.5.2 beijing-Water Cube.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: 798 Art District -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.3 798 Art District/798 Art District1.jpeg" alt="798 Art District" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">798 Art District</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A former factory complex transformed into a vibrant art district, 798 features galleries, studios, cafes, and shops. It's a hub for contemporary art and cultural events.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.5.3 beijing-798 Art District.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: CCTV Headquarters -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.4 CCTV Headquarters/CCTV Headquarters1.jpeg" alt="CCTV Headquarters" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">CCTV Headquarters</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The distinctive CCTV Headquarters building is a modern architectural landmark designed by Rem Koolhaas. Its unique looped design has become an iconic part of Beijing's skyline.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free (exterior only)
+            </span>
+          </div>
+          <a href="3.5.4 beijing-CCTV Headquarters.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: National Centre for the Performing Arts -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.5 National Centre for the Performing Arts/National Centre for the Performing Arts1.jpeg" alt="National Centre for the Performing Arts" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">National Centre for the Performing Arts</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Known as "The Egg," this iconic building houses an opera house, concert hall, and theater. Its futuristic design and location near the Forbidden City make it a popular landmark.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥30/person (exhibition)
+            </span>
+          </div>
+          <a href="3.5.5 beijing-National Centre for the Performing Arts.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Galaxy SOHO -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.6 Galaxy SOHO/Galaxy SOHO1.jpeg" alt="Galaxy SOHO" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            6
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Galaxy SOHO</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A modern commercial complex with a distinctive curvilinear design, Galaxy SOHO features offices, retail spaces, and restaurants. Its futuristic appearance makes it a popular photography spot.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.5.6 beijing-Galaxy SOHO.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Red Brick Art Museum -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.7 Red Brick Art Museum/Red Brick Art Museum1.jpeg" alt="Red Brick Art Museum" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            7
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Red Brick Art Museum</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A contemporary art museum known for its distinctive red brick architecture. It features rotating exhibitions of modern art and a beautiful garden space.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥80/person
+            </span>
+          </div>
+          <a href="3.5.7 beijing-Red Brick Art Museum.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: CCTV Tower -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.8 CCTV Tower/CCTV Tower2.jpeg" alt="CCTV Tower" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            8
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">CCTV Tower</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The CCTV Tower is a telecommunications tower with an observation deck offering panoramic views of Beijing. It also houses a revolving restaurant.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥90/person
+            </span>
+          </div>
+          <a href="3.5.8 beijing-CCTV Tower.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Song Art Museum -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.9 Song Art Museum/Song Art Museum1.jpeg" alt="Song Art Museum" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            9
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Song Art Museum</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A modern art museum set in a beautiful garden environment. It features contemporary art exhibitions and a peaceful atmosphere for art appreciation.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Shunyi District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥60/person
+            </span>
+          </div>
+          <a href="3.5.9 beijing-Song Art Museum.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Shougang Park -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="landmark" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.5.10 Shougang Park/Shougang Park1.jpeg" alt="Shougang Park" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            10
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Shougang Park</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A former steel mill transformed into a modern urban park, featuring industrial heritage, cultural venues, and the 2022 Winter Olympics big air facility.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Shijingshan District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              Free
+            </span>
+          </div>
+          <a href="3.5.10 beijing-Shougang Park.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 寺庙 -->
+      <!-- 景点: Yonghe Temple -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.1 Lama Temple /Lama Temple1.jpeg" alt="Yonghe Temple" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yonghe Temple (Lama Temple)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A famous Tibetan Buddhist temple in Beijing, Yonghe Temple is known for its beautiful architecture, religious artifacts, and peaceful atmosphere. It's a popular destination for both tourists and worshippers.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Dongcheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥25/person
+            </span>
+          </div>
+          <a href="3.6.1 beijing-Lama Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Hongluo Temple -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.2 Hongluo Temple/Hongluo Temple1.jpeg" alt="Hongluo Temple" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Hongluo Temple</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A historic Buddhist temple located in Huairou District, known for its beautiful natural surroundings and ancient architecture. It's a popular destination for both religious activities and sightseeing.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Huairou District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥54/person
+            </span>
+          </div>
+          <a href="3.6.2 beijing-Hongluo Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Tanzhe Temple -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.3 Tanzhe Temple/Tanzhe Temple1.jpeg" alt="Tanzhe Temple" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Tanzhe Temple</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the oldest Buddhist temples in Beijing, with a history dating back over 1,700 years. It's renowned for its ancient architecture, cultural relics, and peaceful mountain setting.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Mentougou District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥55/person
+            </span>
+          </div>
+          <a href="3.6.3 beijing-Tanzhe Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Baiyun Guan -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.4 White Cloud Temple/White Cloud Temple1.jpeg" alt="Baiyun Guan" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Baiyun Guan (White Cloud Temple)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A prominent Taoist temple in Beijing, known for its rich history, traditional architecture, and cultural significance. It's an important center for Taoist activities and a popular tourist attraction.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥10/person
+            </span>
+          </div>
+          <a href="3.6.4 beijing-White Cloud Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Fayuan Temple -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.5 Fa Yuan Temple/Fa Yuan Temple1.jpeg" alt="Fayuan Temple" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Fayuan Temple</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            One of the oldest Buddhist temples in Beijing, with a history of over 1,300 years. It's known for its cultural relics, ancient architecture, and peaceful atmosphere.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xuanwu District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥5/person
+            </span>
+          </div>
+          <a href="3.6.5 beijing-Fayuan Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Five Pagoda Temple -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.6.6 Five Pagoda Temple/Five Pagoda Temple1.jpeg" alt="Five Pagoda Temple" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            6
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Five Pagoda Temple (Wuta Si)</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A historic Buddhist temple known for its unique five-pagoda structure. It's an important cultural relic and a popular destination for those interested in ancient architecture and Buddhist art.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              1-2 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥20/person
+            </span>
+          </div>
+          <a href="3.6.6 beijing-Five Pagoda Temple.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 徒步景点 -->
+      <!-- 景点1: Fangshan Shidu Scenic Area -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="hiking" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.7.1 Fangshan Shidu Scenic Area/Fangshan Shidu Scenic Area1.jpeg" alt="Fangshan Shidu Scenic Area" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Fangshan Shidu Scenic Area</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A scenic area known for its ten river crossings and beautiful natural landscapes. It offers hiking trails, water activities, and stunning views of the surrounding mountains and rivers.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              4-6 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Fangshan District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥40/person
+            </span>
+          </div>
+          <a href="3.7.1 beijing-Fangshan Shidu Scenic Area.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点2: Yudu Mountain Scenic Area -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="hiking" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.7.2 Yudu Mountain Scenic Area/Yudu Mountain Scenic Area1.jpeg" alt="Yudu Mountain Scenic Area" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Yudu Mountain Scenic Area</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.6</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A beautiful mountain area with pristine forests, clear streams, and stunning waterfalls. It's a popular destination for hiking, camping, and enjoying nature's tranquility.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-5 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Yanqing District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥60/person
+            </span>
+          </div>
+          <a href="3.7.2 beijing-Yudu Mountain Scenic Area.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点3: Beijing Phoenix Ridge Scenic Area -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="hiking" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.7.3 Phoenix Ridge Scenic Area/ Phoenix Ridge Scenic Area1.jpeg" alt="Beijing Phoenix Ridge Scenic Area" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beijing Phoenix Ridge Scenic Area</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A scenic area with unique rock formations, ancient temples, and panoramic views of Beijing. It's a popular spot for hiking and enjoying the natural beauty of the area.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              4-6 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Haidian District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥25/person
+            </span>
+          </div>
+          <a href="3.7.3 beijing-Phoenix Ridge Scenic Area.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点4: Longqingxia -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="hiking" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.7.4 Longqingxia/Longqingxia1.jpeg" alt="Longqingxia" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Longqingxia</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A beautiful gorge with crystal-clear water, towering cliffs, and stunning natural scenery. It's known as the "Little Three Gorges" of Beijing and offers boat rides and hiking trails.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Yanqing District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥140/person
+            </span>
+          </div>
+          <a href="3.7.4 beijing-Longqingxia.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 休闲娱乐 -->
+      <!-- 景点: Beijing Happy Valley -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.8.1 Beijing Happy Valley /Beijing Happy Valley.jpeg" alt="Beijing Happy Valley" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            1
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Beijing Happy Valley</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.5</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A large theme park featuring thrilling rides, shows, and entertainment. It's one of Beijing's most popular amusement parks, offering fun for visitors of all ages.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              4-6 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥299/person
+            </span>
+          </div>
+          <a href="3.8.1 beijing-Beijing Happy Valley.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Universal Beijing Resort -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.8.2 Universal Beijing Resort/Universal Beijing Resort.jpg" alt="Universal Beijing Resort" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            2
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Universal Beijing Resort</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★★</span>
+              <span class="ml-2 text-sm text-slate-500">4.8</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            The first Universal Studios theme park in China, featuring themed lands, exciting rides, and world-class entertainment. A must-visit destination for movie fans and thrill-seekers.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              6-8 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Tongzhou District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥638/person
+            </span>
+          </div>
+          <a href="3.8.2 beijing-Universal Beijing Resort.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Houhai Bar Street -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.8.3 Houhai Bar Street/Houhai Bar Street.jpeg" alt="Houhai Bar Street" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            3
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Houhai Bar Street</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.4</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A vibrant nightlife destination with numerous bars, restaurants, and entertainment venues. Located around the historic Houhai Lake, it offers a unique blend of traditional and modern Beijing nightlife.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Xicheng District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥50-200/person
+            </span>
+          </div>
+          <a href="3.8.3 beijing-Houhai Bar Street.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Sanlitun Nightclubs -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.8.4  Sanlitun Nightclubs/Sanlitun Nightclubs.jpeg" alt="Sanlitun Nightclubs" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            4
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Sanlitun Nightclubs</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.3</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            Beijing's premier nightlife district featuring trendy bars, clubs, and entertainment venues. Known for its vibrant atmosphere, international crowd, and diverse nightlife options.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              3-4 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥100-300/person
+            </span>
+          </div>
+          <a href="3.8.4 beijing-Sanlitun Nightclubs.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 景点: Qushuilanting Bathhouse -->
+      <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
+        <div class="relative md:w-1/3">
+          <img src="../../img/3. img-beijing/3.8.5 Qushuilanting Bathhouse/Qushuilanting Bathhouse.jpeg" alt="Qushuilanting Bathhouse" class="w-full h-64 md:h-full object-cover">
+          <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+            5
+          </div>
+        </div>
+        <div class="p-6 md:w-2/3">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-2xl font-bold text-slate-800">Qushuilanting Bathhouse</h2>
+            <div class="flex items-center">
+              <span class="rating-star">★★★★☆</span>
+              <span class="ml-2 text-sm text-slate-500">4.2</span>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-4">
+            A luxury bathhouse and spa offering traditional Chinese bathing experiences, massage services, and relaxation facilities. A perfect place to unwind and rejuvenate after a busy day.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+            <span class="flex items-center">
+              <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+              2-3 hours
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-area text-rose-600 mr-1"></i>
+              Chaoyang District
+            </span>
+            <span class="flex items-center">
+              <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+              ¥300-500/person
+            </span>
+          </div>
+          <a href="3.8.5 beijing-Qushuilanting Bathhouse.html" class="inline-flex items-center text-rose-600 font-medium hover:text-rose-800 transition-colors">
+            Learn More <i class="iconfont icon-arrow-right-s-line w-5 h-5 ml-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 分页按钮 -->
+      <div class="flex justify-center mb-8">
+        <button class="page-btn bg-rose-600 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-700 transition-colors" data-page="1">Page 1</button>
+        <button class="page-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors ml-2" data-page="2">Page 2</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // 按钮点击切换功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const pageBtns = document.querySelectorAll('.page-btn');
+      const attractionCards = document.querySelectorAll('.attraction-card');
+      
+      let currentCategory = 'imperial';
+      let currentPage = '1';
+      
+      // 过滤显示景点
+      function filterAttractions() {
+        attractionCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          const cardPage = card.getAttribute('data-page');
+          
+          let isMatch = false;
+          if (currentCategory === 'landmark' || currentCategory === 'temple') {
+            // 对于landmark和temple类别，只匹配完全相同的类别，不包含复合类别
+            isMatch = cardCategory === currentCategory;
+          } else if (currentCategory === 'imperial') {
+            // 对于imperial类别，允许包含该关键词的复合类别
+            isMatch = cardCategory.includes(currentCategory);
+          } else {
+            // 对于其他类别，使用完全匹配
+            isMatch = cardCategory === currentCategory;
+          }
+          
+          if (isMatch && cardPage === currentPage) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+      
+      // 分类按钮点击事件
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按钮的活跃状态
+          categoryBtns.forEach(b => {
+            b.classList.remove('bg-rose-600', 'text-white');
+            b.classList.add('bg-gray-200', 'text-slate-700');
+          });
+          
+          // 添加当前按钮的活跃状态
+          this.classList.remove('bg-gray-200', 'text-slate-700');
+          this.classList.add('bg-rose-600', 'text-white');
+          
+          currentCategory = this.getAttribute('data-category');
+          
+          // 切换到第1页
+          currentPage = '1';
+          
+          // 更新分页按钮样式
+          pageBtns.forEach(b => {
+            const pageNum = b.getAttribute('data-page');
+            if (pageNum === '1') {
+              b.classList.remove('bg-gray-200', 'text-slate-700');
+              b.classList.add('bg-rose-600', 'text-white');
+            } else {
+              b.classList.remove('bg-rose-600', 'text-white');
+              b.classList.add('bg-gray-200', 'text-slate-700');
+            }
+          });
+          
+          filterAttractions();
+        });
+      });
+      
+      // 分页按钮点击事件
+      pageBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 移除所有按钮的活跃状态
+          pageBtns.forEach(b => {
+            b.classList.remove('bg-rose-600', 'text-white');
+            b.classList.add('bg-gray-200', 'text-slate-700');
+          });
+          
+          // 添加当前按钮的活跃状态
+          this.classList.remove('bg-gray-200', 'text-slate-700');
+          this.classList.add('bg-rose-600', 'text-white');
+          
+          currentPage = this.getAttribute('data-page');
+          filterAttractions();
+        });
+      });
+      
+      // 初始加载
+      filterAttractions();
+    });
+  </script>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+<script src="../../../js/common.js"></script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+  }
+}
+</script>
+</body>
+</html>

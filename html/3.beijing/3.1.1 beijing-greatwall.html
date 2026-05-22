@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great Wall of China - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+
+  <script src="../js/attractions.js"></script>
+
+  <script>
+    function openLightbox(imageUrl, imageArray = null) {
+      const images = imageArray && imageArray.length > 0 ? imageArray : [imageUrl];
+      let currentIndex = images.indexOf(imageUrl);
+      if (currentIndex === -1) currentIndex = 0;
+      
+      const lightbox = document.createElement('div');
+      lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
+      lightbox.onclick = function() {
+        lightbox.remove();
+      };
+      
+      const img = document.createElement('img');
+      img.src = images[currentIndex];
+      img.className = 'max-w-[90vw] max-h-[90vh] object-contain';
+      img.onclick = function(e) {
+        e.stopPropagation();
+      };
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'absolute top-4 right-4 text-white text-2xl hover:text-gray-300';
+      closeBtn.innerHTML = '&times;';
+      closeBtn.onclick = function() {
+        lightbox.remove();
+      };
+      
+      if (images.length > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/30 hover:bg-black/50 rounded-full w-12 h-12 flex items-center justify-center';
+        prevBtn.innerHTML = '<i class="iconfont icon-zuojiantou3 text-xl"></i>';
+        prevBtn.onclick = function(e) {
+          e.stopPropagation();
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          img.src = images[currentIndex];
+          updateCounter();
+        };
+        
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/30 hover:bg-black/50 rounded-full w-12 h-12 flex items-center justify-center';
+        nextBtn.innerHTML = '<i class="iconfont icon-youjiantou2 text-xl"></i>';
+        nextBtn.onclick = function(e) {
+          e.stopPropagation();
+          currentIndex = (currentIndex + 1) % images.length;
+          img.src = images[currentIndex];
+          updateCounter();
+        };
+        
+        const counter = document.createElement('div');
+        counter.className = 'absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-3 py-1 rounded-full';
+        const updateCounter = function() {
+          counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        };
+        updateCounter();
+        
+        lightbox.appendChild(prevBtn);
+        lightbox.appendChild(nextBtn);
+        lightbox.appendChild(counter);
+      }
+      
+      lightbox.appendChild(img);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+    }
+  </script>
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部视觉冲击区 -->
+  <header class="responsive-header flex items-center justify-center">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../../img/3. img-beijing/img-badaling1.webp" alt="Great Wall of China" class="w-full h-full object-cover brightness-75 header-bg">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
+      <div class="text-white text-xl sm:text-2xl font-bold flex items-center gap-2" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
+        <span class="font-bold text-white font-sans italic">Wander Any Place</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-white font-medium desktop-nav">
+        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      </div>
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+    <!-- 核心内容 -->
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Great Wall of China
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        One of the Seven Wonders of the World, a symbol of Chinese civilization
+      </p>
+    </div>
+  </header>
+
+  <!-- Great Wall Information Section -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Great Wall Guide</h2>
+      </div>
+      
+      <!-- Booking Advertisement -->
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+        <p class="text-slate-700">If you need car charter or ticket booking services, scenic spot interpretation services and other services, please click <a href="../2.booking.html" class="text-red-600 font-bold">Booking Page</a></p>
+      </div>
+
+      <!-- Great Wall Overview -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-12">
+        
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">
+          <i class="iconfont icon-Great-Wall text-rose-600 w-16 h-16 mr-4 text-3xl"></i>
+          <span class="flex-shrink-0">Great Wall Overview</span>
+        </h3>
+
+        <p class="text-slate-600 mb-6">A comprehensive guide to the Great Wall of China, one of the world's most iconic landmarks.</p>
+
+        <p class="text-slate-700 mb-4">
+          The Great Wall is an ancient military defense project in China, one of the greatest buildings in the world, and a World Cultural Heritage site. Construction of the Great Wall began during the Spring and Autumn Period and Warring States Period. After unifying China, Emperor Qin Shi Huang connected the walls of various states to form the foundation of the Great Wall.
+        </p>
+        <p class="text-slate-700 mb-6">
+          The existing Great Wall was mainly built during the Ming Dynasty, stretching over 21,000 kilometers. It is a symbol of the Chinese nation and a source of pride. The Great Wall is not only a defense project but also a crystallization of the wisdom and courage of the ancient Chinese working people.
+          <br><br>
+          The Great Wall is one of the Eight Wonders of the World. From its construction to final completion, it took more than two thousand years, making it a unique spectacle in human history. The Beijing section of the Great Wall is divided into eight sections, with <strong> Badaling Great Wall, Juyongguan Great Wall, and Mutianyu Great Wall</strong> being the most famous.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">21,000+</div>
+            <div class="text-sm text-slate-600">Kilometers Long</div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">2,000+</div>
+            <div class="text-sm text-slate-600">Years of History</div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">5+</div>
+            <div class="text-sm text-slate-600">World Heritage Sites</div>
+          </div>
+        </div>
+
+      <!-- Great Wall Sections Tab Navigation -->
+      <div class="flex border-b border-gray-200 mb-6">
+        <button class="tab-btn px-6 py-3 text-rose-600 border-b-2 border-rose-600 font-medium" onclick="openTab('badaling-tab')">Badaling</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('mutianyu-tab')">Mutianyu</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('juyongguan-tab')">Juyongguan</button>
+        <button class="tab-btn px-6 py-3 text-slate-500 hover:text-rose-600" onclick="openTab('other-tab')">Other Great Wall</button>
+      </div>
+      
+      <!-- Badaling Tab -->
+      <div class="tab-content" id="badaling-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Badaling Great Wall</h3>
+        
+        <!-- Integrated Layout with Carousel Background -->
+        <div class="relative rounded-xl shadow-lg overflow-hidden mb-6 h-[500px]">
+          <!-- Background Carousel -->
+          <div class="relative h-full" id="badaling-carousel">
+            <!-- Carousel Images -->
+            <div class="carousel-inner h-full">
+              <div class="carousel-item active h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling1.jpeg" alt="Badaling Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('badaling')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling2.jpeg" alt="Badaling Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('badaling')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling3.jpeg" alt="Badaling Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('badaling')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling4.jpeg" alt="Badaling Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('badaling')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('badaling')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+            </button>
+            <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('badaling')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white active" onclick="goToSlide(0, 'badaling')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(1, 'badaling')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(2, 'badaling')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(3, 'badaling')"></button>
+            </div>
+          </div>
+          
+          <!-- Information Content -->
+          <div class="absolute bottom-6 left-8 right-0 p-4 text-white">
+            <!-- Quick Info Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-base font-semibold">
+              <div class="flex items-center">
+                <i class="iconfont icon-area text-rose-500 w-7 h-7 mr-2"></i>
+                <span class="text-white drop-shadow-lg">Yanqing District</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-shijian text-rose-500 w-7 h-7 mr-2"></i>
+                <span class="text-white drop-shadow-lg">6:30- 17:00</span> 
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-chepiao text-rose-500 w-7 h-7 mr-2"></i>
+                <span class="text-white drop-shadow-lg">¥40/person</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-calendar text-rose-500 w-7 h-7 mr-2"></i>
+                <span>Apr-Jun, Sep-Oct</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description Text -->
+        <div class="flex flex-col md:flex-row gap-6 items-stretch bg-white rounded-lg shadow-md p-4 mb-6">
+          <div class="md:w-2/3">
+            <h4 class="font-bold text-slate-700 mb-2">Recommended Tour Route</h4>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Badaling is the most famous section of the Great Wall both at home and abroad. Divided by the Guan City into "north and south sections," the northern section is the essence of Badaling Great Wall, featuring <span class="text-red-600 font-bold">12 watchtowers</span>. Among them, North Tower 8 is the highest watchtower in elevation and the best place to overlook the Great Wall. The southern section has <span class="text-red-600 font-bold">7 watchtowers</span> and features a gentler terrain. The most famous attraction in Badaling is the <span class="text-red-600 font-bold">"Hero Slope"</span> where there's a saying "He who has not climbed the Great Wall is not a true hero." In addition, you can also visit the <span class="text-red-600 font-bold">Museum of the Great Wall of China</span>.
+            </p>
+            <p class="font-bold text-slate-700 italic mb-4 leading-relaxed">
+              The images on the right show the recommended tour map. Please refer to them.
+            </p>
+          </div>
+          <div class="md:w-1/3 flex items-stretch">
+            <div class="gallery-container relative w-full h-full">
+              <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling_map.png" alt="Badaling Great Wall Tour Map" class="w-full h-full object-contain rounded-lg shadow-md bg-white gallery-image">
+              <div class="gallery-caption">
+                <p>Badaling Great Wall Route Map</p>
+              </div>
+              <div class="gallery-zoom-overlay">
+                <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/badaling_map.png', ['../../img/3. img-beijing/3.1.1 GreatWall/badaling1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/badaling2.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/badaling3.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/badaling4.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/badaling_map.png'])">
+                  <i class="iconfont icon-fangdaqi text-2xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Detailed Information Section -->
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Location -->
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Badaling Great Wall, Yanqing District, Beijing, China</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opening Hours -->
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Peak Season（April 1 - October 31）:</strong> <br> 6:30 - 17:00 (Last entry at 16:30)</li>
+                  <li><strong>Off-Season（November 1 - March 31）:</strong> <br> 7:30 - 16:30 (Last entry at 16:00)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Best Time to Visit -->
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">April - June, September - October</p>
+              </div>
+            </div>
+            
+            <!-- Tickets -->
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">Peak Season (Apr 1 - Oct 31): ¥40 per person</p>
+                <p class="text-slate-600">Off-Season (Nov 1 - Mar 31): ¥35 per person</p>
+              </div>
+            </div>
+            
+            <!-- Reservation Information -->
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Reservation Information</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Follows WeChat official account: <a href="https://wap.badalingmall.com/vue/detail/ticket?id=965&m_id=168" class="text-rose-600 hover:underline">Badaling Great Wall</a></li>
+                  <li>Book tickets on official website: <a href="https://www.badaling.cn/website/pc/index.html#/home" class="text-rose-600 hover:underline">https://www.badaling.cn</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Transportation -->
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Train:</strong> Take S2 line from Huangtudian Station (near Huoying Station on Metro Line 13) to Badaling Station (about 1 hour, 10+ minutes walking distance from station)</li>
+                  <li><strong>Bus:</strong> Take bus 877 or 919 from Deshengmen Bus Station (near Jishuitan Station on Metro Line 2) directly to Badaling</li>
+                  <li><strong>Tourist Shuttle:</strong> Take Badaling special bus from Qianmen Tourist Distribution Center (operated by Beijing Public Transport Group). Shuttle Official Website (Only Chinese): <a href="https://www.83531111.com/" target="_blank" class="text-rose-600 hover:underline">https://www.83531111.com/</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Night Tour Information -->
+          <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+            <h5 class="font-bold text-slate-700 mb-2 flex items-center">
+              <i class="iconfont icon-tips text-rose-600 w-6 h-6 mr-2"></i>
+              Night Tour Information
+            </h5>
+            <ul class="list-disc pl-7 space-y-1 text-slate-600">
+              <li>Badaling Great Wall opens night tours in summer. On weekends and holidays, night tours may feature a series of performances including magic shows, acrobatics, and traditional Chinese music.</li>
+              <li>Only 4 watchtowers are open on the North and South Great Wall, covering approximately 3km.</li>
+              <li><strong>Operating Period:</strong> April 30 to October 7</li>
+              <li><strong>Ticket Prices:</strong> Weekday night tour: ¥198, Friday-Saturday night tour: ¥298 (may have discounts when purchased through third-party platforms)</li>
+              <li><strong>Entrance Time:</strong> 18:30</li>
+              <li><strong>Lighting Hours:</strong> 19:00-22:00</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mutianyu Tab -->
+      <div class="tab-content hidden" id="mutianyu-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="flex-shrink-0">Mutianyu Great Wall</span>
+        </h3>
+        
+        <!-- Integrated Layout with Carousel Background -->
+        <div class="relative rounded-xl shadow-lg overflow-hidden mb-6 h-[500px]">
+          <!-- Background Carousel -->
+          <div class="relative h-full" id="mutianyu-carousel">
+            <!-- Carousel Images -->
+            <div class="carousel-inner h-full">
+              <div class="carousel-item active h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/mutianyu1.jpeg" alt="Mutianyu Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('mutianyu')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/mutianyu2.jpeg" alt="Mutianyu Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('mutianyu')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/mutianyu3.jpeg" alt="Mutianyu Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('mutianyu')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('mutianyu')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+            </button>
+            <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('mutianyu')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white active" onclick="goToSlide(0, 'mutianyu')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(1, 'mutianyu')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(2, 'mutianyu')"></button>
+            </div>
+          </div>
+          
+          <!-- Information Content -->
+          <div class="absolute bottom-6 left-8 right-0 p-4 text-white">
+            <!-- Quick Info Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-base font-semibold">
+              <div class="flex items-center">
+                <i class="iconfont icon-area text-rose-500 w-7 h-7 mr-2"></i>
+                <span>Huairou District</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-shijian text-rose-500 w-7 h-7 mr-2"></i>
+                <span>7:30 - 18:30</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-chepiao text-rose-500 w-7 h-7 mr-2"></i>
+                <span class="text-white drop-shadow-lg">¥45/person</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-calendar text-rose-500 w-7 h-7 mr-2"></i>
+                <span>Apr-May, Sep-Oct</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description Text -->
+        <div class="flex flex-col md:flex-row gap-6 items-stretch bg-white rounded-lg shadow-md p-4 mb-6">
+          <div class="md:w-2/3">
+            <h4 class="font-bold text-slate-700 mb-2">Recommended Tour Route</h4>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Mutianyu Great Wall is the <span class="text-red-600 font-bold">longest section</span> of the Great Wall of China, stretching 5,400 meters. Must-see attractions include <span class="text-red-600 font-bold">Zhengguan Terrace and Dajiao Tower</span>. Zhengguan Terrace consists of three hollow watchtowers, each with an observation pavilion on top. Uniquely, the gate is set on the side rather than the front - this peculiar architectural design is rarely seen along the Great Wall. Dajiao Tower features the Great Wall walls on three sides, offering expansive panoramic views of both the interior and exterior of the Great Wall. Climb up to the beacon tower and explore its mysteries.
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Taking the cable car provides a panoramic view of the Great Wall. After reaching Watchtower 14, head west all the way to Watchtower 20, the highest point of the Mutianyu Great Wall scenic area. (Estimated climbing time: 1 hour)
+            </p>
+            <p class="font-bold text-slate-700 italic mb-4 leading-relaxed">
+              The images on the right show the recommended tour map. Please refer to them.
+            </p>
+          </div>
+          <div class="md:w-1/3">
+            <!-- Map Carousel -->
+            <div class="relative rounded-lg shadow-md overflow-hidden bg-white">
+              <div class="relative h-full" id="mutianyu-map-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full flex flex-col items-center">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map1.jpg" alt="Mutianyu Great Wall Tour Map" class="w-full h-auto object-contain gallery-image">
+                      <div class="text-xs text-slate-500 mt-2 text-center">Source: <a href="http://xhslink.com/o/5L8r5OT3nvD" class="text-rose-600 hover:underline" target="_blank">Xiaohongshu (Little Red Book)</a></div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map1.jpg', ['../../img/3. img-beijing/3.1.1 GreatWall/mutianyu1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu2.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu3.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map1.jpg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map2.jpg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item hidden h-full">
+                    <div class="gallery-container relative w-full h-full flex flex-col items-center">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map2.jpg" alt="Mutianyu Great Wall Tour Map" class="w-full h-auto object-contain gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map2.jpg', ['../../img/3. img-beijing/3.1.1 GreatWall/mutianyu1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu2.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu3.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map1.jpg', '../../img/3. img-beijing/3.1.1 GreatWall/mutianyu_map2.jpg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('mutianyu-map')">
+                  <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+                </button>
+                <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('mutianyu-map')">
+                  <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+                </button>
+                
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+                  <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white active" onclick="goToSlide(0, 'mutianyu-map')"></button>
+                  <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(1, 'mutianyu-map')"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Detailed Information Section -->
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Location -->
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Mutianyu Great Wall, Huairou District, Beijing, China</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('mutianyu')" title="Copy address">
+                    <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opening Hours -->
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Peak Season（March 16 - November 15）:</strong> <br> 7:30 - 18:00 （Mon-Fri）</li>
+                  <li><strong>Peak Season（March 16 - November 15）:</strong> <br> 7:30 - 18:30 （Weedends）</li>
+                  <li><strong>Off-Season（November 16 - March 15）:</strong> <br> 8:00 - 17:30 （Mon-Sun）</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Best Time to Visit -->
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">April - May (spring), September - October (autumn)</p>
+              </div>
+            </div>
+            
+            <!-- Tickets -->
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600"><strong>Standard Ticket:</strong> Adult ¥40 </p>
+                <p class="text-slate-600"><strong>Shuttle Bus:</strong> Round-trip ¥15 / One-way ¥10</p>
+                <p class="text-slate-600"><strong>Cable Car:</strong> Round-trip ¥140 / One-way ¥100</p>
+                <p class="text-slate-600"><strong>Postcard Ticket:</strong> Adult ¥45 </p>
+                <p class="text-slate-600"><strong>Half-price Ticket:</strong> Foreign minors aged 6 (exclusive) to 18 (inclusive)</p>
+              </div>
+            </div>
+            
+            <!-- Reservation Information -->
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Reservation Information</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Official WeChat Mini Program:</strong> <a href="#小程序://慕田峪长城/DHs7CLc9ogt7PSl" class="text-rose-600 hover:underline">"Mutianyu Great Wall"</a></li>
+                  <li><strong>Tourist Shuttle:</strong> There are tourist buses from Dongzhimen or Qianmen to Mutianyu. Bus staff will help with ticket purchases.</li>
+                  <li><strong>On-site Ticket Purchase:</strong> Tickets can be bought at the entrance.</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Transportation -->
+            <div class="flex items-start">
+              <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Public Transport:</strong> Take bus 916 Express from Dongzhimen Transfer Hall to Huairou North Street, then transfer to bus H23, H24, H35, or H36 to Mutianyu Roundabout Station. Walkable from there.</li>
+                  <li><strong>Tourist Shuttle:</strong> Take direct bus to Mutianyu Great Wall. Shuttle Official Website (Only Chinese): <a href="https://www.83531111.com/" target="_blank" class="text-rose-600 hover:underline">https://www.83531111.com/</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Juyongguan Tab -->
+      <div class="tab-content hidden" id="juyongguan-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+          <span class="flex-shrink-0">Juyongguan Great Wall</span>
+        </h3>
+        
+        <!-- Integrated Layout with Carousel Background -->
+        <div class="relative rounded-xl shadow-lg overflow-hidden mb-6 h-[500px]">
+          <!-- Background Carousel -->
+          <div class="relative h-full" id="juyongguan-carousel">
+            <!-- Carousel Images -->
+            <div class="carousel-inner h-full">
+              <div class="carousel-item active h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/juyongguan1.jpeg" alt="Juyongguan Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('juyongguan')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/juyongguan2.jpeg" alt="Juyongguan Great Wall" class="w-full h-full object-cover cursor-pointer" onclick="nextSlide('juyongguan')">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('juyongguan')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+            </button>
+            <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('juyongguan')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white active" onclick="goToSlide(0, 'juyongguan')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(1, 'juyongguan')"></button>
+            </div>
+            
+            <!-- Quick Info Overlay -->
+            <div class="absolute bottom-6 left-8 right-0 p-4 text-white">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-base font-semibold">
+                <div class="flex items-center">
+                  <i class="iconfont icon-area text-rose-500 w-7 h-7 mr-2"></i>
+                  <span class="text-white drop-shadow-lg">Changping District</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-500 w-7 h-7 mr-2"></i>
+                  <span>6:30 - 18:00</span> 
+                </div>
+                <div class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-500 w-7 h-7 mr-2"></i>
+                  <span class="text-white drop-shadow-lg">¥40/person</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="iconfont icon-6 text-rose-500 w-7 h-7 mr-2"></i>
+                  <span>Jun - Oct</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description Text -->
+        <div class="flex flex-col md:flex-row gap-6 items-stretch bg-white rounded-lg shadow-md p-4 mb-6">
+          <div class="md:w-2/3">
+            <h4 class="font-bold text-slate-700 mb-2">Recommended Tour Route</h4>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Juyongguan Great Wall, located in Changping District about 50km from Beijing, is one of the Great Wall's most important passes. Known for its <span class="text-red-600 font-bold">strategic location and beautiful scenery</span>, it has been a vital military stronghold since ancient times.
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Unlike Badaling and Mutianyu, Juyongguan's defining feature is its <span class="text-red-600 font-bold">dangerous</span> terrain - easy to defend and difficult to attack. It has been a contested area and an important defensive line for the ancient capital. Since the Yuan Dynasty, it has been listed as one of the "Eight Scenes of Yanjing" for its breathtaking natural beauty.
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              The key attractions include <span class="text-red-600 font-bold">the majestic pass city (known as the "First Pass Under Heaven") and the Cloud Platform</span>, a Yuan Dynasty white marble platform with exquisite stone carvings of birds and beasts. Juyongguan serves as the northern gateway to Beijing, embodying the saying "one man guarding the pass, ten thousand men cannot pass".
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Summer to early autumn is the ideal time to visit, when the <span class="text-red-600 font-bold">"Juyong Greenery"</span> scenery is at its peak. The entire tour takes about 2 hours, making it possible to visit both Juyongguan and nearby attractions in one day.
+            </p>
+            <p class="font-bold text-slate-700 italic mb-4 leading-relaxed">
+              The images on the right show the recommended tour map. Please refer to them.
+            </p>
+          </div>
+          <div class="md:w-1/3">
+            <!-- Map Carousel -->
+            <div class="relative rounded-lg shadow-md overflow-hidden bg-white">
+              <div class="relative h-full" id="juyongguan-map-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full flex flex-col items-center">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/yuyongguan_map.png" alt="Juyongguan Great Wall Tour Map" class="w-full h-auto object-contain gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/yuyongguan_map.png', ['../../img/3. img-beijing/3.1.1 GreatWall/juyongguan1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/juyongguan2.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/yuyongguan_map.png'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Detailed Information Section -->
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Location -->
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Juyongguan Great Wall, Changping District, Beijing, China</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('juyongguan')" title="Copy address">
+                    <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opening Hours -->
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 flex-shrink-0 mt-1"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>6:30 - 18:00</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Best Time to Visit -->
+            <div class="flex items-start">
+              <i class="iconfont icon-calendar text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Best Time to Visit</h5>
+                <p class="text-slate-600">June - October</p>
+              </div>
+            </div>
+            
+            <!-- Tickets -->
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div>
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <p class="text-slate-600">Peak Season (Apr 1 - Oct 31): ¥40 per person</p>
+                <p class="text-slate-600">Off-Peak Season (Nov 1 - Mar 31): ¥35 per person</p>
+              </div>
+            </div>
+          </div>
+
+          
+          <!-- S2 Line Flower Sea -->
+          <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded flex flex-col md:flex-row gap-4">
+            <div class="md:w-2/3">
+              <h5 class="font-bold text-slate-700 mb-2 flex items-center">
+                <i class="iconfont icon-tips text-rose-600 w-6 h-6 mr-2"></i>
+                S2 Line Flower Sea
+              </h5>
+              <p class="text-slate-700 leading-relaxed">
+                This was once part of the Beijing-Zhangjiakou Railway, China's first trunk railway built by Zhan Tianyou. Today, it's a "flower sea train" that runs in spring. In early March, after passing through Juyongguan Tunnel, the train weaves through a sea of flowers. At the foot of the Great Wall, the train and flower sea create a beautiful scenic encounter.
+              </p>
+              
+              <h6 class="font-bold text-slate-700 mt-3 mb-2">Transportation Information</h6>
+              <ul class="text-slate-700 leading-relaxed">
+                <li>1、To ride the Juyongguan Flower Sea train: Take Metro Line 8 or 13 to Huoying Station, then walk to Huangtudian Station to take the S2 line (Huangtudian to Yanqing).</li>
+                <li>2、To photograph the Juyongguan Flower Sea train: Take bus Chang 20 to Juyongguan, then walk to the Juyongguan Flower Sea.</li>
+              </ul>
+              
+              <h6 class="font-bold text-slate-700 mt-3 mb-2">Ticket Prices</h6>
+              <p class="text-slate-700 leading-relaxed">¥5 from the first station, ¥6 to Badaling Station, ¥16 to the terminal station</p>
+            </div>
+            <div class="md:w-1/3">
+              <img src="../../img/3. img-beijing/3.1.1 GreatWall/s2.jpeg" alt="S2 Line Flower Sea" class="w-full h-auto object-contain rounded-lg shadow-md">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Other Great Wall Tab -->
+      <div class="tab-content hidden" id="other-tab">
+        <h3 class="text-xl font-bold text-slate-800 mb-4">Other Great Wall Sections</h3>
+        
+        <!-- Huanghuacheng Water Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Huanghuacheng Water Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Huanghuacheng Water Great Wall is a unique section of the Great Wall that features water views. This section is known for its beautiful combination of the ancient wall and surrounding water bodies, creating a stunning landscape that differs from other Great Wall sections.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The water Great Wall offers a different perspective on this ancient structure, with reflections of the wall in the water creating a picturesque scene. It's less crowded than other sections and provides a more peaceful and contemplative experience for visitors.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  2-3 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Huairou District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  ¥60 per person
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Huanghuacheng Water Great Wall, Huairou District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('huanghuacheng')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <p class="text-sm text-slate-600">8:30 - 16:30 (Weekdays)</p>
+                      <p class="text-sm text-slate-600">8:30 - 17:00 (Weekends)</p>
+                    </div>
+                  </div>
+
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1 flex items-center justify-between cursor-pointer" onclick="toggleTransportation()">
+                        <span>Transportation</span>
+                        <span id="transportation-toggle" class="text-rose-600 text-sm">More &gt;</span>
+                      </h6>
+                      <div id="transportation-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <ul class="space-y-1">
+                          <li class="block">1. Bus: Take bus 916 from Dongzhimen Hub to Huairou "Bus Terminal"</li>
+                          <li class="hidden">2. Tourist Shuttle: Dongzhimen Special Line at Dongzhimen Hub</li>
+                          <li class="hidden">3. Scenic Area Direct Bus (Mubashi): Departs from Exit B of Dongsishitiao Subway Station, east side of Poly Plaza at 8:00 AM on Friday, Saturday, and Sunday. Returns from the scenic area at 15:30</li>
+                          <li class="hidden">4. Round-trip Transportation (Zanbus): Departs from urban area at 8:00 AM (weekends and public holidays), returns from the scenic area at 15:30 (one-way requires advance reservation). Boarding location: Exit B of Huixinxijie Nankou Subway Station</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Buy tickets on-site or <a href="#小程序://黄花城水长城门票预约/aQAn1b4lhaC1HGy" class="text-rose-600 hover:underline">through WeChat mini-program (Only Chinese)</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <!-- Image Carousel -->
+              <div class="relative rounded-xl shadow-lg overflow-hidden bg-white" id="huanghuacheng-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng1.jpeg" alt="Huanghuacheng Water Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng1.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item hidden h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng2.jpeg" alt="Huanghuacheng Water Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng2.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/huanghuacheng2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('huanghuacheng')">
+                  <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+                </button>
+                <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('huanghuacheng')">
+                  <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jiankou Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Jiankou Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Jiankou Great Wall is known for its wild and rugged beauty. This section is less developed and more challenging to hike, making it popular among adventure seekers and photographers who want to experience the Great Wall in its original, unrestored state.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The steep terrain and crumbling sections provide a sense of authenticity and adventure. It's recommended for experienced hikers who are prepared for a more demanding trek. The views from the watchtowers are spectacular and well worth the effort.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  3-4 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Huairou District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  Free (unofficial section)
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Jiankou Great Wall, Huairou District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('jiankou')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <p class="text-sm text-slate-600">Open 24/7 (no official opening hours)</p>
+                    </div>
+                  </div>
+
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1 flex items-center justify-between cursor-pointer" onclick="toggleJiankouTransportation()">
+                        <span>Transportation</span>
+                        <span id="jiankou-transportation-toggle" class="text-rose-600 text-sm">More &gt;</span>
+                      </h6>
+                      <div id="jiankou-transportation-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <ul class="space-y-1">
+                          <li class="block">1. Take bus 916 from Dongzhimen Bus Hub to Yingbin Road Station, about 70 minutes.</li>
+                          <li class="hidden">2. Transfer to bus 862 at the opposite side of Yingbin Road Station and get off at Yujia Yuan Station (the second Yujia Station).</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>No official reservation required (unofficial section)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <!-- Image Carousel -->
+              <div class="relative rounded-xl shadow-lg overflow-hidden bg-white" id="jiankou-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/jiankou1.jpeg" alt="Jiankou Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/jiankou1.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/jiankou1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/jiankou2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item hidden h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/jiankou2.jpeg" alt="Jiankou Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/jiankou2.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/jiankou1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/jiankou2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('jiankou')">
+                  <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+                </button>
+                <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('jiankou')">
+                  <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Simatai Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Simatai Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Simatai Great Wall is famous for its unique architecture and strategic location. This section features the famous "Simatai Tower," which is one of the most iconic and photographed watchtowers along the entire Great Wall.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The tower is known for its distinctive shape and the stunning views it offers of the surrounding mountains and valleys. Simatai is a great choice for those who want to experience both the architectural and natural beauty of the Great Wall.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  3-4 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Miyun District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  ¥40 per person
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Simatai Great Wall, Miyun District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('simatai')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <p class="text-sm text-slate-600">9:00 - 17:30</p>
+                    </div>
+                  </div>
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1 flex items-center justify-between cursor-pointer" onclick="toggleSimataiTransportation()">
+                        <span>Transportation</span>
+                        <span id="simatai-transportation-toggle" class="text-rose-600 text-sm">More &gt;</span>
+                      </h6>
+                      <div id="simatai-transportation-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <ul class="space-y-1">
+                          <li class="block">1. Bus Transfer: Take the "Gubei Water Town Tourist Shuttle" or bus 980 (express) from Dongzhimen Bus Hub.</li>
+                          <li class="hidden">Note: The "Gubei Water Town Tourist Shuttle" is located on Dongzhimen Wai Street, not inside the Dongzhimen Subway Station bus hub.</li>
+                          <li class="hidden">Drop-off Point: Get off at "Bagezhuang" station, then walk along Country Road 264 to reach the Great Wall entrance.</li>
+                          <li class="hidden">2. High-Speed Rail Connection: Take S2 line or Y-series train from Beijing North Station or Qinghe Station to "Gubeikou Station", then take a taxi or scenic area bus to Simatai Great Wall (about 15-20 minutes).</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Buy tickets on-site or  <a href="https://www.wtown.com" class="text-rose-600 hover:underline">through website</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <div class="gallery-container relative rounded-xl shadow-lg overflow-hidden bg-white h-64 flex-shrink-0">
+                <img src="../../img/3. img-beijing/3.1.1 GreatWall/simatai.jpeg" alt="Simatai Great Wall" class="w-full h-full object-cover gallery-image">
+                <div class="gallery-zoom-overlay">
+                  <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/simatai.jpeg')">
+                    <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badaling Remnant Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Badaling Remnant Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The Badaling Remnant Great Wall refers to the unrestored and less-visited sections near the popular Badaling area. These sections offer a glimpse into the original state of the Great Wall before restoration efforts.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Unlike the heavily restored main Badaling section, these remnant sections show the wall in its weathered and authentic condition. It's a fascinating contrast to the pristine sections and provides insight into the wall's historical evolution.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  2-3 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Yanqing District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  ¥40 per person
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Badaling Remnant Great Wall, Yanqing District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('badaling-remnant')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <div id="badaling-remnant-opening-hours-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <p>06:30-16:30 (Feb 9-Feb 17, Mon-Sun)</p>
+                        <p>09:00-16:00 (Feb 18-Mar 31, Mon-Sun)</p>
+                        <p>09:00-16:30 (Apr 1-Oct 31, Mon-Sun)</p>
+                        <p>08:00-17:00 (Labor Day) (Jan 1-Dec 31, Mon-Sun)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1 flex items-center justify-between cursor-pointer" onclick="toggleBadalingRemnantTransportation()">
+                        <span>Transportation</span>
+                        <span id="badaling-remnant-transportation-toggle" class="text-rose-600 text-sm">More &gt;</span>
+                      </h6>
+                      <div id="badaling-remnant-transportation-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <ul class="space-y-1">
+                          <li class="block">1. Self-driving: Take Badaling Expressway to Badaling Great Wall exit, follow scenic area signs</li>
+                          <li class="hidden">2. Public Transport: Take bus 919 from Deshengmen to Badaling Ancient Great Wall bus stop, walk about 1.4km to reach</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Buy tickets on-site at the entrance</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <!-- Image Carousel -->
+              <div class="relative rounded-xl shadow-lg overflow-hidden bg-white" id="badaling-remnant-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/canchangcheng.jpeg" alt="Badaling Remnant Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/canchangcheng.jpeg')">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gubeikou Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Gubeikou Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                Gubeikou Great Wall is known for its historical significance and strategic importance. This section was a crucial defensive point and features well-preserved watchtowers and fortifications.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The area offers a mix of restored and unrestored sections, providing visitors with a comprehensive Great Wall experience. The surrounding countryside and traditional villages add to the cultural richness of a visit to Gubeikou.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  3-4 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Miyun District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  Free (unofficial section)
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Gubeikou Great Wall, Miyun District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('gubeikou')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <p class="text-sm text-slate-600">8:30 - 16:30</p>
+                    </div>
+                  </div>
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Transportation</h6>
+                      <ul class="text-sm text-slate-600 space-y-1 mt-2">
+                        <li>1. Take bus 密25 to Gubeikou Great Wall</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>No official reservation required (unofficial section)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <!-- Image Carousel -->
+              <div class="relative rounded-xl shadow-lg overflow-hidden bg-white" id="gubeikou-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/gubeikou1.jpeg" alt="Gubeikou Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/gubeikou1.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/gubeikou1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/gubeikou2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item hidden h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/gubeikou2.jpeg" alt="Gubeikou Great Wall" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/gubeikou2.jpeg', ['../../img/3. img-beijing/3.1.1 GreatWall/gubeikou1.jpeg', '../../img/3. img-beijing/3.1.1 GreatWall/gubeikou2.jpeg'])">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('gubeikou')">
+                  <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+                </button>
+                <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('gubeikou')">
+                  <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badaling National Forest Park - Badaling Water Pass Great Wall -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h4 class="text-lg font-bold text-slate-800 mb-3">Badaling National Forest Park - Badaling Water Pass Great Wall</h4>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The Badaling National Forest Park encompasses the Badaling Water Pass Great Wall, offering a unique combination of natural beauty and historical architecture. This area features the wall winding through forested mountains and alongside water features.
+              </p>
+              <p class="text-slate-700 mb-4 leading-relaxed">
+                The park provides a more peaceful and nature-focused Great Wall experience. Visitors can enjoy hiking trails, forest scenery, and the opportunity to see the wall in a different environmental context than the main tourist sections.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                <span class="flex items-center">
+                  <i class="iconfont icon-shijian text-rose-600 mr-1"></i>
+                  2-3 hours
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-area text-rose-600 mr-1"></i>
+                  Yanqing District
+                </span>
+                <span class="flex items-center">
+                  <i class="iconfont icon-chepiao text-rose-600 mr-1"></i>
+                  ¥35 per person
+                </span>
+              </div>
+              <!-- Detailed Information -->
+              <div class="mt-4 border-t border-gray-200 pt-4">
+                <h5 class="font-bold text-slate-700 mb-3">Detailed Information</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Location -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-area text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                      <h6 class="font-medium text-slate-700 mb-1">Location</h6>
+                      <div class="flex items-center">
+                        <p class="text-sm text-slate-600">Badaling National Forest Park, Yanqing District, Beijing</p>
+                        <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress('badaling-forest')" title="Copy address">
+                          <i class="iconfont icon-fuzhi w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Opening Hours -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-shijian text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-1">Opening Hours</h6>
+                      <p class="text-sm text-slate-600">9:00 - 16:30(Apr - Oct)</p>
+                      <p class="text-sm text-slate-600">9:00 - 16:00(Nov - Mar)</p>
+                    </div>
+                  </div>
+                  <!-- Transportation -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-ditie text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div class="w-full">
+                      <h6 class="font-medium text-slate-700 mb-1">Transportation</h6>
+                      <div id="badaling-forest-transportation-content" class="text-sm text-slate-600 space-y-1 mt-2">
+                        <ul class="space-y-1">
+                          <li>1. Take bus 919 from Beijing Deshengmen Bus Station to Shui Guan Great Wall stop, get off and arrive</li>
+                          <li>2. If coming from Changling or Badaling Great Wall scenic area, you can take bus 879</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reservation Information -->
+                  <div class="flex items-start">
+                    <i class="iconfont icon-6 text-rose-600 w-5 h-5 mr-2 mt-1 flex-shrink-0"></i>
+                    <div>
+                      <h6 class="font-medium text-slate-700 mb-2">Reservation Information</h6>
+                      <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Buy tickets on-site at the entrance</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/3">
+              <!-- Image Carousel -->
+              <div class="relative rounded-xl shadow-lg overflow-hidden bg-white h-64 flex-shrink-0" id="badaling-forest-carousel">
+                <!-- Carousel Images -->
+                <div class="carousel-inner h-full">
+                  <div class="carousel-item active h-full">
+                    <div class="gallery-container relative w-full h-full">
+                      <img src="../../img/3. img-beijing/3.1.1 GreatWall/badaling water.jpeg" alt="Badaling National Forest Park" class="w-full h-auto object-cover gallery-image">
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.1.1 GreatWall/badaling water.jpeg')">
+                          <i class="iconfont icon-fangdaqi  text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Tab functionality
+    function openTab(tabId) {
+      // Hide all tab contents
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // Remove active class from all tab buttons
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(button => {
+        button.classList.remove('text-rose-600', 'border-b-2', 'border-rose-600');
+        button.classList.add('text-slate-500');
+      });
+      
+      // Show selected tab content
+      const selectedContent = document.getElementById(tabId);
+      if (selectedContent) {
+        selectedContent.classList.remove('hidden');
+      }
+      
+      // Add active class to clicked button
+      event.target.classList.remove('text-slate-500');
+      event.target.classList.add('text-rose-600', 'border-b-2', 'border-rose-600');
+    }
+    
+    // Carousel functionality
+    const carouselState = {};
+    
+    function nextSlide(carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel') || document.querySelector(`[id="${carouselId}-carousel"]`) || document.querySelector(`.carousel-item.active`)?.parentElement;
+      if (!carousel) return;
+      
+      const items = carousel.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+      items.forEach((item, i) => {
+        if (!item.classList.contains('hidden')) currentIndex = i;
+      });
+      
+      items[currentIndex].classList.add('hidden');
+      items[currentIndex].classList.remove('active');
+      items[(currentIndex + 1) % items.length].classList.remove('hidden');
+      items[(currentIndex + 1) % items.length].classList.add('active');
+      
+      updateIndicators(carouselId, (currentIndex + 1) % items.length);
+    }
+    
+    function prevSlide(carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel') || document.querySelector(`[id="${carouselId}-carousel"]`) || document.querySelector(`.carousel-item.active`)?.parentElement;
+      if (!carousel) return;
+      
+      const items = carousel.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+      items.forEach((item, i) => {
+        if (!item.classList.contains('hidden')) currentIndex = i;
+      });
+      
+      items[currentIndex].classList.add('hidden');
+      items[currentIndex].classList.remove('active');
+      const newIndex = (currentIndex - 1 + items.length) % items.length;
+      items[newIndex].classList.remove('hidden');
+      items[newIndex].classList.add('active');
+      
+      updateIndicators(carouselId, newIndex);
+    }
+    
+    function goToSlide(index, carouselId) {
+      const carousel = document.getElementById(carouselId + '-carousel') || document.querySelector(`[id="${carouselId}-carousel"]`) || document.querySelector(`.carousel-item.active`)?.parentElement;
+      if (!carousel) return;
+      
+      const items = carousel.querySelectorAll('.carousel-item');
+      items.forEach(item => {
+        item.classList.add('hidden');
+        item.classList.remove('active');
+      });
+      items[index].classList.remove('hidden');
+      items[index].classList.add('active');
+      
+      updateIndicators(carouselId, index);
+    }
+    
+    function updateIndicators(carouselId, activeIndex) {
+      const indicatorContainer = document.querySelector(`[onclick="goToSlide(0, '${carouselId}')"]`)?.parentElement;
+      if (!indicatorContainer) return;
+      
+      const indicators = indicatorContainer.querySelectorAll('button');
+      indicators.forEach((ind, i) => {
+        if (i === activeIndex) {
+          ind.classList.add('active');
+          ind.classList.remove('bg-white/70');
+          ind.classList.add('bg-rose-500');
+        } else {
+          ind.classList.remove('active');
+          ind.classList.remove('bg-rose-500');
+          ind.classList.add('bg-white/70');
+        }
+      });
+    }
+  </script>
+
+  <!-- Image Viewer Modal -->
+  <div id="imageViewerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90">
+    <button id="closeModal" class="absolute top-4 right-4 text-white text-3xl hover:text-rose-400 transition-colors z-50">&times;</button>
+    
+    <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10094;
+    </button>
+    
+    <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10095;
+    </button>
+    
+    <div class="relative max-w-7xl max-h-[90vh] flex items-center justify-center p-4">
+      <img id="modalImage" src="" alt="" class="max-w-full max-h-[90vh] object-contain">
+    </div>
+    
+    <div id="imageCounter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black/50 px-4 py-2 rounded-lg">
+      <span id="currentIndex">1</span> / <span id="totalImages">1</span>
+    </div>
+  </div>
+
+  <script>
+    // Image Viewer functionality
+    let allImages = [];
+    let currentImageIndex = 0;
+    
+    // Initialize image viewer
+    function initImageViewer() {
+      // Get all images except background image
+      const images = document.querySelectorAll('img:not(.header-bg)');
+      allImages = Array.from(images);
+      
+      // Add click event to each image
+      allImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openImageViewer(index);
+        });
+      });
+      
+      // Close modal on background click
+      document.getElementById('imageViewerModal').addEventListener('click', (e) => {
+        if (e.target.id === 'imageViewerModal') {
+          closeImageViewer();
+        }
+      });
+      
+      // Close modal on button click
+      document.getElementById('closeModal').addEventListener('click', closeImageViewer);
+      
+      // Previous image
+      document.getElementById('prevImage').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPreviousImage();
+      });
+      
+      // Next image
+      document.getElementById('nextImage').addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNextImage();
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('imageViewerModal');
+        if (!modal.classList.contains('hidden')) {
+          if (e.key === 'Escape') {
+            closeImageViewer();
+          } else if (e.key === 'ArrowLeft') {
+            showPreviousImage();
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          }
+        }
+      });
+    }
+    
+    function openImageViewer(index) {
+      currentImageIndex = index;
+      const modal = document.getElementById('imageViewerModal');
+      const modalImage = document.getElementById('modalImage');
+      const currentIndexEl = document.getElementById('currentIndex');
+      const totalImagesEl = document.getElementById('totalImages');
+      
+      modalImage.src = allImages[index].src;
+      modalImage.alt = allImages[index].alt;
+      currentIndexEl.textContent = index + 1;
+      totalImagesEl.textContent = allImages.length;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeImageViewer() {
+      const modal = document.getElementById('imageViewerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+    
+    function showPreviousImage() {
+      currentImageIndex--;
+      if (currentImageIndex < 0) {
+        currentImageIndex = allImages.length - 1;
+      }
+      updateModalImage();
+    }
+    
+    function showNextImage() {
+      currentImageIndex++;
+      if (currentImageIndex >= allImages.length) {
+        currentImageIndex = 0;
+      }
+      updateModalImage();
+    }
+    
+    function updateModalImage() {
+      const modalImage = document.getElementById('modalImage');
+      const currentIndexEl = document.getElementById('currentIndex');
+      
+      modalImage.src = allImages[currentImageIndex].src;
+      modalImage.alt = allImages[currentImageIndex].alt;
+      currentIndexEl.textContent = currentImageIndex + 1;
+    }
+    
+    // Toggle Badaling Remnant Opening Hours
+    function toggleBadalingRemnantOpeningHours() {
+      const content = document.getElementById('badaling-remnant-opening-hours-content');
+      const toggle = document.getElementById('badaling-remnant-opening-hours-toggle');
+      const hiddenParagraphs = content.querySelectorAll('p.hidden');
+      
+      hiddenParagraphs.forEach(p => {
+        p.classList.toggle('hidden');
+      });
+      
+      if (toggle.textContent === 'More >') {
+        toggle.textContent = 'Less <';
+      } else {
+        toggle.textContent = 'More >';
+      }
+    }
+    
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', initImageViewer);
+  </script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>
+

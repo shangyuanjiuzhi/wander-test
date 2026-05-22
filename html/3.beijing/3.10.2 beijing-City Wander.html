@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Wander - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+
+  <style>
+    .section-card {
+      transition: all 0.3s ease;
+    }
+    .section-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .route-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem;
+    }
+    .route-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f43f5e, #ec4899);
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Copied to clipboard!');
+      }, function(err) {
+        console.error('Failed to copy: ', err);
+      });
+    }
+    
+    // 图片轮播函数 - 全新实现
+    class Carousel {
+      constructor(id) {
+        this.id = id;
+        this.carousel = document.getElementById(id + '-carousel');
+        if (!this.carousel) return;
+        this.items = Array.from(this.carousel.querySelectorAll('.gallery-container'));
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        this.lock = false;
+      }
+      
+      goTo(index) {
+        if (this.lock || !this.carousel) return;
+        this.lock = true;
+        
+        this.currentIndex = ((index % this.items.length) + this.items.length) % this.items.length;
+        
+        requestAnimationFrame(() => {
+          this.carousel.style.transform = `translate3d(-${this.currentIndex * 100}%, 0, 0)`;
+          this.carousel.style.transition = 'transform 0.4s ease-out';
+        });
+        
+        setTimeout(() => {
+          this.lock = false;
+        }, 450);
+      }
+      
+      next() {
+        this.goTo(this.currentIndex + 1);
+      }
+      
+      prev() {
+        this.goTo(this.currentIndex - 1);
+      }
+    }
+    
+    const carousels = {
+      line1: new Carousel('line1'),
+      line2: new Carousel('line2'),
+      line3: new Carousel('line3'),
+      line4: new Carousel('line4'),
+      line5: new Carousel('line5'),
+      line6: new Carousel('line6')
+    };
+    
+    function nextSlide(id) {
+      if (carousels[id]) {
+        carousels[id].next();
+      }
+    }
+    
+    function prevSlide(id) {
+      if (carousels[id]) {
+        carousels[id].prev();
+      }
+    }
+    
+    // 图片放大功能
+    function openLightbox(src) {
+      const lightbox = document.createElement('div');
+      lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
+      lightbox.onclick = function() { lightbox.remove(); };
+      
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'max-w-[90vw] max-h-[90vh] object-contain';
+      img.onclick = function(e) { e.stopPropagation(); };
+      
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '<svg fill="none" stroke="white" viewBox="0 0 24 24" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+      closeBtn.className = 'absolute top-4 right-4 text-white hover:text-gray-300';
+      closeBtn.onclick = function() { lightbox.remove(); };
+      
+      lightbox.appendChild(img);
+      lightbox.appendChild(closeBtn);
+      document.body.appendChild(lightbox);
+    }
+    
+    // 为所有轮播图图片添加点击放大功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryImages = document.querySelectorAll('.gallery-container img');
+      galleryImages.forEach(function(img) {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+          openLightbox(img.src);
+        });
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+    <nav class="mobile-header-nav">
+      <div class="nav-container">
+        <div class="logo" id="mobileLogo">
+          <i class="iconfont icon-ditu-dibiao"></i>
+          <span>Wander Any Place</span>
+        </div>
+        <div class="desktop-nav" id="desktopNavLinks">
+          <a href="../../index.html">Home</a>
+          <a href="../2.Destination.html">Destinations</a>
+          <a href="../2.booking.html">Booking Services</a>
+          <a href="../2.aboutus.html">About Us</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">City Wander in Beijing</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Explore Beijing's historic hutongs and discover the city's authentic charm through our curated walking routes
+      </p>
+    </div>
+  </header>
+
+  <!-- 介绍部分 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-slate-800 mb-6">About Hutong Walking</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col">
+              <p class="text-slate-600 mb-4">
+                Beijing's <span class="text-rose-600 font-bold">hutongs</span> are ancient alleyways that wind through the heart of the city, offering a glimpse into traditional Chinese life. These narrow streets, lined with courtyard houses, have been home to generations of Beijingers.
+              </p>
+              <p class="text-slate-600 mb-4">
+                A walk through the hutongs is like stepping back in time. You'll encounter local residents going about their daily lives, small family-run shops, and hidden courtyards that tell stories of Beijing's rich history.
+              </p>
+              <p class="text-slate-600 mb-6">
+                Our curated walking routes focus on the Second Ring Road area, where some of Beijing's most authentic hutong neighborhoods are preserved. Each route offers a unique perspective on the city's culture and history.
+              </p>
+              <!-- Booking Advertisement -->
+              <div class="mt-4 p-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl shadow-lg">
+                <p class="text-white font-bold text-center text-lg">
+                  🎉 Ready to Explore Beijing's Hutong Tour? 🎉
+                </p>
+                <p class="text-white text-center mt-2">
+                  Book your hutong walking tour now!
+                </p>
+                <div class="text-center mt-3">
+                  <a href="../2.booking.html" class="inline-block bg-white text-rose-600 font-bold px-6 py-2 rounded-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-md">
+                    🚶 Book Now →
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-md h-fit">
+              <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Hutong1.jpeg" alt="Beijing Hutong" class="w-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 四条线路 -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-slate-800 mb-6">Recommended Walking Routes</h2>
+        
+        <!-- Route 1: Line 1 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-6 route-card">
+          <div>
+            <div class="mb-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Line 1</span>
+                <span class="text-slate-500 text-sm">2-3 hours | 3-4 km</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800">鼓楼->南锣鼓巷->什刹海 Drum Tower->Nanluoguxiang->Shichahai</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+              Explore the main street and side hutongs, capture photos of the Drum Tower with red walls and trams, shop for traditional "Rabbit God" dolls in Yandai Xiejie, enjoy the Western Hills view from Silver Ingot Bridge, and watch the sunset at Shichahai.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-blue-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-blue-600">Line 1: 鼓楼->南锣鼓巷->什刹海 Drum Tower->Nanluoguxiang->Shichahai</p>
+                </div>
+                
+                <!-- Route Steps -->
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Nanluoguxiang Subway Station (南锣鼓巷地铁站)</h5>
+                      <p class="text-sm text-slate-500">Starting point</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Nanluoguxiang (南锣鼓巷)</h5>
+                      <p class="text-sm text-slate-500">A charming alleyway full of old Beijing charm, with many former residences of famous people and historical stories</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.1 beijing-Local Specialties.html" class="underline hover:text-orange-900 transition-colors">Zhajiang noodles</a></span>
+                          <span class="text-orange-600">Restaurant:方砖厂69号炸酱面 Fangzhuanchang No.69 Zhajiang Noodles</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍰 <a href="3.9.2 beijing-Snacks and Desserts.html" class="underline hover:text-amber-900 transition-colors">Royal Dessert</a></span>
+                          <span class="text-amber-600">Restaurant:稻香村 Daoxiangcun</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Wealth God Temple (财神庙)</h5>
+                      <p class="text-sm text-slate-500">China's earliest Wealth God Temple, where you can pray for prosperity</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Drum Tower (鼓楼)</h5>
+                      <p class="text-sm text-slate-500">Capture photos of the Drum Tower with red walls and trams</p>
+                      <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
+                        🥞 <a href="3.9.3 beijing-Beijing Cuisine.html" class="underline hover:text-orange-900 transition-colors">Chao Gan (Fried Liver)</a>
+                        <span class="text-orange-600">Restaurant:姚记炒肝 Yaoji Chaogan</span>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">5</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Yinding Bridge (银锭桥)</h5>
+                      <p class="text-sm text-slate-500">Enjoy the night view of Beijing and visit Houhai Bar Street</p>
+                       <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
+                        🍸 <a href="3.8.3 beijing-Houhai Bar Street.html" class="underline hover:text-purple-900 transition-colors">Houhai Bar Street</a>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">6</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Shichahai Ice Rink (什刹海冰场)</h5>
+                      <p class="text-sm text-slate-500">Go ice skating and ice cart riding in winter</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">7</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Beihai Park (北海公园)</h5>
+                      <p class="text-sm text-slate-500">Visit Beihai Park, see guide <a href="3.1.9 beijing-Beihai Park.html" class="text-blue-600 underline hover:text-blue-800">here</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line1')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line1-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg" alt="Dongsi Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>鼓楼 -> 南锣鼓巷 -> 什刹海</p>
+                            <p>Drum Tower -> Nanluoguxiang -> Shichahai Route Map</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg" alt="Traditional Courtyard" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Nanluoguxiang Main Street</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg" alt="Beixinqiao" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Former Home of Writer Mao Dun (茅盾故居)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg" alt="Shichahai" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Home of Master Painter Qi Baishi (齐白石故居)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg" alt="Hutong Street" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Wealth God Temple</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg" alt="Drum Tower" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Drum Tower</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG" alt="Traditional Architecture" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Yinding Bridge</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg" alt="Local Life" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Shichahai Ice Rink</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg" alt="Night View" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Beihai Park</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line1')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 2: Line 2 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8 route-card">
+          <div class="p-8">
+            <div class="mb-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Line 2</span>
+                <span class="text-slate-500 text-sm">2-3 hours | 3-4 km</span>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">隆福寺 -> 东四北大街 -> 雍和宫大街 -> 国子监街 -> 五道营胡同</h3>
+              <h3 class="text-xl font-semibold text-slate-600">Longfu Temple -> Dongsi North Street -> Yonghegong Street -> Guozijian Street -> Wudaoying Hutong</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Starting from Longfu Temple, explore the variety stores on Dongsi North Street, take film-style photos with vintage backdrops, admire the imperial steles at Guozijian, and enjoy delicious food in Wudaoying Hutong.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-green-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-green-600">Line 2: 隆福寺->东四北大街->雍和宫大街->国子监街->五道营胡同 Longfu Temple -> Dongsi North Street -> Yonghegong Street -> Guozijian Street -> Wudaoying Hutong</p>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Longfu Temple Area (隆福寺区域)</h5>
+                      <p class="text-sm text-slate-500">Starting point, explore Longfu Temple and visit Hutong Museum to learn about Beijing hutong culture</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Dongsi North Street (东四北大街)</h5>
+                      <p class="text-sm text-slate-500">Try Chinese pastries and traditional snacks, such as 红心点心局（Hongxin Dim Sum Shop), 稻香村零号店(Daoxiangcun Flagship Store), and 茶饼斋（Tea Cake Studio）</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          🍰 <a href="3.9.2 beijing-Snacks and Desserts.html" class="underline hover:text-amber-900 transition-colors">Royal Dessert</a>
+                          <span class="text-amber-600">Restaurant:稻香村零号店 Daoxiangcun Flagship</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          🍜 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Lu Zhu (Braised Pork Offal)</a>
+                          <span class="text-amber-600">Restaurant:北新桥卤煮 Beixinqiao Luzhu</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Lama Temple (雍和宫)</h5>
+                      <p class="text-sm text-slate-500">Visit this traditional Tibetan Buddhist temple in Beijing. See details <a href="3.6.1 beijing-Lama Temple.html" class="underline hover:text-amber-900 transition-colors">here</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Guozijian Street (国子监街)</h5>
+                      <p class="text-sm text-slate-500">Visit the Imperial Academy. See details <a href="3.1.10 beijing-confuciustemple.html" class="underline hover:text-amber-900 transition-colors">here</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">5</div>
+                    <div>
+                      <h5 class="font-semibold text-green-700">Wudaoying Hutong (五道营胡同)</h5>
+                      <p class="text-sm text-slate-500">A 700-meter street filled with boutique shops and specialty restaurants, each offering unique surprises</p>
+                      <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
+                        🍜 <a href="3.9.4 beijing-Michelin Restaurants.html" class="underline hover:text-orange-900 transition-colors">Michelin Restaurant</a>
+                        <span class="text-orange-600">Restaurant:京兆尹 Jing Zhao Yin</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line2')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line2-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG" alt="Xisi Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Longfu Temple -> Dongsi North Street -> Yonghegong Street -> Guozijian Street -> Wudaoying Hutong Route Map</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg" alt="Guanghua Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Longfu Temple</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg" alt="Laba Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Hutong Museum</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg" alt="Financial Street" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>稻香村零号店 Daoxiangcun Flagship Store</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg" alt="Longfu Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>茶饼斋 Tea Cake Studio</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg" alt="Dongsi North Street" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>北新桥卤煮 Beixinqiao Luzhu</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lama Temple</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian Street" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Guozijian Street</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Confucius Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Wudaoying Hutong</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg" alt="Wudaoying Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Wudaoying Hutong</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line2')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 3: Line 3 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8 route-card">
+          <div>
+            <div class="mb-3">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Line 3</span>
+                <span class="text-slate-500 text-sm">1.5-2 hours | 2-3 km</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800">雍和宫 -> 地坛公园 Lama Temple -> Ditan Park</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+              Pray at Lama Temple in the morning, enjoy coffee in Wudaoying Hutong in the afternoon, admire the red walls and green tiles at Guozijian, and take a stroll in Ditan Park at dusk.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-purple-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-purple-600">Line 3: 雍和宫 -> 国子监街 -> 五道营胡同 -> 地坛公园 Lama Temple -> Guozijian Street -> Wudaoying Hutong -> Ditan Park</p>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Lama Temple (雍和宫)</h5>
+                      <p class="text-sm text-slate-500">Visit this traditional Tibetan Buddhist temple in Beijing. See details <a href="3.6.1 beijing-Lama Temple.html" class="underline hover:text-amber-900 transition-colors">here</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Guozijian Street (国子监街)</h5>
+                      <p class="text-sm text-slate-500">Visit the Imperial Academy. See details <a href="3.1.10 beijing-confuciustemple.html" class="underline hover:text-amber-900 transition-colors">here</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Wudaoying Hutong (五道营胡同)</h5>
+                      <p class="text-sm text-slate-500">A 700-meter street filled with boutique shops and specialty restaurants, each offering unique surprises</p>
+                      <span class="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
+                        🍜 <a href="3.9.4 beijing-Michelin Restaurants.html" class="underline hover:text-orange-900 transition-colors">Michelin Restaurant</a>
+                        <span class="text-orange-600">Restaurant:京兆尹 King Joy</span>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Ditan Park (地坛公园)</h5>
+                      <p class="text-sm text-slate-500">A park with a rich history and beautiful views. See details <a href="3.1.11 beijing-ditanpark.html" class="underline hover:text-amber-900 transition-colors">here</a></p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line3')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line3-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg" alt="Wangfujing Street" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p> Lama Temple -> Ditan Park Route Map</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lama Temple (雍和宫)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Guozijian (国子监)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Wudaoying Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Wudaoying Hutong (五道营胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG" alt="King Joy" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>King Joy (京兆尹)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg" alt="Ditan Park" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Ditan Park (地坛公园) - The Sea of Grass</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg" alt="Ditan Park Trees" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Ditan Park - Trees of Yu Hua and Shi Tiesheng (史铁生与榆树)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line3')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 4: Line 4 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8 route-card">
+          <div class="p-8">
+            <div class="mb-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Line 4</span>
+                <span class="text-slate-500 text-sm">2-3 hours | 3-4 km</span>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">西四区域探索 Xisi Area Exploration</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Explore the Xisi area: the red walls of White Pagoda Temple are iconic, Zhengyang Bookstore offers rare old books, and the stained glass windows at Xishiku Church are breathtakingly beautiful.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-orange-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-orange-600">Line 4: 阜成门->白塔寺->历代帝王庙->广济寺->正阳书局->西什库教堂 Fuchengmen -> White Pagoda Temple -> Temple of Ancient Monarchs -> Guangji Temple -> Zhengyang Bookstore -> Xishiku Church</p>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Fuchengmen Subway Station Exit B</h5>
+                      <p class="text-sm text-slate-500">Starting point</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Lu Xun Museum (鲁迅博物馆)</h5>
+                      <p class="text-sm text-slate-500">Visit Lu Xun's former residence and exhibition to experience the power of his writings</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">White Pagoda Temple (白塔寺)</h5>
+                      <p class="text-sm text-slate-500">Spend half a day exploring and eating around White Pagoda Temple. The red walls are perfect for photos</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Temple of Ancient Monarchs (历代帝王庙)</h5>
+                      <p class="text-sm text-slate-500">Built in 1531 during the Ming Dynasty, this 500-year-old temple was once an imperial worship site. ¥20 entry fee, no reservation needed</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">5</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Geological Museum (地质博物馆)</h5>
+                      <p class="text-sm text-slate-500">One of Asia's oldest and largest comprehensive geological museums. ¥15 entry fee, no reservation needed</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">6</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Guangji Temple (广济寺)</h5>
+                      <p class="text-sm text-slate-500">One of Beijing's four famous temples, home to the Buddhist Association of China. Free entry, no reservation needed. Features precious cultural relics including a golden Dharma wheel</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">7</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Zhengyang Bookstore (正阳书局)</h5>
+                      <p class="text-sm text-slate-500">A unique bookstore hidden beneath a Yuan Dynasty pagoda, filled with old Beijing charm</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">8</div>
+                    <div>
+                      <h5 class="font-semibold text-orange-700">Xishiku Church (西什库教堂)</h5>
+                      <p class="text-sm text-slate-500">A three-story Gothic church with stunning stained glass windows that add unique beauty</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>� <a href="3.9.1 beijing-Local Specialties.html" class="underline hover:text-amber-900 transition-colors">Zhajiang noodles</a></span>
+                          <span class="text-amber-600">Restaurant:方砖厂69号炸酱面 Fangzhuanchang No.69</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Lu Zhu (Braised Pork Offal)</a></span>
+                          <span class="text-amber-600">Restaurant:西四包子铺 Xisi Baozi Shop</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line4')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line4-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg" alt="Qianmen Gate" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Fuchengmen -> Xishiku Church Route Map</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg" alt="Lu Xun Museum" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lu Xun Museum (鲁迅博物馆)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg" alt="White Pagoda Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>White Pagoda Temple (白塔寺)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg" alt="Temple of Ancient Monarchs" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Temple of Ancient Monarchs (历代帝王庙)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg" alt="Geological Museum" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Geological Museum (地质博物馆)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg" alt="Guangji Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Guangji Temple (广济寺)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg" alt="Zhengyang Bookstore" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Zhengyang Bookstore (正阳书局)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg" alt="Zhengyang Bookstore" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Zhengyang Bookstore Inside</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg" alt="Xishiku Church" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Xishiku Church</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Xishiku Church" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>方砖厂69号炸酱面 (Fangzhuanchang No.69 Zhajiang Noodles)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg" alt="Xisi Baozi Shop" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>西四包子铺 (Xisi Baozi Shop)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line4')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 5: Line 5 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8 route-card">
+          <div class="p-8">
+            <div class="mb-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Line 5</span>
+                <span class="text-slate-500 text-sm">2-2.5 hours | 3-4 km</span>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">烂漫胡同 Lanman Hutong</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Pet cats at Fayuan Temple, then head to Niujie for lamb skewers and Baiji Nian Gao (rice cakes).
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-red-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-red-600">Line 5: Lanman Hutong -> Fayuan Temple -> Niujie</p>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Caishikou Subway Station Exit G</h5>
+                      <p class="text-sm text-slate-500">Starting point</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Xuannan Bookstore (宣南书店)</h5>
+                      <p class="text-sm text-slate-500">A 24-hour bookstore with coffee during the day and drinks at night. In summer, enjoy the glass waterfall wall with fish swimming above; in winter, persimmons are displayed in the glass wall.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Lanman Hutong (烂漫胡同)</h5>
+                      <p class="text-sm text-slate-500">One of the most artistic hutongs in West Beijing, featuring many chill cafes, shops, and photo spots</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Xizhuan Hutong (西砖胡同)</h5>
+                      <p class="text-sm text-slate-500">A cultural hutong with cafes and tea houses</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">5</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Fayuan Temple (法源寺)</h5>
+                      <p class="text-sm text-slate-500">For more information about Fayuan Temple, see <a href="3.6.5 beijing-Fayuan Temple.html" target="_blank" class="text-red-600 underline hover:text-red-800">here</a></p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">6</div>
+                    <div>
+                      <h5 class="font-semibold text-red-700">Niujie (牛街)</h5>
+                      <p class="text-sm text-slate-500">Beijing's iconic halal food district and the largest Muslim community area. Its history dates back to the Song and Yuan dynasties. Originally called "Liuhecun", it later became known as Niujie (Ox Street) due to the local Muslims' expertise in beef processing. The Niujie Mosque, built during the Northern Song Dynasty, is Beijing's largest and oldest mosque.</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍲 <a href="3.9.1 beijing-Local Specialties.html" class="underline hover:text-amber-900 transition-colors">Shabu-shabu Lamb</a></span>
+                          <span class="text-amber-600">Restaurant:聚宝源 Jubao Yuan</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🥘 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Bao Du (Braised Tripe)</a></span>
+                          <span class="text-amber-600">Restaurant:聚宝源 Jubao Yuan</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.2 beijing-Snacks and Desserts.html" class="underline hover:text-amber-900 transition-colors">Lǘ Dǎgǔn (Glutinous Rice Roll)</a></span>
+                          <span class="text-amber-600">Restaurant:白记年糕 Baiji Nian Gao</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line5')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line5-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg" alt="Olympic Green" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lanman Hutong -> Fayuan Temple -> Niujie Route Map</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Xuannan Bookstore" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Xuannan Bookstore (宣南书店)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lanman Hutong (烂漫胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lanman Hutong (烂漫胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lanman Hutong (烂漫胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Lanman Hutong (烂漫胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg" alt="Xizhuan Hutong" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Xizhuan Hutong (西砖胡同)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg" alt="Fayuan Temple" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Fayuan Temple (法源寺)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg" alt="Niujie" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Niujie (牛街)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg" alt="Lanman Hutong -> Fayuan Temple -> Niujie Route Map 1" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Jubao Yuan(聚宝源)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.png" alt="Baiji Year Cake" class="h-full object-contain gallery-image">
+                          <div class="gallery-caption">
+                            <p>Baiji Nian Gao(白记年糕)</p>
+                          </div>
+                          <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.JPG')">
+                              <i class="iconfont icon-fangdaqi text-2xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line5')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route 6: Line 6 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8 route-card">
+          <div class="p-8">
+            <div class="mb-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Line 6</span>
+                <span class="text-slate-500 text-sm">2-3 hours | 2-3 km</span>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-800">前门附近胡同 Hutongs Near Qianmen</h3>
+            </div>
+            <!-- Brief Introduction -->
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Explore old guild halls, design shops, enjoy Chao Gan (fried liver) and Zhajiang noodles, then relax with a cup of coffee.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Left Column: Route Map -->
+              <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6">
+                <div class="mb-4">
+                  <h4 class="font-bold text-indigo-800 text-lg">Route Map</h4>
+                  <p class="text-xs text-indigo-600">Line 6: 湖广会馆->杨梅竹斜街->北京坊->前门箭楼->前门大街->西兴隆街 Huguang Guild Hall -> Yangmeizhu Xiejie -> Beijing Fun -> Qianmen Arrow Tower -> Qianmen Street -> Xixinglong Street</p>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">1</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Huguang Guild Hall (北京湖广会馆)</h5>
+                      <p class="text-sm text-slate-500">Built in 1807, originally the former residence of Zhang Juzheng. It was a performance venue for Peking Opera masters like Mei Lanfang. Sun Yat-sen also held the founding meeting of the Kuomintang here. Key attractions: (1) Grand Theater: A century-old wooden theater with exquisite carvings; (2) Opera Museum: Located in Wenchang Pavilion, showcasing Peking Opera history and Mei Lanfang's collections.</p>
+                    </div>
+                  </div>
+
+
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">2</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Jinghua Publishing House (京华印书局)</h5>
+                      <p class="text-sm text-slate-500">This century-old building standing in southern Beijing is now home to China Bookstore. Known as the "Ship Building" due to its unique shape, it has become a popular spot for many young artists and history enthusiasts.</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">3</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Xuannan Bookstore (宣南书店)</h5>
+                      <p class="text-sm text-slate-500">A 24-hour bookstore with coffee during the day and drinks at night. In summer, enjoy the glass waterfall wall; in winter, persimmons are displayed in the glass wall.</p>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">4</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Future Post Office (未来邮局)</h5>
+                      <p class="text-sm text-slate-500">Send letters to your future self or others, also known as "slow mail" service</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">5</div>
+                    <div>
+                      <h5 class="font-semibold text-slate-800">Yangmeizhu Xiejie (杨梅竹斜街)</h5>
+                      <p class="text-sm text-slate-500">This 500-meter street blends history and modernity. Highlights: (1) Model Bookstore (模范书局): A vintage bookstore hidden in the hutong; (2) Jingwei Shiguang (京味拾光): A popular photo spot with beautiful courtyard lighting; (3) Qingyunge Site (青云阁旧址): A late Qing entertainment venue frequented by Kang Youwei and Lu Xun.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">6</div>
+                    <div>
+                      <h5 class="font-semibold text-indigo-700">Qianmen Street & Xianyukou Street (前门大街 & 鲜鱼口街)</h5>
+                      <p class="text-sm text-slate-500">Qianmen Street is famous for its century-old shops: (1) Ruifuxiang (瑞蚨祥): A renowned silk shop; (2) Neiliansheng (内联升): A 100-year-old shoe store; (3) Zhang Yiyuan (张一元): A beloved tea house; (4) Wu Yutai (吴裕泰): Famous for jasmine tea and matcha ice cream. <br> 
+                        Xianyukou Street, over 570 years old, is known as the "living fossil of Beijing cuisine".</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍲 <a href="3.9.1 beijing-Local Specialties.html" class="underline hover:text-amber-900 transition-colors">Peking Duck</a></span>
+                          <span class="text-amber-600">Restaurant:全聚德 Quanjude / 便宜坊 Bianyifang</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🥘 <a href="3.9.1 beijing-Local Specialties.html" class="underline hover:text-amber-900 transition-colors">Zhajiang Noodles</a></span>
+                          <span class="text-amber-600">Restaurant:方砖厂69号炸酱面 Fangzhuanchang No.69</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Lu Zhu (Braised Offal)</a></span>
+                          <span class="text-amber-600">Restaurant:门框胡同百年卤煮 (Menkuang Hutong Century-Old Lu Zhu)</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Chao Gan (Fried Liver)</a></span>
+                          <span class="text-amber-600">Restaurant:天兴居炒肝 Tianxingju</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.3 beijing-Hidden Gem Snacks.html" class="underline hover:text-amber-900 transition-colors">Douzhi (Soybean Milk)</a></span>
+                          <span class="text-amber-600">Restaurant:锦芳小吃 Jinfang Snacks</span>
+                        </span>
+                        <span class="flex flex-col items-start gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
+                          <span>🍜 <a href="3.9.2 beijing-Snacks and Desserts.html" class="underline hover:text-amber-900 transition-colors">Ai Wo Wo (Glutinous Rice Balls)</a></span>
+                          <span class="text-amber-600">Restaurant:锦芳小吃 Jinfang Snacks</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5">7</div>
+                    <div>
+                      <h5 class="font-semibold text-indigo-700">Xixinglong Street (西兴隆街)</h5>
+                      <p class="text-sm text-slate-500">A hidden gem hutong near Qianmen, blending local life with artistic vibes. Perfect for Citywalk with few crowds and authentic Beijing atmosphere.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            <!-- Right Column: Gallery -->
+              <div class="h-full flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
+                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line6')">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <div id="line6-carousel" class="h-full">
+                    <div class="carousel-inner flex items-center h-full">
+                      <div class="carousel-item active flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png" alt="Xixinglong Street" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Qianmen Area Route map</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg" alt="UCCA" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Huguang Guild Hall (北京湖广会馆) - Grand Theater</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg" alt="Art Galleries" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Huguang Guild Hall (北京湖广会馆) - Opera Museum</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Jinghua Publishing House</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Xuannan Bookstore (宣南书店)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Xuannan Bookstore (宣南书店) - The Glass Waterfall Wall</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Xuannan Bookstore (宣南书店) - Persimmons Displayed in Glass Wall in Winter</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office outside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Future Post Office</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Future Post Office (未来邮局) - Mailbox</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Model Bookstore (模范书局)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Model Bookstore (模范书局) - Inside View</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Jingwei Shiguang (京味拾光)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Qingyunge Site (青云阁旧址)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Ruifuxiang (瑞蚨祥)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Neiliansheng (内联升)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Zhang Yiyuan (张一元)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Wu Yutai (吴裕泰)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Quanjude (全聚德)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Bianyifang (便宜坊)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Fangzhuanchang No.69 (方砖厂69号炸酱面)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Menkuang Hutong Century-Old Lu Zhu (门框胡同百年卤煮)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Tianxingju (天兴居炒肝)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg"alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Jinfang Snacks (锦芳小吃)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Xixinglong Street (西兴隆街)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                      <div class="carousel-item hidden flex justify-center h-full">
+                        <div class="gallery-container relative">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <div class="gallery-caption">
+                        <p>Xixinglong Street (西兴隆街)</p>
+                      </div>
+                      <div class="gallery-zoom-overlay">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg')">
+                          <i class="iconfont icon-fangdaqi text-2xl"></i>
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line6')">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <!-- 游览提示 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="p-8">
+          <h2 class="text-3xl font-bold text-slate-800 mb-6">Tips for Hutong Walking</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center p-6 bg-blue-50 rounded-xl">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="iconfont icon-shijian text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Best Time</h3>
+              <p class="text-slate-600 text-sm">Early morning or late afternoon to avoid crowds and enjoy the best lighting for photos.</p>
+            </div>
+            <div class="text-center p-6 bg-green-50 rounded-xl">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="iconfont icon-zoulu text-green-600 text-xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Getting Around</h3>
+              <p class="text-slate-600 text-sm">Most hutongs are accessible by subway. Consider using shared bikes to cover longer distances.</p>
+            </div>
+            <div class="text-center p-6 bg-purple-50 rounded-xl">
+              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="iconfont icon-jinzhi text-purple-600 text-xl"></i>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-2">Etiquette</h3>
+              <p class="text-slate-600 text-sm">Respect local residents' privacy. Ask permission before taking photos of people or private courtyards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+ 
+
+<script src="../../../js/common.js"></script>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

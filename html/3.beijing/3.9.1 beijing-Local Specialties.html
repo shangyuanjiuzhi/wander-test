@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Specialties - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部导航 -->
+    <nav class="mobile-header-nav">
+      <div class="nav-container">
+        <div class="logo" id="mobileLogo">
+          <i class="iconfont icon-ditu-dibiao"></i>
+          <span>Wander Any Place</span>
+        </div>
+        <div class="desktop-nav" id="desktopNavLinks">
+          <a href="../../index.html">Home</a>
+          <a href="../2.Destination.html">Destinations</a>
+          <a href="../2.booking.html">Booking Services</a>
+          <a href="../2.aboutus.html">About Us</a>
+        </div>
+        <!-- 移动端菜单按钮 -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+
+  <!-- 页面标题 -->
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Local Specialties</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
+        Discover the delicious local specialties of Beijing, from traditional dishes to modern interpretations
+      </p>
+    </div>
+  </header>
+
+  <!-- 特色美食列表 -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- 老北京涮肉 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="hotpot-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot1.jpg" alt="Beijing Hot Pot" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot1.jpg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot1.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot2.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot3.jpg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot2.jpg" alt="Beijing Hot Pot" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot2.jpg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot1.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot2.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot3.jpg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot3.jpg" alt="Beijing Hot Pot" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot3.jpg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot1.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot2.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Beijing Hot Pot3.jpg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('hotpot')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('hotpot')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">老北京涮羊肉 Beijing Hot Pot</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Beijing Hot Pot is one of the most <span class="text-rose-600 font-bold">representative traditional cuisines</span> in Beijing, featuring <span class="text-rose-600 font-bold">copper pot-boiled lamb</span>. Premium <span class="text-rose-600 font-bold">Inner Mongolian lamb</span> is sliced paper-thin and boiled in boiling clear broth, then dipped in special <span class="text-rose-600 font-bold">sesame paste seasoning</span> for an incredibly delicious taste.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">How to Eat</h3>
+              <p class="text-slate-600 mb-4">
+                1. Place the sliced lamb pieces in the boiling copper pot and cook for 10-15 seconds<br>
+                2. Remove and dip in sesame paste, chive flowers, fermented bean curd and other seasonings<br>
+                3. Eat with sweet garlic to reduce greasiness and enhance flavor<br>
+                4. After finishing the meat, you can cook vegetables and noodles in the broth
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">东来顺 Donglaishun Restaurant</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 198 Wangfujing Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 198 Wangfujing Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">南门涮肉 Nanmen Hot Pot</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 12 Nancaiyuan Street, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 12 Nancaiyuan Street, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 烤鸭 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="pekingduck-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck1.jpeg" alt="Peking Duck" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck1.jpeg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck1.jpeg', '../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck2.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck2.jpeg" alt="Peking Duck" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck2.jpeg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck1.jpeg', '../../img/3. img-beijing/3.9.1 Local Specialties /Peking Duck2.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('pekingduck')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('pekingduck')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">北京烤鸭 Peking Duck</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Peking Duck is one of Beijing's most famous delicacies with a long history. <span class="text-rose-600 font-bold"></span>Force-fed ducks</span> are selected and undergo special roasting techniques to achieve <span class="text-rose-600 font-bold">crispy skin and tender meat</span> with overflowing aroma. It is typically served with <span class="text-rose-600 font-bold">lotus leaf pancakes</span>, scallion strips, cucumber strips, and <span class="text-rose-600 font-bold">sweet bean sauce</span>.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">How to Eat</h3>
+              <p class="text-slate-600 mb-4">
+                1. Place a lotus leaf pancake on your hand<br>
+                2. Add several pieces of duck skin and duck meat<br>
+                3. Add scallion strips and cucumber strips<br>
+                4. Spread sweet bean sauce<br>
+                5. Roll up the pancake and eat
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">全聚德 Quanjude</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 30 Qianmen Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 30 Qianmen Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">大董烤鸭 Dadong Roast Duck</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 22 Dongsi Shitiao, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 22 Dongsi Shitiao, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 炸酱面 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="zhajiang-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles1.jpeg" alt="Zhajiang Noodles" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles1.jpeg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles1.jpeg', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles2.webp', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles3.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles2.webp" alt="Zhajiang Noodles" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles2.webp', ['../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles1.jpeg', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles2.webp', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles3.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles3.jpeg" alt="Zhajiang Noodles" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles3.jpeg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles1.jpeg', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles2.webp', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhajiang Noodles3.jpeg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('zhajiang')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('zhajiang')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">炸酱面 Zhajiang Noodles</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Zhajiang Noodles is a traditional Beijing noodle dish featuring <span class="text-rose-600 font-bold">fried bean paste sauce</span> made from yellow bean paste and pork belly cubes. The noodles are <span class="text-rose-600 font-bold">chewy</span> and served with cucumber strips, bean sprouts, green beans and other <span class="text-rose-600 font-bold">seasonal vegetables</span> for a rich and delicious taste.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">How to Eat</h3>
+              <p class="text-slate-600 mb-4">
+                1. Cook the noodles and drain the water<br>
+                2. Pour the fried bean paste sauce over the noodles<br>
+                3. Add various vegetable strips<br>
+                4. Mix well and eat
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">方砖厂69号炸酱面 Fangzhuanchang No.69 Zhajiang Noodles</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 69 Fangzhuanchang Hutong, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 69 Fangzhuanchang Hutong, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">老北京炸酱面大王 Old Beijing Zhajiang Noodles King</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 138 Wangfujing Street, Dongcheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 138 Wangfujing Street, Dongcheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 炙子烤肉 -->
+      <div class="food-card bg-white rounded-2xl shadow-lg overflow-hidden mb-12">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3">
+            <div class="map-carousel w-full h-full" id="zhizi-carousel">
+              <div class="carousel-inner flex items-center h-full">
+                <div class="carousel-item active flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat1.jpg" alt="Zhizi Roast Meat" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat1.jpg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat1.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat2.jpg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item hidden flex justify-center h-full">
+                  <div class="gallery-container relative w-full h-full">
+                    <img src="../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat2.jpg" alt="Zhizi Roast Meat" class="h-full object-contain gallery-image">
+                    <div class="gallery-zoom-overlay">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat2.jpg', ['../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat1.jpg', '../../img/3. img-beijing/3.9.1 Local Specialties /Zhizi Roast Meat2.jpg'])">
+                        <i class="iconfont icon-fangdaqi text-2xl"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('zhizi')">
+                <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+              </button>
+              <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('zhizi')">
+                <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+              </button>
+            </div>
+          </div>
+          <div class="p-6 md:w-2/3">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">炙子烤肉 Zhizi Roast Meat</h2>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">Description</h3>
+              <p class="text-slate-600 mb-4">
+                Zhizi Roast Meat is a traditional Beijing delicacy that uses a special <span class="text-rose-600 font-bold"></span>zhizi (iron plate)</span> as a cooking tool. Sliced lamb and scallion strips are placed on the <span class="text-rose-600 font-bold">hot plate</span> for roasting, then dipped in special seasonings. The aroma is overwhelming and the taste is delicious.
+              </p>
+            </div>
+            <div class="mb-6">
+              <h3 class="font-bold text-slate-700 mb-2">How to Eat</h3>
+              <p class="text-slate-600 mb-4">
+                1. Place the sliced lamb and scallion strips on the zhizi for roasting<br>
+                2. Flip the meat when it changes color and continue roasting<br>
+                3. Dip in soy sauce, vinegar, sesame seeds and other seasonings<br>
+                4. Wrap in shaobing or lotus leaf pancake and eat
+              </p>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-700 mb-2">Recommended Restaurants</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">烤肉季 Kaorouji</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 14 Qianhai East Bank, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 14 Qianhai East Bank, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i class="iconfont icon-31fangdajing text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-medium text-slate-800">烤肉宛 Kaorouwan</p>
+                    <div class="flex items-center">
+                      <p class="text-slate-600 text-sm">Address: No. 5 Niujie Street, Xicheng District</p>
+                      <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyToClipboard('No. 5 Niujie Street, Xicheng District')" title="Copy address">
+                        <i class="iconfont icon-fuzhi"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+<script src="../../js/gallery-lightbox.js"></script>
+<script src="../../../js/common.js"></script>
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>

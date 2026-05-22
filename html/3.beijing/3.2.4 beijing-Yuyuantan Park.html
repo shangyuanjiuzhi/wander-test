@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuyuantan Park - Beijing Travel Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../../iconfont/iconfont.js"></script>
+  <link rel="stylesheet" href="../../../iconfont/iconfont.css">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <script src="../../js/attractions.js"></script>
+  <script src="../../js/gallery-lightbox.js"></script>
+
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+  <!-- 顶部视觉冲击区 -->
+  <header class="responsive-header flex items-center justify-center">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan1.jpeg" alt="Yuyuantan Park" class="w-full h-full object-cover brightness-75 header-bg">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
+      <div class="text-white text-xl sm:text-2xl font-bold flex items-center gap-2" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
+        <span class="font-bold text-white font-sans italic">Wander Any Place</span>
+      </div>
+      <div class="hidden md:flex space-x-8 text-white font-medium desktop-nav">
+        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
+        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      </div>
+      <!-- 移动端菜单按钮 -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+    </div>
+    <!-- 核心内容 -->
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+        Yuyuantan Park
+      </h1>
+      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+        Famous for its cherry blossoms in spring, Yuyuantan Park is a beautiful urban park with a large lake, walking paths, and various recreational facilities
+      </p>
+    </div>
+  </header>
+
+  <!-- Yuyuantan Park Information Section -->
+  <section class="bg-white border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-10 inline-block border-b-4 border-rose-600 pb-2">
+        <h2 class="text-3xl font-bold text-slate-900">Yuyuantan Park Guide</h2>
+      </div>
+      
+      <!-- Booking Advertisement -->
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+        <p class="text-slate-700">If you need car charter or ticket booking services, please click <a href="../2.booking.html" class="text-red-600 font-bold">Booking Page</a></p>
+      </div>
+
+      <!-- Yuyuantan Park Overview -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-12">
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">
+          <i class="iconfont icon-gongyuan text-rose-600 w-16 h-16 mr-4 text-3xl"></i>
+          Yuyuantan Park Overview
+        </h3>
+
+        <p class="text-slate-600 mb-6">A comprehensive guide to Yuyuantan Park, a beautiful urban park famous for its cherry blossoms in spring.</p>
+
+        <p class="text-slate-700 mb-4">
+          Yuyuantan Park is a beautiful urban park located in the Haidian District of Beijing. It is famous for its cherry blossoms in spring, which attract thousands of visitors each year.
+        </p>
+        <p class="text-slate-700 mb-6">
+          The park features a large lake, walking paths, and various recreational facilities. It's a popular spot for picnics, boating, and outdoor activities, especially during the cherry blossom season in late March to early April.
+          <br><br>
+          Yuyuantan has a long history. It was called Diaoyutai during the Liao and Jin dynasties, got its name Yuyuantan in the Yuan dynasty, and had a royal palace built during the Qianlong period of the Qing dynasty. It was officially named Yuyuantan Park in 1960 and is now a National AAAA-level tourist attraction.
+          <br><br>
+          In addition to its natural beauty, Yuyuantan Park also has historical significance, with several pavilions and scenic spots that offer beautiful views of the lake and surrounding area. The park covers an area of 132.38 hectares and is home to a variety of plant and animal species.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">132</div>
+            <div class="text-sm text-slate-600">Hectares</div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">1960</div>
+            <div class="text-sm text-slate-600">Named</div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg text-center">
+            <div class="text-3xl font-bold text-rose-600 mb-2">4A</div>
+            <div class="text-sm text-slate-600">National Tourist Attraction</div>
+          </div>
+        </div>
+
+      <!-- Yuyuantan Park Main Content -->
+      <div class="mb-12">
+        <!-- Integrated Layout with Carousel Background -->
+        <div class="relative rounded-xl shadow-lg overflow-hidden mb-6 h-[500px]">
+          <!-- Background Carousel -->
+          <div class="relative h-full" id="yuyuantan-carousel">
+            <!-- Carousel Images -->
+            <div class="carousel-inner h-full">
+              <div class="carousel-item active h-full">
+                <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan1.jpeg" alt="Yuyuantan Park" class="w-full h-full object-cover cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan2.jpeg" alt="Yuyuantan Park" class="w-full h-full object-cover cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+              <div class="carousel-item hidden h-full">
+                <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan3.jpeg" alt="Yuyuantan Park" class="w-full h-full object-cover cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="prevSlide('yuyuantan')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
+            </button>
+            <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center text-rose-600 shadow-lg z-10" onclick="nextSlide('yuyuantan')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white active" onclick="goToSlide(0, 'yuyuantan')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(1, 'yuyuantan')"></button>
+              <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white" onclick="goToSlide(2, 'yuyuantan')"></button>
+            </div>
+          </div>
+          
+          <!-- Information Content -->
+          <div class="absolute bottom-6 left-8 right-0 p-4 text-white">
+            <!-- Quick Info Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-base font-semibold">
+              <div class="flex items-center">
+                <i class="iconfont icon-area text-rose-500 w-7 h-7 mr-2"></i>
+                <span class="text-white drop-shadow-lg">Haidian District</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-shijian text-rose-500 w-7 h-7 mr-2"></i>
+                <span>2-3 hours</span> 
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-chepiao text-rose-500 w-7 h-7 mr-2"></i>
+                <span>¥2/person</span>
+              </div>
+              <div class="flex items-center">
+                <i class="iconfont icon-calendar text-rose-500 w-7 h-7 mr-2"></i>
+                <span>All Year</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Description Text -->
+        <div class="flex flex-col md:flex-row gap-6 items-stretch bg-white rounded-lg shadow-md p-4 mb-6">
+          <div class="md:w-2/3">
+            <h4 class="font-bold text-slate-700 mb-2">Recommended Tour Route</h4>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Yuyuantan Park is best explored by following a route that takes you through the main scenic areas. Start at the <span class="text-red-600 font-bold">South Gate</span>, which is the main entrance to the park.
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              From the South Gate, follow the path to the <span class="text-red-600 font-bold">Cherry Blossom Garden</span>, which is the most popular area of the park, especially during spring when the cherry blossoms are in full bloom.
+            </p>
+            <p class="text-slate-700 mb-4 leading-relaxed">
+              Continue along the lake to the <span class="text-red-600 font-bold">West Bank</span>, where you can enjoy views of the lake and surrounding area. You can also rent a boat to explore the lake or relax on the beach.
+            </p>
+              <p class="font-bold text-slate-700 italic mb-4 leading-relaxed">
+              The best time to visit Yuyuantan Park is during spring (late March to early April) when the cherry blossoms are in full bloom. For cherry blossom viewing tips, please refer to the map on the right.
+            </p>
+          </div>
+          <div class="md:w-1/3 flex items-stretch">
+            <!-- Map Image -->
+            <div class="gallery-container map-carousel w-full h-full mt-[-30px]">
+              <img src="../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan_map.jpeg" alt="Yuyuantan Park Map" class="w-full h-full object-cover gallery-image">
+              <div class="gallery-caption">
+                <p>Yuyuantan Park Cherry Blossom Map</p>
+              </div>
+              <div class="gallery-zoom-overlay">
+                <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan_map.jpeg', ['../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan1.jpeg', '../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan2.jpeg', '../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan3.jpeg', '../../img/3. img-beijing/3.2.4 yuyuantan/yuyuantan_map.jpeg'])">
+                  <i class="iconfont icon-fangdaqi text-2xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Detailed Information Section -->
+        <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+          <h4 class="text-lg font-bold mb-4 text-slate-800">Detailed Information</h4>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Location -->
+            <div class="flex items-start">
+              <i class="iconfont icon-area text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Location</h5>
+                <div class="flex items-center">
+                  <p class="text-slate-600">Yuyuantan Park, Haidian District, Beijing, China</p>
+                  <button class="ml-2 text-rose-600 hover:text-rose-800" onclick="copyAddress()" title="Copy address">
+                    <i class="iconfont icon-fuzhi"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Opening Hours -->
+            <div class="flex items-start">
+              <i class="iconfont icon-shijian text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Opening Hours</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Summer (Jun 1 - Aug 31):</strong><br>6:00 - 22:30 (last entry at 21:30)</li>
+                  <li><strong>Others (Jan 1 - May, Sep 1 - Dec 31):</strong><br>6:30 - 21:30 (last entry at 21:00)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Tickets -->
+            <div class="flex items-start">
+              <i class="iconfont icon-chepiao text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Tickets</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li><strong>Regular:</strong> ¥2 per person</li>
+                  <li><strong>Cherry Blossom Season(Mar 1 - Apr 30):</strong> ¥10 per person</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Reservation Information -->
+            <div class="flex items-start">
+              <i class="iconfont icon-6 text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+              <div class="flex-1">
+                <h5 class="font-bold text-slate-700 mb-1">Reservation Information</h5>
+                <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                  <li>Tickets can be purchased at the entrance on the day of visit.</li>
+                  <li>No advance booking is required, but during cherry blossom season, it's recommended to arrive early.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          
+          <!-- Transportation -->
+          <div class="flex items-start mt-6">
+            <i class="iconfont icon-ditie text-rose-600 w-6 h-6 mr-3 mt-1 flex-shrink-0"></i>
+            <div class="flex-1">
+              <h5 class="font-bold text-slate-700 mb-1">Transportation</h5>
+              <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                <li><strong>Metro:</strong> Take Line 1 or Line 9 to Military Museum Station (Exit B)</li>
+                <li><strong>Taxi:</strong> Directly to Yuyuantan Park South Gate</li>
+              </ul>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+            Wander Any Place
+          </h3>
+          <p class="text-gray-400 mb-4">
+            Your ultimate guide to exploring China. Discover the best destinations, plan your trip, and make unforgettable memories.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Resources</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="html/2.pre-visa.html" class="hover:text-rose-400 transition-colors">Visa Information</a></li>
+            <li><a href="html/2.pre-app.html" class="hover:text-rose-400 transition-colors">Necessary Apps</a></li>
+            <li><a href="html/2.payment-methods.html" class="hover:text-rose-400 transition-colors">Payment Methods</a></li>
+            <li><a href="html/2.transportation.html" class="hover:text-rose-400 transition-colors">Transportation</a></li>
+            <li><a href="html/2.essential packing copy.html" class="hover:text-rose-400 transition-colors">Essential Packing</a></li>
+          </ul>
+        </div>
+
+         <div>
+          <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+          <p class="text-slate-400">Email: wanderanyplace@gmail.com</p>
+        </div>
+      </div>
+  </footer>
+
+  
+  
+
+  <!-- Image Viewer Modal -->
+  <div id="imageViewerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90">
+    <button id="closeModal" class="absolute top-4 right-4 text-white text-4xl hover:text-rose-400 transition-colors z-50">&times;</button>
+    
+    <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10094;
+    </button>
+    
+    <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl hover:text-rose-400 transition-colors z-50">
+      &#10095;
+    </button>
+    
+    <div class="relative max-w-7xl max-h-[90vh] flex items-center justify-center p-4">
+      <img id="modalImage" src="" alt="" class="max-w-full max-h-[90vh] object-contain">
+    </div>
+    
+    <div id="imageCounter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black/50 px-4 py-2 rounded-lg">
+      <span id="currentIndex">1</span> / <span id="totalImages">1</span>
+    </div>
+  </div>
+
+<script>
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileLogo = document.getElementById('mobileLogo');
+  if (mobileNav && menuBtn) {
+    mobileNav.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    if (mobileLogo) {
+      mobileLogo.classList.toggle('mobile-logo-hidden');
+    }
+  }
+}
+</script>
+</body>
+</html>
