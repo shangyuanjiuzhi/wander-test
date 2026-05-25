@@ -16,9 +16,16 @@
   </style>
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
-  <!-- 顶部导航 -->
-  <nav class="mobile-header-nav">
-    <div class="nav-container">
+  <!-- 顶部视觉冲击区 -->
+  <header class="relative h-[550px] flex items-center justify-center overflow-hidden">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0">
+      <img src="../img/img-packing.webp" alt="Travel packing essentials" class="w-full h-full object-cover brightness-75">
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+    
+    <!-- 导航 -->
+    <nav class="absolute top-0 left-0 right-0 z-20 px-4 sm:px-8 py-4 sm:py-6 flex justify-between items-center">
       <div class="logo" id="mobileLogo">
         <i class="iconfont icon-ditu-dibiao"></i>
         <span>Wander Any Place</span>
@@ -34,25 +41,18 @@
         <span></span>
         <span></span>
       </button>
+    </nav>
+    <!-- 移动端导航覆盖层 -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+      <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+      <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+      <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+      <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+      <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
     </div>
-  </nav>
-  <div class="mobile-nav-overlay" id="mobileNav">
-    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
-    <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
-    <a href="2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
-    <a href="2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
-    <a href="2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
-  </div>
-  
-  <!-- 顶部视觉冲击区 -->
-  <header class="responsive-header flex items-center justify-center" style="margin-top: 70px;">
-    <!-- 背景图占位 -->
-    <div class="absolute inset-0 z-0">
-      <img src="../img/img-packing.webp" alt="Travel packing essentials" class="w-full h-full object-cover brightness-75 header-bg">
-      <div class="absolute inset-0 bg-black/30"></div>
-    </div>
+    
     <!-- 核心内容 -->
-    <div class="relative z-10 text-center px-4 max-w-4xl">
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
         Essential Packing Checklist
       </h1>
@@ -60,7 +60,7 @@
         Create your personalized packing list based on destination and travel dates
       </p>
     </div>
-  </header>
+  </header></function></seed:tool_call>
 
   <!-- Tutorial Section -->
   <section class="bg-white border-b border-gray-100 py-12">
