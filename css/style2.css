@@ -1,0 +1,365 @@
+/* ========== 基础样式 ========== */
+.section-card {
+  transition: all 0.3s ease;
+}
+.section-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.route-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+.route-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f43f5e, #ec4899);
+}
+
+/* ========== Map Carousel 样式 (引用 styles.css) ========== */
+/* 以下样式与 styles.css 保持一致 */
+
+/* Map Carousel Base Styles */
+.map-carousel {
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+  background: white;
+  height: 500px;
+}
+
+/* Carousel Inner */
+.carousel-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  display: none;
+}
+
+.carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 600px;
+}
+
+/* Carousel Control Buttons */
+.carousel-control-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e11d48;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.carousel-control-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-btn i {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev {
+  left: 1rem;
+}
+
+.carousel-control-next {
+  right: 1rem;
+}
+
+
+
+
+
+
+
+/* ========== Gallery 基础样式 ========== */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.gallery-image {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 1rem;
+  z-index: 10;
+}
+
+.gallery-caption p {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.gallery-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-container:hover .gallery-zoom-overlay {
+  opacity: 1;
+}
+
+.gallery-zoom-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.gallery-zoom-icon svg,
+.gallery-zoom-icon i {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+
+
+
+
+/* ========== 响应式样式 - Map Carousel (参考 Chaoyang Park styles.css) ========== */
+/* 大屏（lg及以上）- 所有线路自适应高度，与左侧内容等高 */
+@media (min-width: 1024px) {
+  #line1-carousel,
+  #line2-carousel,
+  #line3-carousel,
+  #line4-carousel,
+  #line5-carousel,
+  #line6-carousel {
+    height: 100% !important;
+  }
+
+  .map-carousel {
+    height: 100% !important;
+  }
+}
+
+/* 中等屏幕（md及以下）- 使用固定高度 */
+@media (max-width: 1023px) {
+  #line1-carousel,
+  #line2-carousel,
+  #line3-carousel,
+  #line4-carousel,
+  #line5-carousel,
+  #line6-carousel {
+    height: 400px !important;
+  }
+
+  .map-carousel {
+    height: 400px !important;
+  }
+
+  .gallery-container {
+    height: 400px !important;
+  }
+
+  .gallery-image {
+    max-height: 400px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .carousel-item.active {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #line1-carousel,
+  #line2-carousel,
+  #line3-carousel,
+  #line4-carousel,
+  #line5-carousel,
+  #line6-carousel {
+    height: 300px !important;
+  }
+
+  .map-carousel {
+    height: 300px !important;
+  }
+
+  .gallery-container {
+    height: 300px !important;
+  }
+
+  .gallery-image {
+    max-height: 300px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .carousel-item.active {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #line1-carousel,
+  #line2-carousel,
+  #line3-carousel,
+  #line4-carousel,
+  #line5-carousel,
+  #line6-carousel {
+    height: 250px !important;
+  }
+
+  .map-carousel {
+    height: 250px !important;
+  }
+
+  .gallery-container {
+    height: 250px !important;
+  }
+
+  .gallery-image {
+    max-height: 250px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .carousel-item.active {
+    height: 250px !important;
+  }
+}
+
+/* 所有线路通用样式 - 图片拉伸填满容器 */
+.map-carousel#line1-carousel,
+.map-carousel#line2-carousel,
+.map-carousel#line3-carousel,
+.map-carousel#line4-carousel,
+.map-carousel#line5-carousel,
+.map-carousel#line6-carousel,
+#cuan-carousel,
+#lingshui-carousel,
+#gubei-carousel,
+#liuliqu-carousel {
+  height: 100% !important;
+  display: block !important;
+  min-height: 300px !important;
+}
+
+.map-carousel#line1-carousel .carousel-inner,
+.map-carousel#line2-carousel .carousel-inner,
+.map-carousel#line3-carousel .carousel-inner,
+.map-carousel#line4-carousel .carousel-inner,
+.map-carousel#line5-carousel .carousel-inner,
+.map-carousel#line6-carousel .carousel-inner,
+#cuan-carousel .carousel-inner,
+#lingshui-carousel .carousel-inner,
+#gubei-carousel .carousel-inner,
+#liuliqu-carousel .carousel-inner {
+  height: 100% !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+.map-carousel#line1-carousel .carousel-item.active,
+.map-carousel#line2-carousel .carousel-item.active,
+.map-carousel#line3-carousel .carousel-item.active,
+.map-carousel#line4-carousel .carousel-item.active,
+.map-carousel#line5-carousel .carousel-item.active,
+.map-carousel#line6-carousel .carousel-item.active,
+#cuan-carousel .carousel-item.active,
+#lingshui-carousel .carousel-item.active,
+#gubei-carousel .carousel-item.active,
+#liuliqu-carousel .carousel-item.active {
+  height: 100% !important;
+  width: 100% !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+.map-carousel#line1-carousel .gallery-container,
+.map-carousel#line2-carousel .gallery-container,
+.map-carousel#line3-carousel .gallery-container,
+.map-carousel#line4-carousel .gallery-container,
+.map-carousel#line5-carousel .gallery-container,
+.map-carousel#line6-carousel .gallery-container,
+#cuan-carousel .gallery-container,
+#lingshui-carousel .gallery-container,
+#gubei-carousel .gallery-container,
+#liuliqu-carousel .gallery-container {
+  height: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-height: none !important;
+}
+
+.map-carousel#line1-carousel .gallery-image,
+.map-carousel#line2-carousel .gallery-image,
+.map-carousel#line3-carousel .gallery-image,
+.map-carousel#line4-carousel .gallery-image,
+.map-carousel#line5-carousel .gallery-image,
+.map-carousel#line6-carousel .gallery-image,
+#cuan-carousel .gallery-image,
+#lingshui-carousel .gallery-image,
+#gubei-carousel .gallery-image,
+#liuliqu-carousel .gallery-image {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  flex-shrink: 0;
+}
+
+
+
+

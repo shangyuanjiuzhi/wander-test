@@ -350,7 +350,7 @@ header.responsive-header p {
   }
   
   .responsive-header h1 {
-    font-size: 1.75rem !important;
+    font-size: 1.25rem !important;
     margin-bottom: 0.5rem !important;
   }
   
@@ -662,12 +662,13 @@ header.responsive-header p {
 .carousel-control-btn {
   position: absolute;
   top: 50%;
+  left: 0.5rem;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -676,10 +677,22 @@ header.responsive-header p {
   z-index: 10;
   cursor: pointer;
   padding: 0;
+  line-height: 1;
+  transition: all 0.2s ease;
 }
 
 .carousel-control-btn:hover {
   background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-btn i {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
 }
 
 .carousel-control-prev {
@@ -687,6 +700,7 @@ header.responsive-header p {
 }
 
 .carousel-control-next {
+  left: auto;
   right: 0.5rem;
 }
 
@@ -1014,157 +1028,15 @@ header.responsive-header p {
   object-fit: contain;
 }
 
-/* Carousel Height: 600px */
-#line2-carousel,
-#line3-carousel {
-  height: 600px;
-}
 
-#line2-carousel .carousel-item.active,
-#line3-carousel .carousel-item.active {
-  height: 600px;
-}
 
-#line2-carousel .gallery-container,
-#line3-carousel .gallery-container {
-  height: 600px;
-}
 
-#line2-carousel .gallery-image,
-#line3-carousel .gallery-image {
-  max-height: 600px;
-  object-fit: cover;
-}
 
-/* Carousel Height: 650px */
-#lingshui-carousel {
-  height: 650px;
-}
 
-#lingshui-carousel .carousel-item.active {
-  height: 650px;
-}
 
-#lingshui-carousel .gallery-container {
-  height: 650px;
-}
 
-#lingshui-carousel .gallery-image {
-  max-height: 650px;
-  object-fit: cover;
-}
 
-/* Carousel Height: 700px */
-#cuan-carousel {
-  height: 700px;
-}
 
-#cuan-carousel .carousel-item.active {
-  height: 700px;
-}
-
-#cuan-carousel .gallery-container {
-  height: 700px;
-}
-
-#cuan-carousel .gallery-image {
-  max-height: 700px;
-  object-fit: cover;
-}
-
-/* Carousel Height: 720px */
-#gubei-carousel {
-  height: 720px;
-}
-
-#gubei-carousel .carousel-item.active {
-  height: 720px;
-}
-
-#gubei-carousel .gallery-container {
-  height: 720px;
-}
-
-#gubei-carousel .gallery-image {
-  max-height: 720px;
-  object-fit: cover;
-}
-
-/* Carousel Height: 750px */
-#line5-carousel {
-  height: 750px;
-}
-
-#line5-carousel .carousel-item.active {
-  height: 750px;
-}
-
-#line5-carousel .gallery-container {
-  height: 750px;
-}
-
-#line5-carousel .gallery-image {
-  max-height: 750px;
-  object-fit: cover;
-}
-
-/* Carousel Height: 800px */
-#liuliqu-carousel {
-  height: 800px;
-}
-
-#liuliqu-carousel .carousel-item.active {
-  height: 800px;
-}
-
-#liuliqu-carousel .gallery-container {
-  height: 800px;
-}
-
-#liuliqu-carousel .gallery-image {
-  max-height: 800px;
-  object-fit: cover;
-}
-
-/* Carousel Height: 900px */
-#line1-carousel,
-#line4-carousel {
-  height: 1000px;
-}
-
-#line1-carousel .carousel-item.active,
-#line4-carousel .carousel-item.active {
-  height: 1000px;
-}
-
-#line1-carousel .gallery-container,
-#line4-carousel .gallery-container {
-  height: 1000px;
-}
-
-#line1-carousel .gallery-image,
-#line4-carousel .gallery-image {
-  max-height: 1000px;
-  object-fit: cover;
-}
-
-/* Carousel Height: 1300px */
-#line6-carousel {
-  height: 1300px;
-}
-
-#line6-carousel .carousel-item.active {
-  height: 1300px;
-}
-
-#line6-carousel .gallery-container {
-  height: 1300px;
-}
-
-#line6-carousel .gallery-image {
-  max-height: 1300px;
-  object-fit: cover;
-}
 
 /* Tailwind CSS Variables */
 *, ::before, ::after {
