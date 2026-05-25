@@ -61,8 +61,9 @@
 <body class="bg-grey-50 text-dark font-sans">
   <!-- Hero Section -->
   <header class="responsive-header">
-    <div class="absolute inset-0 z-0">
-      <img src="../../img/3. img-beijing/img-beijing-1.jpeg" alt="Beijing Forbidden City" class="w-full h-full object-cover brightness-75 header-bg">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0 overflow-hidden" style="min-height: 420px;">
+      <img src="../../img/3. img-beijing/img-beijing-1.jpeg" alt="Beijing Forbidden City" class="w-full h-full object-cover brightness-75 header-bg" style="width: 100vw; max-width: none; object-fit: cover;">
       <div class="absolute inset-0 bg-black/30"></div>
     </div>
     
@@ -95,11 +96,11 @@
     </div>
     
     <!-- Hero Content -->
-    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in pt-12">
+      <h1 class="font-bold text-white mb-6 drop-shadow-lg" style="font-size: clamp(1.75rem, 4vw, 4rem) !important;">
         Discover Beijing
       </h1>
-      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+      <p class="text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md" style="font-size: clamp(1rem, 2.5vw, 1.5rem) !important;">
         Where ancient imperial history meets modern urban dynamism
       </p>
     </div>
@@ -111,7 +112,6 @@
       </a>
     </div>
   </header>
-
   <!-- About Beijing Section -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">

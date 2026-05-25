@@ -8,7 +8,145 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="../../../iconfont/iconfont.js"></script>
   <link rel="stylesheet" href="../../../iconfont/iconfont.css">
-  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/style2.css">
+  <style>
+    /* Navigation Styles */
+    .mobile-header-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem;
+      background: #111827 !important;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .logo i {
+      color: #f43f5e;
+      font-size: 1.5rem;
+    }
+
+    .desktop-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .desktop-nav a {
+      color: white !important;
+      text-decoration: none;
+      font-weight: medium;
+      transition: color 0.3s;
+    }
+
+    .desktop-nav a:hover {
+      color: #f43f5e !important;
+    }
+
+    /* Mobile Navigation Menu */
+    .mobile-menu-btn {
+      display: none !important;
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+    }
+
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      
+      .desktop-nav {
+        display: none !important;
+      }
+      
+      .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+      
+      .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+      }
+      
+      .mobile-nav-overlay.active {
+        transform: translateX(0);
+      }
+      
+      .mobile-nav-overlay a {
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+      
+      .mobile-nav-overlay a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+  </style>
 
   <script>
     function openTab(tabName) {
@@ -83,7 +221,28 @@
       alert("Address copied to clipboard!");
     }
 
-    function openLightbox(imageUrl) {
+    // 图片放大功能 - 带左右切换
+    let currentLightboxIndex = 0;
+    let currentLightboxImages = [];
+
+    function openLightbox(imageUrl, carouselId) {
+      // 获取当前 carousel 的所有图片
+      const carousel = document.getElementById(carouselId + '-carousel');
+      if (carousel) {
+        const images = Array.from(carousel.querySelectorAll('.gallery-container img'));
+        currentLightboxImages = images.map(img => img.src);
+        
+        // 找到当前图片的索引（通过文件名匹配）
+        const fileName = imageUrl.split('/').pop();
+        currentLightboxIndex = currentLightboxImages.findIndex(src => src.endsWith(fileName));
+        if (currentLightboxIndex === -1) {
+          currentLightboxIndex = 0;
+        }
+      } else {
+        currentLightboxImages = [imageUrl];
+        currentLightboxIndex = 0;
+      }
+      
       const lightbox = document.createElement('div');
       lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
       lightbox.onclick = function() {
@@ -91,48 +250,95 @@
       };
       
       const img = document.createElement('img');
+      img.id = 'lightbox-image';
       img.src = imageUrl;
       img.className = 'max-w-[90vw] max-h-[90vh] object-contain';
       img.onclick = function(e) {
         e.stopPropagation();
       };
       
+      // 创建左箭头容器
+      const prevContainer = document.createElement('div');
+      prevContainer.className = 'absolute left-0 top-0 bottom-0 w-24 flex items-center justify-center cursor-pointer z-[100]';
+      prevContainer.onclick = function(e) {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+        const imgEl = document.getElementById('lightbox-image');
+        const currentSpan = document.getElementById('lightbox-current');
+        if (imgEl && currentSpan && currentLightboxImages[currentLightboxIndex]) {
+          imgEl.src = currentLightboxImages[currentLightboxIndex];
+          currentSpan.textContent = currentLightboxIndex + 1;
+        }
+      };
+      
+      const prevBtn = document.createElement('div');
+      prevBtn.innerHTML = '‹';
+      prevBtn.className = 'text-white text-5xl hover:text-rose-400 transition-colors';
+      prevContainer.appendChild(prevBtn);
+      
+      // 创建右箭头容器
+      const nextContainer = document.createElement('div');
+      nextContainer.className = 'absolute right-0 top-16 bottom-0 w-24 flex items-center justify-center cursor-pointer z-[100]';
+      nextContainer.onclick = function(e) {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+        const imgEl = document.getElementById('lightbox-image');
+        const currentSpan = document.getElementById('lightbox-current');
+        if (imgEl && currentSpan && currentLightboxImages[currentLightboxIndex]) {
+          imgEl.src = currentLightboxImages[currentLightboxIndex];
+          currentSpan.textContent = currentLightboxIndex + 1;
+        }
+      };
+      
+      const nextBtn = document.createElement('div');
+      nextBtn.innerHTML = '›';
+      nextBtn.className = 'text-white text-5xl hover:text-rose-400 transition-colors';
+      nextContainer.appendChild(nextBtn);
+      
+      // 创建图片计数器
+      const counter = document.createElement('div');
+      counter.className = 'absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-lg text-sm';
+      counter.innerHTML = '<span id="lightbox-current">1</span> / <span>' + currentLightboxImages.length + '</span>';
+      
       const closeBtn = document.createElement('button');
-      closeBtn.className = 'absolute top-4 right-4 text-white text-2xl hover:text-gray-300';
-      closeBtn.innerHTML = '&times;';
-      closeBtn.onclick = function() {
+      closeBtn.innerHTML = '×';
+      closeBtn.className = 'absolute top-4 right-4 text-white text-5xl hover:text-rose-400 transition-colors z-[200]';
+      closeBtn.onclick = function(e) {
+        e.stopPropagation();
         lightbox.remove();
       };
       
       lightbox.appendChild(img);
+      lightbox.appendChild(prevContainer);
+      lightbox.appendChild(nextContainer);
+      lightbox.appendChild(counter);
       lightbox.appendChild(closeBtn);
       document.body.appendChild(lightbox);
     }
   </script>
 
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans">
+<body class="bg-white font-sans text-slate-800">
   <!-- 顶部导航 -->
-  <nav class="mobile-header-nav">
+  <header class="mobile-header-nav bg-gray-900" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
     <div class="nav-container">
       <div class="logo" id="mobileLogo">
-        <i class="iconfont icon-ditu-dibiao"></i>
-        <span>Wander Any Place</span>
+        <i class="iconfont icon-ditu-dibiao" style="color: #F43F5E;"></i>
+        <span style="color: white;">Wander Any Place</span>
       </div>
-      <div class="desktop-nav" id="desktopNavLinks">
-        <a href="../../index.html">Home</a>
-        <a href="../2.Destination.html">Destinations</a>
-        <a href="../2.booking.html">Booking Services</a>
-        <a href="../2.aboutus.html">About Us</a>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../../index.html" style="color: white;">Home</a>
+        <a href="../2.Destination.html" style="color: white;">Destinations</a>
+        <a href="../2.booking.html" style="color: white;">Booking Services</a>
+        <a href="../2.aboutus.html" style="color: white;">About Us</a>
       </div>
-      <!-- 移动端菜单按钮 -->
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
       </button>
     </div>
-  </nav>
+  </header>
   <!-- 移动端导航覆盖层 -->
   <div class="mobile-nav-overlay" id="mobileNav">
     <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
@@ -143,21 +349,15 @@
   </div>
   
   <!-- Hero Section -->
-  <header class="responsive-header flex items-center justify-center" style="margin-top: 70px;">
-    <div class="absolute inset-0 z-0">
-      <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /Ancient Village.jpeg" alt="Ancient Villages Around Beijing" class="w-full h-full object-cover brightness-75">
-      <div class="absolute inset-0 bg-black/30"></div>
-    </div>
-    <div class="relative z-10 text-center px-4 max-w-4xl">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-        Ancient Villages Around Beijing
-      </h1>
-      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Ancient Villages Around Beijing</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">
         Explore traditional Chinese villages with rich history and unique architecture
       </p>
     </div>
   </header>
-
+ 
   <!-- Main Content -->
   <section class="bg-white border-b border-gray-100 py-12">
     <div class="max-w-7xl mx-auto px-6">
@@ -179,58 +379,58 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
-            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('cuan')">
-              <i class="fa fa-chevron-left"></i>
+            <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('cuan')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
             </button>
             <div id="cuan-carousel" class="h-full">
-              <div class="carousel-inner flex items-center h-full">
-                <div class="carousel-item active flex justify-center h-full">
+              <div class="carousel-inner flex h-full">
+                <div class="carousel-item active h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-guanjingtai.PNG" alt="Cuandixia Village Panorama" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-guanjingtai.PNG" alt="Cuandixia Village Panorama" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Golden Toad Mountain Viewing Platform (金蟾山观景台)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-guanjingtai.PNG')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-guanjingtai.PNG', 'cuan')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-yixiantian.jpg" alt="Yixiantian - Natural Gorge" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-yixiantian.jpg" alt="Yixiantian - Natural Gorge" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Yixiantian - Natural Gorge (一线天)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-yixiantian.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-yixiantian.jpg', 'cuan')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-Ming-Qing Courtyard.jpg" alt="Traditional Courtyard Houses" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-Ming-Qing Courtyard.jpg" alt="Traditional Courtyard Houses" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Traditional Courtyard Houses (明清四合院)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cundixia-Ming-Qing Courtyard.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cundixia-Ming-Qing Courtyard.jpg', 'cuan')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cuandixia-Clay Oven Bread.jpg" alt="Clay Oven Bread" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cuandixia-Clay Oven Bread.jpg" alt="Clay Oven Bread" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Clay Oven Bread (窑烤面包)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /cuandixia-Clay Oven Bread.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/cuandixia-Clay Oven Bread.jpg', 'cuan')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
@@ -238,8 +438,8 @@
                 </div>
               </div>
             </div>
-            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('cuan')">
-              <i class="fa fa-chevron-right"></i>
+            <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('cuan')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
             </button>
           </div>
           
@@ -336,45 +536,45 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
-            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('lingshui')">
-              <i class="fa fa-chevron-left"></i>
+            <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('lingshui')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
             </button>
             <div id="lingshui-carousel" class="h-full">
-              <div class="carousel-inner flex items-center h-full">
-                <div class="carousel-item active flex justify-center h-full">
+              <div class="carousel-inner flex h-full">
+                <div class="carousel-item active h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Cypress Embracing Elm.jpg" alt="Dragon King Temple Stage" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Cypress Embracing Elm.jpg" alt="Dragon King Temple Stage" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Dragon King Temple Stage and Cypress Embracing Elm (龙王庙戏台及柏抱榆)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Cypress Embracing Elm.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Cypress Embracing Elm.jpg', 'lingshui')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Ganoderma Cypress.jpg" alt="Ganoderma Cypress" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Ganoderma Cypress.jpg" alt="Ganoderma Cypress" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Ganoderma Cypress (灵芝柏)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Ganoderma Cypress.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Ganoderma Cypress.jpg', 'lingshui')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Octagonal Dragon Pool .jpg" alt="Octagonal Dragon Pool" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Octagonal Dragon Pool .jpg" alt="Octagonal Dragon Pool" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Octagonal Dragon Pool (八角龙池)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /lingshuicun-Octagonal Dragon Pool .jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/lingshuicun-Octagonal Dragon Pool .jpg', 'lingshui')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
@@ -382,8 +582,8 @@
                 </div>
               </div>
             </div>
-            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('lingshui')">
-              <i class="fa fa-chevron-right"></i>
+            <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('lingshui')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
             </button>
           </div>
           
@@ -477,162 +677,162 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
-            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('gubei')">
-              <i class="fa fa-chevron-left"></i>
+            <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('gubei')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
             </button>
             <div id="gubei-carousel" class="h-full">
-              <div class="carousel-inner flex items-center h-full">
-                <div class="carousel-item active flex justify-center h-full">
+              <div class="carousel-inner flex h-full">
+                <div class="carousel-item active h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun.jpg" alt="Yongshun Dyeing Workshop" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- Yongshun.jpg" alt="Yongshun Dyeing Workshop" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Yongshun Dyeing Workshop (永顺染坊)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- Yongshun.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun2.jpg" alt="Yongshun Dyeing Workshop" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- Yongshun2.jpg" alt="Yongshun Dyeing Workshop" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Yongshun Dyeing Workshop (永顺染坊)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- Yongshun2.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- Yongshun2.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- wine.jpg" alt="Sima Xiao Shao Distillery" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- wine.jpg" alt="Sima Xiao Shao Distillery" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Sima Xiao Shao Distillery (司马小烧酒坊)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei- wine.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei- wine.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Simatai Great Wall .jpg" alt="Simatai Great Wall" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Simatai Great Wall .jpg" alt="Simatai Great Wall" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Simatai Great Wall (司马台长城) 夜晚景观</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Simatai Great Wall .jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Simatai Great Wall .jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church.jpg" alt="Hilltop Church" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Hilltop Church.jpg" alt="Hilltop Church" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Hilltop Church (山顶教堂)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Hilltop Church.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church2.jpg" alt="Hilltop Church" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Hilltop Church2.jpg" alt="Hilltop Church" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Hilltop Church (山顶教堂)景观</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Hilltop Church2.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Hilltop Church2.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Drone.jpg" alt="Drone Show" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Drone.jpg" alt="Drone Show" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Drone Show (无人机表演)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Drone.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Drone.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Water Dance Show.jpg" alt="Water Dance Show" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Water Dance Show.jpg" alt="Water Dance Show" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Great Wall Music Water Dance Show (长城音乐水舞秀)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-Water Dance Show.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-Water Dance Show.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-qiaotougao.jpg" alt="Qiaotou Cake" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-qiaotougao.jpg" alt="Qiaotou Cake" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Qiaotou Cake (桥头糕)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-qiaotougao.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-qiaotougao.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-doufu.jpeg" alt="Tofu Cakes" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-doufu.jpeg" alt="Tofu Cakes" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Tofu Cakes (豆腐角)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-doufu.jpeg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-doufu.jpeg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-kaoli.PNG" alt="Gubei Roasted Pear" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-kaoli.PNG" alt="Gubei Roasted Pear" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Gubei Roasted Pear (古北烤梨)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-kaoli.PNG')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-kaoli.PNG', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-luobosi.jpg" alt="Shredded Radish Pancake" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-luobosi.jpg" alt="Shredded Radish Pancake" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Shredded Radish Pancake (萝卜丝饼)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /gubei-luobosi.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/gubei-luobosi.jpg', 'gubei')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
@@ -640,8 +840,8 @@
                 </div>
               </div>
             </div>
-            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('gubei')">
-              <i class="fa fa-chevron-right"></i>
+            <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('gubei')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
             </button>
           </div>
           
@@ -738,97 +938,97 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="relative rounded-xl shadow-lg overflow-hidden h-full">
-            <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('liuliqu')">
-              <i class="fa fa-chevron-left"></i>
+            <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('liuliqu')">
+              <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
             </button>
             <div id="liuliqu-carousel" class="h-full">
-              <div class="carousel-inner flex items-center h-full">
-                <div class="carousel-item active flex justify-center h-full">
+              <div class="carousel-inner flex h-full">
+                <div class="carousel-item active h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Jinyu Glazed Cultural and Creative Industrial Park (金隅琉璃文化创意产业园)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Jinyu Glazed.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall2" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Jinyu Glazed.jpg" alt="Glaze Culture Exhibition Hall2" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Jinyu Glazed Cultural and Creative Industrial Park (金隅琉璃文化创意产业园)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Jinyu Glazed.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Jinyu Glazed.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Sanguange Overpass Building.jpg" alt="Sanguange Overpass Building" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Sanguange Overpass Building.jpg" alt="Sanguange Overpass Building" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Sanguange Overpass Building (三官阁过街楼)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Sanguange Overpass Building.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Sanguange Overpass Building.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Royal Glazed Art Museum .jpg" alt="Royal Glazed Art Museum" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Royal Glazed Art Museum .jpg" alt="Royal Glazed Art Museum" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Royal Glazed Art Museum (皇家琉璃艺术馆)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Royal Glazed Art Museum .jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Royal Glazed Art Museum .jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fengsha Railway.jpg" alt="Fengsha Railway" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Fengsha Railway.jpg" alt="Fengsha Railway" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Fengsha Railway (丰沙铁路)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fengsha Railway.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Fengsha Railway.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fire Pot Tofu Feast.jpg" alt="Fire Pot Tofu Feast" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Fire Pot Tofu Feast.jpg" alt="Fire Pot Tofu Feast" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Fire Pot Tofu Feast (火盆锅豆腐宴)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli-Fire Pot Tofu Feast.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli-Fire Pot Tofu Feast.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="carousel-item hidden flex justify-center h-full">
+                <div class="carousel-item hidden h-full">
                   <div class="gallery-container relative h-full">
-                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli- Fire sichuan.jpg" alt="Fried Sichuan Pepper Sprouts" class="h-full object-contain gallery-image">
+                    <img src="../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli- Fire sichuan.jpg" alt="Fried Sichuan Pepper Sprouts" class="h-full w-full object-cover gallery-image">
                     <div class="gallery-caption">
                       <p>Fried Sichuan Pepper Sprouts (炸花椒芽)</p>
                     </div>
                     <div class="gallery-zoom-overlay">
-                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing /liuli- Fire sichuan.jpg')">
+                      <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.3 Ancient Villages Around Beijing/liuli- Fire sichuan.jpg', 'liuliqu')">
                         <i class="iconfont icon-fangdaqi text-2xl"></i>
                       </div>
                     </div>
@@ -836,8 +1036,8 @@
                 </div>
               </div>
             </div>
-            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('liuliqu')">
-              <i class="fa fa-chevron-right"></i>
+            <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('liuliqu')">
+              <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
             </button>
           </div>
           
@@ -967,9 +1167,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 

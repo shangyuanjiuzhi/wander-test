@@ -8,29 +8,143 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="../../../iconfont/iconfont.js"></script>
   <link rel="stylesheet" href="../../../iconfont/iconfont.css">
-  <link rel="stylesheet" href="../../../css/styles.css">
-
+  <link rel="stylesheet" href="../../../css/style2.css">
   <style>
-    .section-card {
-      transition: all 0.3s ease;
-    }
-    .section-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    }
-    .route-card {
-      position: relative;
-      overflow: hidden;
-      padding: 1.5rem;
-    }
-    .route-card::before {
-      content: '';
-      position: absolute;
+    /* Navigation Styles */
+    .mobile-header-nav {
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #f43f5e, #ec4899);
+      z-index: 100;
+      padding: 1rem;
+      background: #111827 !important;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .logo i {
+      color: #f43f5e;
+      font-size: 1.5rem;
+    }
+
+    .desktop-nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .desktop-nav a {
+      color: white !important;
+      text-decoration: none;
+      font-weight: medium;
+      transition: color 0.3s;
+    }
+
+    .desktop-nav a:hover {
+      color: #f43f5e !important;
+    }
+
+    /* Mobile Navigation Menu */
+    .mobile-menu-btn {
+      display: none !important;
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+    }
+
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      
+      .desktop-nav {
+        display: none !important;
+      }
+      
+      .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+      
+      .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 80px;
+      }
+      
+      .mobile-nav-overlay.active {
+        transform: translateX(0);
+      }
+      
+      .mobile-nav-overlay a {
+        color: white;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+      
+      .mobile-nav-overlay a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
     }
   </style>
   <script>
@@ -100,25 +214,135 @@
       }
     }
     
-    // 图片放大功能
-    function openLightbox(src) {
+    // 图片放大功能 - 带左右切换
+    let currentLightboxIndex = 0;
+    let currentLightboxImages = [];
+
+    function openLightbox(src, carouselId) {
+      // 获取当前 carousel 的所有图片
+      const carousel = document.getElementById(carouselId + '-carousel');
+      if (!carousel) {
+        return;
+      }
+      
+      const images = Array.from(carousel.querySelectorAll('.gallery-container img'));
+      currentLightboxImages = images.map(img => img.src);
+      
+      // 先尝试直接匹配
+      currentLightboxIndex = currentLightboxImages.indexOf(src);
+      
+      // 如果直接匹配失败，尝试用文件名匹配（处理相对路径和完整URL的差异）
+      if (currentLightboxIndex === -1) {
+        const fileName = src.substring(src.lastIndexOf('/') + 1);
+        for (let i = 0; i < currentLightboxImages.length; i++) {
+          if (currentLightboxImages[i].endsWith(fileName)) {
+            currentLightboxIndex = i;
+            break;
+          }
+        }
+      }
+      
+      // 创建 lightbox 容器
       const lightbox = document.createElement('div');
-      lightbox.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center';
-      lightbox.onclick = function() { lightbox.remove(); };
+      lightbox.id = 'lightbox-viewer';
+      lightbox.className = 'fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center';
       
+      // 创建图片
       const img = document.createElement('img');
+      img.id = 'lightbox-image';
       img.src = src;
-      img.className = 'max-w-[90vw] max-h-[90vh] object-contain';
-      img.onclick = function(e) { e.stopPropagation(); };
+      img.className = 'max-w-[90vw] max-h-[90vh] object-contain transition-opacity duration-300';
       
+      // 创建关闭按钮
       const closeBtn = document.createElement('button');
-      closeBtn.innerHTML = '<svg fill="none" stroke="white" viewBox="0 0 24 24" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-      closeBtn.className = 'absolute top-4 right-4 text-white hover:text-gray-300';
-      closeBtn.onclick = function() { lightbox.remove(); };
+      closeBtn.innerHTML = '×';
+      closeBtn.className = 'absolute top-4 right-4 text-white text-5xl hover:text-rose-400 transition-colors z-50';
+      closeBtn.onclick = function(e) {
+        e.stopPropagation();
+        closeLightbox();
+      };
       
+      // 创建左箭头容器
+      const prevContainer = document.createElement('div');
+      prevContainer.className = 'absolute left-0 top-0 bottom-0 w-24 flex items-center justify-center cursor-pointer z-[100]';
+      prevContainer.onclick = function(e) {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+        const img = document.getElementById('lightbox-image');
+        const currentSpan = document.getElementById('lightbox-current');
+        if (img && currentSpan && currentLightboxImages[currentLightboxIndex]) {
+          img.src = currentLightboxImages[currentLightboxIndex];
+          currentSpan.textContent = currentLightboxIndex + 1;
+        }
+      };
+      
+      const prevBtn = document.createElement('div');
+      prevBtn.innerHTML = '‹';
+      prevBtn.className = 'text-white text-5xl hover:text-rose-400 transition-colors';
+      prevContainer.appendChild(prevBtn);
+      
+      // 创建右箭头容器
+      const nextContainer = document.createElement('div');
+      nextContainer.className = 'absolute right-0 top-16 bottom-0 w-24 flex items-center justify-center cursor-pointer z-[100]';
+      nextContainer.onclick = function(e) {
+        e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+        const img = document.getElementById('lightbox-image');
+        const currentSpan = document.getElementById('lightbox-current');
+        if (img && currentSpan && currentLightboxImages[currentLightboxIndex]) {
+          img.src = currentLightboxImages[currentLightboxIndex];
+          currentSpan.textContent = currentLightboxIndex + 1;
+        }
+      };
+      
+      const nextBtn = document.createElement('div');
+      nextBtn.innerHTML = '›';
+      nextBtn.className = 'text-white text-5xl hover:text-rose-400 transition-colors';
+      nextContainer.appendChild(nextBtn);
+      
+      // 创建图片计数器
+      const counter = document.createElement('div');
+      counter.className = 'absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-lg text-sm';
+      counter.innerHTML = `<span id="lightbox-current">${currentLightboxIndex + 1}</span> / <span id="lightbox-total">${currentLightboxImages.length}</span>`;
+      
+      // 组装 lightbox
       lightbox.appendChild(img);
       lightbox.appendChild(closeBtn);
+      lightbox.appendChild(prevContainer);
+      lightbox.appendChild(nextContainer);
+      lightbox.appendChild(counter);
+      
+      // 点击背景关闭
+      lightbox.onclick = function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      };
+      
+      // 添加键盘事件
+      document.addEventListener('keydown', handleLightboxKeydown);
+      
       document.body.appendChild(lightbox);
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox-viewer');
+      if (lightbox) {
+        lightbox.remove();
+      }
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleLightboxKeydown);
+    }
+    
+    function handleLightboxKeydown(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showPrevImage();
+      } else if (e.key === 'ArrowRight') {
+        showNextImage();
+      }
     }
     
     // 为所有轮播图图片添加点击放大功能
@@ -133,28 +357,27 @@
     });
   </script>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans">
+<body class="bg-white font-sans text-slate-800">
   <!-- 顶部导航 -->
-    <nav class="mobile-header-nav">
-      <div class="nav-container">
-        <div class="logo" id="mobileLogo">
-          <i class="iconfont icon-ditu-dibiao"></i>
-          <span>Wander Any Place</span>
-        </div>
-        <div class="desktop-nav" id="desktopNavLinks">
-          <a href="../../index.html">Home</a>
-          <a href="../2.Destination.html">Destinations</a>
-          <a href="../2.booking.html">Booking Services</a>
-          <a href="../2.aboutus.html">About Us</a>
-        </div>
-        <!-- 移动端菜单按钮 -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  <header class="mobile-header-nav bg-gray-900" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao" style="color: #F43F5E;"></i>
+        <span style="color: white;">Wander Any Place</span>
       </div>
-    </nav>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../../index.html" style="color: white;">Home</a>
+        <a href="../2.Destination.html" style="color: white;">Destinations</a>
+        <a href="../2.booking.html" style="color: white;">Booking Services</a>
+        <a href="../2.aboutus.html" style="color: white;">About Us</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+      </button>
+    </div>
+  </header>
     <!-- 移动端导航覆盖层 -->
     <div class="mobile-nav-overlay" id="mobileNav">
       <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
@@ -173,7 +396,6 @@
       </p>
     </div>
   </header>
-
   <!-- 介绍部分 -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-6">
@@ -319,124 +541,126 @@
               <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line1')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line1')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line1-carousel" class="h-full">
-                    <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+                              
+
+                  <div class="map-carousel w-full" id="line1-carousel">
+                    <div class="carousel-inner flex items-center">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg" alt="Dongsi Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg" alt="Dongsi Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>鼓楼 -> 南锣鼓巷 -> 什刹海</p>
                             <p>Drum Tower -> Nanluoguxiang -> Shichahai Route Map</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1.jpeg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg" alt="Traditional Courtyard" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg" alt="Traditional Courtyard" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover;">
                           <div class="gallery-caption">
                             <p>Nanluoguxiang Main Street</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-nanluoguxiang.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg" alt="Beixinqiao" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg" alt="Beixinqiao" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover;">
                           <div class="gallery-caption">
                             <p>Former Home of Writer Mao Dun (茅盾故居)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-maodun.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg" alt="Shichahai" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg" alt="Shichahai" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover;">
                           <div class="gallery-caption">
                             <p>Home of Master Painter Qi Baishi (齐白石故居)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-qibaishi.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg" alt="Hutong Street" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg" alt="Hutong Street" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Wealth God Temple</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-temple.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg" alt="Drum Tower" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg" alt="Drum Tower" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Drum Tower</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-gulou.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG" alt="Traditional Architecture" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG" alt="Traditional Architecture" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Yinding Bridge</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-yindinghe.PNG', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg" alt="Local Life" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg" alt="Local Life" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Shichahai Ice Rink</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-shishahai.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg" alt="Night View" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg" alt="Night View" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Beihai Park</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line1-beihai.jpg', 'line1')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
@@ -444,8 +668,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line1')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line1')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -534,136 +758,138 @@
               <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line2')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line2')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line2-carousel" class="h-full">
-                    <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+
+                   <div class="map-carousel w-full" id="line2-carousel">
+                    <div class="carousel-inner flex items-center">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG" alt="Xisi Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG" alt="Xisi Hutong" class="gallery-image">
                           <div class="gallery-caption">
-                            <p>Longfu Temple -> Dongsi North Street -> Yonghegong Street -> Guozijian Street -> Wudaoying Hutong Route Map</p>
+                            <p>隆福寺 -> 东四北大街 -> 雍和宫大街 -> 国子监街 -> 五道营胡同</p>
+                            <p>Longfu Temple -> Dongsi North Street -> Yonghegong Street -> Guozijian Street -> Wudaoying Hutong</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2.JPG', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg" alt="Guanghua Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg" alt="Guanghua Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Longfu Temple</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-longfutemple.jpeg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg" alt="Laba Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg" alt="Laba Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Hutong Museum</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-hutong museum.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg" alt="Financial Street" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg" alt="Financial Street" class="gallery-image">
                           <div class="gallery-caption">
                             <p>稻香村零号店 Daoxiangcun Flagship Store</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-daoxiangcun flag 0.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg" alt="Longfu Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg" alt="Longfu Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>茶饼斋 Tea Cake Studio</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-chabingzhai.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg" alt="Dongsi North Street" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg" alt="Dongsi North Street" class="gallery-image">
                           <div class="gallery-caption">
                             <p>北新桥卤煮 Beixinqiao Luzhu</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-luzhu.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lama Temple</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian Street" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian Street" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Guozijian Street</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Confucius Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Confucius Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Wudaoying Hutong</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg" alt="Wudaoying Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg" alt="Wudaoying Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Wudaoying Hutong</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying2.jpeg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
@@ -671,8 +897,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line2')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line2')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -743,97 +969,97 @@
               <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line3')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line3')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line3-carousel" class="h-full">
+                  <div class="map-carousel w-full" id="line3-carousel">
                     <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg" alt="Wangfujing Street" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg" alt="Wangfujing Street" class="gallery-image">
                           <div class="gallery-caption">
                             <p> Lama Temple -> Ditan Park Route Map</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3.jpeg', 'line3')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg" alt="Lama Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lama Temple (雍和宫)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-lama temple.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg" alt="Guozijian" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Guozijian (国子监)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-guozijian.jpg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Wudaoying Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg" alt="Wudaoying Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Wudaoying Hutong (五道营胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line2-wudaoying1.jpeg', 'line2')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG" alt="King Joy" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG" alt="King Joy" class="gallery-image">
                           <div class="gallery-caption">
                             <p>King Joy (京兆尹)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-jingzhaoyi.PNG', 'line3')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg" alt="Ditan Park" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg" alt="Ditan Park" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Ditan Park (地坛公园) - The Sea of Grass</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-sea of ditan.jpg', 'line3')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg" alt="Ditan Park Trees" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg" alt="Ditan Park Trees" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Ditan Park - Trees of Yu Hua and Shi Tiesheng (史铁生与榆树)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line3-The Trees of Yu Hua and Shi Tiesheng.jpg', 'line3')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
@@ -841,8 +1067,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line3')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line3')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -950,149 +1176,149 @@
               <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line4')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line4')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line4-carousel" class="h-full">
-                    <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+                  <div class="map-carousel w-full" id="line4-carousel">
+                    <div class="carousel-inner flex items-center">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg" alt="Qianmen Gate" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg" alt="Qianmen Gate" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Fuchengmen -> Xishiku Church Route Map</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4.jpeg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg" alt="Lu Xun Museum" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg" alt="Lu Xun Museum" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lu Xun Museum (鲁迅博物馆)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Lu Xun Museum.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg" alt="White Pagoda Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg" alt="White Pagoda Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>White Pagoda Temple (白塔寺)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-baita temple.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg" alt="Temple of Ancient Monarchs" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg" alt="Temple of Ancient Monarchs" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Temple of Ancient Monarchs (历代帝王庙)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-The Temple of Successive Emperors.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg" alt="Geological Museum" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg" alt="Geological Museum" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Geological Museum (地质博物馆)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Geological Museum.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg" alt="Guangji Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg" alt="Guangji Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Guangji Temple (广济寺)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Guangji Temple.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg" alt="Zhengyang Bookstore" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg" alt="Zhengyang Bookstore" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Zhengyang Bookstore (正阳书局)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg" alt="Zhengyang Bookstore" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg" alt="Zhengyang Bookstore" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Zhengyang Bookstore Inside</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Zhengyang Bookstore2.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg" alt="Xishiku Church" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg" alt="Xishiku Church" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Xishiku Church</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-Xishiku Church.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Xishiku Church" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Xishiku Church" class="gallery-image">
                           <div class="gallery-caption">
                             <p>方砖厂69号炸酱面 (Fangzhuanchang No.69 Zhajiang Noodles)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg" alt="Xisi Baozi Shop" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg" alt="Xisi Baozi Shop" class="gallery-image">
                           <div class="gallery-caption">
                             <p>西四包子铺 (Xisi Baozi Shop)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-xisibaozi.jpeg', 'line4')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
@@ -1100,8 +1326,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line4')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line4')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -1197,149 +1423,149 @@
               <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line5')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line5')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line5-carousel" class="h-full">
-                    <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+                  <div class="map-carousel w-full" id="line5-carousel">
+                    <div class="carousel-inner flex items-center">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg" alt="Olympic Green" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg" alt="Olympic Green" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lanman Hutong -> Fayuan Temple -> Niujie Route Map</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Xuannan Bookstore" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Xuannan Bookstore" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Xuannan Bookstore (宣南书店)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg', 'line6')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg" alt="Lanman Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lanman Hutong (烂漫胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong0.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg" alt="Lanman Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lanman Hutong (烂漫胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong1.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg" alt="Lanman Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lanman Hutong (烂漫胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong2.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg" alt="Lanman Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg" alt="Lanman Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Lanman Hutong (烂漫胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Lanman Hutong4.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg" alt="Xizhuan Hutong" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg" alt="Xizhuan Hutong" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Xizhuan Hutong (西砖胡同)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Xizhuan Hutong.jpeg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg" alt="Fayuan Temple" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg" alt="Fayuan Temple" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Fayuan Temple (法源寺)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-fayuan.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg" alt="Niujie" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg" alt="Niujie" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Niujie (牛街)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-niujie.jpg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg" alt="Lanman Hutong -> Fayuan Temple -> Niujie Route Map 1" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg" alt="Lanman Hutong -> Fayuan Temple -> Niujie Route Map 1" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Jubao Yuan(聚宝源)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-Jubaoyuan.jpeg', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.png" alt="Baiji Year Cake" class="h-full object-contain gallery-image">
+                          <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.png" alt="Baiji Year Cake" class="gallery-image">
                           <div class="gallery-caption">
                             <p>Baiji Nian Gao(白记年糕)</p>
                           </div>
                           <div class="gallery-zoom-overlay">
-                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.JPG')">
+                            <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line5-baiji.JPG', 'line5')">
                               <i class="iconfont icon-fangdaqi text-2xl"></i>
                             </div>
                           </div>
@@ -1347,8 +1573,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line5')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line5')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -1467,331 +1693,331 @@
                             <!-- Right Column: Gallery -->
               <div class="h-full flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-md flex-1 min-h-[300px]">
-                  <button class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="prevSlide('line6')">
-                    <i class="fa fa-chevron-left"></i>
+                  <button class="carousel-control-btn carousel-control-prev" onclick="prevSlide('line6')">
+                    <i class="iconfont icon-zuojiantou3 w-6 h-6"></i>
                   </button>
-                  <div id="line6-carousel" class="h-full">
-                    <div class="carousel-inner flex items-center h-full">
-                      <div class="carousel-item active flex justify-center h-full">
+                  <div class="map-carousel w-full" id="line6-carousel">
+                    <div class="carousel-inner flex items-center">
+                      <div class="carousel-item active flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png" alt="Xixinglong Street" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png" alt="Xixinglong Street" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Qianmen Area Route map</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6.png', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg" alt="UCCA" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg" alt="UCCA" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Huguang Guild Hall (北京湖广会馆) - Grand Theater</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang  Grand Theater.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg" alt="Art Galleries" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg" alt="Art Galleries" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Huguang Guild Hall (北京湖广会馆) - Opera Museum</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Huguang Opera Museum.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Jinghua Publishing House</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Xuannan Bookstore (宣南书店)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore outside.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Xuannan Bookstore (宣南书店) - The Glass Waterfall Wall</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass waterfall wall .jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Xuannan Bookstore (宣南书店) - Persimmons Displayed in Glass Wall in Winter</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xuannan Bookstore the glass winter.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office outside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office outside.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Future Post Office</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Future Post Office (未来邮局) - Mailbox</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Future Post Office postmail.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Model Bookstore (模范书局)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Model Bookstore (模范书局) - Inside View</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Model Bookstore inside.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Jingwei Shiguang (京味拾光)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6- Jingwei Shiguang.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Qingyunge Site (青云阁旧址)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-qingyunge.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Ruifuxiang (瑞蚨祥)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-ruifuxiang.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Neiliansheng (内联升)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Neiliansheng.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Zhang Yiyuan (张一元)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-zhangyiyuan.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Wu Yutai (吴裕泰)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-wuyutai.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Quanjude (全聚德)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-quanjude.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Bianyifang (便宜坊)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Bianyifang.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Fangzhuanchang No.69 (方砖厂69号炸酱面)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line4-fangzhuan69.jpg', 'line4')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Menkuang Hutong Century-Old Lu Zhu (门框胡同百年卤煮)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-menkuangluzhu.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Tianxingju (天兴居炒肝)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-tianxingju.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg"alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg"alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Jinfang Snacks (锦芳小吃)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-jinfang.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Xixinglong Street (西兴隆街)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street1.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
                     </div>
                       </div>
-                      <div class="carousel-item hidden flex justify-center h-full">
+                      <div class="carousel-item hidden flex justify-center">
                         <div class="gallery-container relative">
-                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg" alt="Art District Cafes" class="h-full object-contain gallery-image">
+                      <img src="../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg" alt="Art District Cafes" class="gallery-image">
                       <div class="gallery-caption">
                         <p>Xixinglong Street (西兴隆街)</p>
                       </div>
                       <div class="gallery-zoom-overlay">
-                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg')">
+                        <div class="gallery-zoom-icon" onclick="openLightbox('../../img/3. img-beijing/3.10.2 Hutong City Walk/Line6-Xixinglong Street2.jpg', 'line6')">
                           <i class="iconfont icon-fangdaqi text-2xl"></i>
                         </div>
                       </div>
@@ -1799,8 +2025,8 @@
                       </div>
                     </div>
                   </div>
-                  <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white z-10 transition-all" onclick="nextSlide('line6')">
-                    <i class="fa fa-chevron-right"></i>
+                  <button class="carousel-control-btn carousel-control-next" onclick="nextSlide('line6')">
+                    <i class="iconfont icon-youjiantou2 w-6 h-6"></i>
                   </button>
                 </div>
               </div>
@@ -1870,7 +2096,7 @@
           <ul class="space-y-2 text-gray-400">
             <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
             <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
             <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>

@@ -15,9 +15,9 @@
 <body class="bg-gray-50 text-slate-800 font-sans">
   <!-- Top Visual Impact Area -->
   <header class="responsive-header flex items-center justify-center">
-    <!-- Background Image Placeholder -->
-    <div class="absolute inset-0 z-0">
-      <img src="../../img/3. img-beijing/3.5.4 CCTV Headquarters/CCTV Headquarters0.jpeg" alt="CCTV Headquarters" class="w-full h-full object-cover brightness-75 header-bg">
+    <!-- 背景图占位 -->
+    <div class="absolute inset-0 z-0 overflow-hidden" style="min-height: 420px;">
+      <img src="../../img/3. img-beijing/3.5.4 CCTV Headquarters/CCTV Headquarters0.jpeg" alt="CCTV Headquarters" class="w-full h-full object-cover brightness-75 header-bg" style="width: 100vw; max-width: none; object-fit: cover;">
       <div class="absolute inset-0 bg-black/30"></div>
     </div>
     <!-- Navigation Bar -->
@@ -48,16 +48,15 @@
       <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
     </div>
     <!-- Core Content -->
-    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+    <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in pt-12">
+      <h1 class="font-bold text-white mb-6 drop-shadow-lg" style="font-size: clamp(1.75rem, 4vw, 4rem) !important;">
         CCTV Headquarters & China Zun
       </h1>
-      <p class="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+      <p class="text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-md" style="font-size: clamp(1rem, 2.5vw, 1.5rem) !important;">
         Two iconic modern architectural landmarks in Beijing's Central Business District: the distinctive CCTV Headquarters and the towering China Zun skyscraper.
       </p>
     </div>
   </header>
-
   <!-- CCTV Headquarters & China Zun Information Section -->
   <section class="bg-white border-b border-gray-100 py-12">
     <div class="max-w-7xl mx-auto px-6">
@@ -340,9 +339,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 

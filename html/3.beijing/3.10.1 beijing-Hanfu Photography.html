@@ -32,28 +32,27 @@
     }
   </script>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans">
+<body class="bg-white font-sans text-slate-800">
   <!-- 顶部导航 -->
-    <nav class="mobile-header-nav">
-      <div class="nav-container">
-        <div class="logo" id="mobileLogo">
-          <i class="iconfont icon-ditu-dibiao"></i>
-          <span>Wander Any Place</span>
-        </div>
-        <div class="desktop-nav" id="desktopNavLinks">
-          <a href="../../index.html">Home</a>
-          <a href="../2.Destination.html">Destinations</a>
-          <a href="../2.booking.html">Booking Services</a>
-          <a href="../2.aboutus.html">About Us</a>
-        </div>
-        <!-- 移动端菜单按钮 -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  <header class="mobile-header-nav bg-gray-900" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+        <i class="iconfont icon-ditu-dibiao" style="color: #F43F5E;"></i>
+        <span style="color: white;">Wander Any Place</span>
       </div>
-    </nav>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../../index.html" style="color: white;">Home</a>
+        <a href="../2.Destination.html" style="color: white;">Destinations</a>
+        <a href="../2.booking.html" style="color: white;">Booking Services</a>
+        <a href="../2.aboutus.html" style="color: white;">About Us</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+      </button>
+    </div>
+  </header>
     <!-- 移动端导航覆盖层 -->
     <div class="mobile-nav-overlay" id="mobileNav">
       <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
@@ -72,7 +71,6 @@
       </p>
     </div>
   </header>
-
   <!-- 汉服拍摄介绍 -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-6">
@@ -435,9 +433,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 

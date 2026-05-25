@@ -32,48 +32,92 @@
     .rating-star {
       color: #fbbf24;
     }
+    .category-btn {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #4B5563;
+      transition: all 0.3s ease;
+    }
+    .category-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+    .category-btn.active,
+    .category-btn.bg-rose-600 {
+      background: rgba(225, 29, 72, 0.9);
+      color: white;
+      border-color: rgba(225, 29, 72, 0.5);
+    }
+    .page-btn {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #4B5563;
+      transition: all 0.3s ease;
+    }
+    .page-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+    .page-btn.active {
+      background: rgba(225, 29, 72, 0.9);
+      color: white;
+      border-color: rgba(225, 29, 72, 0.5);
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 font-sans">
+<body class="bg-white font-sans text-slate-800">
   <!-- 顶部导航 -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <i class="iconfont icon-ditu-dibiao text-rose-500"></i>
-        <span class="text-2xl font-bold text-rose-600 font-sans italic">Wander Any Place</span>
+  <header class="mobile-header-nav" style="background: black; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <div class="nav-container">
+      <div class="logo" id="mobileLogo">
+       <i class="iconfont icon-ditu-dibiao text-rose-500 mr-2"></i>
+        <span style="color: white;">Wander Any Place</span>
       </div>
-      <div class="hidden md:flex space-x-8 text-slate-700 font-medium">
-        <a class="hover:text-rose-500 transition-colors" href="../../index.html">Home</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.Destination.html">Destinations</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.booking.html">Booking Services</a>
-        <a class="hover:text-rose-500 transition-colors" href="../2.aboutus.html">About Us</a>
+      <div class="desktop-nav" id="desktopNavLinks" style="color: white;">
+        <a href="../../index.html" style="color: white;">Home</a>
+        <a href="../2.Destination.html" style="color: white;">Destinations</a>
+        <a href="../2.booking.html" style="color: white;">Booking Services</a>
+        <a href="../2.aboutus.html" style="color: white;">About Us</a>
       </div>
-    </div>
-  </nav>
-
-  <!-- 页面标题 -->
-  <header class="bg-gradient-to-r from-rose-600 to-rose-500 text-white py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Attractions</h1>
-      <p class="text-lg text-white/90 max-w-2xl mx-auto">
-        Discover the most amazing attractions in Beijing, from ancient landmarks to modern marvels
-      </p>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <button class="nav-close-btn" onclick="toggleMobileMenu()">&times;</button>
+    <a href="../../index.html" onclick="toggleMobileMenu()">Home</a>
+    <a href="../2.Destination.html" onclick="toggleMobileMenu()">Destinations</a>
+    <a href="../2.booking.html" onclick="toggleMobileMenu()">Booking Services</a>
+    <a href="../2.aboutus.html" onclick="toggleMobileMenu()">About Us</a>
+  </div>
+
+  <section class="bg-rose-600 text-white min-h-[300px] flex items-center justify-center" style="margin-top: 70px;">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Beijing Attractions</h1>
+      <p class="text-xl max-w-3xl mx-auto">Discover the most amazing attractions in Beijing, from ancient landmarks to modern marvels</p>
+    </div>
+  </section>
 
   <!-- 景点列表 -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-6">
       <!-- 分类按钮 -->
       <div class="flex flex-wrap gap-2 mb-8">
-        <button class="category-btn bg-rose-600 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-700 transition-colors" data-category="imperial">Imperial Relics</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="park">Special Parks</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="shopping">Shopping Malls</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="museum">Museums</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="landmark">City Landmarks</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="temple">Temples</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="hiking">Hiking Spots</button>
-        <button class="category-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors" data-category="entertainment">Entertainment</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium active" data-category="imperial">Imperial Relics</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="park">Special Parks</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="shopping">Shopping Malls</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="museum">Museums</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="landmark">City Landmarks</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="temple">Temples</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="hiking">Hiking Spots</button>
+        <button class="category-btn px-4 py-2 rounded-full font-medium" data-category="entertainment">Entertainment</button>
       </div>
       
       <!-- 景点1: Great Wall -->
@@ -743,7 +787,7 @@
       <!-- 景点: Zhoukoudian Peking Man Site -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.2.1 zhoukoudian /zhoukoudian1.jpeg" alt="Zhoukoudian Peking Man Site" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.2.1 zhoukoudian/zhoukoudian1.jpeg" alt="Zhoukoudian Peking Man Site" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             1
           </div>
@@ -821,7 +865,7 @@
       <!-- 景点: Beijing Olympic Forest Park -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.2.3  Beijing Olympic Forest Park /olympic park1.jpeg" alt="Beijing Olympic Forest Park" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.2.3  Beijing Olympic Forest Park/olympic park1.jpeg" alt="Beijing Olympic Forest Park" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             3
           </div>
@@ -899,7 +943,7 @@
       <!-- 景点: National Botanical Garden -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.2.5 National Botanical Garden /National Botanical Garden1.jpeg" alt="National Botanical Garden" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.2.5 National Botanical Garden/National Botanical Garden1.jpeg" alt="National Botanical Garden" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             5
           </div>
@@ -1055,7 +1099,7 @@
       <!-- 景点: Beijing Garden Expo Park -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="park" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.2.9 Beijing Garden Expo Park /Beijing Garden Expo Park1.jpeg" alt="Beijing Garden Expo Park" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.2.9 Beijing Garden Expo Park/Beijing Garden Expo Park1.jpeg" alt="Beijing Garden Expo Park" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             9
           </div>
@@ -1173,7 +1217,7 @@
       <!-- 景点: Xidan Commercial Street -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.3.3 Xidan Commercial Street /Xidan Commercial Street1.jpeg" alt="Xidan Commercial Street" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.3.3 Xidan Commercial Street/Xidan Commercial Street1.jpeg" alt="Xidan Commercial Street" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             3
           </div>
@@ -1212,7 +1256,7 @@
       <!-- 景点: Sanlitun Taikoo Li -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.3.4 Sanlitun Taikoo Li /Sanlitun Taikoo Li .jpg" alt="Sanlitun Taikoo Li" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.3.4 Sanlitun Taikoo Li/Sanlitun Taikoo Li .jpg" alt="Sanlitun Taikoo Li" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             4
           </div>
@@ -1251,7 +1295,7 @@
       <!-- 景点: Blue Harbor -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="shopping" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.3.5 Blue Harbor /Blue Harbor.jpeg" alt="Blue Harbor" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.3.5 Blue Harbor/Blue Harbor.jpeg" alt="Blue Harbor" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             5
           </div>
@@ -1291,7 +1335,7 @@
       <!-- 景点: National Museum of China -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="museum" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.4.1 National Museum of China /National Museum of China.jpeg" alt="National Museum of China" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.4.1 National Museum of China/National Museum of China.jpeg" alt="National Museum of China" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             1
           </div>
@@ -1330,7 +1374,7 @@
       <!-- 景点: Capital Museum -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="museum" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.4.2 Capital Museum /Capital Museum.jpeg" alt="Capital Museum" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.4.2 Capital Museum/Capital Museum.jpeg" alt="Capital Museum" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             2
           </div>
@@ -1800,7 +1844,7 @@
       <!-- 景点: Yonghe Temple -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="temple" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.6.1 Lama Temple /Lama Temple1.jpeg" alt="Yonghe Temple" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.6.1 Lama Temple/Lama Temple1.jpeg" alt="Yonghe Temple" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             1
           </div>
@@ -2192,7 +2236,7 @@
       <!-- 景点: Beijing Happy Valley -->
       <div class="attraction-card bg-white rounded-2xl shadow-lg overflow-hidden mb-8 flex flex-col md:flex-row" data-category="entertainment" data-page="1">
         <div class="relative md:w-1/3">
-          <img src="../../img/3. img-beijing/3.8.1 Beijing Happy Valley /Beijing Happy Valley.jpeg" alt="Beijing Happy Valley" class="w-full h-64 md:h-full object-cover">
+          <img src="../../img/3. img-beijing/3.8.1 Beijing Happy Valley/Beijing Happy Valley.jpeg" alt="Beijing Happy Valley" class="w-full h-64 md:h-full object-cover">
           <div class="absolute top-4 left-4 rank-badge text-white font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
             1
           </div>
@@ -2386,8 +2430,8 @@
 
       <!-- 分页按钮 -->
       <div class="flex justify-center mb-8">
-        <button class="page-btn bg-rose-600 text-white px-4 py-2 rounded-full font-medium hover:bg-rose-700 transition-colors" data-page="1">Page 1</button>
-        <button class="page-btn bg-gray-200 text-slate-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors ml-2" data-page="2">Page 2</button>
+        <button class="page-btn px-4 py-2 rounded-full font-medium active" data-page="1">Page 1</button>
+        <button class="page-btn px-4 py-2 rounded-full font-medium ml-2" data-page="2">Page 2</button>
       </div>
 
     </div>
@@ -2435,13 +2479,11 @@
         btn.addEventListener('click', function() {
           // 移除所有按钮的活跃状态
           categoryBtns.forEach(b => {
-            b.classList.remove('bg-rose-600', 'text-white');
-            b.classList.add('bg-gray-200', 'text-slate-700');
+            b.classList.remove('active');
           });
           
           // 添加当前按钮的活跃状态
-          this.classList.remove('bg-gray-200', 'text-slate-700');
-          this.classList.add('bg-rose-600', 'text-white');
+          this.classList.add('active');
           
           currentCategory = this.getAttribute('data-category');
           
@@ -2452,11 +2494,9 @@
           pageBtns.forEach(b => {
             const pageNum = b.getAttribute('data-page');
             if (pageNum === '1') {
-              b.classList.remove('bg-gray-200', 'text-slate-700');
-              b.classList.add('bg-rose-600', 'text-white');
+              b.classList.add('active');
             } else {
-              b.classList.remove('bg-rose-600', 'text-white');
-              b.classList.add('bg-gray-200', 'text-slate-700');
+              b.classList.remove('active');
             }
           });
           
@@ -2469,13 +2509,11 @@
         btn.addEventListener('click', function() {
           // 移除所有按钮的活跃状态
           pageBtns.forEach(b => {
-            b.classList.remove('bg-rose-600', 'text-white');
-            b.classList.add('bg-gray-200', 'text-slate-700');
+            b.classList.remove('active');
           });
           
           // 添加当前按钮的活跃状态
-          this.classList.remove('bg-gray-200', 'text-slate-700');
-          this.classList.add('bg-rose-600', 'text-white');
+          this.classList.add('active');
           
           currentPage = this.getAttribute('data-page');
           filterAttractions();
@@ -2505,9 +2543,9 @@
           <h4 class="font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="../../index.html" class="hover:text-rose-400 transition-colors">Home</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Destinations</a></li>
-            <li><a href="#" class="hover:text-rose-400 transition-colors">Booking Services</a></li> 
-            <li><a href="#" class="hover:text-rose-400 transition-colors">About Us</a></li>
+            <li><a href="../2.Destination.html" class="hover:text-rose-400 transition-colors">Destinations</a></li>
+            <li><a href="../2.booking.html" class="hover:text-rose-400 transition-colors">Booking Services</a></li>
+            <li><a href="../2.aboutus.html" class="hover:text-rose-400 transition-colors">About Us</a></li>
           </ul>
         </div>
 
